@@ -17,7 +17,7 @@
         "issues": "https://github.com/chriwo/starter-nessa/issues"
     },
     "require": {
-		"php": "^8.3",
+		"php": "^8.3 || ^8.4 || ^8.5",
 		"typo3/cms-core": "^13.4"
     },
 	"require-dev": {
