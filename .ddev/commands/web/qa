@@ -1,8 +1,7 @@
 #!/bin/bash
 
-.Build/bin/php-cs-fixer fix -v --dry-run --diff
-.Build/bin/phpstan
-.Build/bin/rector --clear-cache --dry-run
+bin/php-cs-fixer fix -v --dry-run --diff --config=../.php-cs-fixer.php
+bin/phpstan -v --configuration=../phpstan.neon
+bin/rector process --config=../rector.php --clear-cache --output-format=console --dry-run
 
-.Build/bin/fractor process --dry-run
-#.Build/bin/typoscript-lint --fail-on-warnings ./
+bin/fractor process -v --config=../fractor.php --output-format=console --dry-run

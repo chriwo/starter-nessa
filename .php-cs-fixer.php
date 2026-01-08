@@ -12,7 +12,6 @@ $csFixerConfig
         '.Build',
         'var',
         'config',
-        '.project',
         '.ddev',
         'Resources/Private/frontendSrc',
     ]);
