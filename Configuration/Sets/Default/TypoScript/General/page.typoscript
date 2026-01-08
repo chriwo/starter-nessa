@@ -60,7 +60,7 @@ page {
       cObject {
         data = pagelayout
         required = 1
-        case = uppercamelcase
+        case = ucfirst
         split {
           token = pagets__
           cObjNum = 1
