@@ -10,21 +10,15 @@
 		</div>
 
 		<f:if condition="{socialMediaItems}">
-			<div class="col-lg-4">
-				<ul class="o-site-footer__socialmedia_list text-center">
-					<f:for each="{socialMediaItems}" as="socialMediaItem">
-						<li>
-							<f:link.typolink
-								parameter="{socialMediaItem.data.social_link}"
-								target="_blank"
-								title="{socialMediaItem.data.header}"
-								class="o-site-footer__socialmedia_list_link"
-							>
-								<i class="{socialMediaItem.data.icon}"></i>
-							</f:link.typolink>
-						</li>
-					</f:for>
-				</ul>
+			<div class="col-lg-4 text-lg-center text-center">
+                <f:for each="{socialMediaItems}" as="socialMediaItem">
+                    <f:link.typolink
+                        parameter="{socialMediaItem.data.social_link}"
+                        target="_blank"
+                    >
+                        <i class="{socialMediaItem.data.icon} icofont-md icofont-invert"></i>
+                    </f:link.typolink>
+                </f:for>
 			</div>
 		</f:if>
 

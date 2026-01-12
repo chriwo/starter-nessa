@@ -12,140 +12,75 @@
     word-wrap: normal;
 }
 
-.icofont-rounded-left {
-    &::before {
-        content: '\ea9d';
+.icofont {
+    &-invert {
+        padding: 4px;
+        border: 1px solid map-get($theme-colors, 'primary');
+        background-color: map-get($theme-colors, 'primary');
+        color: $white;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $white;
+            color: map-get($theme-colors, 'primary');
+        }
+    }
+
+    &-xs {
+        font-size: .5em;
+    }
+
+    &-sm {
+        font-size: .75em;
+    }
+
+    &-md {
+        font-size: 1.25em;
+    }
+
+    &-lg {
+        font-size: 1.5em;
     }
 }
 
-.icofont-rounded-down {
-    &::before {
-        content: '\ea99';
-    }
-}
+@include define-icofont-icon('rounded-left', '\ea9d');
+@include define-icofont-icon('rounded-down', '\ea99');
+@include define-icofont-icon('rounded-right', '\eaa0');
+@include define-icofont-icon('rounded-up', '\eaa1');
+@include define-icofont-icon('simple-left', '\eab5');
+@include define-icofont-icon('simple-right', '\eab8');
+@include define-icofont-icon('arrow-right', '\ea5d');
+@include define-icofont-icon('navigation-menu', '\efa2');
+@include define-icofont-icon('close', '\eee4');
+@include define-icofont-icon('simple-up', '\eab9');
+@include define-icofont-icon('download', '\ef08');
+@include define-icofont-icon('simple-down', '\eab2');
+@include define-icofont-icon('world', '\f02c');
+@include define-icofont-icon('email', '\ef14');
+@include define-icofont-icon('plus', '\efc2');
 
-.icofont-rounded-right {
-    &::before {
-        content: '\eaa0';
-    }
-}
+/**
+    Default icons for CE Teaser Icon
+ */
+@include define-icofont-icon('water-drop' ,'\f027');
+@include define-icofont-icon('flora-flower', '\e80c');
+@include define-icofont-icon('bathtub', '\e801');
+@include define-icofont-icon('beverage', '\eeb9');
 
-.icofont-rounded-up {
-    &::before {
-        content: '\eaa1';
-    }
-}
-
-.icofont-water-drop {
-    &::before {
-        content: '\f027';
-    }
-}
-
-// Landwirtschaftswasser
-.icofont-flora-flower {
-    &::before {
-        content: '\e80c';
-    }
-}
-
-// Verbrauchswasser
-.icofont-bathtub {
-    &::before {
-        content: '\e801';
-    }
-}
-
-// Trinkwasser
-.icofont-beverage {
-    &::before {
-        content: '\eeb9';
-    }
-}
-
-.icofont-simple-left {
-    &::before {
-        content: '\eab5';
-    }
-}
-
-.icofont-simple-right {
-    &::before {
-        content: '\eab8';
-    }
-}
-
-.icofont-arrow-right {
-    &::before {
-        content: '\ea5d';
-    }
-}
-
-// mobile navigation icon
-.icofont-navigation-menu {
-    &::before {
-        content: '\efa2';
-    }
-}
-
-// close icon for mobile navigation
-.icofont-close {
-    &::before {
-        content: '\eee4';
-    }
-}
-
-// icon for up scrolling
-.icofont-simple-up {
-    &::before {
-        content: '\eab9';
-    }
-}
-
-.icofont-download {
-    &::before {
-        content: '\ef08';
-    }
-}
-
-.icofont-simple-down {
-    &::before {
-        content: '\eab2';
-    }
-}
-
-.icofont-world {
-    &::before {
-        content: '\f02c';
-    }
-}
-
-.icofont-envelope {
-    &::before {
-        content: '\ef14';
-    }
-}
-
-.icofont-facebook {
-    &::before {
-        content: '\ed37';
-    }
-}
-
-.icofont-instagram {
-    &::before {
-        content: '\ed46';
-    }
-}
-
-.icofont-link {
-    &::before {
-        content: '\ef71';
-    }
-}
-
-.icofont-plus {
-    &::before {
-        content: '\efc2';
-    }
-}
+/**
+    SocialMedia Icons
+*/
+@include define-icofont-icon('discord', '\f032');
+@include define-icofont-icon('facebook', '\ed37');
+@include define-icofont-icon('github', '\ed3e');
+@include define-icofont-icon('instagram', '\ed46');
+@include define-icofont-icon('link', '\ef71');
+@include define-icofont-icon('linkedin', '\ed4d');
+@include define-icofont-icon('snapchat', '\ed6c');
+@include define-icofont-icon('tiktok', '\f033');
+@include define-icofont-icon('typo3', '\ed7b');
+@include define-icofont-icon('vimeo', '\ed7f');
+@include define-icofont-icon('youku', '\ed8a');
+@include define-icofont-icon('youtube', '\ecbb');
+@include define-icofont-icon('x', '\f03d');
+@include define-icofont-icon('xing', '\ed87');

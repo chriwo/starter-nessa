@@ -19,6 +19,18 @@ tt_content.nessa_team {
         10 {
           references.fieldName = assets
         }
+
+        20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+        20 {
+          table = tx_starternessa_social_element
+          where {
+            data = field:_ORIG_uid // field:uid
+            intval = 1
+            wrap = tablenames='tx_starternessa_team_element' AND uid_foreign=|
+          }
+          orderBy = sorting
+          as = socialMediaItems
+        }
       }
     }
   }

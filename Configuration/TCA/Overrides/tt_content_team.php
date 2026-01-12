@@ -12,7 +12,7 @@ defined('TYPO3') || die();
         'tt_content',
         [
             'nessa_team_member_element' => [
-                'exclude' => true,
+                'exclude' => false,
                 'label' => $translationFile . 'team_element_formlabel',
                 'config' => [
                     'type' => 'inline',

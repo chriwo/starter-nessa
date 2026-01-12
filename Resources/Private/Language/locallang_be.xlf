@@ -188,6 +188,9 @@
 			<trans-unit id="tab.team_members">
 				<source>Team</source>
 			</trans-unit>
+			<trans-unit id="tab.team_member.links">
+				<source>Links</source>
+			</trans-unit>
 			<trans-unit id="tab.download">
 				<source>Download files</source>
 			</trans-unit>
@@ -204,11 +207,50 @@
 			<trans-unit id="tx_starternessa_social_element.icon">
 				<source>SocialMedia Icon</source>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.discourd">
+				<source>Discourd</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.email">
+				<source>Email</source>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_social_element.icon.I.facebook">
 				<source>Facebook</source>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.github">
+				<source>Github</source>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_social_element.icon.I.instragram">
 				<source>Instagram</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.link">
+				<source>Web-Link</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.linkedin">
+				<source>LinkedIn</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.snapchat">
+				<source>Snapchat</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.tiktok">
+				<source>TikTok</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.typo3">
+				<source>TYPO3</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.vimeo">
+				<source>Vimeo</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.x">
+				<source>X</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.xing">
+				<source>Xing</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.youku">
+				<source>Youku</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.youtube">
+				<source>Youtube</source>
 			</trans-unit>
 
 			<trans-unit id="tx_starternessa_hero.tx_starter_ctalink_formlabel">

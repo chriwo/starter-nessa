@@ -7,6 +7,7 @@ tt_content.nessa_footer {
     10 {
       table = tx_starternessa_social_element
       pidInList.data = site:rootPageId
+      where = tablenames='pages'
       orderBy = sorting
       as = socialMediaItems
     }
