@@ -1,7 +1,7 @@
 {
     "name": "starterteam/starter-nessa",
     "type": "typo3-cms-extension",
-    "description": "Theme extension for EXT:starter with bootstrap",
+    "description": "Full configured TYPO3 theme, based on the Bootstrap CSS framework.",
     "license": "proprietary",
     "authors": [
         {
