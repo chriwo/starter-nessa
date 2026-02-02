@@ -1,0 +1,14 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="section-title">
+    <f:if condition="{data.header} && {data.header_layout} != 100">
+        <f:render partial="Header/Header" arguments="{header: data.header, layout: data.header_layout}"/>
+    </f:if>
+
+    <f:if condition="{data.header} && {data.subheader}">
+        <f:render partial="Header/SubHeader" arguments="{subheader: data.subheader}"/>
+    </f:if>
+</div>
+
+</html>

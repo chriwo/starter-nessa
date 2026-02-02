@@ -1,0 +1,18 @@
+tt_content.2columns-container =< lib.contentElement
+tt_content.2columns-container {
+  templateName = 2ColumnsContainer
+
+  dataProcessing {
+    201 = B13\Container\DataProcessing\ContainerProcessor
+    201 {
+      colPos = 201
+      as = leftChildren
+    }
+
+    203 = B13\Container\DataProcessing\ContainerProcessor
+    203 {
+      colPos = 203
+      as = rightChildren
+    }
+  }
+}

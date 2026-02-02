@@ -1,7 +1,12 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
-      data-namespace-typo3-fluid="true">
+      data-namespace-typo3-fluid="true"
+>
 
 <f:layout name="Default"/>
+
+<f:section name="Header">
+    <f:render partial="Headers" arguments="{data: data}"/>
+</f:section>
 
 <f:section name="Main">
 
@@ -16,7 +21,7 @@
     <f:if condition="{files}">
         <div class="row content pt-4 js-portfolio-file-collections">
             <f:for each="{files}" as="file" iteration="fileIterator">
-                <f:render partial="Portfolio/FileCollectionItem" arguments="{file: file}" />
+                <f:render partial="Portfolio/FileCollectionItem" arguments="{file: file}"/>
             </f:for>
         </div>
     </f:if>

@@ -1,0 +1,24 @@
+tt_content.3columns-container =< lib.contentElement
+tt_content.3columns-container {
+  templateName = 3ColumnsContainer
+
+  dataProcessing {
+    201 = B13\Container\DataProcessing\ContainerProcessor
+    201 {
+      colPos = 200
+      as = leftChildren
+    }
+
+    202 = B13\Container\DataProcessing\ContainerProcessor
+    202 {
+      colPos = 202
+      as = middleChildren
+    }
+
+    203 = B13\Container\DataProcessing\ContainerProcessor
+    203 {
+      colPos = 203
+      as = rightChildren
+    }
+  }
+}

@@ -20,6 +20,10 @@
 		"php": "^8.3 || ^8.4 || ^8.5",
 		"typo3/cms-core": "^13.4"
     },
+	"suggest": {
+		"ichhabrecht/content-defender": "Content Defender for TYPO3",
+		"b13/container": "Extension to create containers for TYPO3"
+	},
 	"require-dev": {
 		"helhum/dotenv-connector": "^3.1",
 		"phpstan/extension-installer": "^1.4",

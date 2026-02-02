@@ -1,32 +1,37 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      data-namespace-typo3-fluid="true"
+>
 
 <f:layout name="Default"/>
 
-<f:section name="Main">
-	<div class="row content">
-		<div class="col">
-			<f:if condition="{data.bodytext}">
-				<f:format.html>{data.bodytext}</f:format.html>
-			</f:if>
-		</div>
-	</div>
+<f:section name="Header">
+    <f:render partial="Headers" arguments="{data: data}"/>
+</f:section>
 
-	<div class="ctype-nessa_partner__wrapper">
-		<f:for each="{partners}" as="partner">
-			<div class="ctype-nessa_partner__item {data.frame_class}">
-				<f:link.typolink parameter="{partner.link}">
-					<f:media
-						file="{partner}"
-						width="{settings.media.width}"
-						height="{settings.media.height}"
-						alt="{file.alternative}"
-						title="{file.title}"
-						loading="{settings.media.lazyLoading}"/>
-				</f:link.typolink>
-			</div>
-		</f:for>
-	</div>
+<f:section name="Main">
+    <div class="row content">
+        <div class="col">
+            <f:if condition="{data.bodytext}">
+                <f:format.html>{data.bodytext}</f:format.html>
+            </f:if>
+        </div>
+    </div>
+
+    <div class="ctype-nessa_partner__wrapper">
+        <f:for each="{partners}" as="partner">
+            <div class="ctype-nessa_partner__item {data.frame_class}">
+                <f:link.typolink parameter="{partner.link}">
+                    <f:media
+                        file="{partner}"
+                        width="{settings.media.width}"
+                        height="{settings.media.height}"
+                        alt="{file.alternative}"
+                        title="{file.title}"
+                        loading="{settings.media.lazyLoading}"/>
+                </f:link.typolink>
+            </div>
+        </f:for>
+    </div>
 
 </f:section>
 

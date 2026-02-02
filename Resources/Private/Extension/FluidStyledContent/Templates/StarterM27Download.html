@@ -4,6 +4,10 @@
 
 <f:layout name="Default"/>
 
+<f:section name="Header">
+    <f:render partial="Headers" arguments="{data: data}"/>
+</f:section>
+
 <f:section name="Main">
 
     <f:if condition="{data.bodytext}">
@@ -14,23 +18,24 @@
         </div>
     </f:if>
 
-	<div class="row">
+    <div class="row">
 
-		<f:for each="{downloadFiles}" as="downloadFile">
-			<div class="col-md-6 d-flex align-items-stretch c-download-list__item">
-				<a href="{downloadFile.publicUrl}"
+        <f:for each="{downloadFiles}" as="downloadFile">
+            <div class="col-md-6 d-flex align-items-stretch c-download-list__item">
+                <a href="{downloadFile.publicUrl}"
                    download
                    class="c-download-list__link"
                    type="{downloadFile.properties.mime_type}"
                 >
-					<div class="media">
-						<div class="c-download-list__media">
-							<i class="icofont-download mr-3"></i>
-						</div>
+                    <div class="media">
+                        <div class="c-download-list__media">
+                            <i class="icofont-download mr-3"></i>
+                        </div>
 
-						<div class="media-body">
-							<h3 class="c-download-list__headline mt-0">
-                                {f:if(condition: downloadFile.properties.title, then: downloadFile.properties.title, else: downloadFile.name) -> f:format.htmlspecialchars()}
+                        <div class="media-body">
+                            <h3 class="c-download-list__headline mt-0">
+                                {f:if(condition: downloadFile.properties.title, then: downloadFile.properties.title,
+                                else: downloadFile.name) -> f:format.htmlspecialchars()}
                             </h3>
 
                             <f:if condition="{data.filelink_size} || {data.uploads_description}">
@@ -46,13 +51,13 @@
                                     </span>
                                 </p>
                             </f:if>
-						</div>
-					</div>
-				</a>
-			</div>
-		</f:for>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </f:for>
 
-	</div>
+    </div>
 
 </f:section>
 

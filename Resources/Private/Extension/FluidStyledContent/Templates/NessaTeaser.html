@@ -1,22 +1,27 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      data-namespace-typo3-fluid="true"
+>
 
 <f:layout name="Default"/>
 
-<f:section name="Main">
-	<f:if condition="{data.bodytext}">
-		<div class="row">
-			<div class="col">
-					<f:format.html>{data.bodytext}</f:format.html>
-			</div>
-		</div>
-	</f:if>
+<f:section name="Header">
+    <f:render partial="Headers" arguments="{data: data}"/>
+</f:section>
 
-	<div class="row">
-		<f:for each="{teasers}" as="teaser">
-			<f:render partial="Teaser/Item" arguments="{data: teaser.data}"/>
-		</f:for>
-	</div>
+<f:section name="Main">
+    <f:if condition="{data.bodytext}">
+        <div class="row">
+            <div class="col">
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+        </div>
+    </f:if>
+
+    <div class="row">
+        <f:for each="{teasers}" as="teaser">
+            <f:render partial="Teaser/Item" arguments="{data: teaser.data}"/>
+        </f:for>
+    </div>
 
 </f:section>
 
