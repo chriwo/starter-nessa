@@ -1,40 +1,45 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      data-namespace-typo3-fluid="true"
+>
 
 <f:layout name="Default"/>
 
+<f:section name="Header">
+    <f:render partial="Headers" arguments="{data: data}"/>
+</f:section>
+
 <f:section name="Main">
 
-	<f:if condition="{data.bodytext}">
-		<div class="row content">
-			<div class="col">
-				<f:format.html>{data.bodytext}</f:format.html>
-			</div>
-		</div>
-	</f:if>
+    <f:if condition="{data.bodytext}">
+        <div class="row content">
+            <div class="col">
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+        </div>
+    </f:if>
 
-	<div class="row">
-		<div class="col-lg-12 d-flex justify-content-center">
-			<div class="button-group filters-button-group portfolio-filters">
-				<button class="button is-checked" data-filter="*">
-					<f:translate key="portfolio-filter-button-all" extensionName="StarterNessa"/>
-				</button>
-				<f:for each="{portfolioCategories}" as="category">
-					<f:if condition="{category.assetsAvailable}">
-						<button class="button" data-filter=".filter-{category.data.uid}">
-							{category.data.title}
-						</button>
-					</f:if>
-				</f:for>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+            <div class="button-group filters-button-group portfolio-filters">
+                <button class="button is-checked" data-filter="*">
+                    <f:translate key="portfolio-filter-button-all" extensionName="StarterNessa"/>
+                </button>
+                <f:for each="{portfolioCategories}" as="category">
+                    <f:if condition="{category.assetsAvailable}">
+                        <button class="button" data-filter=".filter-{category.data.uid}">
+                            {category.data.title}
+                        </button>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </div>
 
-	<div class="row portfolio-container">
-		<f:for each="{portfolioAssets}" as="asset">
-			<f:render partial="Portfolio/Item" arguments="{assetItem: asset}"/>
-		</f:for>
-	</div>
+    <div class="row portfolio-container">
+        <f:for each="{portfolioAssets}" as="asset">
+            <f:render partial="Portfolio/Item" arguments="{assetItem: asset}"/>
+        </f:for>
+    </div>
 
 </f:section>
 

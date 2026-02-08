@@ -1,19 +1,40 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      data-namespace-typo3-fluid="true"
+>
 
 <f:layout name="Default"/>
 
+<f:section name="Header">
+    <f:render partial="Headers" arguments="{data: data}"/>
+</f:section>
+
 <f:section name="Main">
+    <f:comment>
+        # the colPos > 200 is reserved for EXT:container
+    </f:comment>
+    <f:if condition="{data.colPos} > 200">
+        <f:else>
+            <div class="row content">
+                <div class="col">
+        </f:else>
+    </f:if>
 
-	<div class="row content">
-		<div class="col">
-			<f:if condition="{data.bodytext}">
-				<f:format.html>{data.bodytext}</f:format.html>
-			</f:if>
+    <f:if condition="{data.bodytext}">
+        <f:format.html>{data.bodytext}</f:format.html>
+    </f:if>
 
-			<f:render partial="Cta/Button" arguments="{ctaLink: data.tx_starter_ctalink, ctaButtonText: data.tx_starter_ctalink_text}"/>
-		</div>
-	</div>
+    <f:render partial="Cta/Button"
+              arguments="{ctaLink: data.tx_starter_ctalink, ctaButtonText: data.tx_starter_ctalink_text}"/>
+
+    <f:comment>
+        # the colPos > 200 is reserved for EXT:container
+    </f:comment>
+    <f:if condition="{data.colPos} > 200">
+        <f:else>
+            </div>
+            </div>
+        </f:else>
+    </f:if>
 
 </f:section>
 

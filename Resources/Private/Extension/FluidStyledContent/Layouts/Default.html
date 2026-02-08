@@ -1,23 +1,27 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      data-namespace-typo3-fluid="true">
 
-<section id="c{data.uid}" class="ctype-{data.CType}">
-	<div class="container" data-aos="fade-up">
+<f:comment>
+    # The colPos > 200 is reserved for EXT:container templates.
+</f:comment>
+<f:if condition="{data.colPos} > 200">
+    <f:else>
+        <section id="c{data.uid}" class="ctype-{data.CType}">
+            <div class="container" data-aos="fade-up">
+    </f:else>
+</f:if>
 
-		<f:render section="Header" optional="true">
-			<div class="section-title">
-				<f:if condition="{data.header} && {data.header_layout} != 100">
-					<f:render partial="Header/Header" arguments="{header: data.header, layout: data.header_layout}"/>
-				</f:if>
+<f:render section="Header" optional="true" />
+<f:render section="Main" optional="true"/>
 
-				<f:if condition="{data.header} && {data.subheader}">
-					<f:render partial="Header/SubHeader" arguments="{subheader: data.subheader}"/>
-				</f:if>
-			</div>
-		</f:render>
-
-		<f:render section="Main" optional="true"/>
-	</div>
-</section>
+<f:comment>
+    # the colPos > 200 is reserved for EXT:container
+</f:comment>
+<f:if condition="{data.colPos} > 200">
+    <f:else>
+            </div>
+        </section>
+    </f:else>
+</f:if>
 
 </html>

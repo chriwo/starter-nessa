@@ -1,0 +1,6 @@
+TCEFORM {
+  tt_content {
+    CType.keepItems := addToList(2columns-container)
+    CType.keepItems := addToList(3columns-container)
+  }
+}
