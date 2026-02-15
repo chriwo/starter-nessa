@@ -88,12 +88,33 @@
 			<trans-unit id="CType.I.starter_m27_download.description">
 				<source>Element to offer different downloads</source>
 			</trans-unit>
+			<trans-unit id="CType.I.2columns-container">
+				<source>2 columns container</source>
+			</trans-unit>
+			<trans-unit id="CType.I.2columns-container.description">
+				<source>Element for displaying content in 2 columns</source>
+			</trans-unit>
+			<trans-unit id="CType.I.3columns-container">
+				<source>3 columns container</source>
+			</trans-unit>
+			<trans-unit id="CType.I.3columns-container.description">
+				<source>Element for displaying content in 2 columns</source>
+			</trans-unit>
 
 			<trans-unit id="sys_file_metadata.nessa_portfolio_link">
 				<source>Portfolio Link</source>
 				<target>Portfolio Link</target>
 			</trans-unit>
 
+			<trans-unit id="tt_content.label.container.left">
+				<source>Left column</source>
+			</trans-unit>
+			<trans-unit id="tt_content.label.container.middle">
+				<source>Middle column</source>
+			</trans-unit>
+			<trans-unit id="tt_content.label.container.right">
+				<source>Right column</source>
+			</trans-unit>
 			<trans-unit id="tt_content.label.backgroundcolor.transparent">
 				<source>transparent</source>
 			</trans-unit>

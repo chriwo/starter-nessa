@@ -9,15 +9,17 @@ defined('TYPO3') || die();
 
 (function () {
     if (ExtensionManagementUtility::isLoaded('container')) {
+        $translationFile = 'LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:';
+
         GeneralUtility::makeInstance(Registry::class)->configureContainer(
             new ContainerConfiguration(
                 '2columns-container',
-                '2 Column Container',
-                'Some Description of the Container',
+                $translationFile . 'CType.I.2columns-container',
+                $translationFile . 'CType.I.2columns-container.description',
                 [
                     [
-                        ['name' => 'left side', 'colPos' => 201, 'allowed' => ['CType' => 'text, textmedia']],
-                        ['name' => 'right side', 'colPos' => 203, 'allowed' => ['CType' => 'text, textmedia']],
+                        ['name' => $translationFile . 'tt_content.label.container.left', 'colPos' => 201, 'allowed' => ['CType' => 'text, textmedia']],
+                        ['name' => $translationFile . 'tt_content.label.container.right', 'colPos' => 203, 'allowed' => ['CType' => 'text, textmedia']],
                     ],
                 ]
             )

@@ -115,12 +115,40 @@
 				<source>M27 - Element to offer different downloads</source>
 				<target>M27 - Element zum anbieten von Datei-Downloads</target>
 			</trans-unit>
+			<trans-unit id="CType.I.2columns-container">
+				<source>2 columns container</source>
+				<target>2 Spalten Container</target>
+			</trans-unit>
+			<trans-unit id="CType.I.2columns-container.description">
+				<source>Element for displaying content in 2 columns</source>
+				<target>Element um Inhalte in 2 Spalten darzustellen</target>
+			</trans-unit>
+			<trans-unit id="CType.I.3columns-container">
+				<source>3 columns container</source>
+				<target>3 Spalten Container</target>
+			</trans-unit>
+			<trans-unit id="CType.I.3columns-container.description">
+				<source>Element for displaying content in 2 columns</source>
+				<target>Element um Inhalte in 3 Spalten darzustellen</target>
+			</trans-unit>
 
 			<trans-unit id="sys_file_metadata.nessa_portfolio_link">
 				<source>Portfolio Link</source>
 				<target>Portfolio Link</target>
 			</trans-unit>
 
+			<trans-unit id="tt_content.label.container.left">
+				<source>Left column</source>
+				<target>Linke Spalte</target>
+			</trans-unit>
+			<trans-unit id="tt_content.label.container.middle">
+				<source>Middle column</source>
+				<target>Mittlere Spalte</target>
+			</trans-unit>
+			<trans-unit id="tt_content.label.container.right">
+				<source>Right column</source>
+				<target>Rechte Spalte</target>
+			</trans-unit>
 			<trans-unit id="tt_content.label.backgroundcolor.transparent">
 				<target>transparent (nur Einrückung)</target>
 			</trans-unit>
