@@ -103,7 +103,6 @@
 
 			<trans-unit id="sys_file_metadata.nessa_portfolio_link">
 				<source>Portfolio Link</source>
-				<target>Portfolio Link</target>
 			</trans-unit>
 
 			<trans-unit id="tt_content.label.container.left">
