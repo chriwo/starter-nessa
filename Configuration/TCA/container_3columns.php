@@ -16,6 +16,7 @@ defined('TYPO3') || die();
                 'Some Description of the Container',
                 [
                     [
+                        ['name' => 'left side', 'colPos' => 201, 'allowed' => ['CType' => 'text, textmedia']],
                         ['name' => 'middle side', 'colPos' => 202, 'allowed' => ['CType' => 'text, textmedia']],
                         ['name' => 'right side', 'colPos' => 203, 'allowed' => ['CType' => 'text, textmedia']],
                     ],
