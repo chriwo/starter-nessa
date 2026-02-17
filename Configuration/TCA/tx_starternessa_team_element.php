@@ -10,9 +10,12 @@ return (function () {
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
         'realname',
         'company_position',
-        'email',
         'assets',
         'bodytext',
+        '--div--;' . $translationFile . 'tab.team_member.links',
+        '--palette--;;email',
+        '--palette--;;phone',
+        'nessa_social_element',
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language',
         '--palette--;;language',
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access',
@@ -58,6 +61,12 @@ return (function () {
         ],
 
         'palettes' => [
+            'email' => [
+                'showitem' => 'email',
+            ],
+            'phone' => [
+                'showitem' => 'telephone, telephone_link',
+            ],
             'hidden' => [
                 'showitem' => '
                 hidden;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:field.default.hidden
@@ -187,6 +196,55 @@ return (function () {
                     'size' => 50,
                     'allowedTypes' => ['email', 'record'],
                     'appearance' => ['allowedOptions' => ['title', 'rel']],
+                ],
+            ],
+            'telephone' => [
+                'l10n_mode' => 'exclude',
+                'l10n_display' => 'defaultAsReadonly',
+                'label' => $translationFile . 'tx_starternessa_team_element.telephone',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 50,
+                    'max' => 255,
+                    'eval' => 'trim',
+                ],
+            ],
+            'telephone_link' => [
+                'l10n_mode' => 'exclude',
+                'l10n_display' => 'defaultAsReadonly',
+                'label' => $translationFile . 'tx_starternessa_team_element.telephone_link',
+                'config' => [
+                    'type' => 'link',
+                    'size' => 50,
+                    'allowedTypes' => ['telephone'],
+                    'appearance' => ['allowedOptions' => ['title', 'rel']],
+                ],
+            ],
+            'nessa_social_element' => [
+                'exclude' => true,
+                'label' => $translationFile . 'social_element_formlabel',
+                'config' => [
+                    'type' => 'inline',
+                    'foreign_table' => 'tx_starternessa_social_element',
+                    'foreign_table_field' => 'tablenames',
+                    'foreign_field' => 'uid_foreign',
+                    'foreign_sortby' => 'sorting',
+                    'maxitems' => 99,
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => false,
+                    ],
+                    'appearance' => [
+                        'collapseAll' => true,
+                        'expandSingle' => true,
+                        'levelLinksPosition' => 'bottom',
+                        'useSortable' => true,
+                        'showPossibleLocalizationRecords' => true,
+                        'showAllLocalizationLink' => true,
+                        'showSynchronizationLink' => true,
+                        'enabledControls' => [
+                            'info' => false,
+                        ],
+                    ],
                 ],
             ],
             'bodytext' => [

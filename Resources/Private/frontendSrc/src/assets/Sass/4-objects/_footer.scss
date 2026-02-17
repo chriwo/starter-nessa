@@ -1,61 +1,33 @@
 .o-site-footer {
-    padding: 30px 0;
+    padding: 60px 0 30px;
     background: $white;
     color: #222;
     box-shadow: 0 0 12px 0 rgb(0 0 0 / 10%);
-}
 
-.o-site-footer__copyright {
-    padding-top: 5px;
-    color: #222;
-}
-
-.o-site-footer__link {
-    @include nessa-link-color(
-        $custom-navlink-color,
-        $custom-navlink-color-hover,
-        $custom-navlink-color-focus
-    );
-
-    padding-left: 15px;
-    font-size: $font-size-sm;
-
-    &:first-child {
-        padding-left: 0;
+    &__copyright {
+        padding-top: 5px;
+        color: #222;
     }
-}
 
-.o-site-footer__socialmedia_list {
-    padding-left: 0;
-    margin-top: 1rem;
+    &__link {
+        @include nessa-link-color(
+            $custom-navlink-color,
+            $custom-navlink-color-hover,
+            $custom-navlink-color-focus
+        );
 
-    li {
-        display: inline;
-        list-style: none;
+        padding-left: 15px;
+        font-size: $font-size-sm;
+
+        &:first-child {
+            padding-left: 0;
+        }
     }
-}
 
-.o-site-footer__socialmedia_list_link {
-    @extend %btnBase;
-
-    width: 30px;
-    height: 30px;
-    padding: 4px 0;
-    border: $btn-border-width solid transparent;
-    margin-right: 4px;
-    background: map-get($theme-colors, 'primary');
-    font-size: $font-size-lg;
-    text-align: center;
-    transition: all .4s;
-
-    &:hover {
-        @extend %btnBaseHoverBackgroundWhite;
+    &__credits {
+        padding-top: 1rem;
+        border-top: $border-width solid $border-color;
+        margin-top: 1rem;
+        font-size: $font-size-sm;
     }
-}
-
-.o-site-footer__credits {
-    padding-top: 1rem;
-    border-top: $border-width solid $border-color;
-    margin-top: 1rem;
-    font-size: $font-size-sm;
 }

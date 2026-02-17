@@ -1,16 +1,16 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
 			data-namespace-typo3-fluid="true">
 
-<div class="col-lg-4 col-md-6 align-items-stretch">
-	<div class="member">
+<div class="col-lg-4 col-md-6 align-items-stretch pb-3">
+	<div class="member h-100">
 		<f:if condition="{file}">
 			<div class="member-img">
 				<f:media file="{file}"
-								 class="img-fluid"
-								 width="{settings.media.width}"
-								 height="{settings.media.height}"
-								 alt="{file.originalResource.alternative}"
-								 cropVariant="{settings.media.cropVariant}"/>
+                         class="img-fluid"
+                         width="{settings.media.width}"
+                         height="{settings.media.height}"
+                         alt="{file.originalResource.alternative}"
+                         cropVariant="{settings.media.cropVariant}"/>
 			</div>
 		</f:if>
 
@@ -21,11 +21,43 @@
 			<p>{data.bodytext}</p>
 		</f:if>
 
-		<f:if condition="{data.email}">
-			<i class="icofont-envelope">
-				<f:link.typolink parameter="{data.email}"/>
-			</i>
-		</f:if>
+        <f:if condition="{linkItems} || {data.email}">
+            <div class="member__social">
+                <f:for each="{linkItems}" as="linkItem">
+                    <f:link.typolink
+                        parameter="{linkItem.data.social_link}"
+                        target="_blank"
+                    >
+                        <i class="{linkItem.data.icon} icofont-lg"></i>
+                    </f:link.typolink>
+                </f:for>
+
+                <f:if condition="{data.email}">
+                    <f:link.typolink
+                        parameter="{data.email}"
+                        title="{f:translate(key:'team-member-write-email', arguments:{0: data.realname}, extensionName:'StarterNessa')}"
+                    >
+                        <i class="icofont-email icofont-lg"></i>
+                    </f:link.typolink>
+                </f:if>
+
+                <f:if condition="{data.telephone}">
+                    <ul class="icofont-ul" >
+                        <li>
+                            <f:if condition="{data.telephone}">
+                                <f:link.typolink
+                                    parameter="{data.telephone_link}"
+                                >
+                                    <i class="icofont icofont-phone icofont-lg"></i>
+                                    {data.telephone}
+                                </f:link.typolink>
+                            </f:if>
+                        </li>
+                    </ul>
+                </f:if>
+            </div>
+        </f:if>
+
 	</div>
 </div>
 

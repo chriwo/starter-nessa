@@ -10,6 +10,11 @@
 				<target>Alle anzeigen</target>
 			</trans-unit>
 
+			<trans-unit id="team-member-write-email">
+				<source>Write an email to %s</source>
+				<target>Eine Email an %s schreiben</target>
+			</trans-unit>
+
 		</body>
     </file>
 </xliff>

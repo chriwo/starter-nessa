@@ -31,7 +31,8 @@ ExtensionManagementUtility::registerPageTSConfigFile(
                 'config' => [
                     'type' => 'inline',
                     'foreign_table' => 'tx_starternessa_social_element',
-                    'foreign_field' => 'pages_record',
+                    'foreign_field' => 'uid_foreign',
+                    'foreign_table_field' => 'tablenames',
                     'foreign_sortby' => 'sorting',
                     'maxitems' => 99,
                     'behaviour' => [

@@ -194,6 +194,14 @@
 				<source>Email address</source>
 				<target>E-Mail Adresse</target>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_team_element.telephone">
+				<source>Telephone number</source>
+				<target>Telefonnummer</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_team_element.telephone_link">
+				<source>Link for Telephone number</source>
+				<target>Link für Telefonnummer</target>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_team_element.bodytext">
 				<source>Statement</source>
 				<target>Beschreibung</target>
@@ -245,6 +253,10 @@
 				<source>Team</source>
 				<target>Team</target>
 			</trans-unit>
+			<trans-unit id="tab.team_member.links">
+				<source>Links</source>
+				<target>Links</target>
+			</trans-unit>
 			<trans-unit id="tab.download">
 				<source>Download files</source>
 				<target>Download Dateien</target>
@@ -266,13 +278,65 @@
 				<source>SocialMedia Icon</source>
 				<source>SocialMedia Icon</source>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.discourd">
+				<source>Discourd</source>
+				<target>Discourd</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.email">
+				<source>Email</source>
+				<target>E-Mail</target>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_social_element.icon.I.facebook">
 				<source>Facebook</source>
 				<target>Facebook</target>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.github">
+				<source>Github</source>
+				<target>Github</target>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_social_element.icon.I.instragram">
 				<source>Instagram</source>
 				<target>Instagram</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.link">
+				<source>Web-Link</source>
+				<target>Web-Link</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.linkedin">
+				<source>LinkedIn</source>
+				<target>LinkedIn</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.snapchat">
+				<source>Snapchat</source>
+				<target>Snapchat</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.tiktok">
+				<source>TikTok</source>
+				<target>TikTok</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.typo3">
+				<source>TYPO3</source>
+				<target>TYPO3</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.vimeo">
+				<source>Vimeo</source>
+				<target>Vimeo</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.x">
+				<source>X</source>
+				<target>X</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.xing">
+				<source>Xing</source>
+				<target>Xing</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.youku">
+				<source>Youku</source>
+				<target>Youku</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_social_element.icon.I.youtube">
+				<source>Youtube</source>
+				<target>Youtube</target>
 			</trans-unit>
 
 			<trans-unit id="tx_starternessa_hero.tx_starter_ctalink_formlabel">

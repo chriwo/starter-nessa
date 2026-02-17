@@ -154,7 +154,7 @@ return (function () {
                 'config' => [
                     'type' => 'link',
                     'size' => 50,
-                    'allowedTypes' => ['url', 'record'],
+                    'allowedTypes' => ['page', 'url', 'email', 'record'],
                     'appearance' => ['allowedOptions' => ['title', 'rel']],
                 ],
             ],
@@ -172,6 +172,23 @@ return (function () {
                         ],
                     ],
                     'default' => '',
+                ],
+            ],
+
+            'uid_foreign' => [
+                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.uid_foreign',
+                'config' => [
+                    'type' => 'number',
+                    'size' => 10,
+                ],
+            ],
+            'tablenames' => [
+                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.tablenames',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 30,
+                    'max' => 64,
+                    'eval' => 'trim',
                 ],
             ],
 

@@ -20,7 +20,7 @@
 
     <div class="row">
         <f:for each="{teamMembers}" as="teamMember">
-            <f:render partial="Team/Item" arguments="{data: teamMember.data, file: teamMember.files.0}"/>
+            <f:render partial="Team/Item" arguments="{data: teamMember.data, file: teamMember.files.0, linkItems: teamMember.socialMediaItems}"/>
         </f:for>
     </div>
 

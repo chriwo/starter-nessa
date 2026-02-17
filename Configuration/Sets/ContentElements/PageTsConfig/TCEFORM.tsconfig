@@ -204,8 +204,21 @@ TCEFORM {
   tx_starternessa_social_element {
     icon {
       addItems {
+        icofont-discourd = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.discourd
+        icofont-email = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.email
         icofont-facebook = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.facebook
+        icofont-github = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.github
         icofont-instagram = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.instragram
+        icofont-link = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.link
+        icofont-linkedin = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.linkedin
+        icofont-snapchat = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.snapchat
+        icofont-tiktok = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.tiktok
+        icofont-typo3 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.typo3
+        icofont-vimeo = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.vimeo
+        icofont-x = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.x
+        icofont-xing = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.xing
+        icofont-youku = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.youku
+        icofont-youtube = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tx_starternessa_social_element.icon.I.youtube
       }
     }
   }
