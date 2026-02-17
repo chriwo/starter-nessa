@@ -41,6 +41,23 @@
     &-lg {
         font-size: 1.5em;
     }
+
+    &-ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 1rem;
+        margin-left: 0;
+
+        > li {
+            position: relative;
+            line-height: 2em;
+
+            .icofont {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
 }
 
 @include define-icofont-icon('rounded-left', '\ea9d');
@@ -57,12 +74,13 @@
 @include define-icofont-icon('simple-down', '\eab2');
 @include define-icofont-icon('world', '\f02c');
 @include define-icofont-icon('email', '\ef14');
+@include define-icofont-icon('phone', '\efbb');
 @include define-icofont-icon('plus', '\efc2');
 
 /**
     Default icons for CE Teaser Icon
  */
-@include define-icofont-icon('water-drop' ,'\f027');
+@include define-icofont-icon('water-drop', '\f027');
 @include define-icofont-icon('flora-flower', '\e80c');
 @include define-icofont-icon('bathtub', '\e801');
 @include define-icofont-icon('beverage', '\eeb9');

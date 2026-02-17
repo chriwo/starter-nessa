@@ -149,6 +149,12 @@
 			<trans-unit id="tx_starternessa_team_element.email">
 				<source>Email address</source>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_team_element.telephone">
+				<source>Telephone number</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_team_element.telephone_link">
+				<source>Link for Telephone number</source>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_team_element.bodytext">
 				<source>Statement</source>
 			</trans-unit>

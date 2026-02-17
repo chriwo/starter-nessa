@@ -194,6 +194,14 @@
 				<source>Email address</source>
 				<target>E-Mail Adresse</target>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_team_element.telephone">
+				<source>Telephone number</source>
+				<target>Telefonnummer</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_team_element.telephone_link">
+				<source>Link for Telephone number</source>
+				<target>Link für Telefonnummer</target>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_team_element.bodytext">
 				<source>Statement</source>
 				<target>Beschreibung</target>
