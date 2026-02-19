@@ -10,33 +10,6 @@ mod.wizards.newContentElement.wizardItems {
         }
       }
 
-      nessa_teaser {
-        iconIdentifier = starter-ctype-nessa_teaser
-        title = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_teaser
-        description = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_teaser.description
-        tt_content_defValues {
-          CType = nessa_teaser
-        }
-      }
-
-      nessa_teaser_icon {
-        iconIdentifier = starter-ctype-nessa_teaser_icon
-        title = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_teaser_icon
-        description = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_teaser_icon.description
-        tt_content_defValues {
-          CType = nessa_teaser_icon
-        }
-      }
-
-      nessa_teaser_background {
-        iconIdentifier = starter-ctype-nessa_teaser_background
-        title = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_teaser_background
-        description = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_teaser_background.description
-        tt_content_defValues {
-          CType = nessa_teaser_background
-        }
-      }
-
       starter_m27_download {
         iconIdentifier = starter-ctype-starter_m27_download
         title = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.starter_m27_download
@@ -50,9 +23,6 @@ mod.wizards.newContentElement.wizardItems {
     show := addToList(text)
     show := addToList(textmedia)
     show := addToList(nessa_cta)
-    show := addToList(nessa_teaser)
-    show := addToList(nessa_teaser_icon)
-    show := addToList(nessa_teaser_background)
     show := addToList(starter_m27_download)
   }
 

@@ -2,7 +2,7 @@
       data-namespace-typo3-fluid="true"
 >
 
-<f:layout name="Default"/>
+<f:layout name="Teaser"/>
 
 <f:section name="Header">
     <f:render partial="Headers" arguments="{data: data}"/>
@@ -19,10 +19,9 @@
 
     <div class="row">
         <f:for each="{teasers}" as="teaser">
-            <f:render partial="Teaser/Item" arguments="{data: teaser.data}"/>
+            <f:render partial="Teaser/Item_{data.nessa_teaser_type}" arguments="{teaserItem: teaser, ceData: data}"/>
         </f:for>
     </div>
-
 </f:section>
 
 </html>

@@ -7,16 +7,17 @@ defined('TYPO3') || die();
 return (function () {
     $translationFile = 'LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:';
     $showItem = [
-        '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
         'header',
-        '--palette--;;cta',
-        'assets',
         'bodytext',
+        '--palette--;;cta',
+        '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:media,',
+        'icon',
+        'assets',
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language',
         '--palette--;;language',
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access',
         '--palette--;;hidden',
-        '--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access',
+        '--palette--;;access',
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended',
     ];
 
@@ -58,93 +59,27 @@ return (function () {
 
         'palettes' => [
             'hidden' => [
-                'showitem' => '
-                hidden;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:field.default.hidden
-            ',
+                'showitem' => 'hidden',
             ],
             'language' => [
-                'showitem' => '
-                sys_language_uid;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:sys_language_uid_formlabel,
-                l10n_parent
-            ',
+                'showitem' => 'sys_language_uid, l10n_parent',
             ],
             'access' => [
+                'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access',
                 'showitem' => '
-                starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,
-                endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel,
+                    starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,
+                    endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel,
+                    --linebreak--,
+                    fe_group;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:fe_group_formlabel,
+                    --linebreak--,editlock
             ',
             ],
             'cta' => [
-                'showitem' => '
-                link,
-                link_text
-            ',
+                'showitem' => 'link, link_text',
             ],
         ],
 
         'columns' => [
-            'hidden' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
-                'config' => [
-                    'type' => 'check',
-                    'items' => [
-                        '1' => [
-                            'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0',
-                        ],
-                    ],
-                ],
-            ],
-            'starttime' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-                'config' => [
-                    'type' => 'datetime',
-                    'default' => 0,
-                ],
-                'l10n_mode' => 'exclude',
-                'l10n_display' => 'defaultAsReadonly',
-            ],
-            'endtime' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-                'config' => [
-                    'type' => 'datetime',
-                    'default' => 0,
-                    'range' => [
-                        'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                    ],
-                ],
-                'l10n_mode' => 'exclude',
-                'l10n_display' => 'defaultAsReadonly',
-            ],
-            'sys_language_uid' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-                'config' => ['type' => 'language'],
-            ],
-            'l10n_parent' => [
-                'displayCond' => 'FIELD:sys_language_uid:>:0',
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-                'config' => [
-                    'type' => 'select',
-                    'renderType' => 'selectSingle',
-                    'items' => [
-                        [
-                            'label' => '',
-                            'value' => 0,
-                        ],
-                    ],
-                    'foreign_table' => 'tx_starternessa_teaser_element',
-                    'foreign_table_where' => 'AND tx_starternessa_teaser_element.pid=###CURRENT_PID### AND tx_starternessa_teaser_element.sys_language_uid IN (-1,0)',
-                    'default' => 0,
-                ],
-            ],
-            'l10n_source' => [
-                'config' => [
-                    'type' => 'passthrough',
-                ],
-            ],
             'header' => [
                 'l10n_mode' => 'prefixLangTitle',
                 'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header',
@@ -192,24 +127,20 @@ return (function () {
                 ],
             ],
             'assets' => [
-                'label' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references',
+                'label' => $translationFile . 'tx_starternessa_teaser_element.asset_references',
                 'config' => [
-                    //## !!! Watch out for fieldName different from columnName
                     'type' => 'file',
-                    'allowed' => 'jpg,jpeg,png',
+                    'allowed' => 'jpg,jpeg,png,svg',
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references.addFileReference',
                     ],
-                    'minitems' => 1,
                     'maxitems' => 1,
-                    // custom configuration for displaying fields in the overlay/reference table
-                    // behaves the same as the image field.
                     'overrideChildTca' => [
                         'columns' => [
                             'uid_local' => [
                                 'config' => [
                                     'appearance' => [
-                                        'elementBrowserAllowed' => 'jpg,jpeg,png',
+                                        'elementBrowserAllowed' => 'jpg,jpeg,png,svg',
                                     ],
                                 ],
                             ],
@@ -252,21 +183,6 @@ return (function () {
                     'type' => 'text',
                     'cols' => '80',
                     'rows' => '10',
-                ],
-            ],
-
-            'l10n_diffsource' => [
-                'config' => [
-                    'type' => 'passthrough',
-                    'default' => '',
-                ],
-            ],
-            't3ver_label' => [
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-                'config' => [
-                    'type' => 'input',
-                    'size' => 30,
-                    'max' => 255,
                 ],
             ],
         ],

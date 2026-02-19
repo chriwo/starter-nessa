@@ -13,6 +13,21 @@ tt_content.nessa_teaser {
 
       orderBy = sorting
       as = teasers
+
+      dataProcessing {
+        10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+        10 {
+          references.fieldName = assets
+          as = teaserFile
+        }
+      }
+    }
+  }
+
+  settings {
+    icon {
+      width = 64
+      height = 64
     }
   }
 }

@@ -36,13 +36,11 @@ TCEFORM {
     CType.keepItems := addToList(nessa_cta)
     CType.keepItems := addToList(nessa_team)
     CType.keepItems := addToList(nessa_teaser)
-    CType.keepItems := addToList(nessa_teaser_icon)
     CType.keepItems := addToList(nessa_hero)
     CType.keepItems := addToList(nessa_partner)
     CType.keepItems := addToList(nessa_portfolio)
     CType.keepItems := addToList(nessa_portfolio_file_collections)
     CType.keepItems := addToList(nessa_footer)
-    CType.keepItems := addToList(nessa_teaser_background)
     CType.keepItems := addToList(starter_m27_download)
     CType.keepItems := addToList(html)
     CType.keepItems := addToList(shortcut)
@@ -135,15 +133,6 @@ TCEFORM {
 
     frame_class {
       types {
-        nessa_teaser_background {
-          disabled = 0
-
-          addItems {
-            col-md-6 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.frame_class.tx_starternessa_teaser_background.I.medium-2-cols
-            col-md-4 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.frame_class.tx_starternessa_teaser_background.I.medium-3-cols
-          }
-        }
-
         nessa_partner {
           disabled = 0
 

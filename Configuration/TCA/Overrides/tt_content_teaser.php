@@ -1,5 +1,6 @@
 <?php
 
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die();
@@ -8,63 +9,111 @@ defined('TYPO3') || die();
     $translationFile = 'LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:';
     $cType = 'nessa_teaser';
 
-    $GLOBALS['TCA']['tt_content']['types'][$cType] = [
-        'showitem' => '
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.headers;headers,
-                bodytext,
-                nessa_teaser_element,
-            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
-                --palette--;;language,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-                --palette--;;hidden,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
-                rowDescription,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
-        ',
-        'columnsOverrides' => [
-            'bodytext' => [
+    ExtensionManagementUtility::addTCAcolumns(
+        'tt_content',
+        [
+            'nessa_teaser_type' => [
+                'exclude' => true,
+                'label' => $translationFile . 'tt_content.nessa_teaser_type_formlabel',
                 'config' => [
-                    'enableRichtext' => true,
+                    'type' => 'select',
+                    'renderType' => 'selectSingle',
+                    'items' =>  [
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_teaser_type.I.default',
+                            'value' => 'default',
+                            'icon' => 'starter-table-tx_starternessa_teaser_element',
+                        ],
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_teaser_type.I.background',
+                            'value' => 'background',
+                            'icon' => 'starter-table-tx_starternessa_teaser_element',
+                        ],
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_teaser_type.I.file_icons',
+                            'value' => 'file_icons',
+                            'icon' => 'starter-table-tx_starternessa_teaser_element',
+                        ],
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_teaser_type.I.font_icons',
+                            'value' => 'font_icons',
+                            'icon' => 'starter-table-tx_starternessa_teaser_element',
+                        ],
+                    ],
+                    'size' => 1,
+                    'maxitems' => 1,
+                    'default' => 'default',
                 ],
             ],
             'nessa_teaser_element' => [
+                'exclude' => true,
+                'label' => $translationFile . 'teaser_element_formlabel',
                 'config' => [
-                    'overrideChildTca' => [
-                        'types' => [
-                            '1' => [
-                                'showitem' => '
-                                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                                        header,
-                                        icon,
-                                        link,
-                                        bodytext,
-                                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
-                                        --palette--;;language,
-                                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-                                        --palette--;;hidden,
-                                        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
-                                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
-                                ',
-                            ],
+                    'type' => 'inline',
+                    'foreign_table' => 'tx_starternessa_teaser_element',
+                    'foreign_field' => 'tt_content_record',
+                    'foreign_sortby' => 'sorting',
+                    'minitems' => 1,
+                    'maxitems' => 99,
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => false,
+                    ],
+                    'appearance' => [
+                        'collapseAll' => true,
+                        'expandSingle' => true,
+                        'levelLinksPosition' => 'bottom',
+                        'useSortable' => true,
+                        'showPossibleLocalizationRecords' => true,
+                        'showAllLocalizationLink' => true,
+                        'showSynchronizationLink' => true,
+                        'enabledControls' => [
+                            'info' => false,
                         ],
                     ],
                 ],
             ],
-        ],
-    ];
+        ]
+    );
 
-    ExtensionManagementUtility::addPlugin(
+    ArrayUtility::mergeRecursiveWithOverrule(
+        $GLOBALS['TCA']['tt_content'],
         [
-            $translationFile . 'CType.I.' . $cType,
-            $cType,
-            'starter-ctype-' . $cType,
+            'palettes' => [
+                'nessaTeaser' => [
+                    'showitem' => '
+                    nessa_teaser_type,
+                    --linebreak--,
+                    nessa_teaser_element
+                    ',
+                ],
+            ],
+        ]
+    );
+
+    ExtensionManagementUtility::addRecordType(
+        [
+            'label' => $translationFile . 'CType.I.' . $cType,
+            'description' => $translationFile . 'CType.I.' . $cType . '.description',
+            'value' => $cType,
+            'icon' =>  'starter-ctype-' . $cType,
         ],
-        'CType',
-        'starter_nessa'
+        '
+                --palette--;;headers,
+                bodytext,
+            --div--;' . $translationFile . 'tabs.teaser,
+                --palette--;;nessaTeaser,
+            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
+                --palette--;;frames,
+                --palette--;;appearanceLinks,
+        ',
+        [
+            'columnsOverrides' => [
+                'bodytext' => [
+                    'config' => [
+                        'enableRichtext' => true,
+                    ],
+                ],
+            ],
+        ]
     );
 })();

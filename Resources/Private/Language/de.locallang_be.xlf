@@ -160,17 +160,29 @@
 				<source>Link text</source>
 				<target>Linktext</target>
 			</trans-unit>
-			<trans-unit id="tt_content.layout.tx_starternessa_teaser_background.I.medium-2-cols">
-				<source>2 Teaser per row</source>
-				<target>2 Teaser pro Zeile</target>
-			</trans-unit>
-			<trans-unit id="tt_content.layout.tx_starternessa_teaser_background.I.medium-3-cols">
-				<source>3 Teaser per row</source>
-				<target>3 Teaser pro Zeile</target>
-			</trans-unit>
 			<trans-unit id="tt_content.nessa_partner.partner">
 				<source>Company logo</source>
 				<target>Unternehmenslogo</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type_formlabel">
+				<source>Teaser layout</source>
+				<target>Teaser Layout</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.default">
+				<source>Simple</source>
+				<target>Einfach</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.background">
+				<source>With background image</source>
+				<target>Mit Hintergrundbild</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.file_icons">
+				<source>With custom icons</source>
+				<target>Mit Datei-Icons</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.font_icons">
+				<source>With static defined icons</source>
+				<target>Mit definierten Icons</target>
 			</trans-unit>
 
 			<trans-unit id="palette.cta">
@@ -223,6 +235,10 @@
 				<source>Link text</source>
 				<target>Linktext</target>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_element.asset_references">
+				<source>Background image or file icon</source>
+				<target>Hintergrundbild oder Datei-Icon</target>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_teaser_element.icon">
 				<source>Icon</source>
 				<target>Icon</target>
@@ -249,6 +265,10 @@
 				<target>Hero Element</target>
 			</trans-unit>
 
+			<trans-unit id="tabs.teaser">
+				<source>Teaser</source>
+				<target>Teaser</target>
+			</trans-unit>
 			<trans-unit id="tab.team_members">
 				<source>Team</source>
 				<target>Team</target>
