@@ -1,5 +1,3 @@
-import 'owl.carousel';
-
 export default function ceHeroCarousel() {
     let heroCarousel = $('#heroCarousel');
     let heroCarouselIndicators = $('#hero-carousel-indicators');
