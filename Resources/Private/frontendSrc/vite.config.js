@@ -16,11 +16,6 @@ export default defineConfig(({ mode }) => ({
         emptyOutDir: true,
         sourcemap: mode === 'development',
         target: 'es2015',
-        // CJS-Pakete (owl.carousel, bootstrap usw.) korrekt zu ESM transformieren,
-        // auch wenn der inject-Plugin bereits einen ESM-Import eingefügt hat
-        commonjsOptions: {
-            transformMixedEsModules: true,
-        },
         rollupOptions: {
             input: {
                 app: resolve(srcAssets, 'JavaScript/app.js'),

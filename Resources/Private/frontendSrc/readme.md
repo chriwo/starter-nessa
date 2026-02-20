@@ -77,7 +77,6 @@ frontendSrc/
 ### Frontend-Libraries
 - **[Bootstrap 4](https://getbootstrap.com/docs/4.6/)** – CSS-Framework
 - **[jQuery 3](https://jquery.com/)** – Pflicht-Abhängigkeit für Bootstrap 4 und Plugins
-- **[owl.carousel](https://owlcarousel2.github.io/OwlCarousel2/)** – Karussell-Komponente
 - **[isotope-layout](https://isotope.metafizzy.co/)** – Filter- und Layout-Library
 - **[venobox](https://veno.es/venobox/)** – Lightbox
 - **[lazysizes](https://afarkas.github.io/lazysizes/)** – Lazy Loading für Bilder
