@@ -5,7 +5,7 @@ imports:
 
 editor:
   config:
-    contentsCss: "EXT:starter_nessa/Resources/Public/Css/rte.min.css"
+    contentsCss: "EXT:starter_nessa/Resources/Public/Frontend/rte.min.css"
 
     format_tags: "p"
 
