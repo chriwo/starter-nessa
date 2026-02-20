@@ -1,0 +1,104 @@
+[class^='icofont-'],
+[class*=' icofont-'] {
+    font-family: $custom-icon-font-family !important;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: none;
+    white-space: nowrap;
+    speak: none;
+    direction: ltr;
+    overflow-wrap: normal;
+}
+
+.icofont {
+    &-invert {
+        padding: 4px;
+        border: 1px solid map-get($theme-colors, 'primary');
+        background-color: map-get($theme-colors, 'primary');
+        color: $white;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $white;
+            color: map-get($theme-colors, 'primary');
+        }
+    }
+
+    &-xs {
+        font-size: .5em;
+    }
+
+    &-sm {
+        font-size: .75em;
+    }
+
+    &-md {
+        font-size: 1.25em;
+    }
+
+    &-lg {
+        font-size: 1.5em;
+    }
+
+    &-ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 1rem;
+        margin-left: 0;
+
+        > li {
+            position: relative;
+            line-height: 2em;
+
+            .icofont {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+@include define-icofont-icon('rounded-left', '\ea9d');
+@include define-icofont-icon('rounded-down', '\ea99');
+@include define-icofont-icon('rounded-right', '\eaa0');
+@include define-icofont-icon('rounded-up', '\eaa1');
+@include define-icofont-icon('simple-left', '\eab5');
+@include define-icofont-icon('simple-right', '\eab8');
+@include define-icofont-icon('arrow-right', '\ea5d');
+@include define-icofont-icon('navigation-menu', '\efa2');
+@include define-icofont-icon('close', '\eee4');
+@include define-icofont-icon('simple-up', '\eab9');
+@include define-icofont-icon('download', '\ef08');
+@include define-icofont-icon('simple-down', '\eab2');
+@include define-icofont-icon('world', '\f02c');
+@include define-icofont-icon('email', '\ef14');
+@include define-icofont-icon('phone', '\efbb');
+@include define-icofont-icon('plus', '\efc2');
+
+/**
+    Default icons for CE Teaser Icon
+ */
+@include define-icofont-icon('water-drop', '\f027');
+@include define-icofont-icon('flora-flower', '\e80c');
+@include define-icofont-icon('bathtub', '\e801');
+@include define-icofont-icon('beverage', '\eeb9');
+
+/**
+    SocialMedia Icons
+*/
+@include define-icofont-icon('discord', '\f032');
+@include define-icofont-icon('facebook', '\ed37');
+@include define-icofont-icon('github', '\ed3e');
+@include define-icofont-icon('instagram', '\ed46');
+@include define-icofont-icon('link', '\ef71');
+@include define-icofont-icon('linkedin', '\ed4d');
+@include define-icofont-icon('snapchat', '\ed6c');
+@include define-icofont-icon('tiktok', '\f033');
+@include define-icofont-icon('typo3', '\ed7b');
+@include define-icofont-icon('vimeo', '\ed7f');
+@include define-icofont-icon('youku', '\ed8a');
+@include define-icofont-icon('youtube', '\ecbb');
+@include define-icofont-icon('x', '\f03d');
+@include define-icofont-icon('xing', '\ed87');

@@ -7,12 +7,20 @@ page {
   }
 
   includeJSFooter {
-    file_1 = EXT:starter_nessa/Resources/Public/Frontend/JavaScript/app.min.js
-    file_2 = EXT:starter_nessa/Resources/Public/Frontend/JavaScript/runtime.min.js
+    file_1 = EXT:starter_nessa/Resources/Public/Frontend/app.min.js
+    file_1 {
+      disableCompression = 1
+      excludeFromConcatenation = 1
+      type = module
+    }
   }
 
   includeCSS {
-    file_1 = EXT:starter_nessa/Resources/Public/Frontend/Css/app.min.css
+    file_1 = EXT:starter_nessa/Resources/Public/Frontend/app.min.css
+    file_1 {
+      disableCompression = 1
+      excludeFromConcatenation = 1
+    }
   }
 
   meta {
