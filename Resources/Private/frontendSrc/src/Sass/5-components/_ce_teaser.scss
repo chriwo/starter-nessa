@@ -13,11 +13,11 @@
         &__body {
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
 
         &__header {
             margin-bottom: 15px;
+            hyphens: auto;
         }
 
         &__copy {
@@ -29,7 +29,7 @@
     &__default {
         .teaser {
             &__header {
-                font-family: inherit; // $font-family-sans-serif;
+                font-family: inherit;
                 font-size: 1.15rem;
                 font-weight: 200;
             }

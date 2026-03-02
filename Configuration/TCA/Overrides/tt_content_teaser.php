@@ -120,9 +120,9 @@ defined('TYPO3') || die();
                 bodytext,
             --div--;' . $translationFile . 'tabs.teaser,
                 --palette--;;nessaTeaser,
-            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
+            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:appearance,
                 --palette--;;frames,
-                --palette--;;appearanceLinks,
+                --palette--;;appearanceLinks
         ',
         [
             'columnsOverrides' => [

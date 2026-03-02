@@ -33,6 +33,31 @@ defined('TYPO3') || die();
                     'max' => 255,
                 ],
             ],
+            'nessa_column_layout' => [
+                'exclude' => true,
+                'label' => $translationFile . 'tt_content.nessa_column_layout_formlabel',
+                'config' => [
+                    'type' => 'select',
+                    'renderType' => 'selectSingle',
+                    'items' =>  [
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_column_layout.I.col6',
+                            'value' => 'col-md-6',
+                        ],
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_column_layout.I.col4',
+                            'value' => 'col-md-4',
+                        ],
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_column_layout.I.col3',
+                            'value' => 'col-md-3',
+                        ],
+                    ],
+                    'size' => 1,
+                    'maxitems' => 1,
+                    'default' => 'col-md-4',
+                ],
+            ],
         ]
     );
 
@@ -41,5 +66,12 @@ defined('TYPO3') || die();
         '--palette--;' . $translationFile . ':palette.cta;nessaCta,',
         '',
         'before:bodytext'
+    );
+
+    ExtensionManagementUtility::addFieldsToPalette(
+        'tt_content',
+        'frames',
+        'nessa_column_layout',
+        'before:layout'
     );
 })();

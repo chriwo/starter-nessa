@@ -7,7 +7,8 @@ CREATE TABLE tt_content (
     nessa_hero_element int(11) DEFAULT '0' NOT NULL,
     nessa_copyright varchar(255) DEFAULT '0' NOT NULL,
 		tx_starter_ctalink varchar(1024) DEFAULT '' NOT NULL,
-		tx_starter_ctalink_text varchar(255) DEFAULT '' NOT NULL
+		tx_starter_ctalink_text varchar(255) DEFAULT '' NOT NULL,
+		nessa_column_layout varchar(10) DEFAULT 'col-md-4' NOT NULL
 );
 
 #

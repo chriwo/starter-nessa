@@ -3,11 +3,11 @@
 >
 
 <f:if condition="{teaserItem.teaserFile}">
-	<f:render section="teaserItem" arguments="{teaserItem: teaserItem}"/>
+	<f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData}"/>
 </f:if>
 
 <f:section name="teaserItem">
-    <div class="col-md-6 d-flex align-items-stretch mt-4">
+    <div class="{ceData.nessa_column_layout} d-flex align-items-stretch mt-4">
         <div class="card">
             <f:image image="{teaserItem.teaserFile.0}"
                      cropVariant="default"
@@ -16,7 +16,7 @@
                      alt="{teaserItem.data.header}"
                      class="card-img-top"/>
             <div class="card-body">
-                <h4 class="card-title">{teaserItem.data.header}</h4>
+                <h4 class="card-title teaser__header">{teaserItem.data.header}</h4>
                 <f:if condition="{teaserItem.data.bodytext}">
                     <p class="card-text">{teaserItem.data.bodytext}</p>
                 </f:if>

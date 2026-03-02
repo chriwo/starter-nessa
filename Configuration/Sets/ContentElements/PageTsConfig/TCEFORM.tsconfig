@@ -91,6 +91,13 @@ TCEFORM {
       }
     }
 
+    nessa_column_layout {
+      disabled = 1
+      types {
+        nessa_teaser.disabled = 0
+      }
+    }
+
     tx_starter_ctalink {
       disabled = 1
       types {

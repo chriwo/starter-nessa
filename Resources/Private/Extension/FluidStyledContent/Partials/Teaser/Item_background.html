@@ -3,18 +3,18 @@
 >
 
 <f:if condition="{teaserItem.teaserFile}">
-	<f:render section="teaserItem" arguments="{teaserItem: teaserItem}"/>
+	<f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData}"/>
 </f:if>
 
 <f:section name="teaserItem">
-    <div class="col-md-6 d-flex align-items-stretch mt-4">
+    <div class="{ceData.nessa_column_layout} d-flex align-items-stretch mt-4">
         <f:link.typolink parameter="{teaserItem.data.link}">
             <div class="teaser__wrapper"
                  style="background-image: url({f:uri.image(image: teaserItem.teaserFile.0)});"
                  data-aos="fade-up"
-                 data-aos-delay="100">
-
-                <div class="teaser__body">
+                 data-aos-delay="100"
+            >
+                <div class="teaser__body h-100">
                     <h4 class="teaser__header">{teaserItem.data.header}</h4>
                     <p class="teaser__copy">{teaserItem.data.bodytext}</p>
                 </div>

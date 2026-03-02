@@ -200,6 +200,24 @@
 				<source>Icons</source>
 				<target>Icons</target>
 			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout_formlabel">
+				<source>Frontend column layout</source>
+				<target>Anzahl Elemente pro Zeile</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout.I.col6">
+				<source>2 items per row</source>
+				<target>2 Elemente pro Zeile</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout.I.col3">
+				<source>4 items per row</source>
+				<target>4 Elemente pro Zeile</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout.I.col4">
+				<source>3 items per row</source>
+				<target>3 Elemente pro Zeile</target>
+			</trans-unit>
+
+
 
 			<trans-unit id="palette.cta">
 				<source>Call-to-Action</source>

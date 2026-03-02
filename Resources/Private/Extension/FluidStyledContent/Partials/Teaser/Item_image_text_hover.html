@@ -3,11 +3,11 @@
 >
 
 <f:if condition="{teaserItem.teaserFile}">
-    <f:render section="teaserItem" arguments="{teaserItem: teaserItem}"/>
+    <f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData}"/>
 </f:if>
 
 <f:section name="teaserItem">
-    <div class="col-md-6 d-flex align-items-stretch mt-4">
+    <div class="{ceData.nessa_column_layout} d-flex align-items-stretch mt-4">
         <div class="teaser__wrapper">
             <figure>
                 <f:image image="{teaserItem.teaserFile.0}"
