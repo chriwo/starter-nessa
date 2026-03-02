@@ -44,7 +44,7 @@
                 &:hover {
                     border-color: color-mix(in srgb, var(--primary), transparent 70%);
                     box-shadow: 0 5px 10px 0 rgb(110 123 131 / 10%);
-                    transform: translateY(-3px);
+                    transform: translateY(-10px);
                 }
             }
         }
@@ -144,6 +144,15 @@
     &__image_text_below {
         a {
             margin-left: 0;
+        }
+
+        .card {
+            transition: .4s ease-in-out;
+
+            &:hover {
+                border-color: color-mix(in srgb, var(--primary), transparent 70%);
+                transform: translateY(-10px);
+            }
         }
     }
 
@@ -263,7 +272,7 @@
 
                 &:hover {
                     border-color: color-mix(in srgb, var(--primary), transparent 70%);
-                    transform: translateY(-3px);
+                    transform: translateY(-10px);
                 }
             }
         }
