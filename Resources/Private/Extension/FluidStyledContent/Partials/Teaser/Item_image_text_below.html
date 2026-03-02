@@ -1,0 +1,33 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:if condition="{teaserItem.teaserFile}">
+	<f:render section="teaserItem" arguments="{teaserItem: teaserItem}"/>
+</f:if>
+
+<f:section name="teaserItem">
+    <div class="col-md-6 d-flex align-items-stretch mt-4">
+        <div class="card">
+            <f:image image="{teaserItem.teaserFile.0}"
+                     cropVariant="default"
+                     width="{settings.image.width}"
+                     height="{settings.image.height}"
+                     alt="{teaserItem.data.header}"
+                     class="card-img-top"/>
+            <div class="card-body">
+                <h4 class="card-title">{teaserItem.data.header}</h4>
+                <f:if condition="{teaserItem.data.bodytext}">
+                    <p class="card-text">{teaserItem.data.bodytext}</p>
+                </f:if>
+                <f:if condition="{teaserItem.data.link} && {teaserItem.data.link_text}">
+                    <f:link.typolink parameter="{teaserItem.data.link}" class="o-btn-cta align-middle mt-4">
+                        {teaserItem.data.link_text}
+                    </f:link.typolink>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+
+</html>
