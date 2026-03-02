@@ -176,6 +176,10 @@
 				<source>With image</source>
 				<target>Mit Bild</target>
 			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.image_text_hover">
+				<source>With image – Text hover</source>
+				<target>Mit Bild – Text hover</target>
+			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type.I.file_icons">
 				<source>With custom icons</source>
 				<target>Mit Bild-Icons</target>

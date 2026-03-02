@@ -29,5 +29,10 @@ tt_content.nessa_teaser {
       width = 64
       height = 64
     }
+
+    image {
+      width = 600
+      height = 400
+    }
   }
 }

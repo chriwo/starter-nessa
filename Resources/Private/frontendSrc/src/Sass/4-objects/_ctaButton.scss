@@ -50,3 +50,15 @@
         @extend %btnBaseHoverBackgroundPrimary;
     }
 }
+
+.o-btn-cta-invert {
+    @extend %btn;
+
+    color: var(--primary);
+    border: $btn-border-width solid var(--white);
+    margin: 10px;
+
+    &:hover {
+        @extend %btnBaseHoverBackgroundPrimary;
+    }
+}

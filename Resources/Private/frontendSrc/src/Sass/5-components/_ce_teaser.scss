@@ -90,6 +90,57 @@
         }
     }
 
+    &__image_text_hover {
+        .teaser__wrapper {
+            position: relative;
+        }
+
+        figure {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+
+            &:hover {
+                figcaption {
+                    bottom: 0;
+                    border: none;
+                }
+            }
+        }
+
+        img {
+            position: relative;
+            display: block;
+
+            width: calc(100% + 50px);
+            transition: opacity 0.35s, transform 0.35s;
+            transform: translate3d(-40px,0,0);
+        }
+
+        figcaption {
+            position: absolute;
+            bottom: -85%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($primary, .8);
+            border-top: 1px solid var(--white);
+            transition: ease-in-out .9s;
+        }
+
+        .teaser__body {
+            padding: 1em;
+            width: 100%;
+            height: 60%;
+        }
+
+        a,
+        .teaser__header,
+        .teaser__copy {
+            color: var(--white);
+        }
+    }
+
     &__font_icons {
         .teaser {
             &__wrapper {
