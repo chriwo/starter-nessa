@@ -19,7 +19,9 @@
 
     <div class="row">
         <f:for each="{teasers}" as="teaser">
-            <f:render partial="Teaser/Item_{data.nessa_teaser_type}" arguments="{teaserItem: teaser, ceData: data}"/>
+            <f:render partial="Teaser/Item_{data.nessa_teaser_type}"
+                      arguments="{teaserItem: teaser, ceData: data}"
+                      optional="true"/>
         </f:for>
     </div>
 </f:section>
