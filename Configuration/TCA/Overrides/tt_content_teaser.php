@@ -25,9 +25,17 @@ defined('TYPO3') || die();
                             'icon' => 'starter-table-tx_starternessa_teaser_element',
                         ],
                         [
+                            'label' => $translationFile . 'tt_content.nessa_teaser_type.I.div_image',
+                            'value' => '--div--',
+                        ],
+                        [
                             'label' => $translationFile . 'tt_content.nessa_teaser_type.I.background',
                             'value' => 'background',
                             'icon' => 'starter-table-tx_starternessa_teaser_element',
+                        ],
+                        [
+                            'label' => $translationFile . 'tt_content.nessa_teaser_type.I.div_icon',
+                            'value' => '--div--',
                         ],
                         [
                             'label' => $translationFile . 'tt_content.nessa_teaser_type.I.file_icons',

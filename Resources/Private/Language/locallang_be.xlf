@@ -133,13 +133,19 @@
 				<source>Simple</source>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type.I.background">
-				<source>With background image</source>
+				<source>With image</source>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type.I.file_icons">
 				<source>With custom icons</source>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type.I.font_icons">
 				<source>With static defined icons</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.div_image">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.div_icon">
+				<source>Icons</source>
 			</trans-unit>
 
 			<trans-unit id="palette.cta">

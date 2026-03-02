@@ -173,16 +173,24 @@
 				<target>Einfach</target>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type.I.background">
-				<source>With background image</source>
-				<target>Mit Hintergrundbild</target>
+				<source>With image</source>
+				<target>Mit Bild</target>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type.I.file_icons">
 				<source>With custom icons</source>
-				<target>Mit Datei-Icons</target>
+				<target>Mit Bild-Icons</target>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type.I.font_icons">
 				<source>With static defined icons</source>
-				<target>Mit definierten Icons</target>
+				<target>Mit Icons-Auswahl</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.div_image">
+				<source>Images</source>
+				<target>Bilder</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.div_icon">
+				<source>Icons</source>
+				<target>Icons</target>
 			</trans-unit>
 
 			<trans-unit id="palette.cta">
