@@ -14,7 +14,10 @@
         <f:link.typolink parameter="{teaserItem.data.link}">
             <div class="teaser__wrapper">
                 <div class="icon">
-                    <f:image image="{teaserItem.teaserFile.0}" width="{settings.icon.width}" height="{settings.icon.height}"/>
+                    <f:image image="{teaserItem.teaserFile.0}"
+                             width="{settings.icon.width}"
+                             height="{settings.icon.height}"
+                             cropVariant="fileIcon"/>
                 </div>
 
                 <div class="teaser__body">

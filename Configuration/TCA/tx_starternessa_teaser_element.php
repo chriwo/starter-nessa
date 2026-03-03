@@ -157,6 +157,16 @@ return (function () {
                                                 ],
                                             ],
                                         ],
+                                        'fileIcon' => [
+                                            'title' => 'Datei-Icon',
+                                            'selectedRatio' => '1:1',
+                                            'allowedAspectRatios' => [
+                                                '1:1' => [
+                                                    'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.1_1',
+                                                    'value' => 1,
+                                                ],
+                                            ],
+                                        ],
                                     ],
                                 ],
                             ],
