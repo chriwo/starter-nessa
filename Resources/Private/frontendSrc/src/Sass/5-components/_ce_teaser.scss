@@ -106,15 +106,6 @@
             }
         }
 
-        img {
-            position: relative;
-            display: block;
-
-            width: calc(100% + 50px);
-            transition: opacity 0.35s, transform 0.35s;
-            transform: translate3d(-40px,0,0);
-        }
-
         figcaption {
             position: absolute;
             bottom: -85%;
