@@ -2,6 +2,23 @@ tt_content.nessa_teaser =< lib.contentElement
 tt_content.nessa_teaser {
   templateName = NessaTeaser
 
+  variables {
+    breakPointColumns = CASE
+    breakPointColumns {
+      if.isTrue.field = layout
+      key.field = layout
+
+      1 = TEXT
+      1.value = col-md-6
+
+      2 = TEXT
+      2.value = col-md-6 col-lg-4
+
+      3 = TEXT
+      3.value = col-md-6 col-lg-3
+    }
+  }
+
   dataProcessing {
     10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
     10 {
@@ -30,9 +47,17 @@ tt_content.nessa_teaser {
       height = 64
     }
 
-    image {
-      width = 600
-      height = 400
+    imageSettings {
+      cropVariant = default
+      width = 540
+      height = 360
+      srcset {
+        sm = 510
+        md = 330
+        lg = 450
+        xl = 540
+      }
+      sizes = (min-width: 1200px) 540px, (min-width: 992px) 450px, (min-width: 768px) 330px, calc(100vw - 30px)
     }
   }
 }

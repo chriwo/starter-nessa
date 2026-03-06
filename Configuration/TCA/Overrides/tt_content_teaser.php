@@ -131,6 +131,9 @@ defined('TYPO3') || die();
                         'enableRichtext' => true,
                     ],
                 ],
+                'layout' => [
+                    'config' => []
+                ]
             ],
         ]
     );

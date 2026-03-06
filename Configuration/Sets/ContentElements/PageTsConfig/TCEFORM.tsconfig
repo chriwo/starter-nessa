@@ -11,7 +11,6 @@ TCEFORM {
     author.disabled = 1
     author_email.disabled = 1
     lastUpdated.disabled = 1
-    layout.disabled = 1
     newUntil.disabled = 1
     content_from_pid.disabled = 1
     target.disabled = 1
@@ -69,7 +68,19 @@ TCEFORM {
     }
 
     layout {
-      removeItems = 0,1,2,3
+      disabled = 1
+      types {
+        nessa_teaser {
+          disabled = 0
+          altLabels {
+            1 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col6
+            2 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col4
+            3 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col3
+          }
+        }
+      }
+
+      #removeItems = 0,1,2,3
     }
 
     // allow image position only left or right

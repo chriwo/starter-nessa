@@ -3,11 +3,11 @@
 >
 
 <f:if condition="{teaserItem.teaserFile}">
-    <f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData}"/>
+    <f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData, columnGrid: columnGrid}"/>
 </f:if>
 
 <f:section name="teaserItem">
-    <div class="{ceData.nessa_column_layout} d-flex align-items-stretch mt-4"
+    <div class="{columnGrid} d-flex align-items-stretch mt-4"
          data-aos="zoom-in"
          data-aos-delay="100"
     >

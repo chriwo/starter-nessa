@@ -98,6 +98,12 @@
             overflow: hidden;
             text-align: center;
 
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
             &:hover {
                 figcaption {
                     bottom: 0;
@@ -138,6 +144,12 @@
         .card {
             border-color: transparent;
             transition: all .4s ease-in-out;
+
+            > img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
         }
     }
 

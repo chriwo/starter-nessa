@@ -3,17 +3,23 @@
 >
 
 <f:if condition="{teaserItem.teaserFile}">
-	<f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData}"/>
+	<f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData, columnGrid: columnGrid}"/>
 </f:if>
 
 <f:section name="teaserItem">
-    <div class="{ceData.nessa_column_layout} d-flex align-items-stretch mt-4">
+    <f:variable name="imageConfig" value="{settings.imageSettings"/>
+    <div class="{columnGrid} d-flex align-items-stretch mt-4">
         <div class="card">
-            <f:image image="{teaserItem.teaserFile.0}"
-                     cropVariant="default"
-                     width="{settings.image.width}"
-                     height="{settings.image.height}"
-                     alt="{teaserItem.data.header}"/>
+            <img src="{f:uri.image(image: teaserItem.teaserFile.0, width: imageConfig.width, height: imageConfig.height, cropVariant: imageConfig.cropVariant)}"
+                 srcset="{f:uri.image(image: teaserItem.teaserFile.0, width: imageConfig.srcset.sm, cropVariant: imageConfig.cropVariant)} {imageConfig.srcset.sm}w,
+                         {f:uri.image(image: teaserItem.teaserFile.0, width: imageConfig.srcset.md, cropVariant: imageConfig.cropVariant)} {imageConfig.srcset.md}w,
+                         {f:uri.image(image: teaserItem.teaserFile.0, width: imageConfig.srcset.lg, cropVariant: imageConfig.cropVariant)} {imageConfig.srcset.lg}w,
+                         {f:uri.image(image: teaserItem.teaserFile.0, width: imageConfig.srcset.xl, cropVariant: imageConfig.cropVariant)} {imageConfig.srcset.xl}w"
+                 sizes="{imageConfig.sizes}"
+                 width="{imageConfig.width}"
+                 height="{imageConfig.height}"
+                 alt="{teaserItem.data.header}"
+                 loading="lazy"/>
             <div class="card-body">
                 <h4 class="card-title teaser__header">{teaserItem.data.header}</h4>
                 <f:if condition="{teaserItem.data.bodytext}">

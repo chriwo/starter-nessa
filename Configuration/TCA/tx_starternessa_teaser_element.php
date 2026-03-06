@@ -157,8 +157,18 @@ return (function () {
                                                 ],
                                             ],
                                         ],
-                                        'fileIcon' => [
-                                            'title' => 'Datei-Icon',
+                                        'portrait' => [
+                                            'title' => 'Portrait',
+                                            'selectedRatio' => '4:5',
+                                            'allowedAspectRatios' => [
+                                                '4:5' => [
+                                                    'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.4_5',
+                                                    'value' => 4 / 5,
+                                                ],
+                                            ],
+                                        ],
+                                        'square' => [
+                                            'title' => 'Quadrat',
                                             'selectedRatio' => '1:1',
                                             'allowedAspectRatios' => [
                                                 '1:1' => [

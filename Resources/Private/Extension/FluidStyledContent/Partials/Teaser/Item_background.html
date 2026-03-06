@@ -3,11 +3,11 @@
 >
 
 <f:if condition="{teaserItem.teaserFile}">
-	<f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData}"/>
+	<f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData, columnGrid: columnGrid}"/>
 </f:if>
 
 <f:section name="teaserItem">
-    <div class="{ceData.nessa_column_layout} d-flex align-items-stretch mt-4">
+    <div class="{columnGrid} d-flex align-items-stretch mt-4">
         <f:link.typolink parameter="{teaserItem.data.link}">
             <div class="teaser__wrapper"
                  style="background-image: url({f:uri.image(image: teaserItem.teaserFile.0)});"
