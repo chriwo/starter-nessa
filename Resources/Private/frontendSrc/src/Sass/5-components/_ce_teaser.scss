@@ -106,27 +106,35 @@
 
             &:hover {
                 figcaption {
-                    bottom: 0;
-                    border: none;
+                    transform: translateY(0);
+                    border-top: none;
                 }
             }
         }
 
         figcaption {
             position: absolute;
-            bottom: -85%;
+            bottom: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba($primary, .8);
             border-top: 1px solid var(--white);
-            transition: all .9s ease-in-out;
+            transform: translateY(calc(100% - 55px));
+            transition: transform .9s ease-in-out;
         }
 
         .teaser__body {
-            padding: 1em;
             width: 100%;
-            height: 60%;
+        }
+
+        .teaser__header {
+            padding: .5em 0;
+            margin: 0;
+        }
+
+        .teaser__copy {
+            padding: .5em 1em;
         }
 
         a,
