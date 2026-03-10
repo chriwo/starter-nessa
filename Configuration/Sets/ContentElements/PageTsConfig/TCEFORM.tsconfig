@@ -77,6 +77,7 @@ TCEFORM {
             2 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col4
             3 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col3
           }
+          removeItems = 0
         }
       }
 
