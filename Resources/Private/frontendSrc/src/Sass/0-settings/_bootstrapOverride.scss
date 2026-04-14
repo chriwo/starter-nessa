@@ -18,18 +18,9 @@ $body-color: #444 !default;
 
 // Override Links
 $link-color: map-get($theme-colors, 'primary');
+$link-decoration: none;
 $link-hover-decoration: none;
 $headings-color: map-get($grays, '450');
-
-// Override breakpoints
-$grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px,
-    xxl: 1366px
-);
 
 // Override Components
 $border-width: 2px;
@@ -44,8 +35,9 @@ $btn-font-weight: 500;
 $btn-font-family: $headings-font-family;
 
 // Override Carousel
-$carousel-indicator-width: 12px;
-$carousel-indicator-height: 12px;
+$carousel-indicator-width: 20px;
+$carousel-indicator-height: 20px;
+$carousel-indicator-spacer: 5px;
 $carousel-indicator-active-bg: map-get($theme-colors, 'primary');
 $carousel-indicator-transition: opacity .3s ease;
 $carousel-control-icon-width: auto;
