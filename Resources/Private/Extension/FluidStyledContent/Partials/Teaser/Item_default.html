@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<div class="{columnGrid} d-flex align-items-stretch mt-2 aos-init aos-animate"
+     data-aos="fade-up"
+     data-aos-delay="100"
+>
+    <div class="teaser__body">
+        <h4 class="teaser__header">{teaserItem.data.header}</h4>
+        <f:if condition="{teaserItem.data.bodytext}">
+            <p class="teaser__copy">{teaserItem.data.bodytext}</p>
+        </f:if>
+        <f:if condition="{teaserItem.data.link} && {teaserItem.data.link_text}">
+            <f:link.typolink parameter="{teaserItem.data.link}" class="o-btn-cta align-middle mt-4">
+                {teaserItem.data.link_text}
+            </f:link.typolink>
+        </f:if>
+    </div>
+</div>
+
+</html>

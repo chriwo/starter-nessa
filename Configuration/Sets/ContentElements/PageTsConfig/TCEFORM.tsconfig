@@ -11,7 +11,6 @@ TCEFORM {
     author.disabled = 1
     author_email.disabled = 1
     lastUpdated.disabled = 1
-    layout.disabled = 1
     newUntil.disabled = 1
     content_from_pid.disabled = 1
     target.disabled = 1
@@ -36,13 +35,11 @@ TCEFORM {
     CType.keepItems := addToList(nessa_cta)
     CType.keepItems := addToList(nessa_team)
     CType.keepItems := addToList(nessa_teaser)
-    CType.keepItems := addToList(nessa_teaser_icon)
     CType.keepItems := addToList(nessa_hero)
     CType.keepItems := addToList(nessa_partner)
     CType.keepItems := addToList(nessa_portfolio)
     CType.keepItems := addToList(nessa_portfolio_file_collections)
     CType.keepItems := addToList(nessa_footer)
-    CType.keepItems := addToList(nessa_teaser_background)
     CType.keepItems := addToList(starter_m27_download)
     CType.keepItems := addToList(html)
     CType.keepItems := addToList(shortcut)
@@ -71,7 +68,20 @@ TCEFORM {
     }
 
     layout {
-      removeItems = 0,1,2,3
+      disabled = 1
+      types {
+        nessa_teaser {
+          disabled = 0
+          altLabels {
+            1 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col6
+            2 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col4
+            3 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col3
+          }
+          removeItems = 0
+        }
+      }
+
+      #removeItems = 0,1,2,3
     }
 
     // allow image position only left or right
@@ -90,6 +100,13 @@ TCEFORM {
         starter_m27_download {
           removeItems = creation_date,modification_date,title,extension
         }
+      }
+    }
+
+    nessa_column_layout {
+      disabled = 1
+      types {
+        nessa_teaser.disabled = 0
       }
     }
 
@@ -135,15 +152,6 @@ TCEFORM {
 
     frame_class {
       types {
-        nessa_teaser_background {
-          disabled = 0
-
-          addItems {
-            col-md-6 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.frame_class.tx_starternessa_teaser_background.I.medium-2-cols
-            col-md-4 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.frame_class.tx_starternessa_teaser_background.I.medium-3-cols
-          }
-        }
-
         nessa_partner {
           disabled = 0
 

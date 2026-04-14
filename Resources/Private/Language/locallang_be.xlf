@@ -123,14 +123,47 @@
 			<trans-unit id="tt_content.tx_starter_ctalink_text_formlabel">
 				<source>Link text</source>
 			</trans-unit>
-			<trans-unit id="tt_content.frame_class.tx_starternessa_teaser_background.I.medium-2-cols">
-				<source>2 Teaser per row</source>
-			</trans-unit>
-			<trans-unit id="tt_content.frame_class.tx_starternessa_teaser_background.I.medium-3-cols">
-				<source>3 Teaser per row</source>
-			</trans-unit>
 			<trans-unit id="tt_content.nessa_partner.partner">
 				<source>Company logo</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type_formlabel">
+				<source>Teaser layout</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.default">
+				<source>Simple</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.background">
+				<source>With image</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.image_text_hover">
+				<source>With image – Text hover</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.image_text_below">
+				<source>With image – Text below</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.file_icons">
+				<source>With custom icons</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.font_icons">
+				<source>With static defined icons</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.div_image">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_teaser_type.I.div_icon">
+				<source>Icons</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout_formlabel">
+				<source>Frontend column layout</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout.I.col6">
+				<source>2 items per row</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout.I.col3">
+				<source>4 items per row</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_column_layout.I.col4">
+				<source>3 items per row</source>
 			</trans-unit>
 
 			<trans-unit id="palette.cta">
@@ -171,6 +204,9 @@
 			<trans-unit id="tx_starternessa_teaser_element.link_text">
 				<source>Link text</source>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_element.asset_references">
+				<source>Background image or file icon</source>
+			</trans-unit>
 			<trans-unit id="tx_starternessa_teaser_element.icon">
 				<source>Icon</source>
 			</trans-unit>
@@ -191,6 +227,9 @@
 				<source>Hero item</source>
 			</trans-unit>
 
+			<trans-unit id="tabs.teaser">
+				<source>Teaser</source>
+			</trans-unit>
 			<trans-unit id="tab.team_members">
 				<source>Team</source>
 			</trans-unit>

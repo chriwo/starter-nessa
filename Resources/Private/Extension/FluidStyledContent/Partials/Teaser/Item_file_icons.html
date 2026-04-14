@@ -1,0 +1,32 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:if condition="{teaserItem.teaserFile}">
+    <f:render section="teaserItem" arguments="{teaserItem: teaserItem, ceData: ceData, columnGrid: columnGrid}"/>
+</f:if>
+
+<f:section name="teaserItem">
+    <div class="{columnGrid} d-flex align-items-stretch mt-4"
+         data-aos="zoom-in"
+         data-aos-delay="100"
+    >
+        <f:link.typolink parameter="{teaserItem.data.link}">
+            <div class="teaser__wrapper">
+                <div class="icon">
+                    <f:image image="{teaserItem.teaserFile.0}"
+                             width="{settings.icon.width}"
+                             height="{settings.icon.height}"
+                             cropVariant="fileIcon"/>
+                </div>
+
+                <div class="teaser__body">
+                    <h4 class="teaser__header">{teaserItem.data.header}</h4>
+                    <p class="teaser__copy">{teaserItem.data.bodytext}</p>
+                </div>
+            </div>
+        </f:link.typolink>
+    </div>
+</f:section>
+
+</html>
