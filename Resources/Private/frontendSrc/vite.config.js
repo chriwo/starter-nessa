@@ -55,9 +55,6 @@ export default defineConfig(({ mode }) => ({
     css: {
         preprocessorOptions: {
             scss: {
-                // Bootstrap 4 nutzt @import – Deprecation-Warnungen unterdrücken
-                quietDeps: true,
-                silenceDeprecations: ['import', 'global-builtin'],
                 // node_modules im Sass-Suchpfad, damit 'bootstrap/scss/...' ohne ~ funktioniert
                 loadPaths: [resolve(__dirname, 'node_modules')],
             },

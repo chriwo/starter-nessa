@@ -7,12 +7,12 @@ export default function ceHeroCarousel() {
         .each(function (index) {
             index === 0
                 ? heroCarouselIndicators.append(
-                      "<li data-target='#heroCarousel' data-slide-to='" +
+                      "<button type='button' data-bs-target='#heroCarousel' data-bs-slide-to='" +
                           index +
-                          "' class='active'></li>",
+                          "' class='active' aria-current='true'></button>",
                   )
                 : heroCarouselIndicators.append(
-                      "<li data-target='#heroCarousel' data-slide-to='" + index + "'></li>",
+                      "<button type='button' data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></button>",
                   );
         });
 
