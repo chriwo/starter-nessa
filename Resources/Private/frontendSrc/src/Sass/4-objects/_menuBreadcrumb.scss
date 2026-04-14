@@ -31,8 +31,8 @@
 
 .c-breadcrumb-nav__link {
     @include nessa-link-color(
-        $custom-navlink-color,
-        $custom-navlink-color-hover
+        $nessa-navlink-color,
+        $nessa-navlink-color-hover
     );
 }
 

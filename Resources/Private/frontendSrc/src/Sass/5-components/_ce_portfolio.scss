@@ -11,19 +11,19 @@
             font-size: 14px;
             font-weight: 600;
             line-height: 1;
-            color: $custom-navlink-color;
+            color: $nessa-navlink-color;
             cursor: pointer;
             background: none;
             border: 0;
             transition: all .3s ease-in-out;
 
             &:focus {
-                color: $custom-navlink-color-focus;
+                color: $nessa-navlink-color-focus;
                 outline: none;
             }
 
             &:hover {
-                color: $custom-navlink-color-hover;
+                color: $nessa-navlink-color-hover;
             }
 
             &:last-child {
@@ -67,11 +67,11 @@
                 top: calc(50% - 18px);
                 right: 40px;
                 font-size: 24px;
-                color: $custom-navlink-color;
+                color: $nessa-navlink-color;
                 transition: .3s;
 
                 &:hover {
-                    color: $custom-navlink-color-hover;
+                    color: $nessa-navlink-color-hover;
                 }
             }
 
@@ -80,11 +80,11 @@
                 top: calc(50% - 18px);
                 right: 10px;
                 font-size: 24px;
-                color: $custom-navlink-color;
+                color: $nessa-navlink-color;
                 transition: .3s;
 
                 &:hover {
-                    color: $custom-navlink-color-hover;
+                    color: $nessa-navlink-color-hover;
                 }
             }
         }

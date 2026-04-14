@@ -26,7 +26,7 @@
         > a {
             &::after {
                 padding-left: 5px;
-                font-family: $custom-icon-font-family;
+                font-family: $nessa-icon-font-family;
                 content: '\ea99';
             }
         }
@@ -84,7 +84,7 @@
                 &::after {
                     position: absolute;
                     right: 15px;
-                    font-family: $custom-icon-font-family;
+                    font-family: $nessa-icon-font-family;
                     content: '\eaa0';
                 }
             }
@@ -94,9 +94,9 @@
 
 .c-menumain-nav__link {
     @include nessa-link-color(
-        $custom-navlink-color,
-        $custom-navlink-color-hover,
-        $custom-navlink-color-focus
+        $nessa-navlink-color,
+        $nessa-navlink-color-hover,
+        $nessa-navlink-color-focus
     );
 }
 

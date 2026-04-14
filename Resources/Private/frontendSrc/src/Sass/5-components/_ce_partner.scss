@@ -6,19 +6,19 @@
     }
 
     &__item {
-        width: $partner-item-width;
+        width: $nessa-partner-item-width;
         padding: 30px;
         margin: 5px;
         text-align: center;
         transition: all .6s ease;
 
         @include media-breakpoint-up('md') {
-            width: $partner-item-width-md;
+            width: $nessa-partner-item-width-md;
         }
     }
 
     &__bordered {
-        border: $partner-border-width solid $partner-border-color;
+        border: $nessa-partner-border-width solid $nessa-partner-border-color;
     }
 
     img {
