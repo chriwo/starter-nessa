@@ -18,6 +18,7 @@
 		"test": "echo \"No test specified\" && exit 0"
 	},
 	"dependencies": {
+		"@popperjs/core": "^2.11.8",
 		"animate.css": "^4.1.1",
 		"bootstrap": "^5.3.3",
 		"isotope-layout": "^3.0.6",
@@ -25,7 +26,6 @@
 		"jquery.easing": "^1.4.1",
 		"picturefill": "^3.0.2",
 		"poly-fluid-sizing": "^1.1.0",
-		"@popperjs/core": "^2.11.8",
 		"smartmenus": "^1.1.0",
 		"venobox": "^1.9.1"
 	},
@@ -41,7 +41,7 @@
 		"prettier": "^3.8.1",
 		"sass": "^1.49.8",
 		"stylelint": "^17.3.0",
-		"stylelint-config-idiomatic-css": "^1.1.0",
+		"stylelint-config-recess-order": "^7.7.0",
 		"stylelint-config-standard": "^40.0.0",
 		"stylelint-config-standard-scss": "^17.0.0",
 		"stylelint-order": "^7.0.1",

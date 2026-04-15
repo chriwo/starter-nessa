@@ -8,8 +8,8 @@
   }
 
   &__headline {
-    color: map-get($theme-colors, 'secondary');
     font-size: $font-size-base * 2.125;
+    color: map-get($theme-colors, 'secondary');
 
     .c-download-list__link:hover &,
     .c-download-list__link:active & {
@@ -43,12 +43,12 @@
   }
 
   &__media {
+    float: left;
     display: block;
-    overflow: hidden;
     width: 30px;
     margin-top: .5em;
     margin-right: 2.0833rem;
-    float: left;
+    overflow: hidden;
 
     i {
       color: map-get($theme-colors, 'secondary');

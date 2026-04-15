@@ -1,15 +1,15 @@
 .mobile-nav-toggle {
   position: fixed;
-  z-index: 9998;
   top: 16px;
   right: -5px;
-  border: 0;
-  background: none;
+  z-index: 9998;
   font-size: 24px;
   line-height: 1;
   text-align: right;
   cursor: pointer;
   outline: none !important;
+  background: none;
+  border: 0;
   transition: all .4s;
 
   @include media-breakpoint-up(sm) {
@@ -23,15 +23,15 @@
 
 .mobile-nav {
   position: fixed;
-  z-index: 9999;
   inset: 55px 15px 15px;
-  overflow-y: auto;
+  z-index: 9999;
+  visibility: hidden;
   padding: 10px 0;
+  overflow-y: auto;
   background: $white;
   border-radius: 10px;
   opacity: 0;
   transition: ease-in-out .2s;
-  visibility: hidden;
 
   * {
     padding: 0;
@@ -43,8 +43,8 @@
     position: relative;
     display: block;
     padding: 10px 20px;
-    color: $custom-navlink-color;
     font-weight: 500;
+    color: $custom-navlink-color;
     outline: none;
 
     &:hover {
@@ -71,11 +71,11 @@
     &.drop-down {
       > a {
         &::after {
-          content: '\ea99';
           position: absolute;
           right: 15px;
           padding-left: 10px;
           font-family: $custom-icon-font-family;
+          content: '\ea99';
         }
 
         padding-right: 35px;
@@ -103,13 +103,13 @@
 
 .mobile-nav-overly {
   position: fixed;
-  z-index: $zindex-mobile-navigation-overlay;
   top: 0;
   left: 0;
+  z-index: $zindex-mobile-navigation-overlay;
   display: none;
-  overflow: hidden;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background: rgb(4 12 21 / 60%);
   transition: ease-in-out .2s;
 }
@@ -118,8 +118,8 @@
   overflow: hidden;
 
   .mobile-nav {
-    opacity: 1;
     visibility: visible;
+    opacity: 1;
   }
 
   .mobile-nav-toggle {

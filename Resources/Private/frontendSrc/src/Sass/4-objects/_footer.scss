@@ -1,7 +1,7 @@
 .o-site-footer {
     padding: 60px 0 30px;
-    background: $white;
     color: #222;
+    background: $white;
     box-shadow: 0 0 12px 0 rgb(0 0 0 / 10%);
 
     &__copyright {
@@ -26,8 +26,8 @@
 
     &__credits {
         padding-top: 1rem;
-        border-top: $border-width solid $border-color;
         margin-top: 1rem;
         font-size: $font-size-sm;
+        border-top: $border-width solid $border-color;
     }
 }

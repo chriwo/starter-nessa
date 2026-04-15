@@ -2,8 +2,8 @@
     .member {
         padding: 30px 20px;
         margin-bottom: 20px;
-        background: map-get($grays, '100');
         text-align: center;
+        background: map-get($grays, '100');
 
         img {
             max-width: 100%;
@@ -24,9 +24,9 @@
 
         p {
             padding-top: 10px;
-            color: #AAA;
             font-size: 14px;
             font-style: italic;
+            color: #AAA;
         }
 
         &__social {

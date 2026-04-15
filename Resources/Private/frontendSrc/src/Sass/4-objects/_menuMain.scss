@@ -25,22 +25,22 @@
     .drop-down {
         > a {
             &::after {
-                content: '\ea99';
                 padding-left: 5px;
                 font-family: $custom-icon-font-family;
+                content: '\ea99';
             }
         }
 
         ul {
             position: absolute;
-            z-index: 99;
             top: calc(100% + 30px);
             left: 15px;
+            z-index: 99;
             display: block;
+            visibility: hidden;
             padding: 10px 0;
             background: $white;
             box-shadow: 0 0 30px rgb(127 137 161 / 25%);
-            visibility: hidden;
             opacity: 0;
             transition: .3s;
 
@@ -82,10 +82,10 @@
                 padding-right: 35px;
 
                 &::after {
-                    content: '\eaa0';
                     position: absolute;
                     right: 15px;
                     font-family: $custom-icon-font-family;
+                    content: '\eaa0';
                 }
             }
         }
