@@ -3,8 +3,8 @@
     background: map-get($theme-colors, 'secondary');
 
     h3 {
-        color: $white;
         font-weight: $font-weight-bold;
+        color: $white;
     }
 
     p {
@@ -16,8 +16,8 @@
     .ctype-nessa_cta {
         .cta-btn-container {
             display: flex;
-            justify-content: flex-end;
             align-items: center;
+            justify-content: flex-end;
         }
     }
 }

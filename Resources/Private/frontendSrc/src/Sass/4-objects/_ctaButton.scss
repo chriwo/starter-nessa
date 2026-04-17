@@ -1,19 +1,19 @@
 %btnBase {
     display: inline-block;
-    color: $white;
     line-height: 1;
+    color: $white;
     border-radius: 4px;
 }
 
 %btnBaseHoverBackgroundWhite {
-    background: $white;
     color: map-get($theme-colors, 'primary');
+    background: $white;
     border-color: $border-color;
 }
 
 %btnBaseHoverBackgroundPrimary {
-    background: map-get($theme-colors, 'primary');
     color: $white;
+    background: map-get($theme-colors, 'primary');
 }
 
 %btn {
@@ -31,9 +31,9 @@
 .o-btn-cta-hero {
     @extend %btn;
 
-    border: $btn-border-width solid transparent;
     margin-top: 15px;
     background: map-get($theme-colors, 'primary');
+    border: $btn-border-width solid transparent;
 
     &:hover {
         @extend %btnBaseHoverBackgroundWhite;
@@ -43,8 +43,8 @@
 .o-btn-cta {
     @extend %btn;
 
-    border: $btn-border-width solid $border-color;
     margin: 10px;
+    border: $btn-border-width solid $border-color;
 
     &:hover {
         @extend %btnBaseHoverBackgroundPrimary;
@@ -54,9 +54,9 @@
 .o-btn-cta-invert {
     @extend %btn;
 
+    margin: 10px;
     color: var(--primary);
     border: $btn-border-width solid var(--white);
-    margin: 10px;
 
     &:hover {
         @extend %btnBaseHoverBackgroundPrimary;

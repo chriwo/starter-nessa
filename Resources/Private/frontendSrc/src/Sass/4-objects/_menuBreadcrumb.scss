@@ -18,10 +18,10 @@
                     padding-left: 10px;
 
                     &::before {
-                        content: '/';
                         display: inline-block;
                         padding-right: 10px;
                         color: map-get($theme-colors, 'secondary');
+                        content: '/';
                     }
                 }
             }

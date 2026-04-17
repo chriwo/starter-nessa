@@ -36,8 +36,8 @@
 
             &__body {
                 padding: 30px 20px;
-                border-radius: 5px;
                 background-color: var(--white);
+                border-radius: 5px;
                 transition: all 0.3s ease-in-out;
 
                 &:hover {
@@ -57,8 +57,8 @@
             &__body {
                 z-index: 10;
                 padding: 15px;
-                background-color: var(--white);
                 text-align: center;
+                background-color: var(--white);
                 border-radius: 5px;
                 box-shadow: 0 5px 10px 0 rgb(110 123 131 / 10%);
                 transition: all .4s ease-in-out;
@@ -67,10 +67,10 @@
             &__wrapper {
                 width: 100%;
                 padding: 220px 20px 20px;
-                border: 0;
+                background-repeat: no-repeat;
                 background-position: center;
                 background-size: cover;
-                background-repeat: no-repeat;
+                border: 0;
 
                 &:hover {
                     .teaser {
@@ -106,8 +106,8 @@
 
             &:hover {
                 figcaption {
-                    transform: translateY(0);
                     border-top: none;
+                    transform: translateY(0);
                 }
             }
         }
@@ -183,6 +183,7 @@
 
     &__image_text_below .card:hover {
         transform: translateY(-10px);
+
         .card-body {
             border-color: color-mix(in srgb, var(--primary), transparent 70%);
         }
@@ -192,12 +193,12 @@
     &__file_icons {
         .teaser {
             &__wrapper {
+                width: 100%;
                 padding: 30px 20px;
                 background: var(--white);
                 border-radius: 5px;
                 box-shadow: 0 5px 10px 0 rgb(110 123 131 / 10%);
                 transition: all .4s ease-in-out;
-                width: 100%;
             }
         }
 
@@ -205,8 +206,8 @@
             position: relative;
             z-index: 2;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             width: 64px;
             height: 64px;
             margin: 0 auto 20px;
@@ -221,13 +222,13 @@
             }
 
             &::before {
-                content: '';
                 position: absolute;
-                z-index: 1;
                 top: -8px;
                 left: -8px;
+                z-index: 1;
                 width: 100%;
                 height: 100%;
+                content: '';
                 background: map-get($grays, '200');
                 border-radius: 5px;
                 transform: translateZ(-1px);
@@ -241,8 +242,8 @@
             &__wrapper {
                 > .icon {
                     i {
-                        color: var(--white);
                         font-size: $h3-font-size;
+                        color: var(--white);
                     }
                 }
 

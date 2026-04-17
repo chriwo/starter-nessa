@@ -1,25 +1,25 @@
 .o-back-to-top {
     position: fixed;
-    z-index: $zindex-back-top-top;
     right: 15px;
     bottom: 15px;
+    z-index: $zindex-back-top-top;
     display: none;
 
     i {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         width: 40px;
         height: 40px;
-        background: map-get($theme-colors, 'primary');
-        color: $white;
         font-size: 24px;
+        color: $white;
+        background: map-get($theme-colors, 'primary');
         border-radius: 4px;
         transition: all .4s;
 
         &:hover {
-            background: lighten(map-get($theme-colors, 'primary'), 15%);
             color: $white;
+            background: lighten(map-get($theme-colors, 'primary'), 15%);
         }
     }
 }

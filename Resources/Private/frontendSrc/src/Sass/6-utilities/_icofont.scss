@@ -2,27 +2,27 @@
 [class*=' icofont-'] {
     font-family: $custom-icon-font-family !important;
     font-style: normal;
-    font-variant: normal;
     font-weight: normal;
+    font-variant: normal;
     line-height: 1;
     text-transform: none;
-    white-space: nowrap;
-    speak: none;
-    direction: ltr;
     overflow-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    speak: none;
 }
 
 .icofont {
     &-invert {
         padding: 4px;
-        border: 1px solid map-get($theme-colors, 'primary');
-        background-color: map-get($theme-colors, 'primary');
         color: $white;
+        background-color: map-get($theme-colors, 'primary');
+        border: 1px solid map-get($theme-colors, 'primary');
         border-radius: 4px;
 
         &:hover {
-            background-color: $white;
             color: map-get($theme-colors, 'primary');
+            background-color: $white;
         }
     }
 
@@ -43,10 +43,10 @@
     }
 
     &-ul {
-        list-style-type: none;
         padding-left: 0;
         margin-top: 1rem;
         margin-left: 0;
+        list-style-type: none;
 
         > li {
             position: relative;
