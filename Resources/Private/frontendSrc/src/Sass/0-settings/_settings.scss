@@ -1,0 +1,100 @@
+// ─── Bootstrap Variable Overrides ────────────────────────────────────────────
+// Diese Variablen werden von Bootstrap via !default übernommen.
+// Kundenprojekte können sie vor dem Import von starter-nessa überschreiben.
+
+// Color system
+$white:    #FFF !default;
+$gray-100: #F8F9FA !default;
+$gray-450: #AAA !default;
+$primary:  #DB0819 !default;
+$secondary: #0B2341 !default;
+$grays: (
+    '100': $gray-100,
+    '450': $gray-450
+) !default;
+$theme-colors: (
+    'primary': $primary,
+    'secondary': $secondary
+) !default;
+
+// Body
+$body-color: #444 !default;
+
+// Links
+$link-color: map-get($theme-colors, 'primary') !default;
+$link-decoration: none !default;
+$link-hover-decoration: none !default;
+$headings-color: map-get($grays, '450') !default;
+
+// Components
+$border-width: 2px !default;
+$border-color: map-get($theme-colors, 'primary') !default;
+$border-radius: 0.375rem !default;
+
+// Typography
+$font-family-sans-serif: 'Open Sans', sans-serif !default;
+$headings-font-family: 'Poppins', sans-serif !default;
+
+// Button
+$btn-font-weight: 500 !default;
+$btn-font-family: $headings-font-family !default;
+
+// Carousel
+$carousel-indicator-width: 20px !default;
+$carousel-indicator-height: 20px !default;
+$carousel-indicator-spacer: 5px !default;
+$carousel-indicator-active-bg: map-get($theme-colors, 'primary') !default;
+$carousel-indicator-transition: opacity .3s ease !default;
+$carousel-control-icon-width: auto !default;
+
+// Breadcrumb
+$breadcrumb-bg: $gray-100 !default;
+
+// Card
+$card-border-width: 1px !default;
+
+
+// ─── Nessa Theme Variables ($nessa-* Prefix) ─────────────────────────────────
+// Eigene Theme-Variablen, klar unterscheidbar von Bootstrap-Variablen.
+// Kundenprojekte können sie vor dem Import von starter-nessa überschreiben.
+
+// Iframe / responsive embed
+$nessa-responsive-padding-bottom: 56% !default;
+$nessa-responsive-height:         0 !default;
+
+// Mobile navigation
+$nessa-hamburger-icon-bg-color:   #555 !default;
+
+// Section sublines
+$nessa-subline-color:             #0F2F57 !default;
+
+// Z-index hierarchy
+$nessa-zindex-header:             997 !default;
+$nessa-zindex-mobile-nav-overlay: 9997 !default;
+$nessa-zindex-back-to-top:        99999 !default;
+
+// Navigation link colors
+$nessa-navlink-color:       map-get($theme-colors, 'secondary') !default;
+$nessa-navlink-color-hover: map-get($theme-colors, 'primary') !default;
+$nessa-navlink-color-focus: $nessa-navlink-color-hover !default;
+
+// Icon font
+$nessa-icon-font-family: 'IcoFont' !default;
+
+// Logo sizing
+$nessa-logo-wrapper-default-width: 7vw !default;
+$nessa-logo-wrapper-sm-width:      4vw !default;
+$nessa-logo-wrapper-md-width:      4% !default;
+
+// Hero content element
+$nessa-hero-headings-font-family: $headings-font-family !default;
+
+// CE-Partner
+$nessa-partner-border-color: $border-color !default;
+$nessa-partner-border-width: $border-width !default;
+$nessa-partner-item-width:   440px !default;
+$nessa-partner-item-width-md: 250px !default;
+
+// CE-Portfolio file collections
+$nessa-portfolio-file-border:        3px !default;
+$nessa-portfolio-file-border-radius: $border-radius !default;

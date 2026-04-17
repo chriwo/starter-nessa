@@ -17,7 +17,7 @@
   }
 
   i {
-    color: $custom-navlink-color;
+    color: $nessa-navlink-color;
   }
 }
 
@@ -44,7 +44,7 @@
     display: block;
     padding: 10px 20px;
     font-weight: 500;
-    color: $custom-navlink-color;
+    color: $nessa-navlink-color;
     outline: none;
 
     &:hover {
@@ -74,7 +74,7 @@
           position: absolute;
           right: 15px;
           padding-left: 10px;
-          font-family: $custom-icon-font-family;
+          font-family: $nessa-icon-font-family;
           content: '\ea99';
         }
 
@@ -105,7 +105,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: $zindex-mobile-navigation-overlay;
+  z-index: $nessa-zindex-mobile-nav-overlay;
   display: none;
   width: 100%;
   height: 100%;

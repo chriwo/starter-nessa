@@ -1,5 +1,5 @@
 #header {
-    z-index: $zindex-header;
+    z-index: $nessa-zindex-header;
     padding: 20px 0;
     background: $white;
     transition: all .5s;
@@ -18,14 +18,14 @@
     &__logo {
         display: flex;
         align-items: center;
-        width: $logo-wrapper-default-width;
+        width: $nessa-logo-wrapper-default-width;
 
         @include media-breakpoint-up(sm) {
-            width: $logo-wrapper-sm-width;
+            width: $nessa-logo-wrapper-sm-width;
         }
 
         @include media-breakpoint-up(md) {
-            width: $logo-wrapper-md-width;
+            width: $nessa-logo-wrapper-md-width;
         }
 
         margin-right: auto;

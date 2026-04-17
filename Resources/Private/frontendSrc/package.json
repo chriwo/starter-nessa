@@ -1,18 +1,23 @@
 {
-	"name": "starter-nessa-starterkit",
-	"version": "5.0.0",
-	"description": "StarterNessa is a modern template theme",
-	"main": "app.js",
+	"name": "@chriwo/starter-nessa",
+	"version": "5.1.0",
+	"description": "StarterNessa — Bootstrap 5 TYPO3 theme frontend base (SCSS, JS, Fonts)",
+	"main": "scss/app.scss",
 	"author": "StarterTeam",
-	"license": "private",
-	"private": true,
+	"license": "MIT",
+	"files": [
+		"scss/",
+		"src/Sass/",
+		"src/JavaScript/",
+		"src/Fonts/"
+	],
 	"scripts": {
 		"start": "npm run dev",
 		"dev": "vite build --watch --mode development",
 		"build": "vite build",
 		"lint": "npm run lint:js && npm run lint:scss",
-		"lint:js": "eslint . --fix-dry-run && echo \"ESLint: Keine Probleme gefunden\"",
-		"lint:scss": "stylelint \"./src/**/*.scss\" --config .stylelintrc.yml && echo \"Stylelint: Keine Probleme gefunden\"",
+		"lint:js": "eslint . --fix-dry-run && echo \"ESLint: No problems found\"",
+		"lint:scss": "stylelint \"./src/**/*.scss\" --config .stylelintrc.yml && echo \"Stylelint: No problems found\"",
 		"lint:fix:js": "eslint . --fix",
 		"lint:fix:scss": "stylelint \"./src/**/*.scss\" --fix --config .stylelintrc.yml",
 		"test": "echo \"No test specified\" && exit 0"
@@ -45,7 +50,7 @@
 		"stylelint-config-standard": "^40.0.0",
 		"stylelint-config-standard-scss": "^17.0.0",
 		"stylelint-order": "^7.0.1",
-		"vite": "^6.1.0",
+		"vite": "^6.4.2",
 		"vite-plugin-static-copy": "^2.1.0"
 	},
 	"engines": {
@@ -54,13 +59,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://gitlab.com/starterteam/team/starter-nessa-starterkit.git"
+		"url": "https://github.com/chriwo/starter-nessa.git"
 	},
 	"keywords": [
 		"frontend",
 		"toolkit"
 	],
 	"bugs": {
-		"url": "https://gitlab.com/starterteam/team/base/-/issues"
+		"url": "https://github.com/chriwo/starter-nessa/issues"
 	}
 }
