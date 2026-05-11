@@ -23,33 +23,17 @@ defined('TYPO3') || die();
         ]
     );
 
-    $GLOBALS['TCA']['tt_content']['types'][$cType] = [
-        'showitem' => '
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                --palette--;;general,
-                header;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header.ALT.html_formlabel,
-                nessa_copyright,
-                pages;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:pages.ALT.menu_formlabel,
-            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
-                --palette--;;language,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-                --palette--;;hidden,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
-                rowDescription,
-            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
-        ',
-    ];
-
-    ExtensionManagementUtility::addPlugin(
+    ExtensionManagementUtility::addRecordType(
         [
-            $translationFile . 'CType.I.' . $cType,
-            $cType,
-            'starter-ctype-' . $cType,
+            'label' => $translationFile . 'CType.I.' . $cType,
+            'description' => $translationFile . 'CType.I.' . $cType . '.description',
+            'value' => $cType,
+            'icon' => 'starter-ctype-' . $cType,
         ],
-        'CType',
-        'starter_nessa'
+        '
+            --palette--;;general,
+            header;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header.ALT.html_formlabel,
+            nessa_copyright,
+            pages'
     );
 })();

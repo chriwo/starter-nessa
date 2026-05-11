@@ -124,7 +124,7 @@
 				<source>Link text</source>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_partner.partner">
-				<source>Company logo</source>
+				<source>Partner logo</source>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type_formlabel">
 				<source>Teaser layout</source>

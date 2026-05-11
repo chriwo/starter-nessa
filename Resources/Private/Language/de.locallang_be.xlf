@@ -161,8 +161,8 @@
 				<target>Linktext</target>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_partner.partner">
-				<source>Company logo</source>
-				<target>Unternehmenslogo</target>
+				<source>Partner logo</source>
+				<target>Partnerlogo</target>
 			</trans-unit>
 			<trans-unit id="tt_content.nessa_teaser_type_formlabel">
 				<source>Teaser layout</source>

@@ -132,8 +132,8 @@ defined('TYPO3') || die();
                     ],
                 ],
                 'layout' => [
-                    'config' => []
-                ]
+                    'config' => [],
+                ],
             ],
         ]
     );

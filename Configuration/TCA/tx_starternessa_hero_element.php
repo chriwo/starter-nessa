@@ -37,7 +37,6 @@ return (function () {
             'transOrigPointerField' => 'l10n_parent',
             'transOrigDiffSourceField' => 'l10n_diffsource',
             'languageField' => 'sys_language_uid',
-            'translationSource' => 'l10n_source',
             'enablecolumns' => [
                 'disabled' => 'hidden',
                 'starttime' => 'starttime',
@@ -59,20 +58,20 @@ return (function () {
 
         'palettes' => [
             'hidden' => [
-                'showitem' => '
-                hidden;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:field.default.hidden
-            ',
+                'showitem' => 'hidden',
             ],
             'language' => [
-                'showitem' => '
-                sys_language_uid;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:sys_language_uid_formlabel,
-                l10n_parent
-            ',
+                'showitem' => 'sys_language_uid, l10n_parent',
             ],
             'access' => [
+                'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access',
                 'showitem' => '
-                starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,
-                endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel,
+                    starttime,
+                    endtime,
+                    --linebreak--,
+                    fe_group,
+                    --linebreak--,
+                    editlock
             ',
             ],
             'cta' => [
@@ -81,68 +80,6 @@ return (function () {
         ],
 
         'columns' => [
-            'hidden' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
-                'config' => [
-                    'type' => 'check',
-                    'items' => [
-                        '1' => [
-                            'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0',
-                        ],
-                    ],
-                ],
-            ],
-            'starttime' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-                'config' => [
-                    'type' => 'datetime',
-                    'default' => 0,
-                ],
-                'l10n_mode' => 'exclude',
-                'l10n_display' => 'defaultAsReadonly',
-            ],
-            'endtime' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-                'config' => [
-                    'type' => 'datetime',
-                    'default' => 0,
-                    'range' => [
-                        'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                    ],
-                ],
-                'l10n_mode' => 'exclude',
-                'l10n_display' => 'defaultAsReadonly',
-            ],
-            'sys_language_uid' => [
-                'exclude' => true,
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-                'config' => ['type' => 'language'],
-            ],
-            'l10n_parent' => [
-                'displayCond' => 'FIELD:sys_language_uid:>:0',
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-                'config' => [
-                    'type' => 'select',
-                    'renderType' => 'selectSingle',
-                    'items' => [
-                        [
-                            'label' => '',
-                            'value' => 0,
-                        ],
-                    ],
-                    'foreign_table' => 'tx_starternessa_hero_element',
-                    'foreign_table_where' => 'AND tx_starternessa_hero_element.pid=###CURRENT_PID### AND tx_starternessa_hero_element.sys_language_uid IN (-1,0)',
-                    'default' => 0,
-                ],
-            ],
-            'l10n_source' => [
-                'config' => [
-                    'type' => 'passthrough',
-                ],
-            ],
             'header' => [
                 'l10n_mode' => 'prefixLangTitle',
                 'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header',
@@ -175,9 +112,8 @@ return (function () {
                 ],
             ],
             'assets' => [
-                'label' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references',
+                'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:asset_references',
                 'config' => [
-                    //## !!! Watch out for fieldName different from columnName
                     'type' => 'file',
                     'allowed' => 'jpg,jpeg,png',
                     'appearance' => [
@@ -185,8 +121,6 @@ return (function () {
                     ],
                     'minitems' => 1,
                     'maxitems' => 1,
-                    // custom configuration for displaying fields in the overlay/reference table
-                    // behaves the same as the image field.
                     'overrideChildTca' => [
                         'columns' => [
                             'uid_local' => [
@@ -224,21 +158,6 @@ return (function () {
                     'type' => 'text',
                     'cols' => '80',
                     'rows' => '10',
-                ],
-            ],
-
-            'l10n_diffsource' => [
-                'config' => [
-                    'type' => 'passthrough',
-                    'default' => '',
-                ],
-            ],
-            't3ver_label' => [
-                'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-                'config' => [
-                    'type' => 'input',
-                    'size' => 30,
-                    'max' => 255,
                 ],
             ],
         ],

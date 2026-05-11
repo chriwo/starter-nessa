@@ -67,11 +67,12 @@ return (function () {
             'access' => [
                 'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access',
                 'showitem' => '
-                    starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,
-                    endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel,
+                    starttime,
+                    endtime,
                     --linebreak--,
-                    fe_group;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:fe_group_formlabel,
-                    --linebreak--,editlock
+                    fe_group,
+                    --linebreak--,
+                    editlock
             ',
             ],
             'cta' => [
