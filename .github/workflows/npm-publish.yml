@@ -8,6 +8,8 @@ on:
 jobs:
     publish:
         runs-on: ubuntu-latest
+        permissions:
+            id-token: write
         steps:
             - uses: actions/checkout@v4
 
@@ -21,7 +23,5 @@ jobs:
               working-directory: Resources/Private/frontendSrc
 
             - name: Publish to npmjs.com
-              run: npm publish --access public
+              run: npm publish --provenance --access public
               working-directory: Resources/Private/frontendSrc
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
