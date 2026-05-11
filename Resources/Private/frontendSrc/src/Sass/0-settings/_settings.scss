@@ -3,10 +3,10 @@
 // Kundenprojekte können sie vor dem Import von starter-nessa überschreiben.
 
 // Color system
-$white:    #FFF !default;
+$white: #FFF !default;
 $gray-100: #F8F9FA !default;
 $gray-450: #AAA !default;
-$primary:  #DB0819 !default;
+$primary: #DB0819 !default;
 $secondary: #0B2341 !default;
 $grays: (
     '100': $gray-100,
@@ -60,21 +60,21 @@ $card-border-width: 1px !default;
 
 // Iframe / responsive embed
 $nessa-responsive-padding-bottom: 56% !default;
-$nessa-responsive-height:         0 !default;
+$nessa-responsive-height: 0 !default;
 
 // Mobile navigation
-$nessa-hamburger-icon-bg-color:   #555 !default;
+$nessa-hamburger-icon-bg-color: #555 !default;
 
 // Section sublines
-$nessa-subline-color:             #0F2F57 !default;
+$nessa-subline-color: #0F2F57 !default;
 
 // Z-index hierarchy
-$nessa-zindex-header:             997 !default;
+$nessa-zindex-header: 997 !default;
 $nessa-zindex-mobile-nav-overlay: 9997 !default;
-$nessa-zindex-back-to-top:        99999 !default;
+$nessa-zindex-back-to-top: 99999 !default;
 
 // Navigation link colors
-$nessa-navlink-color:       map-get($theme-colors, 'secondary') !default;
+$nessa-navlink-color: map-get($theme-colors, 'secondary') !default;
 $nessa-navlink-color-hover: map-get($theme-colors, 'primary') !default;
 $nessa-navlink-color-focus: $nessa-navlink-color-hover !default;
 
@@ -83,8 +83,8 @@ $nessa-icon-font-family: 'IcoFont' !default;
 
 // Logo sizing
 $nessa-logo-wrapper-default-width: 7vw !default;
-$nessa-logo-wrapper-sm-width:      4vw !default;
-$nessa-logo-wrapper-md-width:      4% !default;
+$nessa-logo-wrapper-sm-width: 4vw !default;
+$nessa-logo-wrapper-md-width: 4% !default;
 
 // Hero content element
 $nessa-hero-headings-font-family: $headings-font-family !default;
@@ -92,9 +92,9 @@ $nessa-hero-headings-font-family: $headings-font-family !default;
 // CE-Partner
 $nessa-partner-border-color: $border-color !default;
 $nessa-partner-border-width: $border-width !default;
-$nessa-partner-item-width:   440px !default;
+$nessa-partner-item-width: 440px !default;
 $nessa-partner-item-width-md: 250px !default;
 
 // CE-Portfolio file collections
-$nessa-portfolio-file-border:        3px !default;
+$nessa-portfolio-file-border: 3px !default;
 $nessa-portfolio-file-border-radius: $border-radius !default;
