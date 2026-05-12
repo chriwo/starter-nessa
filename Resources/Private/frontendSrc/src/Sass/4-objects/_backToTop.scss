@@ -19,7 +19,7 @@
 
         &:hover {
             color: $white;
-            background: lighten(map-get($theme-colors, 'primary'), 15%);
+            background: color-mix(in srgb, map-get($theme-colors, 'primary'), white 15%);
         }
     }
 }
