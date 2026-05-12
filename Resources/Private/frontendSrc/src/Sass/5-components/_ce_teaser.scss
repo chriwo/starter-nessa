@@ -165,7 +165,7 @@
     &__image_text_below .card-body,
     &__font_icons .teaser__wrapper,
     &__file_icons .teaser__wrapper {
-        border: 1px solid color-mix(in srgb, var(--gray-dark), transparent 85%);
+        border: 1px solid color-mix(in srgb, #{$gray-800}, transparent 85%);
     }
 
     &__image_text_below .card-body {
