@@ -70,8 +70,8 @@
 		}
 	},
     "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin",
+        "vendor-dir": ".build/vendor",
+        "bin-dir": ".build/bin",
         "allow-plugins": {
             "typo3/class-alias-loader": true,
             "typo3/cms-composer-installers": true,
@@ -83,7 +83,7 @@
     "extra": {
         "typo3/cms": {
             "extension-key": "starter_nessa",
-            "web-dir": ".Build/public"
+            "web-dir": ".build/public"
         }
     }
 }

@@ -13,8 +13,8 @@ fi
 
 ddev import-db --file=.project/data/db.sql.gz
 
-cp .Build/vendor/typo3/cms-install/Resources/Private/FolderStructureTemplateFiles/root-htaccess .Build/public/.htaccess
+cp .build/vendor/typo3/cms-install/Resources/Private/FolderStructureTemplateFiles/root-htaccess .build/public/.htaccess
 mkdir -p config && cp -Rf .project/typo3/config/ config
-mkdir -p .Build/public/fileadmin && cd .Build/public/fileadmin && tar xf ../../../.project/data/fileadmin.tar.gz
+mkdir -p .build/public/fileadmin && cd .build/public/fileadmin && tar xf ../../../.project/data/fileadmin.tar.gz
 
 ddev build-assets

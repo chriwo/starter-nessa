@@ -1,6 +1,6 @@
 name: theme-nessa
 type: typo3
-docroot: .Build/public
+docroot: .build/public
 php_version: "8.5"
 webserver_type: apache-fpm
 xdebug_enabled: false
@@ -12,9 +12,9 @@ database:
 upload_dirs:
     - fileadmin
 working_dir:
-    web: /var/www/html/.Build
+    web: /var/www/html/.build
 use_dns_when_possible: true
-composer_root: .Build/
+composer_root: .build/
 composer_version: "2"
 web_environment:
     - TYPO3_CONTEXT=Development

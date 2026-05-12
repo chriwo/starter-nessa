@@ -11,7 +11,7 @@ ehthumbs.db
 Thumbs.db
 .svn
 
-/.Build
+/.build
 /Resources/Private/frontendSrc/node_modules/
 .sass-cache
 composer.lock
