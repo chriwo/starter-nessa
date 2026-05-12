@@ -20,8 +20,8 @@ $success: #198754 !default;
 $info: #0DCAF0 !default;
 $warning: #FFC107 !default;
 $danger: #DC3545 !default;
-$light: #F8F9FA !default;
-$dark: #212529 !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;
 $grays: (
     '100': $gray-100,
     '200': $gray-200,
