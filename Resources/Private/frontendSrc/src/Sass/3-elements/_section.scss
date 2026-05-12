@@ -21,7 +21,7 @@
             width: 80%;
             height: 1px;
             content: "";
-            background: map-get($theme-colors, 'primary');;
+            background: map-get(\$theme-colors, 'primary');
         }
     }
 
