@@ -1,7 +1,0 @@
-#!/bin/bash
-
-bin/php-cs-fixer fix -v --dry-run --diff --config=../.php-cs-fixer.php
-bin/phpstan -v --configuration=../phpstan.neon
-bin/rector process --config=../rector.php --clear-cache --output-format=console --dry-run
-
-bin/fractor process -v --config=../fractor.php --output-format=console --dry-run

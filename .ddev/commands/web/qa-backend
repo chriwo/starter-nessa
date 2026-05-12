@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+## Description: Execute different code quality tools for backend
+## Usage: qa-backend [args]
+## Example: "ddev qa-backend 13" or "ddev qa-backend 14"
+## ProjectTypes: typo3
+
+cd ..
+
+.build/bin/phpunit -c .project/tools/phpunit-functional-v$@.xml --do-not-cache-result
+.build/bin/php-cs-fixer fix --dry-run --diff --config=.project/tools/.php-cs-fixer.php
+.build/bin/phpstan --configuration=.project/tools/phpstan-v$@.neon
+.build/bin/fractor process --config=.project/tools/fractor.php --output-format=console --dry-run
+
+.build/bin/rector process --config=.project/tools/rector-v$@.php --clear-cache --output-format=console --dry-run

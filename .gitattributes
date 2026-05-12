@@ -21,13 +21,7 @@
 /.github                        export-ignore
 /.gitignore                     export-ignore
 /.project                       export-ignore
-/.php-cs-fixer.php              export-ignore
-/phpstan.neon                   export-ignore
-/phpstan-baseline.neon          export-ignore
-/rector.php                     export-ignore
-/typoscript-lint.yml            export-ignore
 /Resources/Private/frontendSrc  export-ignore
 /Tests/                         export-ignore
-/config                         export-ignore
 
 .project/data/db.sql.gz filter=lfs diff=lfs merge=lfs -text

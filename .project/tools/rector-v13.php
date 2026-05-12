@@ -9,7 +9,10 @@ use Ssch\TYPO3Rector\Set\Typo3SetList;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__ . '/',
+        getcwd() . '/Classes',
+        getcwd() . '/Configuration',
+        getcwd() . '/Tests',
+        getcwd() . '/ext_localconf.php',
     ])
     ->withImportNames(false, true, false, true)
     ->withSets([
@@ -20,9 +23,13 @@ return RectorConfig::configure()
     ])
     ->withSkip([
         // Skip paths
-        __DIR__ . '/.Build',
-        __DIR__ . '/.ddev',
-        __DIR__ . '/config',
-        __DIR__ . '/var',
-        __DIR__ . '/Resources/Private/frontendSrc',
+        getcwd() . '/.build',
+        getcwd() . '/.ddev',
+        getcwd() . '/.github',
+        getcwd() . '/.project/build',
+        getcwd() . '/.project/data',
+        getcwd() . '/.project/tools',
+        getcwd() . '/config',
+        getcwd() . '/Resources',
+        getcwd() . '/var',
     ]);

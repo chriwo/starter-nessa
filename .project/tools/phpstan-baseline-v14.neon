@@ -1,0 +1,157 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Cannot access an offset on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Cannot access offset ''assetsAvailable'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Cannot access offset ''data'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Cannot access offset ''uid'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Cannot access offset mixed on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:getCategoriesIdsFromProcessedData\(\) has parameter \$processedData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:getCategoriesIdsFromProcessedData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:getRecords\(\) has parameter \$category with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:getRecords\(\) should return array\<int, array\{uid\: int, title\: string, categoryUid\: int\}\> but returns list\<array\<string, mixed\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:process\(\) has parameter \$contentObjectConfiguration with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:process\(\) has parameter \$processedData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:process\(\) has parameter \$processorConfiguration with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\DataProcessing\\AssetsOfCategoriesProcessor\:\:process\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Parameter \#1 \$array of static method TYPO3\\CMS\\Core\\Utility\\ArrayUtility\:\:getValueByPath\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../Classes/DataProcessing/AssetsOfCategoriesProcessor.php
+
+		-
+			message: '#^Call to method configureContainer\(\) on an unknown class B13\\Container\\Tca\\Registry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_2columns.php
+
+		-
+			message: '#^Call to method setIcon\(\) on an unknown class B13\\Container\\Tca\\ContainerConfiguration\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_2columns.php
+
+		-
+			message: '#^Class B13\\Container\\Tca\\Registry not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_2columns.php
+
+		-
+			message: '#^Instantiated class B13\\Container\\Tca\\ContainerConfiguration not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_2columns.php
+
+		-
+			message: '#^Call to method configureContainer\(\) on an unknown class B13\\Container\\Tca\\Registry\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_3columns.php
+
+		-
+			message: '#^Call to method setIcon\(\) on an unknown class B13\\Container\\Tca\\ContainerConfiguration\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_3columns.php
+
+		-
+			message: '#^Class B13\\Container\\Tca\\Registry not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_3columns.php
+
+		-
+			message: '#^Instantiated class B13\\Container\\Tca\\ContainerConfiguration not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ../../Configuration/TCA/Overrides/container_3columns.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\Tests\\Functional\\ViewHelpers\\Format\\UpperViewHelperTest\:\:render\(\) has parameter \$variables with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Tests/Functional/ViewHelpers/Format/UpperViewHelperTest.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\Tests\\Functional\\ViewHelpers\\Format\\UpperViewHelperTest\:\:renderDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Tests/Functional/ViewHelpers/Format/UpperViewHelperTest.php
+
+		-
+			message: '#^Method StarterTeam\\StarterNessa\\Tests\\Functional\\ViewHelpers\\Format\\UpperViewHelperTest\:\:throwsExceptionForInvalidInputDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../Tests/Functional/ViewHelpers/Format/UpperViewHelperTest.php

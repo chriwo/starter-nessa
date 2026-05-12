@@ -6,10 +6,10 @@ $csFixerConfig = CsFixerConfig::create();
 $csFixerConfig
     ->getFinder()
     ->in([
-        __DIR__,
+        getcwd(),
     ])
     ->exclude([
-        '.Build',
+        '.build',
         'var',
         'config',
         '.ddev',

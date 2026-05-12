@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## Description: Execute different code quality tools for frontend
+## Usage: qa-frontend
+## Example: "ddev qa-frontend
+## ProjectTypes: typo3
+
+cd ../Resources/Private/frontendSrc
+
+npm run lint:js
+npm run lint:scss

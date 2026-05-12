@@ -1,0 +1,18 @@
+includes:
+  - %currentWorkingDirectory%/.project/tools/phpstan-baseline-v14.neon
+parameters:
+  level: max
+  reportUnmatchedIgnoredErrors: true
+  paths:
+    - %currentWorkingDirectory%/Classes/
+    - %currentWorkingDirectory%/Configuration/
+    - %currentWorkingDirectory%/Tests/
+  ignoreErrors:
+    -
+      identifier: 'offsetAccess.nonOffsetAccessible'
+      paths:
+        - "%currentWorkingDirectory%/Configuration/TCA/**"
+    -
+      identifier: 'argument.type'
+      paths:
+        - "%currentWorkingDirectory%/Configuration/TCA/**"

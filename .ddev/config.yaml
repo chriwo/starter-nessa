@@ -18,6 +18,15 @@ composer_root: .build/
 composer_version: "2"
 web_environment:
     - TYPO3_CONTEXT=Development
+    - typo3DatabaseHost=db
+    - typo3DatabaseUsername=db
+    - typo3DatabasePassword=db
+    - typo3DatabasePort=3306
+    - typo3DatabaseName=testing
+hooks:
+  post-start:
+    - exec: "/var/www/html/.ddev/commands/web/create_testing_database.sh"
+
 nodejs_version: "22"
 corepack_enable: false
 
