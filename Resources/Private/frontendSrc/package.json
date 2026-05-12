@@ -15,6 +15,7 @@
 		"start": "npm run dev",
 		"dev": "vite build --watch --mode development",
 		"build": "vite build",
+		"build:check": "vite build --outDir ../../.build/frontend-check",
 		"lint": "npm run lint:js && npm run lint:scss",
 		"lint:js": "eslint . --fix-dry-run && echo \"ESLint: No problems found\"",
 		"lint:scss": "stylelint \"./src/**/*.scss\" --config .stylelintrc.yml && echo \"Stylelint: No problems found\"",

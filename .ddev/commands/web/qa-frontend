@@ -11,4 +11,4 @@ cd ../Resources/Private/frontendSrc
 
 npm run lint:js
 npm run lint:scss
-npm run build
+npm run build:check
