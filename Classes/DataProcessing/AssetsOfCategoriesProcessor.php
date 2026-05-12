@@ -8,7 +8,6 @@ use Doctrine\DBAL\Exception;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -22,6 +21,7 @@ final readonly class AssetsOfCategoriesProcessor implements DataProcessorInterfa
 
     public function __construct(
         private ConnectionPool $connectionPool,
+        private ResourceFactory $resourceFactory,
     ) {
     }
 
@@ -56,7 +56,7 @@ final readonly class AssetsOfCategoriesProcessor implements DataProcessorInterfa
         $categoriesWithData = [];
         foreach ($fileRecords as $record) {
             $processedData[$targetVariableName][] = [
-                'file' => GeneralUtility::makeInstance(ResourceFactory::class)->getFileObject($record['uid']),
+                'file' => $this->resourceFactory->getFileObject($record['uid']),
                 'category' => [
                     'uid' => $record['categoryUid'],
                     'title' => $record['title'],
