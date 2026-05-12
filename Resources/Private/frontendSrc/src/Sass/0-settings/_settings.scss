@@ -16,6 +16,12 @@ $gray-900: #212529 !default;
 $gray-450: #AAA !default;
 $primary: #DB0819 !default;
 $secondary: #0B2341 !default;
+$success: #198754 !default;
+$info: #0DCAF0 !default;
+$warning: #FFC107 !default;
+$danger: #DC3545 !default;
+$light: #F8F9FA !default;
+$dark: #212529 !default;
 $grays: (
     '100': $gray-100,
     '200': $gray-200,
@@ -30,7 +36,13 @@ $grays: (
 ) !default;
 $theme-colors: (
     'primary': $primary,
-    'secondary': $secondary
+    'secondary': $secondary,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'danger': $danger,
+    'light': $light,
+    'dark': $dark
 ) !default;
 
 // Body
