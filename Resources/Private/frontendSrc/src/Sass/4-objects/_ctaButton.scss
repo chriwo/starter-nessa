@@ -55,7 +55,7 @@
     @extend %btn;
 
     margin: 10px;
-    color: var(--primary);
+    color: var(--bs-primary);
     border: $btn-border-width solid var(--white);
 
     &:hover {
