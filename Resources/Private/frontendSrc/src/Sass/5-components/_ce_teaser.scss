@@ -36,7 +36,7 @@
 
             &__body {
                 padding: 30px 20px;
-                background-color: var(--white);
+                background-color: var(--#{$prefix}white);
                 border-radius: 5px;
                 transition: all 0.3s ease-in-out;
 
@@ -58,7 +58,7 @@
                 z-index: 10;
                 padding: 15px;
                 text-align: center;
-                background-color: var(--white);
+                background-color: var(--#{$prefix}white);
                 border-radius: 5px;
                 box-shadow: 0 5px 10px 0 rgb(110 123 131 / 10%);
                 transition: all .4s ease-in-out;
@@ -75,12 +75,12 @@
                 &:hover {
                     .teaser {
                         &__body {
-                            background: var(--primary);
+                            background: var(--#{$prefix}primary);
                         }
 
                         &__header,
                         &__copy {
-                            color: var(--white);
+                            color: var(--#{$prefix}white);
                         }
                     }
                 }
@@ -118,8 +118,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba($primary, .8);
-            border-top: 1px solid var(--white);
+            background: color-mix(in srgb, var(--#{$prefix}primary) 80%, transparent);
+            border-top: 1px solid var(--#{$prefix}white);
             transform: translateY(calc(100% - 55px));
             transition: transform .9s ease-in-out;
         }
@@ -140,7 +140,7 @@
         a,
         .teaser__header,
         .teaser__copy {
-            color: var(--white);
+            color: var(--#{$prefix}white);
         }
     }
 
@@ -165,7 +165,7 @@
     &__image_text_below .card-body,
     &__font_icons .teaser__wrapper,
     &__file_icons .teaser__wrapper {
-        border: 1px solid color-mix(in srgb, var(--gray-dark), transparent 85%);
+        border: 1px solid color-mix(in srgb, #{$gray-800}, transparent 85%);
     }
 
     &__image_text_below .card-body {
@@ -176,7 +176,7 @@
     &__font_icons .teaser__wrapper,
     &__file_icons .teaser__wrapper {
         &:hover {
-            border-color: color-mix(in srgb, var(--primary), transparent 70%);
+            border-color: color-mix(in srgb, var(--#{$prefix}primary), transparent 70%);
             transform: translateY(-10px);
         }
     }
@@ -185,7 +185,7 @@
         transform: translateY(-10px);
 
         .card-body {
-            border-color: color-mix(in srgb, var(--primary), transparent 70%);
+            border-color: color-mix(in srgb, var(--#{$prefix}primary), transparent 70%);
         }
     }
 
@@ -195,7 +195,7 @@
             &__wrapper {
                 width: 100%;
                 padding: 30px 20px;
-                background: var(--white);
+                background: var(--#{$prefix}white);
                 border-radius: 5px;
                 box-shadow: 0 5px 10px 0 rgb(110 123 131 / 10%);
                 transition: all .4s ease-in-out;
@@ -211,7 +211,7 @@
             width: 64px;
             height: 64px;
             margin: 0 auto 20px;
-            background: var(--primary);
+            background: var(--#{$prefix}primary);
             border-radius: 5px;
             transform-style: preserve-3d;
             transition: all .3s ease-out;
@@ -243,25 +243,25 @@
                 > .icon {
                     i {
                         font-size: $h3-font-size;
-                        color: var(--white);
+                        color: var(--#{$prefix}white);
                     }
                 }
 
                 &:hover {
-                    background: var(--primary);
+                    background: var(--#{$prefix}primary);
 
                     .icon {
-                        background: var(--white);
+                        background: var(--#{$prefix}white);
 
                         i {
-                            color: var(--primary);
+                            color: var(--#{$prefix}primary);
                         }
                     }
 
                     .teaser {
                         &__header,
                         &__copy {
-                            color: var(--white);
+                            color: var(--#{$prefix}white);
                         }
                     }
                 }

@@ -1,40 +1,54 @@
+// Tuple structure: (file-suffix, font-style, font-weight)
+// Separates the filename variant from the CSS font-weight value so that
+// @font-face receives valid weight integers instead of filename strings
+// like 'regular', '300italic', etc.
 $customFont-OpenSans: (
-    'normal': ('regular', '300', '600', '700'),
-    'italic': ('italic', '300italic', '600italic', '700italic')
+    ('regular',   normal, 400),
+    ('300',       normal, 300),
+    ('600',       normal, 600),
+    ('700',       normal, 700),
+    ('italic',    italic, 400),
+    ('300italic', italic, 300),
+    ('600italic', italic, 600),
+    ('700italic', italic, 700)
 );
 $customFont-Poppins: (
-    'normal': ('regular', '300', '500', '600', '700'),
-    'italic': ('italic', '300italic', '500italic', '600italic', '700italic')
+    ('regular',   normal, 400),
+    ('300',       normal, 300),
+    ('500',       normal, 500),
+    ('600',       normal, 600),
+    ('700',       normal, 700),
+    ('italic',    italic, 400),
+    ('300italic', italic, 300),
+    ('500italic', italic, 500),
+    ('600italic', italic, 600),
+    ('700italic', italic, 700)
 );
 
-@each $fontWeight, $fontValues in $customFont-OpenSans {
-    @each $fontValue in $fontValues {
-        @include nessa-font-face(
-            $family: '"Open Sans"',
-            $src: '../Fonts/open-sans-v17-latin/open-sans-v17-latin-#{$fontValue}',
-            $weight: $fontValue,
-            $style: $fontWeight,
-            $woff2: true
-        );
-    }
+@each $suffix, $style, $weight in $customFont-OpenSans {
+    @include nessa-font-face(
+        $family: '"Open Sans"',
+        $src: '../Fonts/open-sans-v17-latin/open-sans-v17-latin-#{$suffix}',
+        $weight: $weight,
+        $style: $style,
+        $woff2: true
+    );
 }
 
-@each $fontWeight, $fontValues in $customFont-Poppins {
-    @each $fontValue in $fontValues {
-        @include nessa-font-face(
-            $family: 'Poppins',
-            $src: '../Fonts/poppins-v12-latin/poppins-v12-latin-#{$fontValue}',
-            $weight: $fontValue,
-            $style: $fontWeight,
-            $woff2: true
-        );
-    }
+@each $suffix, $style, $weight in $customFont-Poppins {
+    @include nessa-font-face(
+        $family: 'Poppins',
+        $src: '../Fonts/poppins-v12-latin/poppins-v12-latin-#{$suffix}',
+        $weight: $weight,
+        $style: $style,
+        $woff2: true
+    );
 }
 
 @include nessa-font-face(
     $family: 'IcoFont',
     $src: '../Fonts/icoFont/icofont',
     $weight: normal,
-    $style: 'Regular',
+    $style: normal,
     $woff2: true
 );

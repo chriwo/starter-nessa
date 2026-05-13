@@ -21,14 +21,14 @@
             width: 80%;
             height: 1px;
             content: "";
-            background: map-get($theme-colors, 'primary');;
+            background: map-get($theme-colors, 'primary');
         }
     }
 
     p {
         max-width: 900px;
         margin: 0 auto;
-        font-family: Poppins, sans-serif;
+        font-family: $headings-font-family;
         font-size: 1rem;
         font-weight: 700;
         line-height: 1.8;

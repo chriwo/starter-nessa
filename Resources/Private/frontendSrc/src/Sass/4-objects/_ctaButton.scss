@@ -55,8 +55,8 @@
     @extend %btn;
 
     margin: 10px;
-    color: var(--primary);
-    border: $btn-border-width solid var(--white);
+    color: var(--#{$prefix}primary);
+    border: $btn-border-width solid var(--#{$prefix}white);
 
     &:hover {
         @extend %btnBaseHoverBackgroundPrimary;
