@@ -6,6 +6,7 @@
 $primary: #DB0819 !default;
 $secondary: #0B2341 !default;
 
+// Gray colors
 $gray-100: #f8f9fa !default;
 $gray-500: #adb5bd !default;
 
@@ -15,7 +16,6 @@ $body-color: #444 !default;
 // Links
 $link-decoration: none !default;
 $link-hover-decoration: none !default;
-$headings-color: $gray-500 !default;
 
 // Components
 $border-width: 2px !default;
@@ -57,7 +57,7 @@ $nessa-responsive-height: 0 !default;
 $nessa-hamburger-icon-bg-color: #555 !default;
 
 // Section sublines
-$nessa-subline-color: #0F2F57 !default;
+$nessa-subline-color: $secondary !default;
 
 // Z-index hierarchy
 $nessa-zindex-header: 997 !default;
