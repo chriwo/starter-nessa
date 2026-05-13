@@ -3,7 +3,6 @@
 // Kundenprojekte können sie vor dem Import von starter-nessa überschreiben.
 
 // Color system
-$white: #FFF !default;
 $gray-100: #F8F9FA !default;
 $gray-200: #E9ECEF !default;
 $gray-300: #DEE2E6 !default;
@@ -16,10 +15,6 @@ $gray-800: #343A40 !default;
 $gray-900: #212529 !default;
 $primary: #DB0819 !default;
 $secondary: #0B2341 !default;
-$success: #198754 !default;
-$info: #0DCAF0 !default;
-$warning: #FFC107 !default;
-$danger: #DC3545 !default;
 $grays: (
     '100': $gray-100,
     '200': $gray-200,
