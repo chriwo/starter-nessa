@@ -1,0 +1,77 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{interrupters}">
+    <f:for each="{interrupters}" as="interrupter" iteration="iterator">
+        <f:variable name="interrupterImageWidth" value="360" />
+        <f:variable name="interrupterImageHeight" value="180" />
+        <f:variable name="showImage" value="1" />
+        <f:variable name="showTeaserTextOnScreenReadersOnly" value="0" />
+
+        <f:switch expression="{interrupter.originalInterrupter.layout}">
+            <f:case value="square_image_no_text">
+                <f:variable name="interrupterImageHeight" value="360" />
+                <f:variable name="showTeaserTextOnScreenReadersOnly" value="1" />
+            </f:case>
+            <f:case value="text_only">
+                <f:variable name="showImage" value="0" />
+            </f:case>
+        </f:switch>
+
+        <div class="c-interrupter   js-interrupter   qa-interrupter qa-interrupter-{iterator.index}"
+             id="ir-{interrupter.identifier}"
+             role="dialog"
+             aria-labelledby="ir-{interrupter.identifier}-headline"
+             <f:if condition="{interrupter.interval}">
+                 data-interval="{interrupter.interval}"
+             </f:if>
+        >
+            <div class="c-interrupter__content">
+                <p id="ir-{interrupter.identifier}-headline"
+                   class="c-interrupter__headline"
+                >
+                    {interrupter.header -> f:format.html(parseFuncTSPath: 'lib.parseFunc')}
+                </p>
+
+                <f:if condition="{interrupter.originalInterrupter.assets} && {showImage}">
+                    <f:variable name="interrupterImage" value="{interrupter.originalInterrupter.firstAsset}" />
+
+                    <picture class="c-interrupter__media">
+                        <img
+                            src="{f:uri.image(image: '{interrupterImage}', width: '{interrupterImageWidth}c')}"
+                            srcset="
+                                {f:uri.image(image: '{interrupterImage}', width: '{interrupterImageWidth}c')},
+                                {f:uri.image(image: '{interrupterImage}', width: '{interrupterImageWidth * 2}c')} 2x
+                            "
+                            alt="{interrupterImage.alternative}"
+                            class="c-interrupter__img"
+                            width="{interrupterImageWidth}"
+                            height="{interrupterImageHeight}"
+                            loading="lazy"
+                        >
+                    </picture>
+                </f:if>
+
+                <p class="c-interrupter__text
+                    {f:if(condition: showTeaserTextOnScreenReadersOnly, then: 'u-sr-only')}
+                ">
+                    {interrupter.teaser -> f:format.html(parseFuncTSPath: 'lib.parseFunc')}
+                </p>
+
+                <f:link.typolink parameter="{interrupter.link}"
+                                 class="btn btn-primary c-interrupter__cta   o-btn o-btn--icon   js-interrupter-dismiss"
+                >
+                    <span class="c-interrupter__link-label   o-btn__label">
+                        {f:if(condition: interrupter.linkText, then: interrupter.linkText, else: '{f:translate(key: \'template.interrupter.readMoreLabel\', extensionName: \'StarterNessa\') -> f:format.raw()}') -> f:format.html(parseFuncTSPath: 'lib.parseFunc')}
+                    </span>
+                </f:link.typolink>
+
+                <button type="button" class="btn btn-primary c-interrupter__close   o-btn o-btn--unstyled   js-interrupter-close">
+                    {f:translate(key: 'template.interrupter.closeButtonLabel', extensionName: 'StarterNessa')}
+                </button>
+            </div>
+        </div>
+    </f:for>
+</f:if>
+
+</html>

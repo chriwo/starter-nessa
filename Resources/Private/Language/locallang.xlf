@@ -13,6 +13,16 @@
 				<source>Write an email to %s</source>
 			</trans-unit>
 
+			<trans-unit id="template.interrupter.closeButtonLabel">
+				<source>Close window</source>
+			</trans-unit>
+			<trans-unit id="template.moreInfo.buttonLabel">
+				<source>Find out more</source>
+			</trans-unit>
+			<trans-unit id="template.icon.arrow.aria">
+				<source>Arrow icon</source>
+			</trans-unit>
+
 		</body>
     </file>
 </xliff>

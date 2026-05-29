@@ -1,0 +1,42 @@
+.c-interrupter {
+    background: var(--#{$prefix}white);
+    border-radius: var(--#{$prefix}border-radius);
+    box-shadow: 0 3px 30px rgba(0, 0, 0, .15);
+    color: gray;
+    margin: 0 10px;
+    opacity: 0;
+    padding: 24px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .4s cubic-bezier(0, 0, .1, 1);
+    transition-property: opacity;
+    width: auto;
+    z-index: 5;
+
+    &__content {
+
+    }
+
+    &__text,
+    &__headline {
+        color: inherit;
+        hyphens: auto;
+    }
+
+    &__text {
+    }
+
+    &__headline {
+    }
+
+    &__media {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    &__img {
+        width: 100%;
+    }
+}

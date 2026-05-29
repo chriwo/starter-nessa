@@ -6,3 +6,9 @@ services:
 
   StarterTeam\StarterNessa\:
     resource: '../Classes/*'
+    exclude:
+      - '../Classes/Resource/Interrupter.php'
+      - '../Classes/Resource/InterrupterReference.php'
+
+  StarterTeam\StarterNessa\Resource\InterrupterCollector:
+    public: true

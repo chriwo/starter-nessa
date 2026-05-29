@@ -15,6 +15,18 @@
 				<target>Eine Email an %s schreiben</target>
 			</trans-unit>
 
+			<trans-unit id="template.interrupter.closeButtonLabel">
+				<source>Close window</source>
+				<target state="translated">Fenster schließen</target>
+			</trans-unit>
+			<trans-unit id="template.moreInfo.buttonLabel">
+				<source>Find out more</source>
+				<target state="translated">Mehr Infos</target>
+			</trans-unit>
+			<trans-unit id="template.icon.arrow.aria">
+				<source>Arrow icon</source>
+				<target state="translated">Pfeil-Icon</target>
+			</trans-unit>
 		</body>
     </file>
 </xliff>

@@ -10,9 +10,14 @@ import ceHeroCarousel from './Modules/CeHero';
 import cePortfolio from './Modules/CePortfolio';
 import cePortfolioFileCollections from './Modules/CePortfolioFileCollections';
 import menuMain from './Modules/MenuMain';
+import InterrupterQueue from './Libs/InterrupterQueue';
 
 menuMain();
 ceHeroCarousel();
 cePortfolio();
 cePortfolioFileCollections();
 backToTop();
+
+const interrupterQueue = new InterrupterQueue();
+
+interrupterQueue.init();

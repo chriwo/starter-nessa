@@ -22,6 +22,28 @@
 				<source>Page footer</source>
 			</trans-unit>
 
+			<trans-unit id="pages.starternessa_interrupter">
+				<source>Interrupters</source>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter.createNewRelationLinkTitle">
+				<source>Add new interrupter</source>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode">
+				<source>Interrupter mode</source>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode.0">
+				<source>Show this page’s interrupters first, then global interrupters</source>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode.1">
+				<source>Show this page’s interrupters only</source>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode.2">
+				<source>Do not show interrupters on this page</source>
+			</trans-unit>
+			<trans-unit id="pages.palettes.interrupter">
+				<source>Interrupter</source>
+			</trans-unit>
+
 			<trans-unit id="CType.I.nessa_cta">
 				<source>Call-to-Action</source>
 			</trans-unit>
@@ -190,6 +212,80 @@
 			</trans-unit>
 			<trans-unit id="tx_starternessa_team_element.bodytext">
 				<source>Statement</source>
+			</trans-unit>
+
+			<trans-unit id="tx_starternessa_interrupter">
+				<source>Interrupter</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.internal_title">
+				<source>Internal title</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.teaser">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.teaser_screen-reader">
+				<source>Text for screen reader</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout">
+				<source>Layout</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout.item.wide_image_and_text">
+				<source>Image 2:1, with text</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout.item.square_image_no_text">
+				<source>Image 1:1, no text</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout.item.text_only">
+				<source>Text only</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.link">
+				<source>CTA: Link</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.link_text">
+				<source>CTA: Label</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.assets">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.interval">
+				<source>Time until re-display after closing (in hours)</source>
+			</trans-unit>
+
+			<trans-unit id="tx_starternessa_interrupter_reference">
+				<source>Interrupter reference</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.uid_local">
+				<source>Interrupter</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.uid_foreign">
+				<source>Used on page</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.tablenames">
+				<source>Table name</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.fieldname">
+				<source>Foreign field</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.sorting_foreign">
+				<source>Sorting foreign</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.table_local">
+				<source>Local table</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.teaser">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.teaser_screen-reader">
+				<source>Text for screen reader</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.link">
+				<source>CTA: Link</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.link_text">
+				<source>CTA: Label</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.basicoverlayPalette">
+				<source>Interrupter data</source>
 			</trans-unit>
 
 			<trans-unit id="teaser_element_label">

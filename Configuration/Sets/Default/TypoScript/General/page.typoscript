@@ -105,6 +105,24 @@ page {
 
       20 < lib.menuLibrary.menuMain
       30 < lib.menuLibrary.menuBreadcrumb
+
+      107 = StarterTeam\StarterNessa\DataProcessing\InterrupterProcessor
+      107 {
+        // don't render interrupter if interrupter mode equal 2
+        if {
+          negate = 1
+          value = 2
+          equals.field = nessa_interrupter_mode
+        }
+
+        as = interrupters
+
+        references {
+          fieldName = nessa_interrupter
+          table = pages
+          data = levelfield: 0, nessa_interrupter
+        }
+      }
     }
   }
 }

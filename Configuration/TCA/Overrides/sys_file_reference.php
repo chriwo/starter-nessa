@@ -23,6 +23,9 @@ ArrayUtility::mergeRecursiveWithOverrule(
             'nessaHeroImageOverlayPalette' => [
                 'showitem' => 'crop',
             ],
+            'nessaInterrupterPalette' => [
+                'showitem' => 'title, alternative, --linebreak--, crop',
+            ],
         ],
     ]
 );

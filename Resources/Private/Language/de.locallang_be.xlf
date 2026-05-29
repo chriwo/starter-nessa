@@ -27,6 +27,36 @@
 				<target>Seitenabschluss</target>
 			</trans-unit>
 
+			<trans-unit id="pages.starternessa_interrupter">
+				<source>Interrupters</source>
+				<target state="translated">Störer</target>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter.createNewRelationLinkTitle">
+				<source>Add new interrupter</source>
+				<target state="translated">Neuen Störer hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode">
+				<source>Interrupter mode</source>
+				<target state="translated">Störer-Modus</target>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode.0">
+				<source>Show this page’s interrupters first, then global interrupters</source>
+				<target state="translated">erst Störer dieser Seite, dann globale Störer anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode.1">
+				<source>Show this page’s interrupters only</source>
+				<target state="translated">nur Störer dieser Seite anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pages.starternessa_interrupter_mode.2">
+				<source>Do not show interrupters on this page</source>
+				<target state="translated">keine Störer auf dieser Seite anzeigen</target>
+			</trans-unit>
+
+			<trans-unit id="pages.palettes.interrupter">
+				<source>Interrupter</source>
+				<target state="translated">Störer</target>
+			</trans-unit>
+
 			<trans-unit id="CType.I.nessa_cta">
 				<source>Call-to-Action</source>
 				<target>Interaktion (CTA)</target>
@@ -251,6 +281,104 @@
 			<trans-unit id="tx_starternessa_team_element.bodytext">
 				<source>Statement</source>
 				<target>Beschreibung</target>
+			</trans-unit>
+
+			<trans-unit id="tx_starternessa_interrupter">
+				<source>Interrupter</source>
+				<target>Störer</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.internal_title">
+				<source>Internal title</source>
+				<target>Interner Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.teaser">
+				<source>Teaser</source>
+				<target>Teaser-Text</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.teaser_screen-reader">
+				<source>Text for screen reader</source>
+				<target>Text für Screen Reader (Browser für Personen mit Sehbeeinträchtigung)</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout">
+				<source>Layout</source>
+				<target>Layout</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout.item.wide_image_and_text">
+				<source>Image 2:1, with text</source>
+				<target>Bild 2:1 mit Teaser-Text</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout.item.square_image_no_text">
+				<source>Image 1:1, no text</source>
+				<target>Bild 1:1 ohne Teaser-Text</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.layout.item.text_only">
+				<source>Text only</source>
+				<target>nur Text</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.link">
+				<source>CTA: Link</source>
+				<target>CTA: Link</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.link_text">
+				<source>CTA: Label</source>
+				<target>CTA: Label</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.assets">
+				<source>Image</source>
+				<target>Bild</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter.interval">
+				<source>Re-display after closing (in hours)</source>
+				<target>Zeit bis zur Wiederanzeige nach Schließen (in Stunden)</target>
+			</trans-unit>
+
+			<trans-unit id="tx_starternessa_interrupter_reference">
+				<source>Interrupter reference</source>
+				<target>Störerreferenz</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.uid_local">
+				<source>Interrupter</source>
+				<target>Störer</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.uid_foreign">
+				<source>Used by page</source>
+				<target>Eingebundene Seite</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.tablenames">
+				<source>Table name</source>
+				<target>Tabellenname</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.fieldname">
+				<source>Foreign field</source>
+				<target>Fremdes Feld</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.sorting_foreign">
+				<source>Sorting foreign</source>
+				<target>Fremd sortieren</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.table_local">
+				<source>Local table</source>
+				<target>Lokale Tabelle</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.teaser">
+				<source>Teaser</source>
+				<target>Teaser-Text</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.teaser_screen-reader">
+				<source>Text for screen reader</source>
+				<target>Text für Screen Reader (Browser für Personen mit Sehbeeinträchtigung)</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.link">
+				<source>CTA: Link</source>
+				<target>CTA: Link</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.link_text">
+				<source>CTA: Label</source>
+				<target>CTA: Label</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_interrupter_reference.basicoverlayPalette">
+				<source>Interrupter data</source>
+				<target>Störer-Daten</target>
 			</trans-unit>
 
 			<trans-unit id="teaser_element_label">
