@@ -10,6 +10,4 @@
 @import './TypoScript/Elements/NessaPortfolioFileCollections.typoscript'
 @import './TypoScript/Elements/NessaTeam.typoscript'
 @import './TypoScript/Elements/NessaTeaser.typoscript'
-@import './TypoScript/Elements/NessaTeaserBackground.typoscript'
-@import './TypoScript/Elements/NessaTeaserIcon.typoscript'
 @import './TypoScript/Elements/StarterM27Download.typoscript'
