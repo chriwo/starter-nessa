@@ -10,4 +10,5 @@
 @import './TypoScript/Elements/NessaPortfolioFileCollections.typoscript'
 @import './TypoScript/Elements/NessaTeam.typoscript'
 @import './TypoScript/Elements/NessaTeaser.typoscript'
+@import './TypoScript/Elements/NessaPriceTeaser.typoscript'
 @import './TypoScript/Elements/StarterM27Download.typoscript'

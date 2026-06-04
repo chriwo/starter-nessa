@@ -32,6 +32,9 @@ class Configuration
         'nessa_teaser' => [
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-menu-thumbnail.svg',
         ],
+        'nessa_pricing' => [
+            'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-text.svg',
+        ],
         'nessa_hero' => [
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-carousel.svg',
         ],
@@ -69,6 +72,9 @@ class Configuration
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/overlay/overlay-backendusers.svg',
         ],
         'tx_starternessa_teaser_element' => [
+            'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-card.svg',
+        ],
+        'tx_starternessa_teaser_pricing' => [
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-card.svg',
         ],
         'tx_starternessa_hero_element' => [

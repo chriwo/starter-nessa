@@ -1,0 +1,54 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:variable name="isFeatured" value="0" />
+<f:if condition="{pricingItem.data.uid} == {ceData.nessa_pricing_featured_item} || {pricingItem.data._LOCALIZED_UID} == {ceData.nessa_pricing_featured_item}">
+    <f:then>
+        <f:variable name="isFeatured" value="1" />
+    </f:then>
+</f:if>
+
+<div class="{columnGrid} aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+    <div class="pricing-item{f:if(condition: isFeatured, then: ' pricing-item--featured')}">
+        <f:if condition="{isFeatured} && {ceData.nessa_pricing_featured_label}">
+            <span class="pricing-item__badge">{ceData.nessa_pricing_featured_label}</span>
+        </f:if>
+        <div class="pricing-item__body">
+            <h3 class="pricing-item__title">{pricingItem.data.header}</h3>
+            <f:if condition="{pricingItem.data.currency} && {pricingItem.data.price}">
+                <div class="pricing-item__price">
+                    <f:if condition="{settings.currencyPosition} == 'before'">
+                        <f:then>
+                            <span class="pricing-item__currency pricing-item__currency--before">{pricingItem.data.currency}</span>
+                            {pricingItem.data.price}
+                        </f:then>
+                        <f:else>
+                            {pricingItem.data.price}<span class="pricing-item__currency pricing-item__currency--after">{pricingItem.data.currency}</span>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:if>
+
+            <f:if condition="{pricingItem.data.bodytext}">
+                <p class="pricing-item__description">{pricingItem.data.bodytext -> f:format.nl2br()}</p>
+            </f:if>
+
+            <f:if condition="{pricingItem.featureList}">
+                <ul class="pricing-item__features">
+                    <f:for each="{pricingItem.featureList}" as="featureItem">
+                        <li><i class="icofont-verification-check"></i>{featureItem}</li>
+                    </f:for>
+                </ul>
+            </f:if>
+        </div>
+
+        <f:if condition="{pricingItem.data.link} && {pricingItem.data.link_text}">
+            <f:link.typolink parameter="{pricingItem.data.link}" class="o-btn-cta-hero align-middle mt-4">
+                {pricingItem.data.link_text}
+            </f:link.typolink>
+        </f:if>
+    </div>
+</div>
+
+</html>

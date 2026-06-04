@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Teaser"/>
+
+<f:section name="Header">
+    <f:render partial="Headers" arguments="{data: data}"/>
+</f:section>
+
+<f:section name="Main">
+    <f:if condition="{data.bodytext}">
+        <div class="row">
+            <div class="col">
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+        </div>
+    </f:if>
+
+    <div class="row gy-4 justify-content-center{f:if(condition: data.nessa_pricing_featured_item, then: ' pricing-row--has-featured')}">
+        <f:for each="{teasers}" as="teaser">
+            <f:render partial="Pricing/Item"
+                      arguments="{pricingItem: teaser, ceData: data, columnGrid: breakPointColumns}"
+                      optional="true"/>
+        </f:for>
+    </div>
+</f:section>
+
+</html>

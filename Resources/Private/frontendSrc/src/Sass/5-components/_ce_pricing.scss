@@ -1,0 +1,125 @@
+.ctype-nessa_pricing {
+    --#{$prefix}nessa-pricing-border-radius: #{$nessa-pricing-border-radius};
+    --#{$prefix}nessa-pricing-item-box-shadow: #{$nessa-pricing-item-box-shadow};
+    --#{$prefix}nessa-pricing-item-bg: #{$nessa-pricing-item-background-color};
+    --#{$prefix}nessa-pricing-item-padding: #{$nessa-pricing-item-padding};
+    --#{$prefix}nessa-pricing-header-font-size: #{$nessa-pricing-item-header-font-size};
+    --#{$prefix}nessa-pricing-price-font-size: #{$nessa-pricing-item-price-font-size};
+    --#{$prefix}nessa-pricing-currency-font-size: #{$nessa-pricing-item-currency-font-size};
+    --#{$prefix}nessa-pricing-features-font-size: #{$nessa-pricing-item-features-font-size};
+    --#{$prefix}nessa-pricing-featured-offset: #{$nessa-pricing-featured-offset};
+    --#{$prefix}nessa-pricing-badge-bg: #{$nessa-pricing-badge-bg};
+    --#{$prefix}nessa-pricing-badge-color: #{$nessa-pricing-badge-color};
+    --#{$prefix}nessa-pricing-badge-font-size: #{$nessa-pricing-badge-font-size};
+    --#{$prefix}nessa-pricing-badge-padding: #{$nessa-pricing-badge-padding};
+    --#{$prefix}nessa-pricing-badge-border-radius: #{$nessa-pricing-badge-border-radius};
+
+    .pricing-row--has-featured {
+        padding-top: var(--#{$prefix}nessa-pricing-featured-offset);
+    }
+
+    .pricing-item__badge {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        padding: var(--#{$prefix}nessa-pricing-badge-padding);
+        color: var(--#{$prefix}nessa-pricing-badge-color);
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        background-color: var(--#{$prefix}nessa-pricing-badge-bg);
+        border-radius: var(--#{$prefix}nessa-pricing-badge-border-radius);
+        white-space: nowrap;
+        transform: translate(-50%, -50%);
+
+        @include font-size(var(--#{$prefix}nessa-pricing-badge-font-size));
+    }
+
+    .pricing-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: var(--#{$prefix}nessa-pricing-item-padding);
+        text-align: center;
+        background-color: var(--#{$prefix}nessa-pricing-item-bg);
+        border-radius: var(--#{$prefix}nessa-pricing-border-radius);
+        box-shadow: var(--#{$prefix}nessa-pricing-item-box-shadow);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        &--featured {
+            border: 2px solid var(--#{$prefix}nessa-pricing-badge-bg);
+        }
+
+        &__body {
+            flex: 1;
+        }
+
+        &__title {
+            @include font-size(var(--#{$prefix}nessa-pricing-header-font-size));
+
+            margin-bottom: .7rem;
+        }
+
+        &__price {
+            @include font-size(var(--#{$prefix}nessa-pricing-price-font-size));
+
+            margin-bottom: .7rem;
+            font-weight: $font-weight-bold;
+        }
+
+        &__currency {
+            @include font-size(var(--#{$prefix}nessa-pricing-currency-font-size));
+
+            font-weight: $font-weight-medium;
+
+            &--before {
+                vertical-align: super;
+            }
+
+            &--after {
+                margin-left: 3px;
+                vertical-align: middle;
+            }
+        }
+
+        &__description {
+            margin-bottom: $spacer * 2;
+        }
+
+        &__features {
+            padding: 0;
+            margin: 0 0 ($spacer * 2);
+            text-align: left;
+            list-style: none;
+
+            li {
+                display: flex;
+                gap: map-get($spacers, 2);
+                align-items: center;
+                justify-content: flex-start;
+                padding: .75rem 0;
+
+                @include font-size(var(--#{$prefix}nessa-pricing-features-font-size));
+
+                i {
+                    color: var(--#{$prefix}primary);
+
+                    @include font-size($font-size-base * 1.125);
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .ctype-nessa_pricing {
+        --#{$prefix}nessa-pricing-item-padding: #{$nessa-pricing-item-padding-md};
+        --#{$prefix}nessa-pricing-price-font-size: #{$nessa-pricing-item-price-font-size-md};
+        --#{$prefix}nessa-pricing-currency-font-size: #{$nessa-pricing-item-currency-font-size-md};
+        --#{$prefix}nessa-pricing-features-font-size: #{$nessa-pricing-item-features-font-size-md};
+    }
+}
