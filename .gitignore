@@ -13,8 +13,12 @@ Thumbs.db
 
 /.build
 /Resources/Private/frontendSrc/node_modules/
+*.js.map
 .sass-cache
 composer.lock
 var
 .php-cs-fixer.cache
 /config
+
+.claude
+CLAUDE.md
