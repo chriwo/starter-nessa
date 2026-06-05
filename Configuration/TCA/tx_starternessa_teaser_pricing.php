@@ -78,6 +78,7 @@ return (function () {
                 'showitem' => 'price, currency',
             ],
             'cta' => [
+                'label' => $translationFile . 'palette.cta',
                 'showitem' => 'link, link_text',
             ],
         ],
