@@ -247,6 +247,9 @@
 			<trans-unit id="tx_starternessa_teaser_pricing.feature_list">
 				<source>Feature list</source>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.feature_list.description">
+				<source>Each line is automatically converted into a bullet point</source>
+			</trans-unit>
 			<trans-unit id="tt_content.nessa_pricing_featured_item">
 				<source>Featured card</source>
 			</trans-unit>

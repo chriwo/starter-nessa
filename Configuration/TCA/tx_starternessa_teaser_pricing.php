@@ -127,6 +127,7 @@ return (function () {
             'feature_list' => [
                 'l10n_mode' => 'prefixLangTitle',
                 'label' => $translationFile . 'tx_starternessa_teaser_pricing.feature_list',
+                'description' => $translationFile . 'tx_starternessa_teaser_pricing.feature_list.description',
                 'config' => [
                     'type' => 'text',
                     'cols' => '80',

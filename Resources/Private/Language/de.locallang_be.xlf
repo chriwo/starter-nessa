@@ -326,6 +326,10 @@
 				<source>Feature list</source>
 				<target>Funktionsübersicht als Liste</target>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.feature_list.description">
+				<source>Each line is automatically converted into a bullet point</source>
+				<target>Jede Zeile wird automatisch in einen Stichpunkt umgewand</target>
+			</trans-unit>
 			<trans-unit id="tt_content.nessa_pricing_featured_item">
 				<source>Featured card</source>
 				<target>Hervorgehobene Card</target>
