@@ -1,34 +1,28 @@
 imports:
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Processing.yaml' }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml' }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml' }
 
 editor:
   config:
     contentsCss:
       - 'EXT:starter_nessa/Resources/Public/Frontend/rte.min.css'
 
-    format_tags: "p;h2;h3;pre"
-
-    toolbarGroups:
-      - { name: clipboard, groups: [ clipboard, undo ] }
-      - { name: insert }
-      - { name: tools }
-      - { name: document,  groups: [ mode, cleanup ] }
-      - "/"
-      - { name: basicstyles, groups: [ basicstyles ] }
-
-    extraPlugins:
-      - find
-      - showblocks
-
-    removePlugins:
-      - image
-
-    removeButtons:
-      - Strike
-      - Table
-      - Anchor
-      - HorizontalRule
-      - Styles
-      - Spellchecker
+    toolbar:
+      items:
+        - undo
+        - redo
+        - '|'
+        - specialCharacters
+        - '|'
+        - sourceEditing
+        - '-'
+        - bold
+        - italic
+        - underline
+        - subscript
+        - superscript
+        - softhyphen
+        - '|'
+        - removeFormat
+        - findAndReplace

@@ -1,12 +1,14 @@
 imports:
-  - { resource: "EXT:starter_nessa/Configuration/RTE/Nessa.yaml" }
+  - { resource: 'EXT:starter_nessa/Configuration/RTE/Nessa.yaml' }
 
 editor:
   config:
-    format_tags: "p;h2;h3"
+    toolbar:
+      items:
+        - heading
 
-    toolbarGroups:
-      - { name: styles, groups: [ format ] }
-
-    removeButtons:
-      - Styles
+    heading:
+      options:
+        - { model: 'paragraph', title: 'Paragraph' }
+        - { model: 'heading2', view: 'h2', title: 'Heading 2' }
+        - { model: 'heading3', view: 'h3', title: 'Heading 3' }

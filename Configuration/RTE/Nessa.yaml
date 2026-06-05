@@ -1,39 +1,56 @@
 imports:
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Processing.yaml' }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml' }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml' }
 
 editor:
   config:
     contentsCss:
       - 'EXT:starter_nessa/Resources/Public/Frontend/rte.min.css'
 
-    toolbarGroups:
-      - { name: clipboard, groups: [ clipboard, undo ] }
-      - { name: links }
-      - { name: insert }
-      - { name: tools }
-      - { name: table }
-      - { name: tabletools }
-      - { name: document,  groups: [ mode, document, doctools ] }
-      - { name: others }
-      - "/"
-      - { name: basicstyles, groups: [ basicstyles, align, cleanup ] }
-      - { name: paragraph,   groups: [ list, blocks, align ] }
+    toolbar:
+      items:
+        - undo
+        - redo
+        - '|'
+        - link
+        - '|'
+        - insertTable
+        - '|'
+        - specialCharacters
+        - '|'
+        - sourceEditing
+        - '-'
+        - bold
+        - italic
+        - underline
+        - subscript
+        - superscript
+        - softhyphen
+        - '|'
+        - alignment:left
+        - alignment:center
+        - alignment:right
+        - blockQuote
+        - '|'
+        - bulletedList
+        - numberedList
+        - '|'
+        - removeFormat
+        - findAndReplace
 
-    justifyClasses:
-      - text-left
-      - text-center
-      - text-right
-      - text-justify
+    alignment:
+      options:
+        - { name: 'left', className: 'text-start' }
+        - { name: 'center', className: 'text-center' }
+        - { name: 'right', className: 'text-end' }
 
-    extraPlugins:
-      - justify
-      - find
-      - showblocks
-
-    removePlugins:
-      - image
-
-    removeButtons:
-      - Strike
+    table:
+      defaultHeadings: { rows: 1 }
+      contentToolbar:
+        - tableColumn
+        - tableRow
+        - mergeTableCells
+        - tableProperties
+        - tableCellProperties
+        - toggleTableCaption
