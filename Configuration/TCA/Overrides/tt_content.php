@@ -13,6 +13,7 @@ defined('TYPO3') || die();
         [
             'palettes' => [
                 'nessaCta' => [
+                    'label' => 'LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:palette.cta',
                     'showitem' => 'tx_starter_ctalink, tx_starter_ctalink_text',
                 ],
             ],

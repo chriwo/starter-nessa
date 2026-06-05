@@ -38,7 +38,7 @@ defined('TYPO3') || die();
 
     ExtensionManagementUtility::addToAllTCAtypes(
         'tt_content',
-        '--palette--;' . $translationFile . ':palette.cta;nessaCta,',
+        '--palette--;;nessaCta,',
         '',
         'before:bodytext'
     );
