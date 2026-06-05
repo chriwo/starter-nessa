@@ -2,6 +2,9 @@
 // Diese Variablen werden von Bootstrap via !default übernommen.
 // Kundenprojekte können sie vor dem Import von starter-nessa überschreiben.
 
+// Prefix for :root CSS variables
+$prefix: 'bs-' !default;
+
 // Color system
 $primary: #DB0819 !default;
 $secondary: #0B2341 !default;
@@ -23,6 +26,7 @@ $border-color: $primary !default;
 $border-radius: 0.375rem !default;
 
 // Typography
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-family-sans-serif: 'Open Sans', sans-serif !default;
 $headings-font-family: 'Poppins', sans-serif !default;
 
@@ -89,3 +93,29 @@ $nessa-partner-item-width-md: 250px !default;
 // CE-Portfolio file collections
 $nessa-portfolio-file-border: 3px !default;
 $nessa-portfolio-file-border-radius: $border-radius !default;
+
+// CE Pricing
+$nessa-pricing-border-radius: var(--#{$prefix}border-radius) !default;
+$nessa-pricing-item-box-shadow: 0 5px 10px 0 rgb(110 123 131 / 40%) !default;
+$nessa-pricing-item-background-color: var(--#{$prefix}white) !default;
+$nessa-pricing-item-header-font-size: $font-size-base * 1.5 !default;
+
+// Mobile-first base values (< md)
+$nessa-pricing-item-padding: 30px 20px !default;
+$nessa-pricing-item-price-font-size: $font-size-base * 2.5 !default;
+$nessa-pricing-item-currency-font-size: $font-size-base * 1.25 !default;
+$nessa-pricing-item-features-font-size: $font-size-base * .875 !default;
+
+// md+ breakpoint values
+$nessa-pricing-item-padding-md: 40px !default;
+$nessa-pricing-item-price-font-size-md: $font-size-base * 3 !default;
+$nessa-pricing-item-currency-font-size-md: $font-size-base * 1.5 !default;
+$nessa-pricing-item-features-font-size-md: $font-size-base * .9375 !default;
+
+// Featured Badge
+$nessa-pricing-featured-offset: 1.5rem !default;
+$nessa-pricing-badge-bg: var(--#{$prefix}primary) !default;
+$nessa-pricing-badge-color: var(--#{$prefix}white) !default;
+$nessa-pricing-badge-font-size: $font-size-base * .875 !default;
+$nessa-pricing-badge-padding: 0.35rem 1.25rem !default;
+$nessa-pricing-badge-border-radius: $nessa-pricing-border-radius !default;

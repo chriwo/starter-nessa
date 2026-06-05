@@ -35,6 +35,7 @@ TCEFORM {
     CType.keepItems := addToList(nessa_cta)
     CType.keepItems := addToList(nessa_team)
     CType.keepItems := addToList(nessa_teaser)
+    CType.keepItems := addToList(nessa_pricing)
     CType.keepItems := addToList(nessa_hero)
     CType.keepItems := addToList(nessa_partner)
     CType.keepItems := addToList(nessa_portfolio)
@@ -71,6 +72,15 @@ TCEFORM {
       disabled = 1
       types {
         nessa_teaser {
+          disabled = 0
+          altLabels {
+            1 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col6
+            2 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col4
+            3 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col3
+          }
+          removeItems = 0
+        }
+        nessa_pricing {
           disabled = 0
           altLabels {
             1 = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:tt_content.nessa_column_layout.I.col6

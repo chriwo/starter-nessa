@@ -1,0 +1,49 @@
+tt_content.nessa_pricing =< lib.contentElement
+tt_content.nessa_pricing {
+  templateName = NessaPricing
+
+  variables {
+    breakPointColumns = CASE
+    breakPointColumns {
+      if.isTrue.field = layout
+      key.field = layout
+
+      2 = TEXT
+      2.value = col-md-6 col-lg-4
+
+      3 = TEXT
+      3.value = col-md-6 col-lg-4 col-xl-3
+
+      default = TEXT
+      default.value = col-md-6
+    }
+  }
+
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+    10 {
+      table = tx_starternessa_teaser_pricing
+      where {
+        data = field:uid
+        wrap = tt_content_record=|
+      }
+
+      orderBy = sorting
+      as = teasers
+
+      dataProcessing {
+        10 = TYPO3\CMS\Frontend\DataProcessing\SplitProcessor
+        10 {
+          if.isTrue.field = feature_list
+          fieldName = feature_list
+          removeEmptyEntries = 1
+          as = featureList
+        }
+      }
+    }
+  }
+
+  settings {
+    currencyPosition = after
+  }
+}

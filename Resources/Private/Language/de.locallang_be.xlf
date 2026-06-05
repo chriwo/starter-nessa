@@ -51,6 +51,14 @@
 				<source>A teaser with a short text and predefined icons</source>
 				<target>Ein Teaser (Anreißer) mit einem kurzen Text und vordefinierten Icons</target>
 			</trans-unit>
+			<trans-unit id="CType.I.nessa_pricing">
+				<source>Pricing Card</source>
+				<target>Preiskarte</target>
+			</trans-unit>
+			<trans-unit id="CType.I.nessa_pricing.description">
+				<source>A special teaser element as pricing card</source>
+				<target>Ein spezielles Teaser Element mit Angabe von Preisen</target>
+			</trans-unit>
 			<trans-unit id="CType.I.nessa_teaser_icon">
 				<source>Teaser own icon</source>
 				<target>Teaser eigene Icons</target>
@@ -288,6 +296,47 @@
 			<trans-unit id="tx_starternessa_teaser_element.icon.I.consumption-water">
 				<source>Consumption water</source>
 				<target>Verbrauchswasser</target>
+			</trans-unit>
+
+			<trans-unit id="teaser_pricing_label">
+				<source>Price item</source>
+				<target>Preis Element</target>
+			</trans-unit>
+			<trans-unit id="teaser_pricing_formlabel">
+				<source>Price item</source>
+				<target>Preis Element</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.link">
+				<source>Link</source>
+				<target>Link</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.link_text">
+				<source>Link text</source>
+				<target>Linktext</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.currency">
+				<source>Currency</source>
+				<target>Währung</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.price">
+				<source>Price</source>
+				<target>Preis</target>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.feature_list">
+				<source>Feature list</source>
+				<target>Funktionsübersicht als Liste</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_pricing_featured_item">
+				<source>Featured card</source>
+				<target>Hervorgehobene Card</target>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_pricing_featured_label">
+				<source>Badge label</source>
+				<target>Badge-Text</target>
+			</trans-unit>
+			<trans-unit id="palette.nessaPricingFeatured">
+				<source>Featured card</source>
+				<target>Hervorgehobene Card</target>
 			</trans-unit>
 
 			<trans-unit id="hero_element_label">

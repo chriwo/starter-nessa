@@ -40,6 +40,12 @@
 			<trans-unit id="CType.I.nessa_teaser.description">
 				<source>A teaser with a short text and predefined icons</source>
 			</trans-unit>
+			<trans-unit id="CType.I.nessa_pricing">
+				<source>Pricing Card</source>
+			</trans-unit>
+			<trans-unit id="CType.I.nessa_pricing.description">
+				<source>A special teaser element as pricing card</source>
+			</trans-unit>
 			<trans-unit id="CType.I.nessa_teaser_icon">
 				<source>Teaser own icon</source>
 			</trans-unit>
@@ -218,6 +224,37 @@
 			</trans-unit>
 			<trans-unit id="tx_starternessa_teaser_element.icon.I.consumption-water">
 				<source>Consumption water</source>
+			</trans-unit>
+
+			<trans-unit id="teaser_pricing_label">
+				<source>Price item</source>
+			</trans-unit>
+			<trans-unit id="teaser_pricing_formlabel">
+				<source>Price item</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.link">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.link_text">
+				<source>Link text</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.currency">
+				<source>Currency</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.price">
+				<source>Price</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_teaser_pricing.feature_list">
+				<source>Feature list</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_pricing_featured_item">
+				<source>Featured card</source>
+			</trans-unit>
+			<trans-unit id="tt_content.nessa_pricing_featured_label">
+				<source>Badge label</source>
+			</trans-unit>
+			<trans-unit id="palette.nessaPricingFeatured">
+				<source>Featured card</source>
 			</trans-unit>
 
 			<trans-unit id="hero_element_label">
