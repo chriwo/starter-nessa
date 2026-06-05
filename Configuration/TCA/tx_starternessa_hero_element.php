@@ -10,7 +10,7 @@ return (function () {
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
         'header,LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header.ALT.html_formlabel',
         'bodytext',
-        '--palette--;' . $translationFile . 'palette.cta;cta',
+        '--palette--;;cta',
         '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.media',
         'assets',
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language',
@@ -75,6 +75,7 @@ return (function () {
             ',
             ],
             'cta' => [
+                'label' => $translationFile . 'palette.cta',
                 'showitem' => 'ctalink, ctalink_text',
             ],
         ],

@@ -76,6 +76,7 @@ return (function () {
             ',
             ],
             'cta' => [
+                'label' => $translationFile . 'palette.cta',
                 'showitem' => 'link, link_text',
             ],
         ],
