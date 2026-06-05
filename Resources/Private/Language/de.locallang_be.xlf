@@ -379,7 +379,7 @@
 			</trans-unit>
 			<trans-unit id="tx_starternessa_social_element.icon">
 				<source>SocialMedia Icon</source>
-				<source>SocialMedia Icon</source>
+				<target>SocialMedia Icon</target>
 			</trans-unit>
 			<trans-unit id="tx_starternessa_social_element.icon.I.discourd">
 				<source>Discourd</source>
