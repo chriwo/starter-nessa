@@ -5,9 +5,8 @@ imports:
 
 editor:
   config:
-    contentsCss: "EXT:starter_nessa/Resources/Public/Frontend/rte.min.css"
-
-    format_tags: "p"
+    contentsCss:
+      - 'EXT:starter_nessa/Resources/Public/Frontend/rte.min.css'
 
     toolbarGroups:
       - { name: clipboard, groups: [ clipboard, undo ] }
