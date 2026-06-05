@@ -1,6 +1,6 @@
 {
 	"name": "@chriwo/starter-nessa",
-	"version": "14.3.2-beta.4",
+	"version": "14.3.2",
 	"description": "StarterNessa — Bootstrap 5 TYPO3 theme frontend base (SCSS, JS, Fonts)",
 	"main": "scss/app.scss",
 	"author": "StarterTeam",
