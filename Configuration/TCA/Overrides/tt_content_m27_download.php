@@ -27,7 +27,6 @@ defined('TYPO3') || die();
                 'bodytext' => [
                     'config' => [
                         'enableRichtext' => true,
-                        'richtextConfiguration' => 'default',
                     ],
                 ],
                 'media' => [

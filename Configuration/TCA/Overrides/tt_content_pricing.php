@@ -107,5 +107,14 @@ defined('TYPO3') || die();
                 --palette--;;frames,
                 --palette--;;appearanceLinks
         ',
+        [
+            'columnsOverrides' => [
+                'bodytext' => [
+                    'config' => [
+                        'enableRichtext' => true,
+                    ],
+                ],
+            ],
+        ]
     );
 })();

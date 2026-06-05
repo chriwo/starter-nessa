@@ -18,6 +18,15 @@ defined('TYPO3') || die();
         '
         --palette--;;headers,
         --palette--;;nessaCta,
-        bodytext'
+        bodytext',
+        [
+            'columnsOverrides' => [
+                'bodytext' => [
+                    'config' => [
+                        'enableRichtext' => true,
+                    ],
+                ],
+            ],
+        ]
     );
 })();

@@ -5,6 +5,7 @@ RTE {
         preset = nessa
 
         types {
+          nessa_cta.preset = nessa-minimal
           nessa_teaser.preset = nessa-minimal
           textmedia.preset = nessa-headlines
         }
