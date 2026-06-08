@@ -50,17 +50,17 @@
     margin-right: 2.0833rem;
     overflow: hidden;
 
-    i {
+    .icon {
       color: map-get($theme-colors, 'secondary');
     }
   }
-}
 
-.icofont-download {
-  font-size: $h4-font-size;
+  .icon {
+    font-size: $h4-font-size;
 
-  .c-download-list__link:hover &,
-  .c-download-list__link:active & {
-    color: map-get($theme-colors, 'primary');
+    .c-download-list__link:hover &,
+    .c-download-list__link:active & {
+      color: map-get($theme-colors, 'primary');
+    }
   }
 }

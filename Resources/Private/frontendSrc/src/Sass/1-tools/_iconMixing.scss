@@ -1,7 +1,0 @@
-@mixin define-icofont-icon($name, $hexValue) {
-    .icofont-#{$name} {
-        &::before {
-            content: $hexValue;
-        }
-    }
-}
