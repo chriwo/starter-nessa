@@ -12,12 +12,16 @@
 		<f:if condition="{socialMediaItems}">
 			<div class="col-lg-4 text-lg-center text-center">
                 <f:for each="{socialMediaItems}" as="socialMediaItem">
-                    <f:link.typolink
-                        parameter="{socialMediaItem.data.social_link}"
-                        target="_blank"
-                    >
-                        <i class="{socialMediaItem.data.icon} icofont-md icofont-invert"></i>
-                    </f:link.typolink>
+                    <f:if condition="{socialMediaItem.data.icon}">
+                        <f:link.typolink
+                            parameter="{socialMediaItem.data.social_link}"
+                            target="_blank"
+                        >
+                            <svg class="icon icon-md icon-invert" aria-hidden="true" focusable="false">
+                                <use href="#{socialMediaItem.data.icon}"></use>
+                            </svg>
+                        </f:link.typolink>
+                    </f:if>
                 </f:for>
 			</div>
 		</f:if>

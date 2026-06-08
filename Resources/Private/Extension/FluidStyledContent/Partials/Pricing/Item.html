@@ -35,9 +35,9 @@
             </f:if>
 
             <f:if condition="{pricingItem.featureList}">
-                <ul class="pricing-item__features">
+                <ul class="pricing-item__features icon-list">
                     <f:for each="{pricingItem.featureList}" as="featureItem">
-                        <li><i class="icofont-verification-check"></i>{featureItem}</li>
+                        <li>{featureItem}</li>
                     </f:for>
                 </ul>
             </f:if>
