@@ -41,7 +41,9 @@
                         parameter="{data.email}"
                         title="{f:translate(key:'team-member-write-email', arguments:{0: data.realname}, extensionName:'StarterNessa')}"
                     >
-                        <svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-envelope"></use></svg>
+                        <svg class="icon icon-lg" aria-hidden="true" focusable="false">
+                            <use href="#bi-envelope"></use>
+                        </svg>
                     </f:link.typolink>
                 </f:if>
 
@@ -49,7 +51,9 @@
                     <ul class="list-unstyled">
                         <li>
                             <f:link.typolink parameter="{data.telephone_link}">
-                                <svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-telephone"></use></svg>
+                                <svg class="icon icon-lg" aria-hidden="true" focusable="false">
+                                    <use href="#bi-telephone"></use>
+                                </svg>
                                 {data.telephone}
                             </f:link.typolink>
                         </li>

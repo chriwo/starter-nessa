@@ -13,4 +13,5 @@ lib.contentElement {
     20 = EXT:starter_nessa/Resources/Private/Extension/FluidStyledContent/Layouts/
     30 = {$starter.contentElementTemplate.layoutRootPath}
   }
+
 }

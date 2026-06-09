@@ -93,12 +93,12 @@ page {
       10 = {$starter.fluidtemplate.templateRootPath}
     }
 
-    settings {
-      logoFile = {$starter.branch.images.logo}
-    }
-
     variables {
       iconSprite < lib.iconSprite
+    }
+
+    settings {
+      logoFile = {$starter.branch.images.logo}
     }
 
     dataProcessing {
