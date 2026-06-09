@@ -1,5 +1,0 @@
-# The {iconSprite} template variable is populated by SvgSpriteProcessor,
-# which reads EXT:starter_nessa/Resources/Public/Frontend/icons.svg by default.
-#
-# Customer extensions add their own sprite files via:
-#   page.10.dataProcessing.5.spriteFiles.20 = EXT:customer_theme/.../icons-custom.svg
