@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+
 import inject from '@rollup/plugin-inject';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
@@ -32,15 +33,24 @@ function svgSpritePlugin() {
                 return m ? m[1] : '0 0 16 16';
             };
 
-            const extractInner = (svg) =>
-                svg
+            const extractInner = (svg, filePath) => {
+                const cleaned = svg
                     .replace(/<\?xml[^>]*\?>/g, '')
                     .replace(/<!--[\s\S]*?-->/g, '')
                     .replace(/<title>[^<]*<\/title>/gi, '')
-                    .replace(/<desc>[^<]*<\/desc>/gi, '')
+                    .replace(/<desc>[^<]*<\/desc>/gi, '');
+                const openTags = cleaned.match(/<svg\b[^>]*>/gi) ?? [];
+                const closeTags = cleaned.match(/<\/svg>/gi) ?? [];
+                if (openTags.length !== 1 || closeTags.length !== 1) {
+                    this.error(
+                        `SVG sprite: ${filePath} contains ${openTags.length} <svg> open and ${closeTags.length} </svg> close tags — exactly one of each is required`,
+                    );
+                }
+                return cleaned
                     .replace(/<svg[^>]*>/i, '')
                     .replace(/<\/svg>/i, '')
                     .trim();
+            };
 
             const symbols = [];
             let errors = 0;
@@ -53,7 +63,7 @@ function svgSpritePlugin() {
                 }
                 const svg = readFileSync(filePath, 'utf8');
                 const viewBox = extractViewBox(svg);
-                const inner = extractInner(svg);
+                const inner = extractInner(svg, filePath);
 
                 symbols.push(`<symbol id="${id}" viewBox="${viewBox}">\n${inner}\n</symbol>`);
                 this.emitFile({

@@ -15,8 +15,15 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
  * Customer extensions can add their own sprite files via TypoScript:
  *   page.10.dataProcessing.5.spriteFiles.20 = EXT:customer_theme/.../icons-custom.svg
  */
-final readonly class SvgSpriteProcessor implements DataProcessorInterface
+final class SvgSpriteProcessor implements DataProcessorInterface
 {
+    private const DEFAULT_SPRITE_FILES = [
+        '10' => 'EXT:starter_nessa/Resources/Public/Frontend/icons.svg',
+    ];
+
+    /** @var array<string, string> */
+    private static array $spriteCache = [];
+
     /**
      * @param array<string, mixed> $contentObjectConfiguration
      * @param array<string, mixed> $processorConfiguration
@@ -30,12 +37,9 @@ final readonly class SvgSpriteProcessor implements DataProcessorInterface
         array $processorConfiguration,
         array $processedData
     ): array {
-        $spriteFiles = $processorConfiguration['spriteFiles.'] ?? [
-            '10' => 'EXT:starter_nessa/Resources/Public/Frontend/icons.svg',
-        ];
-
+        $spriteFiles = $processorConfiguration['spriteFiles.'] ?? self::DEFAULT_SPRITE_FILES;
         if (!is_array($spriteFiles)) {
-            $spriteFiles = ['10' => 'EXT:starter_nessa/Resources/Public/Frontend/icons.svg'];
+            $spriteFiles = self::DEFAULT_SPRITE_FILES;
         }
 
         ksort($spriteFiles);
@@ -49,10 +53,11 @@ final readonly class SvgSpriteProcessor implements DataProcessorInterface
             if ($absolutePath === '' || !is_file($absolutePath)) {
                 continue;
             }
-            $fileContent = file_get_contents($absolutePath);
-            if ($fileContent !== false) {
-                $content .= $fileContent;
+            if (!isset(self::$spriteCache[$absolutePath])) {
+                $fileContent = file_get_contents($absolutePath);
+                self::$spriteCache[$absolutePath] = $fileContent !== false ? $fileContent : '';
             }
+            $content .= self::$spriteCache[$absolutePath];
         }
 
         $processedData['iconSprite'] = $content;
