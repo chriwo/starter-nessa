@@ -1,7 +1,5 @@
 <?php
 
-use TYPO3\CMS\Core\Resource\FileType;
-
 defined('TYPO3') || die();
 
 return (function () {

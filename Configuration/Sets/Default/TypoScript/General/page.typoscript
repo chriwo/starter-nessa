@@ -98,6 +98,8 @@ page {
     }
 
     dataProcessing {
+      5 = StarterTeam\StarterNessa\DataProcessing\SvgSpriteProcessor
+
       10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
       10 {
         as = site

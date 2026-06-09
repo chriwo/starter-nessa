@@ -45,10 +45,3 @@ $customFont-Poppins: (
     );
 }
 
-@include nessa-font-face(
-    $family: 'IcoFont',
-    $src: '../Fonts/icoFont/icofont',
-    $weight: normal,
-    $style: normal,
-    $woff2: true
-);

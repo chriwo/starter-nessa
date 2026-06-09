@@ -24,12 +24,16 @@
         <f:if condition="{linkItems} || {data.email}">
             <div class="member__social">
                 <f:for each="{linkItems}" as="linkItem">
-                    <f:link.typolink
-                        parameter="{linkItem.data.social_link}"
-                        target="_blank"
-                    >
-                        <i class="{linkItem.data.icon} icofont-lg"></i>
-                    </f:link.typolink>
+                    <f:if condition="{linkItem.data.icon}">
+                        <f:link.typolink
+                            parameter="{linkItem.data.social_link}"
+                            target="_blank"
+                        >
+                            <svg class="icon icon-lg" aria-hidden="true" focusable="false">
+                                <use href="#{linkItem.data.icon}"></use>
+                            </svg>
+                        </f:link.typolink>
+                    </f:if>
                 </f:for>
 
                 <f:if condition="{data.email}">
@@ -37,21 +41,21 @@
                         parameter="{data.email}"
                         title="{f:translate(key:'team-member-write-email', arguments:{0: data.realname}, extensionName:'StarterNessa')}"
                     >
-                        <i class="icofont-email icofont-lg"></i>
+                        <svg class="icon icon-lg" aria-hidden="true" focusable="false">
+                            <use href="#bi-envelope"></use>
+                        </svg>
                     </f:link.typolink>
                 </f:if>
 
                 <f:if condition="{data.telephone}">
-                    <ul class="icofont-ul" >
+                    <ul class="list-unstyled">
                         <li>
-                            <f:if condition="{data.telephone}">
-                                <f:link.typolink
-                                    parameter="{data.telephone_link}"
-                                >
-                                    <i class="icofont icofont-phone icofont-lg"></i>
-                                    {data.telephone}
-                                </f:link.typolink>
-                            </f:if>
+                            <f:link.typolink parameter="{data.telephone_link}">
+                                <svg class="icon icon-lg" aria-hidden="true" focusable="false">
+                                    <use href="#bi-telephone"></use>
+                                </svg>
+                                {data.telephone}
+                            </f:link.typolink>
                         </li>
                     </ul>
                 </f:if>

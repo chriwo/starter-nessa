@@ -15,12 +15,16 @@
 			 class="js-portfolio__gallery preview-link"
 			 title="{assetItem.file.properties.title}"
 		>
-			<i class="icofont-plus"></i>
+			<svg class="icon" aria-hidden="true" focusable="false">
+                <use href="#bi-plus-lg"></use>
+            </svg>
 		</a>
 
 		<f:if condition="{assetItem.file.properties.nessa_portfolio_link}">
 			<f:link.typolink parameter="{assetItem.file.properties.nessa_portfolio_link}" class="details-link">
-				<i class="icofont-link"></i>
+				<svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#bi-link-45deg"></use>
+                </svg>
 			</f:link.typolink>
 		</f:if>
 	</div>

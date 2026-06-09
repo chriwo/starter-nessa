@@ -73,9 +73,14 @@
         &::after {
           position: absolute;
           right: 15px;
-          padding-left: 10px;
-          font-family: $nessa-icon-font-family;
-          content: '\ea99';
+          display: inline-block;
+          width: .4em;
+          height: .4em;
+          content: '';
+          border-right: 2px solid currentColor;
+          border-bottom: 2px solid currentColor;
+          transform: rotate(45deg);
+          vertical-align: middle;
         }
 
         padding-right: 35px;
@@ -95,7 +100,7 @@
   .active.drop-down {
     > a {
       &::after {
-        content: '\eaa1';
+        transform: rotate(-135deg);
       }
     }
   }
