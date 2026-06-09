@@ -1,4 +1,5 @@
 @import './TypoScript/Helper/Menu.typoscript'
 
+@import './TypoScript/General/iconSprite.typoscript'
 @import './TypoScript/General/page.typoscript'
 @import './TypoScript/General/config.typoscript'

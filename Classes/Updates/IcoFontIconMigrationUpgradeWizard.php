@@ -183,7 +183,8 @@ class IcoFontIconMigrationUpgradeWizard implements UpgradeWizardInterface
 
     public function __construct(
         private readonly ConnectionPool $connectionPool,
-    ) {}
+    ) {
+    }
 
     #[\Override]
     public function getTitle(): string

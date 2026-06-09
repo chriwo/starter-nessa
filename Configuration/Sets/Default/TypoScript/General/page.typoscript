@@ -97,6 +97,10 @@ page {
       logoFile = {$starter.branch.images.logo}
     }
 
+    variables {
+      iconSprite < lib.iconSprite
+    }
+
     dataProcessing {
       10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
       10 {

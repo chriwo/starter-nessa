@@ -1,0 +1,12 @@
+lib.iconSprite = COA
+lib.iconSprite {
+    # Slot 10: Bootstrap Icons + Custom SVG Sprite from starter-nessa
+    10 = FILE
+    10 {
+        file = EXT:starter_nessa/Resources/Public/Frontend/icons.svg
+        stdWrap.required = 1
+        stdWrap.wrap = <div aria-hidden="true" style="display:none">|</div>
+    }
+
+    # Slots 20, 30, ... are reserved for customer extension sprites (empty by default)
+}
