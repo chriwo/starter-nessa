@@ -13,6 +13,7 @@ export default function menuMain() {
     initDropdownAria();
     initEscapeToClose();
     initLevel3Flip();
+    initOffcanvasAria();
 }
 
 /**
@@ -30,7 +31,12 @@ function initStickyShadow() {
 }
 
 /**
- * Keep aria-expanded in sync with the hover/focus state of dropdown parents.
+ * Keep dropdowns in sync with hover and keyboard focus.
+ *
+ * Mouse hover opens dropdowns purely via CSS (works without JS). For keyboard
+ * users this adds an .is-open class on focus so the dropdown is revealed, and
+ * keeps aria-expanded in sync. The class (rather than :focus-within) lets Escape
+ * close the dropdown while focus remains on the toggle.
  */
 function initDropdownAria() {
     const parents = document.querySelectorAll(
@@ -44,20 +50,36 @@ function initDropdownAria() {
         }
 
         const setExpanded = (expanded) => toggle.setAttribute('aria-expanded', String(expanded));
+        const open = () => {
+            parent.classList.add('is-open');
+            setExpanded(true);
+        };
+        const close = () => {
+            parent.classList.remove('is-open');
+            setExpanded(false);
+        };
 
+        // Mouse: visibility is handled by CSS :hover, only mirror the ARIA state.
         parent.addEventListener('mouseenter', () => setExpanded(true));
-        parent.addEventListener('mouseleave', () => setExpanded(false));
-        parent.addEventListener('focusin', () => setExpanded(true));
+        parent.addEventListener('mouseleave', () => {
+            if (!parent.contains(document.activeElement)) {
+                close();
+            }
+        });
+
+        // Keyboard: open on focus, close when focus leaves the item entirely.
+        parent.addEventListener('focusin', open);
         parent.addEventListener('focusout', (event) => {
             if (!parent.contains(event.relatedTarget)) {
-                setExpanded(false);
+                close();
             }
         });
     });
 }
 
 /**
- * Close all open desktop dropdowns on Escape and return focus to the toggle.
+ * Close open desktop dropdowns on Escape and return focus to the outermost
+ * open toggle that currently holds focus.
  */
 function initEscapeToClose() {
     document.addEventListener('keydown', (event) => {
@@ -65,15 +87,30 @@ function initEscapeToClose() {
             return;
         }
 
-        const openToggles = document.querySelectorAll(
-            '.c-mainnav__toggle[aria-expanded="true"], .c-mainnav__subtoggle[aria-expanded="true"]',
-        );
+        const active = document.activeElement;
+        let focusTarget = null;
 
-        openToggles.forEach((toggle) => {
-            toggle.setAttribute('aria-expanded', 'false');
-            // Move focus out of the dropdown so :focus-within releases it.
-            toggle.focus();
-        });
+        document
+            .querySelectorAll('.c-mainnav__item--has-children.is-open, .c-mainnav__subitem--has-children.is-open')
+            .forEach((parent) => {
+                const toggle = parent.querySelector(
+                    ':scope > .c-mainnav__toggle, :scope > .c-mainnav__subtoggle',
+                );
+
+                // Return focus to the outermost (level-1) toggle that held focus.
+                if (toggle && parent.contains(active) && !focusTarget) {
+                    focusTarget = toggle;
+                }
+
+                parent.classList.remove('is-open');
+                if (toggle) {
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+        if (focusTarget) {
+            focusTarget.focus();
+        }
     });
 }
 
@@ -100,4 +137,19 @@ function initLevel3Flip() {
         parent.addEventListener('mouseenter', evaluate);
         parent.addEventListener('focusin', evaluate);
     });
+}
+
+/**
+ * Mirror the offcanvas open state onto the hamburger toggler's aria-expanded.
+ * Bootstrap manages the offcanvas itself but does not update the trigger.
+ */
+function initOffcanvasAria() {
+    const offcanvas = document.getElementById('offcanvasNav');
+    const toggler = document.querySelector('[data-bs-target="#offcanvasNav"]');
+    if (!offcanvas || !toggler) {
+        return;
+    }
+
+    offcanvas.addEventListener('show.bs.offcanvas', () => toggler.setAttribute('aria-expanded', 'true'));
+    offcanvas.addEventListener('hide.bs.offcanvas', () => toggler.setAttribute('aria-expanded', 'false'));
 }

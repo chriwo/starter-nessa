@@ -61,8 +61,10 @@
     }
 
     // Rotate the level-1 chevron when the dropdown is open.
+    // :hover keeps mouse use working without JS; .is-open is driven by MenuMain.js
+    // for keyboard control (so Escape can close while focus stays on the toggle).
     &__item--has-children:hover > &__toggle &__chevron,
-    &__item--has-children:focus-within > &__toggle &__chevron {
+    &__item--has-children.is-open > &__toggle &__chevron {
         transform: rotate(180deg);
     }
 
@@ -103,9 +105,9 @@
         }
     }
 
-    // Reveal level 2 on hover/focus of its parent item.
+    // Reveal level 2 on hover (mouse, no-JS) or when JS marks it open (keyboard).
     &__item--has-children:hover > &__dropdown--l2,
-    &__item--has-children:focus-within > &__dropdown--l2 {
+    &__item--has-children.is-open > &__dropdown--l2 {
         top: 100%;
         visibility: visible;
         pointer-events: auto;
@@ -113,9 +115,9 @@
         transform: translateY(0);
     }
 
-    // Reveal level 3 on hover/focus of its parent sub-item.
+    // Reveal level 3 on hover (mouse, no-JS) or when JS marks it open (keyboard).
     &__subitem--has-children:hover > &__dropdown--l3,
-    &__subitem--has-children:focus-within > &__dropdown--l3 {
+    &__subitem--has-children.is-open > &__dropdown--l3 {
         visibility: visible;
         pointer-events: auto;
         opacity: 1;

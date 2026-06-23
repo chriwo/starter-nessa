@@ -21,7 +21,9 @@
 		"lint:scss": "stylelint \"./src/**/*.scss\" --config .stylelintrc.yml && echo \"Stylelint: No problems found\"",
 		"lint:fix:js": "eslint . --fix",
 		"lint:fix:scss": "stylelint \"./src/**/*.scss\" --fix --config .stylelintrc.yml",
-		"test": "echo \"No test specified\" && exit 0"
+		"test": "npm run lint",
+		"test:e2e": "playwright test",
+		"test:e2e:install": "playwright install --with-deps"
 	},
 	"dependencies": {
 		"@popperjs/core": "^2.11.8",
@@ -37,6 +39,8 @@
 		"venobox": "^1.9.1"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.10.1",
+		"@playwright/test": "^1.49.1",
 		"@rollup/plugin-inject": "^5.0.5",
 		"eslint": "^9.39.2",
 		"eslint-config-prettier": "^10.1.8",
