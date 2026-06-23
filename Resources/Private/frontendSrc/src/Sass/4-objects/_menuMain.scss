@@ -1,137 +1,153 @@
-.nav-menu {
-    ul {
+// Desktop main navigation (>= lg). Up to three levels:
+//   L1 inline · L2 dropdown below · L3 dropdown to the side (flips at viewport edge).
+// Dropdowns open on hover and on keyboard focus (:focus-within); aria-expanded and
+// the L3 flip are maintained by MenuMain.js.
+
+.c-mainnav {
+    &__list {
+        display: flex;
+        align-items: stretch;
         padding: 0;
         margin: 0;
         list-style: none;
     }
 
-    > ul {
-        display: flex;
-
-        > li {
-            position: relative;
-            padding: 10px 0 10px 28px;
-            white-space: nowrap;
-        }
-    }
-
-    a {
+    &__item {
         position: relative;
-        display: block;
-        font-size: 14px;
-        transition: .3s;
     }
 
-    .drop-down {
-        > a {
-            &::after {
-                display: inline-block;
-                width: .4em;
-                height: .4em;
-                margin-left: 5px;
-                content: '';
-                border-right: 2px solid currentColor;
-                border-bottom: 2px solid currentColor;
-                transform: rotate(45deg);
-                vertical-align: middle;
-            }
-        }
-
-        ul {
-            position: absolute;
-            top: calc(100% + 30px);
-            left: 15px;
-            z-index: 99;
-            display: block;
-            visibility: hidden;
-            padding: 10px 0;
-            background: $white;
-            box-shadow: 0 0 30px rgb(127 137 161 / 25%);
-            opacity: 0;
-            transition: .3s;
-
-            a {
-                padding: 10px 20px;
-                font-size: 14px;
-                font-weight: 500;
-            }
-        }
+    // Shared base for level-1 links and dropdown toggles.
+    &__link,
+    &__toggle {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+        padding: 6px 14px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        color: $nessa-navlink-color;
+        white-space: nowrap;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        border-radius: 4px;
+        transition: color .2s;
 
         &:hover {
-            > ul {
-                top: 100%;
-                visibility: visible;
-                opacity: 1;
-            }
+            color: $nessa-navlink-color-hover;
         }
 
-        li {
-            position: relative;
-            min-width: 180px;
+        &:focus-visible {
+            color: $nessa-navlink-color-focus;
+            outline: 2px solid $primary;
+            outline-offset: 2px;
         }
 
-        .drop-down {
-            ul {
-                top: 0;
-                left: calc(100% - 30px);
-            }
-
-            &:hover {
-                > ul {
-                    top: 0;
-                    left: 100%;
-                    opacity: 1;
-                }
-            }
-
-            > a {
-                padding-right: 35px;
-
-                &::after {
-                    position: absolute;
-                    right: 15px;
-                    display: inline-block;
-                    width: .4em;
-                    height: .4em;
-                    content: '';
-                    border-right: 2px solid currentColor;
-                    border-bottom: 2px solid currentColor;
-                    transform: rotate(-45deg);
-                    vertical-align: middle;
-                }
-            }
+        &.is-active {
+            color: $nessa-navlink-color-hover;
         }
     }
-}
 
-.c-menumain-nav__link {
-    @include nessa-link-color(
-        $nessa-navlink-color,
-        $nessa-navlink-color-hover,
-        $nessa-navlink-color-focus
-    );
-}
+    &__chevron {
+        width: .7em;
+        height: .7em;
+        transition: transform .2s;
+    }
 
-@media (width <= 1366px) {
-    .nav-menu {
-        .drop-down {
-            .drop-down {
-                ul {
-                    left: -90%;
-                }
+    &__chevron--right {
+        margin-left: 6px;
+        opacity: .7;
+    }
 
-                &:hover {
-                    > ul {
-                        left: -100%;
-                    }
-                }
+    // Rotate the level-1 chevron when the dropdown is open.
+    &__item--has-children:hover > &__toggle &__chevron,
+    &__item--has-children:focus-within > &__toggle &__chevron {
+        transform: rotate(180deg);
+    }
 
-                > a {
-                    &::after {
-                        transform: rotate(135deg);
-                    }
-                }
-            }
+    // ── Dropdowns (level 2 + 3) ─────────────────────────────────────────────
+    &__dropdown {
+        position: absolute;
+        z-index: $nessa-zindex-dropdown;
+        visibility: hidden;
+        padding: 8px 0;
+        margin: 0;
+        pointer-events: none;
+        list-style: none;
+        background: $nessa-dropdown-bg;
+        border-radius: $nessa-dropdown-radius;
+        box-shadow: $nessa-dropdown-shadow;
+        opacity: 0;
+        transition: opacity .2s, visibility .2s, transform .2s;
+    }
+
+    &__dropdown--l2 {
+        top: calc(100% + 16px);
+        left: 0;
+        min-width: $nessa-dropdown-min-width;
+        transform: translateY(-6px);
+    }
+
+    &__dropdown--l3 {
+        top: -8px;
+        left: 100%;
+        min-width: $nessa-dropdown-l3-min-width;
+        transform: translateX(-6px);
+
+        // Flip to the left side when too close to the viewport edge (set by JS).
+        &.flip-left {
+            right: 100%;
+            left: auto;
+            transform: translateX(6px);
+        }
+    }
+
+    // Reveal level 2 on hover/focus of its parent item.
+    &__item--has-children:hover > &__dropdown--l2,
+    &__item--has-children:focus-within > &__dropdown--l2 {
+        top: 100%;
+        visibility: visible;
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    // Reveal level 3 on hover/focus of its parent sub-item.
+    &__subitem--has-children:hover > &__dropdown--l3,
+    &__subitem--has-children:focus-within > &__dropdown--l3 {
+        visibility: visible;
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    &__subitem {
+        position: relative;
+    }
+
+    &__sublink,
+    &__subtoggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 9px 18px;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: $nessa-navlink-color;
+        text-align: left;
+        white-space: nowrap;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        transition: color .15s, background .15s;
+
+        &:hover,
+        &:focus-visible {
+            color: $nessa-navlink-color-hover;
+            outline: none;
+            background: $nessa-dropdown-hover-bg;
         }
     }
 }

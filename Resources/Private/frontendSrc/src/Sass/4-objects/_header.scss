@@ -1,24 +1,42 @@
-#header {
-    z-index: $nessa-zindex-header;
-    padding: 20px 0;
-    background: $white;
-    transition: all .5s;
-
-    &.header-scrolled {
-        padding: 12px 0;
-        box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
-    }
-}
-
 .o-site-header {
-    &__wrapper {
-        display: flex;
+    z-index: $nessa-zindex-header;
+    padding: $nessa-header-padding-y 0;
+    background: $nessa-header-bg;
+    border-bottom: 1px solid $nessa-header-border-color;
+
+    // Sticky: stays in the document flow and pins to the top once reached.
+    // No padding-top on the first content element required.
+    &.is-header-sticky {
+        position: sticky;
+        top: 0;
+        transition: box-shadow .3s;
+
+        &.has-shadow {
+            box-shadow: $nessa-header-shadow;
+        }
     }
 
-    &__logo {
+    // Fixed: detached from the flow, always visible. The required top offset for
+    // the first content element is emitted inline from the configured setting.
+    &.is-header-fixed {
+        position: fixed;
+        inset: 0 0 auto;
+        box-shadow: $nessa-header-shadow;
+    }
+
+    &__inner {
         display: flex;
         align-items: center;
+    }
+
+    // Shared wrapper for both logo variants (image and text fallback).
+    &__logo {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
         width: $nessa-logo-wrapper-default-width;
+        margin-right: auto;
+        text-decoration: none;
 
         @include media-breakpoint-up(sm) {
             width: $nessa-logo-wrapper-sm-width;
@@ -27,13 +45,66 @@
         @include media-breakpoint-up(md) {
             width: $nessa-logo-wrapper-md-width;
         }
+    }
 
-        margin-right: auto;
+    &__logo-img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 
-        img {
+    &__logo-text {
+        max-width: $nessa-logo-text-max-width;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: $headings-font-family;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $nessa-navlink-color;
+        white-space: nowrap;
+    }
+
+    // Hamburger toggler (< lg). Three CSS lines, no icon font dependency.
+    &__toggler {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        margin-left: auto;
+        color: $nessa-navlink-color;
+        cursor: pointer;
+        background: rgba($secondary, 5%);
+        border: 1px solid rgba($secondary, 15%);
+        border-radius: 8px;
+        transition: background .2s, border-color .2s;
+
+        &:hover {
+            background: rgba($secondary, 10%);
+            border-color: rgba($secondary, 30%);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $primary;
+            outline-offset: 2px;
+        }
+    }
+
+    &__toggler-lines {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 20px;
+        height: 14px;
+        pointer-events: none;
+
+        span {
             display: block;
             width: 100%;
-            height: auto;
+            height: 2px;
+            background: currentcolor;
+            border-radius: 2px;
         }
     }
 }

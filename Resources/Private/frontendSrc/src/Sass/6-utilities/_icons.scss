@@ -6,8 +6,8 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    fill: currentColor;
     vertical-align: middle;
+    fill: currentcolor;
 }
 
 svg.icon {
@@ -15,24 +15,39 @@ svg.icon {
 }
 
 // Size modifiers — mirror former icofont-xs/sm/md/lg scale
-.icon-xs { width: .5em; height: .5em; }
-.icon-sm { width: .75em; height: .75em; }
-.icon-md { width: 1.25em; height: 1.25em; }
-.icon-lg { width: 1.5em; height: 1.5em; }
+.icon-xs {
+    width: .5em;
+    height: .5em;
+}
+
+.icon-sm {
+    width: .75em;
+    height: .75em;
+}
+
+.icon-md {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+.icon-lg {
+    width: 1.5em;
+    height: 1.5em;
+}
 
 // Social / contact icon badge — mirrors former icofont-invert
 .icon-invert {
     padding: 4px;
     color: $white;
-    fill: $white;
     background-color: map-get($theme-colors, 'primary');
     border: 1px solid map-get($theme-colors, 'primary');
     border-radius: 4px;
+    fill: $white;
 
     &:hover {
         color: map-get($theme-colors, 'primary');
-        fill: map-get($theme-colors, 'primary');
         background-color: $white;
+        fill: map-get($theme-colors, 'primary');
     }
 }
 
@@ -52,8 +67,8 @@ svg.icon {
 
         &::before {
             position: absolute;
-            left: 0;
             top: 50%;
+            left: 0;
             display: inline-block;
             width: 1.1em;
             height: 1.1em;

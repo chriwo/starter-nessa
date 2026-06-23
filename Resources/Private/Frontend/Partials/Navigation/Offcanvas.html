@@ -1,0 +1,38 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:comment>
+	Mobile navigation as a native Bootstrap 5 offcanvas. Slides in from the end
+	(right in LTR; configurable via SCSS). Keyboard/focus handling, overlay click
+	and Escape-to-close are provided by Bootstrap. Sub-levels use Bootstrap collapse.
+</f:comment>
+<div class="offcanvas offcanvas-end c-offcanvas"
+		id="offcanvasNav"
+		tabindex="-1"
+		aria-labelledby="offcanvasNavLabel">
+
+	<div class="offcanvas-header">
+		<f:render partial="Navigation/Brand" arguments="{_all}"/>
+		<span id="offcanvasNavLabel" class="visually-hidden">{settings.siteTitle}</span>
+		<button type="button"
+				class="btn-close"
+				data-bs-dismiss="offcanvas"
+				aria-label="{f:translate(key: 'navigation.close', default: 'Close navigation')}"></button>
+	</div>
+
+	<div class="offcanvas-body d-flex flex-column p-0">
+		<nav class="c-offcanvas-nav flex-grow-1 overflow-y-auto" aria-label="{f:translate(key: 'navigation.mobile', default: 'Mobile navigation')}">
+			<ul class="c-offcanvas-nav__list">
+				<f:for each="{menuMain}" as="item">
+					<f:render partial="Navigation/Offcanvas/Item" arguments="{item: item}"/>
+				</f:for>
+			</ul>
+		</nav>
+
+		<f:comment># Optional extension slot (language switch, CTA button, …)</f:comment>
+		<div class="offcanvas-nav__extra"></div>
+	</div>
+
+</div>
+
+</html>

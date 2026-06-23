@@ -1,0 +1,35 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:comment># Offcanvas navigation — level 1 item. Items with children toggle a level-2 collapse panel.</f:comment>
+<f:if condition="{item.children}">
+	<f:then>
+		<li class="c-offcanvas-nav__item">
+			<button type="button"
+					class="c-offcanvas-nav__toggle"
+					data-bs-toggle="collapse"
+					data-bs-target="#oc-{item.data.uid}"
+					aria-expanded="false"
+					aria-controls="oc-{item.data.uid}">
+				<f:format.raw>{item.title}</f:format.raw>
+				<svg class="c-offcanvas-nav__chevron icon" aria-hidden="true" focusable="false"><use href="#bi-chevron-down"></use></svg>
+			</button>
+			<div class="collapse" id="oc-{item.data.uid}">
+				<ul class="c-offcanvas-nav__sublist">
+					<f:for each="{item.children}" as="child">
+						<f:render partial="Navigation/Offcanvas/ItemL2" arguments="{item: child}"/>
+					</f:for>
+				</ul>
+			</div>
+		</li>
+	</f:then>
+	<f:else>
+		<li class="c-offcanvas-nav__item">
+			<a href="{item.link}" target="{item.data.target}" class="c-offcanvas-nav__link">
+				<f:format.raw>{item.title}</f:format.raw>
+			</a>
+		</li>
+	</f:else>
+</f:if>
+
+</html>

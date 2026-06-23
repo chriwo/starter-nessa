@@ -1,0 +1,25 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:comment>
+	Shared site logo. Renders the logo image when {settings.logoFile} resolves,
+	otherwise the site title as text fallback. Both variants share the
+	.o-site-header__logo wrapper class so layout rules apply to either.
+	Arguments: {class} = additional wrapper modifier classes (optional)
+</f:comment>
+<f:link.page pageUid="{site.rootPageId}"
+			class="o-site-header__logo {class}"
+			additionalAttributes="{aria-label: settings.siteTitle}">
+	<f:if condition="{settings.logoFile}">
+		<f:then>
+			<img src="{f:uri.image(src: settings.logoFile)}"
+				alt="{settings.siteTitle}"
+				class="o-site-header__logo-img"/>
+		</f:then>
+		<f:else>
+			<span class="o-site-header__logo-text">{settings.siteTitle}</span>
+		</f:else>
+	</f:if>
+</f:link.page>
+
+</html>

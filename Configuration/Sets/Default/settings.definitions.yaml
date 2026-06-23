@@ -72,6 +72,21 @@ settings:
     type: string
     default: ''
 
+  starter.header.position:
+    label: 'Header position behaviour'
+    description: 'How the site header behaves while scrolling. "sticky" keeps the header in the document flow and pins it to the top once reached (no padding-top on the first content element needed). "fixed" detaches the header (Bootstrap fixed-top behaviour) and requires the fixedOffset value below.'
+    type: string
+    default: 'sticky'
+    enum:
+      sticky: 'Sticky (scrolls with content, then pins to top)'
+      fixed: 'Fixed (always visible, detached from flow)'
+
+  starter.header.fixedOffset:
+    label: 'Header offset for fixed position (px)'
+    description: 'Only relevant when header position is "fixed": top spacing reserved for the header so the first content element is not covered. Must match the actual header height.'
+    type: int
+    default: 70
+
   starter.meta.viewport:
     label: 'ViewPort Setting for Responsive Websites'
     description: ''

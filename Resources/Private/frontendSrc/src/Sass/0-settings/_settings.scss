@@ -65,7 +65,7 @@ $nessa-subline-color: $secondary !default;
 
 // Z-index hierarchy
 $nessa-zindex-header: 997 !default;
-$nessa-zindex-mobile-nav-overlay: 9997 !default;
+$nessa-zindex-dropdown: 998 !default;
 $nessa-zindex-back-to-top: 99999 !default;
 
 // Navigation link colors
@@ -77,6 +77,25 @@ $nessa-navlink-color-focus: $nessa-navlink-color-hover !default;
 $nessa-logo-wrapper-default-width: 7vw !default;
 $nessa-logo-wrapper-sm-width: 4vw !default;
 $nessa-logo-wrapper-md-width: 4% !default;
+$nessa-logo-text-max-width: 220px !default;
+
+// Site header
+$nessa-header-bg: #fff !default;
+$nessa-header-padding-y: 14px !default;
+$nessa-header-border-color: rgba($secondary, 6%) !default;
+$nessa-header-shadow: 0 2px 20px rgba($secondary, 8%) !default;
+
+// Desktop navigation dropdowns
+$nessa-dropdown-bg: #fff !default;
+$nessa-dropdown-shadow: 0 6px 28px rgba($secondary, 13%) !default;
+$nessa-dropdown-radius: 6px !default;
+$nessa-dropdown-min-width: 210px !default;
+$nessa-dropdown-l3-min-width: 190px !default;
+$nessa-dropdown-hover-bg: rgba($primary, 4.5%) !default;
+
+// Mobile navigation (offcanvas)
+$nessa-offcanvas-width: 300px !default;
+$nessa-offcanvas-border-color: rgba($secondary, 7%) !default;
 
 // Hero content element
 $nessa-hero-headings-font-family: $headings-font-family !default;

@@ -23,12 +23,12 @@
         top: 0;
         left: 50%;
         padding: var(--#{$prefix}nessa-pricing-badge-padding);
-        color: var(--#{$prefix}nessa-pricing-badge-color);
         font-weight: $font-weight-bold;
+        color: var(--#{$prefix}nessa-pricing-badge-color);
         text-transform: uppercase;
+        white-space: nowrap;
         background-color: var(--#{$prefix}nessa-pricing-badge-bg);
         border-radius: var(--#{$prefix}nessa-pricing-badge-border-radius);
-        white-space: nowrap;
         transform: translate(-50%, -50%);
 
         @include font-size(var(--#{$prefix}nessa-pricing-badge-font-size));

@@ -95,6 +95,11 @@ page {
 
     settings {
       logoFile = {$starter.branch.images.logo}
+      siteTitle = {$starter.branch.title}
+      header {
+        position = {$starter.header.position}
+        fixedOffset = {$starter.header.fixedOffset}
+      }
     }
 
     dataProcessing {
