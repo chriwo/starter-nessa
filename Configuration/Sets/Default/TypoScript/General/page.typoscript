@@ -98,7 +98,6 @@ page {
       siteTitle = {$starter.branch.title}
       header {
         position = {$starter.header.position}
-        fixedOffset = {$starter.header.fixedOffset}
       }
     }
 

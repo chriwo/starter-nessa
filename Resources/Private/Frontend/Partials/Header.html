@@ -1,25 +1,8 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
 			data-namespace-typo3-fluid="true">
 
-<f:comment>
-	Header position behaviour is configured via the site setting
-	starter.header.position (sticky|fixed) and exposed as settings.header.position.
-	It is reflected as the state class is-header-sticky / is-header-fixed so the
-	SCSS can target each mode without JavaScript.
-</f:comment>
-<f:variable name="headerPosition">{settings.header.position}</f:variable>
-
-<f:comment>
-	In fixed mode the header is detached from the flow, so the configured offset
-	(starter.header.fixedOffset) reserves space below it for the first content.
-	In sticky mode no offset is needed — the header stays in the document flow.
-</f:comment>
-<f:if condition="{headerPosition} == 'fixed'">
-	<style>.o-site-header.is-header-fixed ~ .c-site__main { padding-top: {settings.header.fixedOffset}px; }</style>
-</f:if>
-
-<header id="site-header" class="o-site-header is-header-{headerPosition}">
-	<div class="container-xxl">
+<header id="site-header" class="o-site-header is-header-{settings.header.position}">
+	<div class="container">
 		<div class="o-site-header__inner">
 
 			<f:render partial="Navigation/Brand" arguments="{_all}"/>
