@@ -7,7 +7,7 @@
 	It is reflected as the state class is-header-sticky / is-header-fixed so the
 	SCSS can target each mode without JavaScript.
 </f:comment>
-<f:variable name="headerPosition">{f:if(condition: '{settings.header.position} == \'fixed\'', then: 'fixed', else: 'sticky')}</f:variable>
+<f:variable name="headerPosition">{settings.header.position}</f:variable>
 
 <f:comment>
 	In fixed mode the header is detached from the flow, so the configured offset

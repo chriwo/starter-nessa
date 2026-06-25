@@ -16,7 +16,8 @@ settings:
     label: 'Project or customer logo'
     description:
     type: string
-    default: 'EXT:starter_nessa/Resources/Public/Frontend/Images/Logo.svg'
+    default: ''
+    #EXT:starter_nessa/Resources/Public/Frontend/Images/Logo.svg'
 
   starter.branch.images.favicon:
     label: 'Browser favicon of project or customer'
@@ -74,12 +75,13 @@ settings:
 
   starter.header.position:
     label: 'Header position behaviour'
-    description: 'How the site header behaves while scrolling. "sticky" keeps the header in the document flow and pins it to the top once reached (no padding-top on the first content element needed). "fixed" detaches the header (Bootstrap fixed-top behaviour) and requires the fixedOffset value below.'
+    description: 'How the site header behaves while scrolling. "sticky" keeps the header in the document flow and pins it to the top once reached (no padding-top on the first content element needed). "fixed" detaches the header (Bootstrap fixed-top behaviour) and requires the fixedOffset value below. "static" keeps the header in the flow and lets it scroll away with the page (no pinning).'
     type: string
-    default: 'sticky'
+    default: 'fixed'
     enum:
       sticky: 'Sticky (scrolls with content, then pins to top)'
       fixed: 'Fixed (always visible, detached from flow)'
+      static: 'Static (scrolls away with the page)'
 
   starter.header.fixedOffset:
     label: 'Header offset for fixed position (px)'

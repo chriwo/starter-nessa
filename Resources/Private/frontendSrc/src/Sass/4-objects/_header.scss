@@ -24,6 +24,13 @@
         box-shadow: $nessa-header-shadow;
     }
 
+    // Static: stays in the normal flow and scrolls away with the page (no pinning).
+    // `relative` (instead of plain static) keeps the z-index stacking context so
+    // the desktop dropdowns still layer above the page content while visible.
+    &.is-header-static {
+        position: relative;
+    }
+
     &__inner {
         display: flex;
         align-items: center;
@@ -34,9 +41,13 @@
         display: flex;
         flex-shrink: 0;
         align-items: center;
-        width: $nessa-logo-wrapper-default-width;
         margin-right: auto;
         text-decoration: none;
+    }
+
+    // Image logo: the wrapper drives the rendered size (image scales to 100%).
+    &__logo--img {
+        width: $nessa-logo-wrapper-default-width;
 
         @include media-breakpoint-up(sm) {
             width: $nessa-logo-wrapper-sm-width;
@@ -45,6 +56,12 @@
         @include media-breakpoint-up(md) {
             width: $nessa-logo-wrapper-md-width;
         }
+    }
+
+    // Text fallback: size to the title, bounded by a sensible max so it never
+    // pushes the navigation. No fixed image width that would clip the text.
+    &__logo--text {
+        max-width: $nessa-logo-text-max-width;
     }
 
     &__logo-img {

@@ -7,8 +7,9 @@
 	.o-site-header__logo wrapper class so layout rules apply to either.
 	Arguments: {class} = additional wrapper modifier classes (optional)
 </f:comment>
+<f:variable name="logoModifier">{f:if(condition: settings.logoFile, then: 'o-site-header__logo--img', else: 'o-site-header__logo--text')}</f:variable>
 <f:link.page pageUid="{site.rootPageId}"
-			class="o-site-header__logo {class}"
+			class="o-site-header__logo {logoModifier} {class}"
 			additionalAttributes="{aria-label: settings.siteTitle}">
 	<f:if condition="{settings.logoFile}">
 		<f:then>
