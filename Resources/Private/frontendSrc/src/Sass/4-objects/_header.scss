@@ -1,6 +1,5 @@
 .o-site-header {
     z-index: $nessa-zindex-header;
-    padding: $nessa-header-padding-y 0;
     background: $nessa-header-bg;
     border-bottom: 1px solid $nessa-header-border-color;
 
@@ -31,9 +30,20 @@
         position: relative;
     }
 
+    // The bar height is defined here and drives both the logo size and the
+    // vertical breathing room around the navigation.
     &__inner {
         display: flex;
         align-items: center;
+        min-height: $nessa-header-height;
+
+        @include media-breakpoint-up(md) {
+            min-height: $nessa-header-height-md;
+        }
+
+        @include media-breakpoint-up(lg) {
+            min-height: $nessa-header-height-lg;
+        }
     }
 
     // Shared wrapper for both logo variants (image and text fallback).
@@ -45,17 +55,10 @@
         text-decoration: none;
     }
 
-    // Image logo: the wrapper drives the rendered size (image scales to 100%).
+    // Image logo: sized by height (see &__logo-img); cap the width so an unusually
+    // wide logo never crowds the navigation.
     &__logo--img {
-        width: $nessa-logo-wrapper-default-width;
-
-        @include media-breakpoint-up(sm) {
-            width: $nessa-logo-wrapper-sm-width;
-        }
-
-        @include media-breakpoint-up(md) {
-            width: $nessa-logo-wrapper-md-width;
-        }
+        max-width: $nessa-logo-max-width;
     }
 
     // Text fallback: size to the title, bounded by a sensible max so it never
@@ -64,10 +67,23 @@
         max-width: $nessa-logo-text-max-width;
     }
 
+    // Height-driven sizing derived from the bar height: the logo fills
+    // $nessa-logo-scale of it, the width follows the aspect ratio. object-fit
+    // keeps it undistorted if the max-width cap kicks in. Suits SVG + raster.
     &__logo-img {
         display: block;
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: calc(#{$nessa-header-height} * #{$nessa-logo-scale});
+        max-width: 100%;
+        object-fit: contain;
+
+        @include media-breakpoint-up(md) {
+            height: calc(#{$nessa-header-height-md} * #{$nessa-logo-scale});
+        }
+
+        @include media-breakpoint-up(lg) {
+            height: calc(#{$nessa-header-height-lg} * #{$nessa-logo-scale});
+        }
     }
 
     &__logo-text {
@@ -82,24 +98,25 @@
     }
 
     // Hamburger toggler (< lg). Three CSS lines, no icon font dependency.
+    // Borderless, circular hover area for an unobtrusive, elegant appearance.
     &__toggler {
         display: flex;
         flex-shrink: 0;
         align-items: center;
         justify-content: center;
-        width: 42px;
-        height: 42px;
+        width: 48px;
+        height: 48px;
         margin-left: auto;
         color: $nessa-navlink-color;
         cursor: pointer;
-        background: rgba($secondary, 5%);
-        border: 1px solid rgba($secondary, 15%);
-        border-radius: 8px;
-        transition: background .2s, border-color .2s;
+        background: none;
+        border: 0;
+        border-radius: 50%;
+        transition: color .2s, background .2s;
 
         &:hover {
-            background: rgba($secondary, 10%);
-            border-color: rgba($secondary, 30%);
+            color: $nessa-navlink-color-hover;
+            background: rgba($secondary, 6%);
         }
 
         &:focus-visible {
@@ -112,8 +129,8 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 20px;
-        height: 14px;
+        width: 24px;
+        height: 16px;
         pointer-events: none;
 
         span {
