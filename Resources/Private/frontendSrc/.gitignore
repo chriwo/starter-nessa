@@ -1,8 +1,2 @@
 node_modules/
 src/Icons/dist/
-
-# Playwright
-test-results/
-playwright-report/
-blob-report/
-playwright/.cache/
