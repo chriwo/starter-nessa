@@ -72,6 +72,16 @@ settings:
     type: string
     default: ''
 
+  starter.header.position:
+    label: 'Header position behaviour'
+    description: 'How the site header behaves while scrolling. "sticky" keeps the header in the document flow and pins it to the top once reached. "fixed" detaches the header (Bootstrap fixed-top behaviour); the offset reserved for the first content element is derived from the header height in CSS. "static" keeps the header in the flow and lets it scroll away with the page (no pinning).'
+    type: string
+    default: 'fixed'
+    enum:
+      sticky: 'Sticky (scrolls with content, then pins to top)'
+      fixed: 'Fixed (always visible, detached from flow)'
+      static: 'Static (scrolls away with the page)'
+
   starter.meta.viewport:
     label: 'ViewPort Setting for Responsive Websites'
     description: ''

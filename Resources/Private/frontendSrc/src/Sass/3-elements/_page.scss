@@ -3,7 +3,9 @@ html {
 }
 
 body {
-    height: 100%;
+    // Use min-height only — a fixed `height: 100%` caps the body at one viewport
+    // height and breaks `position: sticky` on the header (its containing block
+    // would only span a single viewport).
     min-height: 100%;
 }
 

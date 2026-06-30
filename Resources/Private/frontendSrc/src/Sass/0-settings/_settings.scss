@@ -65,7 +65,7 @@ $nessa-subline-color: $secondary !default;
 
 // Z-index hierarchy
 $nessa-zindex-header: 997 !default;
-$nessa-zindex-mobile-nav-overlay: 9997 !default;
+$nessa-zindex-dropdown: 998 !default;
 $nessa-zindex-back-to-top: 99999 !default;
 
 // Navigation link colors
@@ -74,9 +74,34 @@ $nessa-navlink-color-hover: $primary !default;
 $nessa-navlink-color-focus: $nessa-navlink-color-hover !default;
 
 // Logo sizing
-$nessa-logo-wrapper-default-width: 7vw !default;
-$nessa-logo-wrapper-sm-width: 4vw !default;
-$nessa-logo-wrapper-md-width: 4% !default;
+// The logo height is derived from the header bar height (single source of truth):
+// it fills $nessa-logo-scale of the bar, the width follows the aspect ratio.
+// Changing the header height automatically rescales the logo. Suits SVG + raster.
+$nessa-logo-scale: 0.6 !default;
+$nessa-logo-max-width: 220px !default;
+$nessa-logo-text-max-width: 220px !default;
+
+// Site header
+// The bar height is the single knob for the header's vertical size; the logo
+// (and the breathing room around the nav) are derived from it per breakpoint.
+$nessa-header-bg: #fff !default;
+$nessa-header-height: 70px !default;
+$nessa-header-height-md: 90px !default;
+$nessa-header-height-lg: 110px !default;
+$nessa-header-border-color: rgba($secondary, 6%) !default;
+$nessa-header-shadow: 0 2px 20px rgba($secondary, 8%) !default;
+
+// Desktop navigation dropdowns
+$nessa-dropdown-bg: #fff !default;
+$nessa-dropdown-shadow: 0 6px 28px rgba($secondary, 13%) !default;
+$nessa-dropdown-radius: 6px !default;
+$nessa-dropdown-min-width: 210px !default;
+$nessa-dropdown-l3-min-width: 190px !default;
+$nessa-dropdown-hover-bg: rgba($primary, 4.5%) !default;
+
+// Mobile navigation (offcanvas)
+$nessa-offcanvas-width: 300px !default;
+$nessa-offcanvas-border-color: rgba($secondary, 7%) !default;
 
 // Hero content element
 $nessa-hero-headings-font-family: $headings-font-family !default;

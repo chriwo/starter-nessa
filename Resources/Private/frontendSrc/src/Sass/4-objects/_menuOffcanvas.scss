@@ -1,0 +1,109 @@
+// Mobile navigation (< lg) as a Bootstrap 5 offcanvas. Sub-levels expand as
+// accordions via Bootstrap collapse. Open/close, overlay and Escape are handled
+// natively by Bootstrap; only the chevron rotation is CSS (driven by aria-expanded).
+
+.c-offcanvas {
+    --bs-offcanvas-width: #{$nessa-offcanvas-width};
+
+    // Logo inside the offcanvas header is rendered smaller than in the page header.
+    .offcanvas-header .o-site-header__logo {
+        width: auto;
+    }
+
+    .offcanvas-header .o-site-header__logo-img {
+        width: auto;
+        height: 32px;
+    }
+}
+
+.c-offcanvas-nav {
+    padding: 8px 1.5rem 0;
+
+    &__list,
+    &__sublist {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__sublist {
+        padding-left: 16px;
+    }
+
+    &__link,
+    &__toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 11px 0;
+        font-size: 15px;
+        font-weight: 500;
+        color: $nessa-navlink-color;
+        text-align: left;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        border-bottom: 1px solid $nessa-offcanvas-border-color;
+        transition: color .2s;
+
+        &:hover,
+        &:focus-visible {
+            color: $nessa-navlink-color-hover;
+            outline: none;
+        }
+    }
+
+    &__sublink,
+    &__subtoggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 9px 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: $body-color;
+        text-align: left;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        border-bottom: 1px solid rgba($secondary, 5%);
+        transition: color .2s;
+
+        &:hover,
+        &:focus-visible {
+            color: $nessa-navlink-color-hover;
+            outline: none;
+        }
+    }
+
+    &__toggle[aria-expanded='true'],
+    &__subtoggle[aria-expanded='true'] {
+        color: $nessa-navlink-color-hover;
+    }
+
+    &__chevron {
+        flex-shrink: 0;
+        width: .8em;
+        height: .8em;
+        transition: transform .25s;
+    }
+
+    &__toggle[aria-expanded='true'] &__chevron,
+    &__subtoggle[aria-expanded='true'] &__chevron {
+        transform: rotate(180deg);
+    }
+}
+
+// Optional extension slot (language switch, CTA …). Pinned to the bottom.
+.offcanvas-nav__extra {
+    padding: 20px 1.5rem 8px;
+    margin-top: auto;
+    border-top: 1px solid rgba($secondary, 8%);
+
+    &:empty {
+        padding: 0;
+        border-top: 0;
+    }
+}

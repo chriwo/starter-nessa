@@ -1,18 +1,32 @@
-<f:if condition="{item.current} || {item.active}">
-		<f:then>
-				<li class="{f:if(condition:item.children, then:'drop-down')}">
-						<f:render partial="Navigation/MenuMain/Link" arguments="{item:item, status: 'c-menumain-nav__link_active'}"/>
-						<f:if condition="{item.children}">
-								<f:render partial="Navigation/MenuMain/SubMenu" arguments="{children: item.children}"/>
-						</f:if>
-				</li>
-		</f:then>
-		<f:else>
-				<li class="{f:if(condition:item.children, then:'drop-down')}">
-						<f:render partial="Navigation/MenuMain/Link" arguments="{item:item}"/>
-						<f:if condition="{item.children}">
-								<f:render partial="Navigation/MenuMain/SubMenu" arguments="{children: item.children}"/>
-						</f:if>
-				</li>
-		</f:else>
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:comment># Desktop navigation — level 1 item. Items with children render a button that opens an level-2 dropdown.</f:comment>
+<f:if condition="{item.children}">
+	<f:then>
+		<li class="c-mainnav__item c-mainnav__item--has-children" aria-haspopup="true">
+			<button type="button"
+					class="c-mainnav__toggle {f:if(condition: '{item.active} || {item.current}', then: 'is-active')}"
+					aria-expanded="false">
+				<f:format.raw>{item.title}</f:format.raw>
+				<svg class="c-mainnav__chevron icon" aria-hidden="true" focusable="false"><use href="#bi-chevron-down"></use></svg>
+			</button>
+			<ul class="c-mainnav__dropdown c-mainnav__dropdown--l2" role="menu">
+				<f:for each="{item.children}" as="child">
+					<f:render partial="Navigation/MenuMain/ItemL2" arguments="{item: child}"/>
+				</f:for>
+			</ul>
+		</li>
+	</f:then>
+	<f:else>
+		<li class="c-mainnav__item">
+			<a href="{item.link}"
+				target="{item.data.target}"
+				class="c-mainnav__link {f:if(condition: item.current, then: 'is-active')}">
+				<f:format.raw>{item.title}</f:format.raw>
+			</a>
+		</li>
+	</f:else>
 </f:if>
+
+</html>

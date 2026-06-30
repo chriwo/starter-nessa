@@ -1,10 +1,10 @@
 lib.menuLibrary {
 
-  // Standard MenuMain (mit Dropdown für die 2. Ebene)
+  // Standard MenuMain (mit Dropdowns für Ebene 2 und 3)
   menuMain = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
   menuMain {
     as = menuMain
-    levels = 2
+    levels = 3
     expandAll = 1
   }
 

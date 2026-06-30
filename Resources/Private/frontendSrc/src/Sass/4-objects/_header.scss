@@ -1,39 +1,162 @@
-#header {
-    z-index: $nessa-zindex-header;
-    padding: 20px 0;
-    background: $white;
-    transition: all .5s;
-
-    &.header-scrolled {
-        padding: 12px 0;
-        box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
-    }
-}
-
 .o-site-header {
-    &__wrapper {
-        display: flex;
+    z-index: $nessa-zindex-header;
+    background: $nessa-header-bg;
+    border-bottom: 1px solid $nessa-header-border-color;
+
+    // Sticky: stays in the document flow and pins to the top once reached.
+    // No padding-top on the first content element required.
+    &.is-header-sticky {
+        position: sticky;
+        top: 0;
+        transition: box-shadow .3s;
+
+        &.has-shadow {
+            box-shadow: $nessa-header-shadow;
+        }
     }
 
-    &__logo {
+    // Fixed: detached from the flow, always visible. The first content element
+    // gets a top offset equal to the header height (bar height + 1px border) so
+    // it is not covered — derived from the same height variables, no TYPO3 setting.
+    &.is-header-fixed {
+        position: fixed;
+        inset: 0 0 auto;
+        box-shadow: $nessa-header-shadow;
+
+        ~ .c-site__main {
+            padding-top: calc(#{$nessa-header-height} + 1px);
+
+            @include media-breakpoint-up(md) {
+                padding-top: calc(#{$nessa-header-height-md} + 1px);
+            }
+
+            @include media-breakpoint-up(lg) {
+                padding-top: calc(#{$nessa-header-height-lg} + 1px);
+            }
+        }
+    }
+
+    // Static: stays in the normal flow and scrolls away with the page (no pinning).
+    // `relative` (instead of plain static) keeps the z-index stacking context so
+    // the desktop dropdowns still layer above the page content while visible.
+    &.is-header-static {
+        position: relative;
+    }
+
+    // The bar height is defined here and drives both the logo size and the
+    // vertical breathing room around the navigation.
+    &__inner {
         display: flex;
         align-items: center;
-        width: $nessa-logo-wrapper-default-width;
-
-        @include media-breakpoint-up(sm) {
-            width: $nessa-logo-wrapper-sm-width;
-        }
+        min-height: $nessa-header-height;
 
         @include media-breakpoint-up(md) {
-            width: $nessa-logo-wrapper-md-width;
+            min-height: $nessa-header-height-md;
         }
 
-        margin-right: auto;
+        @include media-breakpoint-up(lg) {
+            min-height: $nessa-header-height-lg;
+        }
+    }
 
-        img {
+    // Shared wrapper for both logo variants (image and text fallback).
+    &__logo {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        margin-right: auto;
+        text-decoration: none;
+    }
+
+    // Image logo: sized by height (see &__logo-img); cap the width so an unusually
+    // wide logo never crowds the navigation.
+    &__logo--img {
+        max-width: $nessa-logo-max-width;
+    }
+
+    // Text fallback: size to the title, bounded by a sensible max so it never
+    // pushes the navigation. No fixed image width that would clip the text.
+    &__logo--text {
+        max-width: $nessa-logo-text-max-width;
+    }
+
+    // Height-driven sizing derived from the bar height: the logo fills
+    // $nessa-logo-scale of it, the width follows the aspect ratio. object-fit
+    // keeps it undistorted if the max-width cap kicks in. Suits SVG + raster.
+    &__logo-img {
+        display: block;
+        width: auto;
+        height: calc(#{$nessa-header-height} * #{$nessa-logo-scale});
+        max-width: 100%;
+        object-fit: contain;
+
+        @include media-breakpoint-up(md) {
+            height: calc(#{$nessa-header-height-md} * #{$nessa-logo-scale});
+        }
+
+        @include media-breakpoint-up(lg) {
+            height: calc(#{$nessa-header-height-lg} * #{$nessa-logo-scale});
+        }
+    }
+
+    &__logo-text {
+        max-width: $nessa-logo-text-max-width;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: $headings-font-family;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $nessa-navlink-color;
+        white-space: nowrap;
+    }
+
+    // Hamburger toggler (< lg). Three CSS lines, no icon font dependency.
+    // Borderless, circular hover area for an unobtrusive, elegant appearance.
+    &__toggler {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        margin-left: auto;
+        color: $nessa-navlink-color;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        border-radius: 50%;
+        transition: color .2s, background .2s;
+
+        &:hover {
+            color: $nessa-navlink-color-hover;
+            background: rgba($secondary, 6%);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $primary;
+            outline-offset: 2px;
+        }
+    }
+
+    &__toggler-lines {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 16px;
+        pointer-events: none;
+
+        span {
             display: block;
             width: 100%;
-            height: auto;
+            height: 2px;
+            background: currentcolor;
+            border-radius: 2px;
+
+            // Shorten the middle line slightly for a more refined silhouette.
+            &:nth-child(2) {
+                width: 80%;
+            }
         }
     }
 }

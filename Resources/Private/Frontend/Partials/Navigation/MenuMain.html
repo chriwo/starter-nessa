@@ -1,12 +1,12 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
 			data-namespace-typo3-fluid="true">
 
-	<nav class="nav-menu d-none d-lg-block me-4">
-		<ul>
-			<f:for each="{menuMain}" as="item">
-				<f:render partial="Navigation/MenuMain/Item" arguments="{item: item, pageheader: pageheader}"/>
-			</f:for>
-		</ul>
-	</nav>
+<nav class="c-mainnav d-none d-lg-block" aria-label="{f:translate(key: 'navigation.main', default: 'Main navigation')}">
+	<ul class="c-mainnav__list">
+		<f:for each="{menuMain}" as="item">
+			<f:render partial="Navigation/MenuMain/Item" arguments="{item: item}"/>
+		</f:for>
+	</ul>
+</nav>
 
 </html>
