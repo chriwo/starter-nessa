@@ -1,0 +1,57 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:comment>
+	V3 — nessa_banner (Solid Banner Hero). Background class is required; an optional
+	background image overlays it with a dark overlay. Content position "none"
+	renders a pure visual divider (no text area). Header is the visible headline.
+</f:comment>
+
+<f:variable name="position">{f:if(condition: data.tx_starter_hero_content_position, then: data.tx_starter_hero_content_position, else: 'center-left')}</f:variable>
+<f:variable name="hasImage">{f:if(condition: images.0, then: 1, else: 0)}</f:variable>
+<f:variable name="bgClass">{f:if(condition: data.tx_starter_background, then: 'hero-{data.tx_starter_background}', else: 'hero-bg-dark')}</f:variable>
+<f:variable name="imageClass">{f:if(condition: hasImage, then: ' has-bg-image')}</f:variable>
+<f:comment>Dark background (any coloured class or image overlay) → white outline CTA.</f:comment>
+<f:variable name="darkBg">{f:if(condition: '{hasImage} || {data.tx_starter_background} != \'bg-light\'', then: 1, else: 0)}</f:variable>
+<f:variable name="outlineBtn">btn-nessa {f:if(condition: darkBg, then: 'btn-nessa-outline-white', else: 'btn-nessa-outline-dark')}</f:variable>
+<f:variable name="textColClass">{f:if(condition: '{position} == \'center\'', then: 'col-lg-8', else: 'col-lg-7 col-xl-6')}</f:variable>
+
+<section id="c{data.uid}" class="ce-hero ce-hero--solid {bgClass}{imageClass}"
+		style="{f:if(condition: '{hasImage}', then: 'background-image: url({f:uri.image(image: images.0, maxWidth: 1920)})')}">
+
+	<f:if condition="{position} != 'none'">
+		<div class="hero-inner pos-{position}">
+			<div class="container">
+				<div class="row">
+					<div class="{textColClass} hero-text">
+						<f:if condition="{data.header}">
+							<h2>{data.header}</h2>
+						</f:if>
+
+						<f:if condition="{data.bodytext}">
+							<div class="hero-lead"><f:format.html>{data.bodytext}</f:format.html></div>
+						</f:if>
+
+						<f:if condition="({data.tx_starter_ctalink} && {data.tx_starter_ctalink_text}) || ({data.tx_starter_ctalink2} && {data.tx_starter_ctalink2_text})">
+							<div class="cta-group">
+								<f:render partial="Cta/Button" arguments="{
+									ctaLink: data.tx_starter_ctalink,
+									ctaButtonText: data.tx_starter_ctalink_text,
+									ctaButtonClass: 'btn-nessa btn-nessa-primary'
+								}"/>
+								<f:render partial="Cta/Button" arguments="{
+									ctaLink: data.tx_starter_ctalink2,
+									ctaButtonText: data.tx_starter_ctalink2_text,
+									ctaButtonClass: outlineBtn
+								}"/>
+							</div>
+						</f:if>
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:if>
+
+</section>
+
+</html>

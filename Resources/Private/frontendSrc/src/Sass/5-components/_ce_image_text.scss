@@ -1,0 +1,98 @@
+// ─── CE Hero V2: Split (nessa_image_text) ─────────────────────────────────────
+// Image + text side by side. Image position (left/right) is controlled by
+// Bootstrap order utilities in the template; on < lg the image drops below the
+// text. Text colour adapts to coloured backgrounds via the shared --hero-fg
+// custom property (see 5-components/_ce_hero_shared.scss).
+
+// Dark hero background classes that require light foreground treatment for the
+// statistics block.
+$nessa-hero-dark-bg: '.hero-bg-primary, .hero-bg-secondary, .hero-bg-dark, .hero-bg-gradient-primary, .hero-bg-gradient-dark';
+
+.ce-hero--split {
+    // In the hero region under a fixed header, --nessa-header-offset reserves the
+    // header height; elsewhere it is unset and falls back to 0.
+    padding-top: calc(var(--nessa-header-offset, 0px) + 70px);
+    padding-bottom: 70px;
+
+    h2 {
+        margin-bottom: 1rem;
+        font-family: $headings-font-family;
+        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--hero-fg, #{$secondary});
+    }
+
+    .hero-lead {
+        margin-bottom: 1.75rem;
+        font-size: $font-size-base * 1.0625;
+        line-height: 1.7;
+        color: var(--hero-fg, #{rgba($body-color, .9)});
+    }
+
+    .cta-group {
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-img-col img {
+        display: block;
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba($secondary, 12%);
+
+        .stat-value {
+            font-family: $headings-font-family;
+            font-size: $font-size-base * 2;
+            font-weight: 700;
+            line-height: 1;
+            color: map-get($theme-colors, 'primary');
+        }
+
+        .stat-label {
+            margin-top: 5px;
+            font-size: $font-size-base * .8125;
+            color: rgba($body-color, 65%);
+        }
+    }
+
+    // Coloured / dark backgrounds: light divider, value + label.
+    &:is(#{$nessa-hero-dark-bg}) .hero-stats {
+        border-top-color: rgb(255 255 255 / 30%);
+
+        .stat-value {
+            color: var(--hero-fg);
+        }
+
+        .stat-label {
+            color: rgb(255 255 255 / 82%);
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .ce-hero--split {
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .hero-img-col img {
+            height: 280px;
+        }
+
+        .hero-stats {
+            gap: 1.5rem;
+
+            .stat-value {
+                font-size: $font-size-base * 1.5;
+            }
+        }
+    }
+}

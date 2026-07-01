@@ -1,0 +1,58 @@
+// ─── Nessa Button System (btn-nessa-*) ───────────────────────────────────────
+// Shared button objects for the hero content element family
+// (nessa_hero, nessa_image_text, nessa_banner). Driven by theme tokens from
+// 0-settings/_settings.scss instead of the hard-coded values in the prototypes.
+
+.btn-nessa {
+    display: inline-block;
+    padding: 11px 28px;
+    font-family: $headings-font-family;
+    font-size: 14px;
+    font-weight: $btn-font-weight;
+    line-height: 1.5;
+    letter-spacing: .5px;
+    cursor: pointer;
+    border: $border-width solid transparent;
+    border-radius: 4px;
+    transition: all .3s;
+}
+
+// Solid primary button — inverts to a white fill on hover.
+.btn-nessa-primary {
+    color: $white;
+    background: $primary;
+
+    &:hover,
+    &:focus {
+        color: $primary;
+        background: $white;
+        border-color: $primary;
+    }
+}
+
+// Outline button for dark/coloured hero backgrounds.
+.btn-nessa-outline-white {
+    color: $white;
+    background: transparent;
+    border-color: rgba($white, .65);
+
+    &:hover,
+    &:focus {
+        color: $white;
+        background: $primary;
+        border-color: $primary;
+    }
+}
+
+// Outline button for light/transparent hero backgrounds.
+.btn-nessa-outline-dark {
+    color: $secondary;
+    background: transparent;
+    border-color: $secondary;
+
+    &:hover,
+    &:focus {
+        color: $white;
+        background: $secondary;
+    }
+}

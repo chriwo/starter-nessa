@@ -1,26 +1,29 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
 			data-namespace-typo3-fluid="true">
 
-<f:variable name="activeItem"></f:variable>
-<f:if condition="{cycle} == 1">
-	<f:variable name="activeItem">active</f:variable>
-</f:if>
-
-<div class="carousel-item {activeItem}" style="background-image: url({f:uri.image(image: files.0, maxHeight:1200)})">
-	<div class="carousel-container">
+<div class="carousel-item{f:if(condition: active, then: ' active')}"
+		style="background-image: url({f:uri.image(image: files.0, maxHeight: 1200)})">
+	<div class="slide-content">
 		<div class="container">
-			<h2 class="animate__animated animate__fadeInDown">{data.header}</h2>
+			<h2>{data.header}</h2>
 
 			<f:if condition="{data.bodytext}">
-				<p class="animate__animated animate__fadeInUp">{data.bodytext}</p>
+				<p>{data.bodytext}</p>
 			</f:if>
 
-			<f:if condition="{data.ctalink} && {data.ctalink_text}">
-				<f:link.typolink
-					parameter="{data.ctalink}"
-					class="o-btn-cta-hero animate__animated animate__fadeInUp scrollto">
-					{data.ctalink_text}
-				</f:link.typolink>
+			<f:if condition="({data.ctalink} && {data.ctalink_text}) || ({data.ctalink2} && {data.ctalink2_text})">
+				<div class="cta-group">
+					<f:render partial="Cta/Button" arguments="{
+						ctaLink: data.ctalink,
+						ctaButtonText: data.ctalink_text,
+						ctaButtonClass: 'btn-nessa btn-nessa-primary'
+					}"/>
+					<f:render partial="Cta/Button" arguments="{
+						ctaLink: data.ctalink2,
+						ctaButtonText: data.ctalink2_text,
+						ctaButtonClass: 'btn-nessa btn-nessa-outline-white'
+					}"/>
+				</div>
 			</f:if>
 		</div>
 	</div>

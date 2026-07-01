@@ -4,9 +4,22 @@ mod.web_layout.BackendLayouts {
     config {
       backend_layout {
         colCount = 1
-        rowCount = 2
+        rowCount = 3
         rows {
           1 {
+            columns {
+              1 {
+                name = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:backend_layout.row.hero
+                colPos = 1
+                maxitems = 1
+                allowed {
+                  CType = nessa_hero,nessa_image_text,nessa_banner
+                }
+              }
+            }
+          }
+
+          2 {
             columns {
               1 {
                 name = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:backend_layout.row.content
@@ -18,7 +31,7 @@ mod.web_layout.BackendLayouts {
             }
           }
 
-          2 {
+          3 {
             columns {
               1 {
                 name = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:backend_layout.row.footer

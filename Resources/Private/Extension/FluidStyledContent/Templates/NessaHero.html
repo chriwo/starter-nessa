@@ -5,27 +5,43 @@
 
 <f:section name="Main">
 
-	<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+	<f:comment>
+		A single hero item is rendered as a static hero (no carousel markup,
+		no controls, no indicators). More than one item renders a Bootstrap carousel.
+	</f:comment>
+	<f:variable name="slideCount">{heros -> f:count()}</f:variable>
 
-		<div class="carousel-indicators" id="hero-carousel-indicators"></div>
+	<f:if condition="{slideCount} > 1">
+		<f:then>
+			<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-		<div class="carousel-inner" role="listbox">
-			<f:for each="{heros}" as="hero" iteration="iterator">
-				<f:render partial="Hero/Item" arguments="{data: hero.data, files: hero.files, cycle: iterator.cycle}"/>
+				<div class="carousel-indicators" id="hero-carousel-indicators"></div>
+
+				<div class="carousel-inner" role="listbox">
+					<f:for each="{heros}" as="hero" iteration="iterator">
+						<f:render partial="Hero/Item" arguments="{data: hero.data, files: hero.files, active: iterator.isFirst}"/>
+					</f:for>
+				</div>
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+					<svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-chevron-left"></use></svg>
+					<span class="visually-hidden">Previous</span>
+				</button>
+
+				<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+					<svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-chevron-right"></use></svg>
+					<span class="visually-hidden">Next</span>
+				</button>
+
+			</div>
+		</f:then>
+		<f:else>
+			<f:for each="{heros}" as="hero">
+				<f:render partial="Hero/Item" arguments="{data: hero.data, files: hero.files, active: 1}"/>
 			</f:for>
-		</div>
+		</f:else>
+	</f:if>
 
-		<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-			<svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-chevron-left"></use></svg>
-			<span class="visually-hidden">Previous</span>
-		</button>
-
-		<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-			<svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-chevron-right"></use></svg>
-			<span class="visually-hidden">Next</span>
-		</button>
-
-	</div>
 </f:section>
 
 </html>

@@ -5,6 +5,8 @@
 @import './TypoScript/Elements/NessaCta.typoscript'
 @import './TypoScript/Elements/NessaFooter.typoscript'
 @import './TypoScript/Elements/NessaHero.typoscript'
+@import './TypoScript/Elements/NessaImageText.typoscript'
+@import './TypoScript/Elements/NessaBanner.typoscript'
 @import './TypoScript/Elements/NessaPartner.typoscript'
 @import './TypoScript/Elements/NessaPortfolio.typoscript'
 @import './TypoScript/Elements/NessaPortfolioFileCollections.typoscript'

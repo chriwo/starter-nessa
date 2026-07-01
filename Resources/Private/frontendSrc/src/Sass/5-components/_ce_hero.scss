@@ -1,177 +1,149 @@
-#hero {
+// ─── CE Hero V1: Fullscreen Carousel ──────────────────────────────────────────
+// One hero item → static fullscreen hero (no carousel). Multiple items →
+// Bootstrap carousel with arrows + indicators. The top offset clears the site
+// header via the shared `--nessa-header-offset` custom property (set in
+// 4-objects/_header.scss); no hard-coded pixel hack.
+
+.ce-hero--fullscreen {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
     background-color: rgb(4 12 21 / 80%);
 
+    .carousel,
+    .carousel-inner {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+    }
+
+    .carousel-item {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+
+        &::before {
+            position: absolute;
+            inset: 0;
+            content: '';
+            background-color: rgb(4 12 21 / 52%);
+        }
+    }
+
+    // Fade transition for the carousel variant.
+    .carousel-inner .carousel-item {
+        opacity: 0;
+        transition-property: opacity;
+
+        &.active {
+            opacity: 1;
+            transition: .5s;
+        }
+
+        &.carousel-item-next.carousel-item-start,
+        &.carousel-item-prev.carousel-item-end {
+            opacity: 1;
+            transition: .5s;
+        }
+    }
+
     h2 {
-        margin: 0;
+        margin: 0 0 1rem;
         font-family: $nessa-hero-headings-font-family;
-        font-size: $font-size-base * 3;
+        font-size: clamp(1.9rem, 4vw, $font-size-base * 3);
         font-weight: 700;
+        line-height: 1.2;
         color: $white;
     }
 
     p {
-        margin-top: 10px;
-        color: $white;
-        animation-delay: .4s;
+        max-width: 580px;
+        margin-bottom: 1.75rem;
+        color: rgb(255 255 255 / 85%);
     }
 }
 
-.carousel {
+// Content area — vertically centred below the header.
+.ce-hero--fullscreen .slide-content {
     position: absolute;
-    inset: 0;
-}
-
-.carousel-item {
-    position: absolute;
-    inset: 0;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-
-    &::before {
-        position: absolute;
-        inset: 0;
-        content: '';
-        background-color: rgb(4 12 21 / 50%);
-    }
-}
-
-.carousel-inner {
-    position: absolute;
-    inset: 0;
-
-    .carousel-item {
-        background-position: center top;
-        opacity: 0;
-        transition-property: opacity;
-    }
-
-    .active.carousel-item-left {
-        left: 0;
-        opacity: 0;
-        transform: translate3d(0, 0, 0);
-    }
-
-    .active.carousel-item-right {
-        left: 0;
-        opacity: 0;
-        transform: translate3d(0, 0, 0);
-    }
-
-    .active {
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .carousel-item-next.carousel-item-left {
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .carousel-item-prev.carousel-item-right {
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .carousel-item-next {
-        left: 0;
-        transform: translate3d(0, 0, 0);
-    }
-
-    .carousel-item-prev {
-        left: 0;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.carousel-container {
-    position: absolute;
-    inset: 82px 50px 0;
+    inset: var(--nessa-header-offset, 0) 0 0;
+    z-index: 1;
     display: flex;
     align-items: center;
 }
 
-.carousel-control-next,
-.carousel-control-prev {
-    top: 112px;
-    width: 10%;
+.cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
-    width: $carousel-control-icon-width;
-    height: $carousel-control-icon-width;
-    padding: 10px;
-    font-size: 36px;
-    line-height: 1;
-    color: rgb(255 255 255 / 50%);
-    background: rgb(255 255 255 / 20%);
-    border-radius: 50px;
-    transition: .3s;
-
-    &:hover {
-        color: rgb(255 255 255 / 80%);
-        background: rgb(255 255 255 / 30%);
+// ─── Carousel controls ────────────────────────────────────────────────────────
+.ce-hero--fullscreen {
+    .carousel-control-prev,
+    .carousel-control-next {
+        top: var(--nessa-header-offset, 0);
+        width: 8%;
     }
-}
 
-.carousel-indicators {
-    margin-bottom: 2rem;
-
-    [data-bs-target] {
-        border-top: 0;
-        border-bottom: 0;
+    .carousel-control-prev .icon,
+    .carousel-control-next .icon {
+        width: 44px;
+        height: 44px;
+        padding: 8px;
+        color: rgb(255 255 255 / 55%);
+        background-color: rgb(255 255 255 / 18%);
         border-radius: 50px;
+        transition: .3s;
+
+        &:hover {
+            color: rgb(255 255 255 / 90%);
+            background-color: rgb(255 255 255 / 30%);
+        }
+    }
+
+    .carousel-indicators {
+        margin-bottom: 1.75rem;
+
+        [data-bs-target] {
+            width: 18px;
+            height: 18px;
+            margin: 0 4px;
+            background-color: rgb(255 255 255 / 45%);
+            border-top: 0;
+            border-bottom: 0;
+            border-radius: 50%;
+            transition: background-color .3s;
+        }
+
+        .active {
+            background-color: map-get($theme-colors, 'primary');
+        }
     }
 }
 
 @include media-breakpoint-down(lg) {
-    #hero {
-        .carousel-control-next,
-        .carousel-control-prev {
-            top: 66px;
-        }
-
-        height: 100vh;
-
-        .carousel-container {
-            top: 74px;
+    .ce-hero--fullscreen {
+        .slide-content {
             text-align: center;
         }
-    }
-}
 
-@include media-breakpoint-down(md) {
-    #hero {
+        .cta-group {
+            justify-content: center;
+        }
+
         h2 {
-            font-size: 30px;
-        }
-    }
-}
-
-@include media-breakpoint-up(xl) {
-    #hero {
-        p {
-            width: 50%;
-        }
-    }
-}
-
-@media (width >= 1024px) {
-    #hero {
-        .carousel-control-next,
-        .carousel-control-prev {
-            width: 5%;
+            font-size: $font-size-base * 1.75;
         }
     }
 }
 
 @media (height <= 500px) {
-    #hero {
+    .ce-hero--fullscreen {
         height: 120vh;
     }
 }

@@ -76,7 +76,7 @@ return (function () {
             ],
             'cta' => [
                 'label' => $translationFile . 'palette.cta',
-                'showitem' => 'ctalink, ctalink_text',
+                'showitem' => 'ctalink, ctalink_text, --linebreak--, ctalink2, ctalink2_text',
             ],
         ],
 
@@ -106,6 +106,26 @@ return (function () {
                 'l10n_mode' => 'prefixLangTitle',
                 'exclude' => true,
                 'label' => $translationFile . 'tx_starternessa_hero.tx_starter_ctalink_text_formlabel',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 40,
+                    'max' => 255,
+                ],
+            ],
+            'ctalink2' => [
+                'exclude' => true,
+                'label' => $translationFile . 'tx_starternessa_hero.tx_starter_ctalink2_formlabel',
+                'config' => [
+                    'type' => 'link',
+                    'size' => 50,
+                    'allowedTypes' => ['page', 'file', 'email', 'record'],
+                    'appearance' => ['allowedOptions' => ['title', 'rel']],
+                ],
+            ],
+            'ctalink2_text' => [
+                'l10n_mode' => 'prefixLangTitle',
+                'exclude' => true,
+                'label' => $translationFile . 'tx_starternessa_hero.tx_starter_ctalink2_text_formlabel',
                 'config' => [
                     'type' => 'input',
                     'size' => 40,

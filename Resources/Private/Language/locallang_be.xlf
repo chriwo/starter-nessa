@@ -344,6 +344,12 @@
 			<trans-unit id="tx_starternessa_hero.tx_starter_ctalink_text_formlabel">
 				<source>Link text</source>
 			</trans-unit>
+			<trans-unit id="tx_starternessa_hero.tx_starter_ctalink2_formlabel">
+				<source>Link (2nd CTA)</source>
+			</trans-unit>
+			<trans-unit id="tx_starternessa_hero.tx_starter_ctalink2_text_formlabel">
+				<source>Link text (2nd CTA)</source>
+			</trans-unit>
 
 			<trans-unit id="tt_content.nessa_copyright_formlabel">
 				<source>Copyright</source>
@@ -363,6 +369,82 @@
 
 			<trans-unit id="ckeditor.link.download">
 				<source>Download</source>
+			</trans-unit>
+
+			<!-- PROJ-1: Hero content elements (nessa_image_text, nessa_banner) -->
+			<trans-unit id="CType.I.nessa_image_text">
+				<source>Image Text</source>
+			</trans-unit>
+			<trans-unit id="CType.I.nessa_image_text.description">
+				<source>Image and text side by side with optional statistics and background colour</source>
+			</trans-unit>
+			<trans-unit id="CType.I.nessa_banner">
+				<source>Banner</source>
+			</trans-unit>
+			<trans-unit id="CType.I.nessa_banner.description">
+				<source>Height-restricted banner with background colour/image and flexible text position</source>
+			</trans-unit>
+
+			<trans-unit id="tt_content.tx_starter_ctalink2_formlabel">
+				<source>Link (2nd CTA)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.tx_starter_ctalink2_text_formlabel">
+				<source>Link text (2nd CTA)</source>
+			</trans-unit>
+
+			<trans-unit id="tx_starter_background_formlabel">
+				<source>Background</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_background.I.none">
+				<source>None (default)</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_background.I.bg-light">
+				<source>Light</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_background.I.bg-primary">
+				<source>Primary colour</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_background.I.bg-secondary">
+				<source>Secondary colour</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_background.I.bg-dark">
+				<source>Dark</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_background.I.bg-gradient-primary">
+				<source>Gradient primary</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_background.I.bg-gradient-dark">
+				<source>Gradient dark</source>
+			</trans-unit>
+
+			<trans-unit id="tx_starter_image_position_formlabel">
+				<source>Image position</source>
+			</trans-unit>
+
+			<trans-unit id="tx_starter_hero_stats_formlabel">
+				<source>Statistics</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_hero_stats.description">
+				<source>One entry per line, format: VALUE|LABEL (e.g. 1.000|Customers)</source>
+			</trans-unit>
+
+			<trans-unit id="tx_starter_hero_content_position_formlabel">
+				<source>Text content position</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_hero_content_position.description">
+				<source>"No text" renders a pure visual divider and requires a background image.</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_hero_content_position.I.bottom-left">
+				<source>Bottom left</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_hero_content_position.I.center-left">
+				<source>Centre left</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_hero_content_position.I.center">
+				<source>Centred</source>
+			</trans-unit>
+			<trans-unit id="tx_starter_hero_content_position.I.none">
+				<source>No text (background only)</source>
 			</trans-unit>
 		</body>
     </file>

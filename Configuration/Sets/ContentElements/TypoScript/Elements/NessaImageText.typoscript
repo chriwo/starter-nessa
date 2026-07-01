@@ -1,0 +1,22 @@
+tt_content.nessa_image_text =< lib.contentElement
+tt_content.nessa_image_text {
+  templateName = NessaImageText
+
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    10 {
+      references.fieldName = assets
+      as = images
+    }
+
+    20 = TYPO3\CMS\Frontend\DataProcessing\SplitProcessor
+    20 {
+      if.isTrue.field = tx_starter_hero_stats
+      fieldName = tx_starter_hero_stats
+      # split on newline (ASCII 10); one "VALUE|LABEL" pair per line
+      delimiter.char = 10
+      removeEmptyEntries = 1
+      as = stats
+    }
+  }
+}

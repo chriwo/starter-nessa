@@ -1,0 +1,36 @@
+// ─── Shared Hero Background Classes ───────────────────────────────────────────
+// Background colour and gradient classes shared by the split (nessa_image_text)
+// and banner (nessa_banner) hero CEs. Each class also exposes a `--hero-fg`
+// custom property holding the contrast colour (via Bootstrap `color-contrast()`),
+// so the components can colour their text without per-class overrides.
+
+$nessa-hero-bg-dark: #111827 !default;
+$nessa-hero-backgrounds: (
+    'bg-light': $gray-100,
+    'bg-primary': $primary,
+    'bg-secondary': $secondary,
+    'bg-dark': $nessa-hero-bg-dark,
+) !default;
+
+@each $name, $color in $nessa-hero-backgrounds {
+    .hero-#{$name} {
+        --hero-fg: #{color-contrast($color)};
+
+        color: var(--hero-fg);
+        background-color: $color;
+    }
+}
+
+.hero-bg-gradient-primary {
+    --hero-fg: #{color-contrast($primary)};
+
+    color: var(--hero-fg);
+    background: linear-gradient(135deg, $primary 0%, shade-color($primary, 40%) 100%);
+}
+
+.hero-bg-gradient-dark {
+    --hero-fg: #{color-contrast($secondary)};
+
+    color: var(--hero-fg);
+    background: linear-gradient(135deg, $secondary 0%, shade-color($secondary, 50%) 100%);
+}

@@ -1,0 +1,12 @@
+tt_content.nessa_banner =< lib.contentElement
+tt_content.nessa_banner {
+  templateName = NessaBanner
+
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    10 {
+      references.fieldName = assets
+      as = images
+    }
+  }
+}
