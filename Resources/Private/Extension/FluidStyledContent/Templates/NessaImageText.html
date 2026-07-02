@@ -2,19 +2,15 @@
 			data-namespace-typo3-fluid="true">
 
 <f:comment>
-	V2 — nessa_image_text (Split Hero). Header field is rendered as the visible
-	headline. Image position (left/right) and an optional background class are
-	editable; text colour adapts automatically via the --hero-fg custom property.
+    Provides:
+        * {imageLeft} bool — image column rendered left of the text
+        * {backgroundClass} string — e.g. "hero-bg-dark" (empty when no background)
+        * {isDarkBackground} bool — text/CTA styling should adapt to a dark surface
+        * {ctaOutlineClass} string — full class for the secondary (outline) CTA
+        * {imageLoading} string — "eager" in the hero region (colPos 1), else "lazy"
 </f:comment>
 
-<f:variable name="bgClass">{f:if(condition: data.tx_starter_background, then: ' hero-{data.tx_starter_background}')}</f:variable>
-<f:comment>Core imageorient: 25 = beside text right, 26 = beside text left.</f:comment>
-<f:variable name="imageLeft">{f:if(condition: '{data.imageorient} == 26', then: 1, else: 0)}</f:variable>
-<f:comment>Dark background → white outline CTA; no/light background → dark outline CTA.</f:comment>
-<f:variable name="darkBg">{f:if(condition: '{data.tx_starter_background} == \'\' || {data.tx_starter_background} == \'bg-light\'', then: 0, else: 1)}</f:variable>
-<f:variable name="outlineBtn">btn-nessa {f:if(condition: darkBg, then: 'btn-nessa-outline-white', else: 'btn-nessa-outline-dark')}</f:variable>
-
-<section id="c{data.uid}" class="ce-hero ce-hero--split{bgClass}">
+<section id="c{data.uid}" class="ce-hero ce-hero--split{f:if(condition: backgroundClass, then: ' {backgroundClass}')}">
 	<div class="container">
 		<div class="row align-items-center g-5">
 
@@ -37,7 +33,7 @@
 						<f:render partial="Cta/Button" arguments="{
 							ctaLink: data.tx_starter_ctalink2,
 							ctaButtonText: data.tx_starter_ctalink2_text,
-							ctaButtonClass: outlineBtn
+							ctaButtonClass: ctaOutlineClass
 						}"/>
 					</div>
 				</f:if>
@@ -48,7 +44,23 @@
 			</div>
 
 			<div class="col-lg-6 hero-img-col {f:if(condition: imageLeft, then: 'order-lg-1 order-2', else: 'order-lg-2 order-2')}">
-				<f:image image="{images.0}" maxWidth="900" alt="{images.0.alternative}" title="{images.0.title}"/>
+				<f:variable name="heroImg">{images.0}</f:variable>
+				<img
+					src="{f:uri.image(image: heroImg, width: '900', cropVariant: 'default')}"
+					srcset="
+                        {f:uri.image(image: heroImg, width: '480', cropVariant: 'default')} 480w,
+                        {f:uri.image(image: heroImg, width: '640', cropVariant: 'default')} 640w,
+                        {f:uri.image(image: heroImg, width: '900', cropVariant: 'default')} 900w,
+                        {f:uri.image(image: heroImg, width: '1200', cropVariant: 'default')} 1200w,
+                        {f:uri.image(image: heroImg, width: '1600', cropVariant: 'default')} 1600w
+                    "
+					sizes="(min-width: 992px) 45vw, 100vw"
+					width="900"
+                    height="600"
+					alt="{heroImg.alternative}"
+                    title="{heroImg.title}"
+					loading="{imageLoading}"
+                    decoding="async"/>
 			</div>
 
 		</div>

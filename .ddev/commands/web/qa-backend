@@ -7,6 +7,7 @@
 
 cd ..
 
+.build/bin/phpunit -c .project/tools/phpunit-unit.xml --do-not-cache-result
 .build/bin/phpunit -c .project/tools/phpunit-functional-v$@.xml --do-not-cache-result
 .build/bin/php-cs-fixer fix --dry-run --diff --config=.project/tools/.php-cs-fixer.php
 .build/bin/phpstan --configuration=.project/tools/phpstan-v$@.neon

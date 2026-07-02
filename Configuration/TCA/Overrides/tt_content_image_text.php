@@ -1,5 +1,7 @@
 <?php
 
+use StarterTeam\StarterNessa\Resource\ImageOrientType;
+use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die();
@@ -40,6 +42,7 @@ defined('TYPO3') || die();
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.media,
             assets,
             imageorient,
+            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
             tx_starter_background,
         ',
         [
@@ -47,7 +50,7 @@ defined('TYPO3') || die();
                 'imageorient' => [
                     'label' => $translationFile . 'tx_starter_image_position_formlabel',
                     'config' => [
-                        'default' => 25,
+                        'default' => ImageOrientType::BESIDE_TEXT_LEFT,
                     ],
                 ],
                 'bodytext' => [
@@ -59,6 +62,46 @@ defined('TYPO3') || die();
                     'config' => [
                         'minitems' => 1,
                         'maxitems' => 1,
+                        'allowed' => 'jpg,jpeg,png',
+                        'overrideChildTca' => [
+                            'columns' => [
+                                'uid_local' => [
+                                    'config' => [
+                                        'appearance' => [
+                                            'elementBrowserAllowed' => 'jpg,jpeg,png',
+                                        ],
+                                    ],
+                                ],
+                                'crop' => [
+                                    'config' => [
+                                        'cropVariants' => [
+                                            'default' => [
+                                                'title' => 'Default',
+                                                'selectedRatio' => '3:2',
+                                                'allowedAspectRatios' => [
+                                                    '3:2' => [
+                                                        'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.3_2',
+                                                        'value' => 3 / 2,
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                            'types' => [
+                                '0' => [
+                                    'showitem' => '
+                                        --palette--;;nessaMemberOverlayPalette,
+                                        --palette--;;filePalette',
+                                ],
+                                FileType::IMAGE->value => [
+                                    'showitem' => '
+                                        --palette--;;nessaMemberOverlayPalette,
+                                        --palette--;;filePalette',
+                                ],
+                            ],
+                        ],
                     ],
                 ],
             ],

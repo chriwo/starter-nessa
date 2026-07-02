@@ -10,9 +10,9 @@ defined('TYPO3') || die();
     $heroBackgroundItems = [
         ['label' => $translationFile . 'tx_starter_background.I.none', 'value' => ''],
         ['label' => $translationFile . 'tx_starter_background.I.bg-light', 'value' => 'bg-light'],
+        ['label' => $translationFile . 'tx_starter_background.I.bg-dark', 'value' => 'bg-dark'],
         ['label' => $translationFile . 'tx_starter_background.I.bg-primary', 'value' => 'bg-primary'],
         ['label' => $translationFile . 'tx_starter_background.I.bg-secondary', 'value' => 'bg-secondary'],
-        ['label' => $translationFile . 'tx_starter_background.I.bg-dark', 'value' => 'bg-dark'],
         ['label' => $translationFile . 'tx_starter_background.I.bg-gradient-primary', 'value' => 'bg-gradient-primary'],
         ['label' => $translationFile . 'tx_starter_background.I.bg-gradient-dark', 'value' => 'bg-gradient-dark'],
     ];

@@ -18,5 +18,19 @@ tt_content.nessa_image_text {
       removeEmptyEntries = 1
       as = stats
     }
+
+    # Derives imageLeft / backgroundClass / isDarkBackground / ctaOutlineClass
+    30 = StarterTeam\StarterNessa\DataProcessing\NessaImageTextProcessor
+    30 {
+      # Prefix bridging the tt_content value "bg-dark" to the CSS hook ".hero-bg-dark"
+      # (namespaced to avoid clashing with Bootstrap's own ".bg-*" utilities).
+      backgroundClassPrefix = hero-
+
+      # Secondary (outline) CTA classes. Base class plus the variant chosen by the
+      # background brightness; all defined in the frontend SCSS.
+      ctaOutlineBaseClass = btn-nessa
+      ctaOutlineClassOnDark = btn-nessa-outline-white
+      ctaOutlineClassOnLight = btn-nessa-outline-dark
+    }
   }
 }
