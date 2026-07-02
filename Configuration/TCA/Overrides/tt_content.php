@@ -19,7 +19,7 @@ defined('TYPO3') || die();
                 'nessaCtaDouble' => [
                     'label' => 'LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:palette.cta',
                     'showitem' => 'tx_starter_ctalink, tx_starter_ctalink_text,'
-                        . ' tx_starter_ctalink2, tx_starter_ctalink2_text',
+                        . ' --linebreak--, tx_starter_ctalink2, tx_starter_ctalink2_text',
                 ],
             ],
         ]

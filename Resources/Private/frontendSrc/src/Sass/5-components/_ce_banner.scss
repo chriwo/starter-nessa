@@ -1,9 +1,10 @@
 // ─── CE Hero V3: Solid Banner (nessa_banner) ──────────────────────────────────
 // Height-restricted banner (~50vh / 40vh on mobile). Background colour/gradient
-// class is required; an optional background image overlays it with a dark
-// overlay (forcing light text). Text colour otherwise adapts via --hero-fg
-// (see 5-components/_ce_hero_shared.scss). Content position "none" renders no
-// text area (handled in the template).
+// class is required; an optional background image sits on top (forcing light
+// text). A dark overlay is added only when text is present (.has-content), to
+// guarantee contrast — without content the image shows unobscured. Text colour
+// otherwise adapts via --hero-fg (see 5-components/_ce_hero_shared.scss).
+// Content position "none" renders no text area (handled in the template).
 
 .ce-hero--solid {
     position: relative;
@@ -14,17 +15,25 @@
     background-position: center center;
     background-size: cover;
 
-    // Dark overlay + forced light text when a background image is set.
+    // Forced light text when a background image is set.
     &.has-bg-image {
         --hero-fg: #{$white};
 
-        &::before {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            content: '';
-            background-color: rgb(4 12 21 / 55%);
-        }
+        // The two cropVariant URLs are provided inline by the template as
+        // custom properties; the mobile variant is swapped in below the md
+        // breakpoint. See NessaBanner.html.
+        background-image: var(--hero-bg-desktop);
+    }
+
+    // Dark overlay only when text sits on the image — it exists purely to
+    // guarantee text contrast. With content position "none" (.has-content is
+    // absent) the image shows unobscured. See NessaBanner.html.
+    &.has-bg-image.has-content::before {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        content: '';
+        background-color: rgb(4 12 21 / 55%);
     }
 
     .hero-inner {
@@ -98,5 +107,9 @@
     .ce-hero--solid {
         height: 40vh;
         min-height: 260px;
+
+        &.has-bg-image {
+            background-image: var(--hero-bg-mobile);
+        }
     }
 }

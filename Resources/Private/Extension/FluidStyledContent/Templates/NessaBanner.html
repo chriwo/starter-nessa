@@ -2,24 +2,29 @@
 			data-namespace-typo3-fluid="true">
 
 <f:comment>
-	V3 — nessa_banner (Solid Banner Hero). Background class is required; an optional
-	background image overlays it with a dark overlay. Content position "none"
-	renders a pure visual divider (no text area). Header is the visible headline.
+    Provides:
+        * {position} string — normalised content position, e.g. "center-left"
+        * {hasContent} bool — false for position "none" (pure visual divider)
+        * {hasImage} bool — a background image is set
+        * {backgroundClass} string — e.g. "hero-bg-dark" (never empty; falls back)
+        * {imageClass} string — " has-bg-image" when an image is set, else ""
+        * {isDarkBackground} bool — text/CTA styling should adapt to a dark surface
+        * {ctaOutlineClass} string — full class for the secondary (outline) CTA
 </f:comment>
 
-<f:variable name="position">{f:if(condition: data.tx_starter_hero_content_position, then: data.tx_starter_hero_content_position, else: 'center-left')}</f:variable>
-<f:variable name="hasImage">{f:if(condition: images.0, then: 1, else: 0)}</f:variable>
-<f:variable name="bgClass">{f:if(condition: data.tx_starter_background, then: 'hero-{data.tx_starter_background}', else: 'hero-bg-dark')}</f:variable>
-<f:variable name="imageClass">{f:if(condition: hasImage, then: ' has-bg-image')}</f:variable>
-<f:comment>Dark background (any coloured class or image overlay) → white outline CTA.</f:comment>
-<f:variable name="darkBg">{f:if(condition: '{hasImage} || {data.tx_starter_background} != \'bg-light\'', then: 1, else: 0)}</f:variable>
-<f:variable name="outlineBtn">btn-nessa {f:if(condition: darkBg, then: 'btn-nessa-outline-white', else: 'btn-nessa-outline-dark')}</f:variable>
 <f:variable name="textColClass">{f:if(condition: '{position} == \'center\'', then: 'col-lg-8', else: 'col-lg-7 col-xl-6')}</f:variable>
 
-<section id="c{data.uid}" class="ce-hero ce-hero--solid {bgClass}{imageClass}"
-		style="{f:if(condition: '{hasImage}', then: 'background-image: url({f:uri.image(image: images.0, maxWidth: 1920)})')}">
+<f:if condition="{hasImage}">
+	<f:then>
+		<f:variable name="bgDesktop">{f:uri.image(image: images.0, maxWidth: 1920, cropVariant: 'desktop')}</f:variable>
+		<f:variable name="bgMobile">{f:uri.image(image: images.0, maxWidth: 992, cropVariant: 'mobile')}</f:variable>
+	</f:then>
+</f:if>
 
-	<f:if condition="{position} != 'none'">
+<section id="c{data.uid}" class="ce-hero ce-hero--solid {backgroundClass}{imageClass}{f:if(condition: hasContent, then: ' has-content')}"
+		style="{f:if(condition: hasImage, then: '--hero-bg-desktop: url({bgDesktop}); --hero-bg-mobile: url({bgMobile})')}">
+
+	<f:if condition="{hasContent}">
 		<div class="hero-inner pos-{position}">
 			<div class="container">
 				<div class="row">
@@ -42,7 +47,7 @@
 								<f:render partial="Cta/Button" arguments="{
 									ctaLink: data.tx_starter_ctalink2,
 									ctaButtonText: data.tx_starter_ctalink2_text,
-									ctaButtonClass: outlineBtn
+									ctaButtonClass: ctaOutlineClass
 								}"/>
 							</div>
 						</f:if>

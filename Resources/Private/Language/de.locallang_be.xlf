@@ -587,6 +587,14 @@
 				<source>No text (background only)</source>
 				<target>Kein Text (nur Hintergrund)</target>
 			</trans-unit>
+			<trans-unit id="banner.crop.desktop">
+				<source>Desktop (wide)</source>
+				<target>Desktop (breit)</target>
+			</trans-unit>
+			<trans-unit id="banner.crop.mobile">
+				<source>Mobile (near square)</source>
+				<target>Mobil (fast quadratisch)</target>
+			</trans-unit>
 			</body>
     </file>
 </xliff>

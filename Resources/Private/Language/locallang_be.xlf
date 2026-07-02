@@ -446,6 +446,12 @@
 			<trans-unit id="tx_starter_hero_content_position.I.none">
 				<source>No text (background only)</source>
 			</trans-unit>
+			<trans-unit id="banner.crop.desktop">
+				<source>Desktop (wide)</source>
+			</trans-unit>
+			<trans-unit id="banner.crop.mobile">
+				<source>Mobile (near square)</source>
+			</trans-unit>
 		</body>
     </file>
 </xliff>
