@@ -22,13 +22,23 @@
         position: absolute;
         inset: 0;
         height: 100%;
-        background-repeat: no-repeat;
-        background-position: center top;
-        background-size: cover;
+
+        // Foreground hero image (see Partials/Hero/Item.html). Full-bleed cover,
+        // sitting below the dark overlay and the text content.
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
 
         &::before {
             position: absolute;
             inset: 0;
+            z-index: 1;
             content: '';
             background-color: rgb(4 12 21 / 52%);
         }
@@ -71,9 +81,39 @@
 .ce-hero--fullscreen .slide-content {
     position: absolute;
     inset: var(--nessa-header-offset, 0) 0 0;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     align-items: center;
+
+    // ── Text content positions (ported from the solid banner) ──
+    // Vertical placement is the flex cross-axis; horizontal text placement is
+    // handled inside the centred Bootstrap container. Position "none" renders
+    // no text area at all (handled in Partials/Hero/Item.html).
+    &.pos-bottom-left {
+        align-items: flex-end;
+
+        .container {
+            padding-bottom: 3rem;
+        }
+    }
+
+    &.pos-center-left {
+        align-items: center;
+    }
+
+    &.pos-center {
+        align-items: center;
+        text-align: center;
+
+        .cta-group {
+            justify-content: center;
+        }
+
+        p {
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
 }
 
 .cta-group {
@@ -82,40 +122,25 @@
     gap: 12px;
 }
 
-// ─── Carousel controls ────────────────────────────────────────────────────────
+// ─── Carousel indicators & pause control ──────────────────────────────────────
+// No prev/next arrows: navigation is handled by the indicators, keyboard arrows,
+// swipe and the pause control (see Partials/Hero/Item.html and CeHero.js).
 .ce-hero--fullscreen {
-    .carousel-control-prev,
-    .carousel-control-next {
-        top: var(--nessa-header-offset, 0);
-        width: 8%;
-    }
-
-    .carousel-control-prev .icon,
-    .carousel-control-next .icon {
-        width: 44px;
-        height: 44px;
-        padding: 8px;
-        color: rgb(255 255 255 / 55%);
-        background-color: rgb(255 255 255 / 18%);
-        border-radius: 50px;
-        transition: .3s;
-
-        &:hover {
-            color: rgb(255 255 255 / 90%);
-            background-color: rgb(255 255 255 / 30%);
-        }
-    }
-
     .carousel-indicators {
         margin-bottom: 1.75rem;
 
+        // 20px visible dot inside a 24px hit area (WCAG 2.5.8 target size); the
+        // transparent padding is clipped away by background-clip so only the dot
+        // shows. Wider gap balances the dots against the pause control.
         [data-bs-target] {
-            width: 18px;
-            height: 18px;
-            margin: 0 4px;
+            box-sizing: content-box;
+            width: 20px;
+            height: 20px;
+            padding: 2px;
+            margin: 0 7px;
             background-color: rgb(255 255 255 / 45%);
-            border-top: 0;
-            border-bottom: 0;
+            background-clip: content-box;
+            border: 0;
             border-radius: 50%;
             transition: background-color .3s;
         }
@@ -123,6 +148,40 @@
         .active {
             background-color: map-get($theme-colors, 'primary');
         }
+    }
+
+    // Pause / play control (WCAG 2.2.2). Above the text content (z-index 2).
+    .hero-carousel-pause {
+        position: absolute;
+        right: 1.25rem;
+        bottom: 1.5rem;
+        z-index: 3;
+        display: inline-flex;
+        padding: 8px;
+        color: rgb(255 255 255 / 70%);
+        background-color: rgb(255 255 255 / 18%);
+        border: 0;
+        border-radius: 50%;
+        transition: .3s;
+
+        &:hover,
+        &:focus-visible {
+            color: rgb(255 255 255 / 95%);
+            background-color: rgb(255 255 255 / 30%);
+        }
+
+        .icon {
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+
+// Reduced motion: no cross-fade between slides (auto-rotation is already
+// stopped and entrance animations skipped in CeHero.js).
+@media (prefers-reduced-motion: reduce) {
+    .ce-hero--fullscreen .carousel-inner .carousel-item {
+        transition: none;
     }
 }
 
@@ -138,6 +197,16 @@
 
         h2 {
             font-size: $font-size-base * 1.75;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .ce-hero--fullscreen {
+        // Keep the text clear of the viewport edges on narrow phones.
+        .slide-content .container {
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
         }
     }
 }

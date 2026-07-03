@@ -452,6 +452,24 @@
 			<trans-unit id="banner.crop.mobile">
 				<source>Mobile (near square)</source>
 			</trans-unit>
+			<trans-unit id="hero.crop.desktop">
+				<source>Desktop (landscape)</source>
+			</trans-unit>
+			<trans-unit id="hero.crop.mobile">
+				<source>Mobile (portrait)</source>
+			</trans-unit>
+			<trans-unit id="hero.crop.ratio.3_4" translate="no">
+				<source>3:4 (portrait)</source>
+			</trans-unit>
+			<trans-unit id="hero.crop.ratio.9_16" translate="no">
+				<source>9:16 (portrait)</source>
+			</trans-unit>
+			<trans-unit id="hero.preview.slides">
+				<source>Hero slides:</source>
+			</trans-unit>
+			<trans-unit id="hero.preview.empty">
+				<source>No slides yet</source>
+			</trans-unit>
 		</body>
     </file>
 </xliff>

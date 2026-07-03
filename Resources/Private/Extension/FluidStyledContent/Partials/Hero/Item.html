@@ -1,32 +1,54 @@
 <html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
 			data-namespace-typo3-fluid="true">
 
-<div class="carousel-item{f:if(condition: active, then: ' active')}"
-		style="background-image: url({f:uri.image(image: files.0, maxHeight: 1200)})">
-	<div class="slide-content">
-		<div class="container">
-			<h2>{data.header}</h2>
+<f:variable name="position">{f:if(condition: data.content_position, then: data.content_position, else: 'center-left')}</f:variable>
 
-			<f:if condition="{data.bodytext}">
-				<p>{data.bodytext}</p>
-			</f:if>
+<div class="carousel-item{f:if(condition: active, then: ' active')}"<f:if condition="{total} > 1"> role="group" aria-roledescription="slide" aria-label="{index} of {total}"</f:if>>
+	<f:comment>
+		Hero image as a real foreground <img> (not a CSS background) so the first,
+		visible slide can be prioritised for the LCP: fetchpriority="high" + eager
+		on the active slide, lazy + low elsewhere. Mobile gets a portrait crop via
+		<picture>; the dark overlay and text sit above it (z-index in _ce_hero.scss).
+	</f:comment>
+	<picture>
+		<source media="(max-width: 767px)"
+				sizes="100vw"
+				srcset="{f:uri.image(image: files.0, cropVariant: 'mobile', width: '480')} 480w, {f:uri.image(image: files.0, cropVariant: 'mobile', width: '768')} 768w, {f:uri.image(image: files.0, cropVariant: 'mobile', width: '1080')} 1080w"/>
+		<img class="hero-media"
+				src="{f:uri.image(image: files.0, cropVariant: 'desktop', width: '1280')}"
+				sizes="100vw"
+				srcset="{f:uri.image(image: files.0, cropVariant: 'desktop', width: '768')} 768w, {f:uri.image(image: files.0, cropVariant: 'desktop', width: '1280')} 1280w, {f:uri.image(image: files.0, cropVariant: 'desktop', width: '1920')} 1920w, {f:uri.image(image: files.0, cropVariant: 'desktop', width: '2560')} 2560w"
+				width="1920" height="1080"
+				alt="{files.0.alternative}"
+				loading="{f:if(condition: active, then: 'eager', else: 'lazy')}"
+				fetchpriority="{f:if(condition: active, then: 'high', else: 'low')}"
+				decoding="async"/>
+	<f:if condition="{position} != 'none'">
+		<div class="slide-content pos-{position}">
+			<div class="container">
+				<h2>{data.header}</h2>
 
-			<f:if condition="({data.ctalink} && {data.ctalink_text}) || ({data.ctalink2} && {data.ctalink2_text})">
-				<div class="cta-group">
-					<f:render partial="Cta/Button" arguments="{
-						ctaLink: data.ctalink,
-						ctaButtonText: data.ctalink_text,
-						ctaButtonClass: 'btn-nessa btn-nessa-primary'
-					}"/>
-					<f:render partial="Cta/Button" arguments="{
-						ctaLink: data.ctalink2,
-						ctaButtonText: data.ctalink2_text,
-						ctaButtonClass: 'btn-nessa btn-nessa-outline-white'
-					}"/>
-				</div>
-			</f:if>
+				<f:if condition="{data.bodytext}">
+					<p>{data.bodytext}</p>
+				</f:if>
+
+				<f:if condition="({data.ctalink} && {data.ctalink_text}) || ({data.ctalink2} && {data.ctalink2_text})">
+					<div class="cta-group">
+						<f:render partial="Cta/Button" arguments="{
+							ctaLink: data.ctalink,
+							ctaButtonText: data.ctalink_text,
+							ctaButtonClass: 'btn-nessa btn-nessa-primary'
+						}"/>
+						<f:render partial="Cta/Button" arguments="{
+							ctaLink: data.ctalink2,
+							ctaButtonText: data.ctalink2_text,
+							ctaButtonClass: 'btn-nessa btn-nessa-outline-white'
+						}"/>
+					</div>
+				</f:if>
+			</div>
 		</div>
-	</div>
+	</f:if>
 </div>
 
 </html>

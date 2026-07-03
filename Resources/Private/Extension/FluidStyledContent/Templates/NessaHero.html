@@ -13,24 +13,25 @@
 
 	<f:if condition="{slideCount} > 1">
 		<f:then>
-			<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+			<div id="heroCarousel" class="carousel slide carousel-fade"
+					aria-roledescription="carousel" aria-label="Hero slides">
 
 				<div class="carousel-indicators" id="hero-carousel-indicators"></div>
 
-				<div class="carousel-inner" role="listbox">
+				<div class="carousel-inner">
 					<f:for each="{heros}" as="hero" iteration="iterator">
-						<f:render partial="Hero/Item" arguments="{data: hero.data, files: hero.files, active: iterator.isFirst}"/>
+						<f:render partial="Hero/Item" arguments="{data: hero.data, files: hero.files, active: iterator.isFirst, index: iterator.cycle, total: slideCount}"/>
 					</f:for>
 				</div>
 
-				<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-					<svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-chevron-left"></use></svg>
-					<span class="visually-hidden">Previous</span>
-				</button>
-
-				<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-					<svg class="icon icon-lg" aria-hidden="true" focusable="false"><use href="#bi-chevron-right"></use></svg>
-					<span class="visually-hidden">Next</span>
+				<f:comment>
+					No prev/next arrow controls: the indicators (direct, keyboard-focusable
+					navigation), Bootstrap keyboard arrows, touch swipe and the pause
+					control cover navigation accessibly. See CeHero.js.
+				</f:comment>
+				<f:comment>Pause/play control for the auto-rotating carousel (WCAG 2.2.2); wired in CeHero.js.</f:comment>
+				<button class="hero-carousel-pause" type="button" aria-pressed="false" aria-label="Pause slide rotation">
+					<svg class="icon" aria-hidden="true" focusable="false"><use href="#bi-pause-fill"></use></svg>
 				</button>
 
 			</div>

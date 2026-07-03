@@ -595,6 +595,30 @@
 				<source>Mobile (near square)</source>
 				<target>Mobil (fast quadratisch)</target>
 			</trans-unit>
+			<trans-unit id="hero.crop.desktop">
+				<source>Desktop (landscape)</source>
+				<target>Desktop (Querformat)</target>
+			</trans-unit>
+			<trans-unit id="hero.crop.mobile">
+				<source>Mobile (portrait)</source>
+				<target>Mobil (Hochformat)</target>
+			</trans-unit>
+			<trans-unit id="hero.crop.ratio.3_4" translate="no">
+				<source>3:4 (portrait)</source>
+				<target>3:4 (Hochformat)</target>
+			</trans-unit>
+			<trans-unit id="hero.crop.ratio.9_16" translate="no">
+				<source>9:16 (portrait)</source>
+				<target>9:16 (Hochformat)</target>
+			</trans-unit>
+			<trans-unit id="hero.preview.slides">
+				<source>Hero slides:</source>
+				<target>Hero-Slides:</target>
+			</trans-unit>
+			<trans-unit id="hero.preview.empty">
+				<source>No slides yet</source>
+				<target>Noch keine Slides</target>
+			</trans-unit>
 			</body>
     </file>
 </xliff>

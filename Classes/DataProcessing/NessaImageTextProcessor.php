@@ -77,7 +77,8 @@ final class NessaImageTextProcessor extends AbstractHeroProcessor
         $processedData['isDarkBackground'] = $isDarkBackground;
         $processedData['ctaOutlineClass'] = $this->ctaOutlineClass($processorConfiguration, $isDarkBackground);
 
-        $colPos = (int)($data['colPos'] ?? 0);
+        $colPosValue = $data['colPos'] ?? 0;
+        $colPos = is_numeric($colPosValue) ? (int)$colPosValue : 0;
         $processedData['imageLoading'] = $colPos === self::HERO_COL_POS ? 'eager' : 'lazy';
 
         return $processedData;
