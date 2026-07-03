@@ -50,7 +50,7 @@ defined('TYPO3') || die();
                 'imageorient' => [
                     'label' => $translationFile . 'tx_starter_image_position_formlabel',
                     'config' => [
-                        'default' => ImageOrientType::BESIDE_TEXT_LEFT,
+                        'default' => ImageOrientType::BESIDE_TEXT_LEFT->value,
                     ],
                 ],
                 'bodytext' => [
