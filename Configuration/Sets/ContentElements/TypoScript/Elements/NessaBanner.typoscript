@@ -1,0 +1,29 @@
+tt_content.nessa_banner =< lib.contentElement
+tt_content.nessa_banner {
+  templateName = NessaBanner
+
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    10 {
+      references.fieldName = assets
+      as = images
+    }
+
+    # Derives position / hasContent / hasImage / backgroundClass / imageClass /
+    # isDarkBackground / ctaOutlineClass
+    20 = StarterTeam\StarterNessa\DataProcessing\NessaBannerProcessor
+    20 {
+      # Prefix bridging the tt_content value "bg-dark" to the CSS hook ".hero-bg-dark"
+      # (namespaced to avoid clashing with Bootstrap's own ".bg-*" utilities).
+      backgroundClassPrefix = hero-
+      # Background used when the element has no explicit one set.
+      fallbackBackground = bg-dark
+
+      # Secondary (outline) CTA classes. Base class plus the variant chosen by the
+      # background brightness; all defined in the frontend SCSS.
+      ctaOutlineBaseClass = btn-nessa
+      ctaOutlineClassOnDark = btn-nessa-outline-white
+      ctaOutlineClassOnLight = btn-nessa-outline-dark
+    }
+  }
+}

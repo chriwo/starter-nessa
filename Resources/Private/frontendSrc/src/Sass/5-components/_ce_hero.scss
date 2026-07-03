@@ -1,177 +1,218 @@
-#hero {
+// ─── CE Hero V1: Fullscreen Carousel ──────────────────────────────────────────
+// One hero item → static fullscreen hero (no carousel). Multiple items →
+// Bootstrap carousel with arrows + indicators. The top offset clears the site
+// header via the shared `--nessa-header-offset` custom property (set in
+// 4-objects/_header.scss); no hard-coded pixel hack.
+
+.ce-hero--fullscreen {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
     background-color: rgb(4 12 21 / 80%);
 
+    .carousel,
+    .carousel-inner {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+    }
+
+    .carousel-item {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+
+        // Foreground hero image (see Partials/Hero/Item.html). Full-bleed cover,
+        // sitting below the dark overlay and the text content.
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        &::before {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            content: '';
+            background-color: rgb(4 12 21 / 52%);
+        }
+    }
+
+    // Fade transition for the carousel variant.
+    .carousel-inner .carousel-item {
+        opacity: 0;
+        transition-property: opacity;
+
+        &.active {
+            opacity: 1;
+            transition: .5s;
+        }
+
+        &.carousel-item-next.carousel-item-start,
+        &.carousel-item-prev.carousel-item-end {
+            opacity: 1;
+            transition: .5s;
+        }
+    }
+
     h2 {
-        margin: 0;
+        margin: 0 0 1rem;
         font-family: $nessa-hero-headings-font-family;
-        font-size: $font-size-base * 3;
+        font-size: clamp(1.9rem, 4vw, $font-size-base * 3);
         font-weight: 700;
+        line-height: 1.2;
         color: $white;
     }
 
     p {
-        margin-top: 10px;
-        color: $white;
-        animation-delay: .4s;
+        max-width: 580px;
+        margin-bottom: 1.75rem;
+        color: rgb(255 255 255 / 85%);
     }
 }
 
-.carousel {
+// Content area — vertically centred below the header.
+.ce-hero--fullscreen .slide-content {
     position: absolute;
-    inset: 0;
-}
-
-.carousel-item {
-    position: absolute;
-    inset: 0;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-
-    &::before {
-        position: absolute;
-        inset: 0;
-        content: '';
-        background-color: rgb(4 12 21 / 50%);
-    }
-}
-
-.carousel-inner {
-    position: absolute;
-    inset: 0;
-
-    .carousel-item {
-        background-position: center top;
-        opacity: 0;
-        transition-property: opacity;
-    }
-
-    .active.carousel-item-left {
-        left: 0;
-        opacity: 0;
-        transform: translate3d(0, 0, 0);
-    }
-
-    .active.carousel-item-right {
-        left: 0;
-        opacity: 0;
-        transform: translate3d(0, 0, 0);
-    }
-
-    .active {
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .carousel-item-next.carousel-item-left {
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .carousel-item-prev.carousel-item-right {
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .carousel-item-next {
-        left: 0;
-        transform: translate3d(0, 0, 0);
-    }
-
-    .carousel-item-prev {
-        left: 0;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.carousel-container {
-    position: absolute;
-    inset: 82px 50px 0;
+    inset: var(--nessa-header-offset, 0) 0 0;
+    z-index: 2;
     display: flex;
     align-items: center;
-}
 
-.carousel-control-next,
-.carousel-control-prev {
-    top: 112px;
-    width: 10%;
-}
+    // ── Text content positions (ported from the solid banner) ──
+    // Vertical placement is the flex cross-axis; horizontal text placement is
+    // handled inside the centred Bootstrap container. Position "none" renders
+    // no text area at all (handled in Partials/Hero/Item.html).
+    &.pos-bottom-left {
+        align-items: flex-end;
 
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
-    width: $carousel-control-icon-width;
-    height: $carousel-control-icon-width;
-    padding: 10px;
-    font-size: 36px;
-    line-height: 1;
-    color: rgb(255 255 255 / 50%);
-    background: rgb(255 255 255 / 20%);
-    border-radius: 50px;
-    transition: .3s;
+        .container {
+            padding-bottom: 3rem;
+        }
+    }
 
-    &:hover {
-        color: rgb(255 255 255 / 80%);
-        background: rgb(255 255 255 / 30%);
+    &.pos-center-left {
+        align-items: center;
+    }
+
+    &.pos-center {
+        align-items: center;
+        text-align: center;
+
+        .cta-group {
+            justify-content: center;
+        }
+
+        p {
+            margin-right: auto;
+            margin-left: auto;
+        }
     }
 }
 
-.carousel-indicators {
-    margin-bottom: 2rem;
+.cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
 
-    [data-bs-target] {
-        border-top: 0;
-        border-bottom: 0;
-        border-radius: 50px;
+// ─── Carousel indicators & pause control ──────────────────────────────────────
+// No prev/next arrows: navigation is handled by the indicators, keyboard arrows,
+// swipe and the pause control (see Partials/Hero/Item.html and CeHero.js).
+.ce-hero--fullscreen {
+    .carousel-indicators {
+        margin-bottom: 1.75rem;
+
+        // 20px visible dot inside a 24px hit area (WCAG 2.5.8 target size); the
+        // transparent padding is clipped away by background-clip so only the dot
+        // shows. Wider gap balances the dots against the pause control.
+        [data-bs-target] {
+            box-sizing: content-box;
+            width: 20px;
+            height: 20px;
+            padding: 2px;
+            margin: 0 7px;
+            background-color: rgb(255 255 255 / 45%);
+            background-clip: content-box;
+            border: 0;
+            border-radius: 50%;
+            transition: background-color .3s;
+        }
+
+        .active {
+            background-color: map-get($theme-colors, 'primary');
+        }
+    }
+
+    // Pause / play control (WCAG 2.2.2). Above the text content (z-index 2).
+    .hero-carousel-pause {
+        position: absolute;
+        right: 1.25rem;
+        bottom: 1.5rem;
+        z-index: 3;
+        display: inline-flex;
+        padding: 8px;
+        color: rgb(255 255 255 / 70%);
+        background-color: rgb(255 255 255 / 18%);
+        border: 0;
+        border-radius: 50%;
+        transition: .3s;
+
+        &:hover,
+        &:focus-visible {
+            color: rgb(255 255 255 / 95%);
+            background-color: rgb(255 255 255 / 30%);
+        }
+
+        .icon {
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+
+// Reduced motion: no cross-fade between slides (auto-rotation is already
+// stopped and entrance animations skipped in CeHero.js).
+@media (prefers-reduced-motion: reduce) {
+    .ce-hero--fullscreen .carousel-inner .carousel-item {
+        transition: none;
     }
 }
 
 @include media-breakpoint-down(lg) {
-    #hero {
-        .carousel-control-next,
-        .carousel-control-prev {
-            top: 66px;
+    .ce-hero--fullscreen {
+        .slide-content {
+            text-align: center;
         }
 
-        height: 100vh;
+        .cta-group {
+            justify-content: center;
+        }
 
-        .carousel-container {
-            top: 74px;
-            text-align: center;
+        h2 {
+            font-size: $font-size-base * 1.75;
         }
     }
 }
 
 @include media-breakpoint-down(md) {
-    #hero {
-        h2 {
-            font-size: 30px;
-        }
-    }
-}
-
-@include media-breakpoint-up(xl) {
-    #hero {
-        p {
-            width: 50%;
-        }
-    }
-}
-
-@media (width >= 1024px) {
-    #hero {
-        .carousel-control-next,
-        .carousel-control-prev {
-            width: 5%;
+    .ce-hero--fullscreen {
+        // Keep the text clear of the viewport edges on narrow phones.
+        .slide-content .container {
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
         }
     }
 }
 
 @media (height <= 500px) {
-    #hero {
+    .ce-hero--fullscreen {
         height: 120vh;
     }
 }

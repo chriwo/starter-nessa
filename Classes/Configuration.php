@@ -14,7 +14,6 @@ class Configuration
      */
     public const array DEFAULT_BACKEND_LAYOUTS = [
         'DefaultLayout',
-        'HeroLayout',
     ];
 
     /**
@@ -37,6 +36,12 @@ class Configuration
         ],
         'nessa_hero' => [
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-carousel.svg',
+        ],
+        'nessa_image_text' => [
+            'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-beside-text-img-centered-right.svg',
+        ],
+        'nessa_banner' => [
+            'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-header.svg',
         ],
         'nessa_partner' => [
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/apps/apps-pagetree-page-backend-user-root.svg',

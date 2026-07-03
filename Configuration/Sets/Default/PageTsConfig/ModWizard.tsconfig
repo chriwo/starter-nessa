@@ -37,6 +37,24 @@ mod.wizards.newContentElement.wizardItems {
         }
       }
 
+      nessa_image_text {
+        iconIdentifier = starter-ctype-nessa_image_text
+        title = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_image_text
+        description = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_image_text.description
+        tt_content_defValues {
+          CType = nessa_image_text
+        }
+      }
+
+      nessa_banner {
+        iconIdentifier = starter-ctype-nessa_banner
+        title = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_banner
+        description = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_banner.description
+        tt_content_defValues {
+          CType = nessa_banner
+        }
+      }
+
       nessa_portfolio {
         iconIdentifier = starter-ctype-nessa_portfolio
         title = LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:CType.I.nessa_portfolio
@@ -86,6 +104,8 @@ mod.wizards.newContentElement.wizardItems {
     show := addToList(nessa_team)
     show := addToList(nessa_partner)
     show := addToList(nessa_hero)
+    show := addToList(nessa_image_text)
+    show := addToList(nessa_banner)
     show := addToList(nessa_portfolio)
     show := addToList(nessa_portfolio_file_collections)
     show := addToList(nessa_footer)

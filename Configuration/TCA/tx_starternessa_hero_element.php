@@ -1,5 +1,6 @@
 <?php
 
+use StarterTeam\StarterNessa\Resource\HeroContentPosition;
 use TYPO3\CMS\Core\Resource\FileType;
 
 defined('TYPO3') || die();
@@ -10,6 +11,7 @@ return (function () {
         '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
         'header,LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header.ALT.html_formlabel',
         'bodytext',
+        'content_position',
         '--palette--;;cta',
         '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.media',
         'assets',
@@ -76,7 +78,7 @@ return (function () {
             ],
             'cta' => [
                 'label' => $translationFile . 'palette.cta',
-                'showitem' => 'ctalink, ctalink_text',
+                'showitem' => 'ctalink, ctalink_text, --linebreak--, ctalink2, ctalink2_text',
             ],
         ],
 
@@ -90,6 +92,22 @@ return (function () {
                     'max' => 255,
                     'eval' => 'trim',
                     'required' => true,
+                ],
+            ],
+            'content_position' => [
+                'exclude' => true,
+                'label' => $translationFile . 'tx_starter_hero_content_position_formlabel',
+                'description' => $translationFile . 'tx_starter_hero_content_position.description',
+                'config' => [
+                    'type' => 'select',
+                    'renderType' => 'selectSingle',
+                    'items' => [
+                        ['label' => $translationFile . 'tx_starter_hero_content_position.I.bottom-left', 'value' => HeroContentPosition::BOTTOM_LEFT->value],
+                        ['label' => $translationFile . 'tx_starter_hero_content_position.I.center-left', 'value' => HeroContentPosition::CENTER_LEFT->value],
+                        ['label' => $translationFile . 'tx_starter_hero_content_position.I.center', 'value' => HeroContentPosition::CENTER->value],
+                        ['label' => $translationFile . 'tx_starter_hero_content_position.I.none', 'value' => HeroContentPosition::NONE->value],
+                    ],
+                    'default' => HeroContentPosition::CENTER_LEFT->value,
                 ],
             ],
             'ctalink' => [
@@ -106,6 +124,26 @@ return (function () {
                 'l10n_mode' => 'prefixLangTitle',
                 'exclude' => true,
                 'label' => $translationFile . 'tx_starternessa_hero.tx_starter_ctalink_text_formlabel',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 40,
+                    'max' => 255,
+                ],
+            ],
+            'ctalink2' => [
+                'exclude' => true,
+                'label' => $translationFile . 'tx_starternessa_hero.tx_starter_ctalink2_formlabel',
+                'config' => [
+                    'type' => 'link',
+                    'size' => 50,
+                    'allowedTypes' => ['page', 'file', 'email', 'record'],
+                    'appearance' => ['allowedOptions' => ['title', 'rel']],
+                ],
+            ],
+            'ctalink2_text' => [
+                'l10n_mode' => 'prefixLangTitle',
+                'exclude' => true,
+                'label' => $translationFile . 'tx_starternessa_hero.tx_starter_ctalink2_text_formlabel',
                 'config' => [
                     'type' => 'input',
                     'size' => 40,
@@ -131,21 +169,52 @@ return (function () {
                                     ],
                                 ],
                             ],
+                            'crop' => [
+                                'config' => [
+                                    'cropVariants' => [
+                                        // Wide landscape crop for the fullscreen hero on desktop/tablet.
+                                        'desktop' => [
+                                            'title' => $translationFile . 'hero.crop.desktop',
+                                            'selectedRatio' => '16:9',
+                                            'allowedAspectRatios' => [
+                                                '16:9' => [
+                                                    'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.16_9',
+                                                    'value' => 16 / 9,
+                                                ],
+                                                'NaN' => [
+                                                    'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
+                                                    'value' => 0.0,
+                                                ],
+                                            ],
+                                        ],
+                                        // Portrait crop for the tall, narrow mobile viewport (art direction).
+                                        'mobile' => [
+                                            'title' => $translationFile . 'hero.crop.mobile',
+                                            'selectedRatio' => '3:4',
+                                            'allowedAspectRatios' => [
+                                                '3:4' => [
+                                                    'title' => $translationFile . 'hero.crop.ratio.3_4',
+                                                    'value' => 3 / 4,
+                                                ],
+                                                '9:16' => [
+                                                    'title' => $translationFile . 'hero.crop.ratio.9_16',
+                                                    'value' => 9 / 16,
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                         'types' => [
                             '0' => [
                                 'showitem' => '
-                                --palette--;;imageoverlayPalette,
+                                --palette--;;nessaMemberOverlayPalette,
                                 --palette--;;filePalette',
                             ],
                             FileType::IMAGE->value => [
                                 'showitem' => '
-                                --palette--;;nessaHeroImageOverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            FileType::VIDEO->value => [
-                                'showitem' => '
-                                --palette--;;videoOverlayPalette,
+                                --palette--;;nessaMemberOverlayPalette,
                                 --palette--;;filePalette',
                             ],
                         ],

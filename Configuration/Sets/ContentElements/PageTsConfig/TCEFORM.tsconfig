@@ -37,6 +37,8 @@ TCEFORM {
     CType.keepItems := addToList(nessa_teaser)
     CType.keepItems := addToList(nessa_pricing)
     CType.keepItems := addToList(nessa_hero)
+    CType.keepItems := addToList(nessa_image_text)
+    CType.keepItems := addToList(nessa_banner)
     CType.keepItems := addToList(nessa_partner)
     CType.keepItems := addToList(nessa_portfolio)
     CType.keepItems := addToList(nessa_portfolio_file_collections)
@@ -124,6 +126,8 @@ TCEFORM {
       disabled = 1
       types {
         nessa_cta.disabled = 0
+        nessa_banner.disabled = 0
+        nessa_image_text.disabled = 0
         text.disabled = 0
         textmedia.disabled = 0
       }
@@ -133,6 +137,8 @@ TCEFORM {
       disabled = 1
       types {
         nessa_cta.disabled = 0
+        nessa_banner.disabled = 0
+        nessa_image_text.disabled = 0
         text.disabled = 0
         textmedia.disabled = 0
       }
@@ -151,12 +157,14 @@ TCEFORM {
 
       types {
         nessa_cta.disabled = 1
+        nessa_image_text.disabled = 1
       }
     }
 
     subheader {
       types {
         nessa_cta.disabled = 1
+        nessa_image_text.disabled = 1
       }
     }
 

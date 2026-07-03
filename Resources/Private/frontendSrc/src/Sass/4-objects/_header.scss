@@ -34,6 +34,27 @@
                 padding-top: calc(#{$nessa-header-height-lg} + 1px);
             }
         }
+
+        // The hero region (colPos 1) sits between the header and the main content.
+        // Expose the header height as --nessa-header-offset so the hero CEs can
+        // offset their content (the background stays full-bleed behind the header).
+        ~ .c-site__hero {
+            --nessa-header-offset: #{$nessa-header-height};
+
+            @include media-breakpoint-up(md) {
+                --nessa-header-offset: #{$nessa-header-height-md};
+            }
+
+            @include media-breakpoint-up(lg) {
+                --nessa-header-offset: #{$nessa-header-height-lg};
+            }
+        }
+
+        // When a hero is present it already reserves the header offset, so the main
+        // content must not add it again.
+        ~ .c-site__hero:has(.ce-hero) ~ .c-site__main {
+            padding-top: 0;
+        }
     }
 
     // Static: stays in the normal flow and scrolls away with the page (no pinning).
@@ -86,8 +107,8 @@
     &__logo-img {
         display: block;
         width: auto;
-        height: calc(#{$nessa-header-height} * #{$nessa-logo-scale});
         max-width: 100%;
+        height: calc(#{$nessa-header-height} * #{$nessa-logo-scale});
         object-fit: contain;
 
         @include media-breakpoint-up(md) {

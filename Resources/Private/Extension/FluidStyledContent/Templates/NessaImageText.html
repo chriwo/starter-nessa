@@ -1,0 +1,64 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:comment>
+    Provides:
+        * {imageLeft} bool — image column rendered left of the text
+        * {backgroundClass} string — e.g. "hero-bg-dark" (empty when no background)
+        * {isDarkBackground} bool — text/CTA styling should adapt to a dark surface
+        * {ctaOutlineClass} string — full class for the secondary (outline) CTA
+        * {imageLoading} string — "eager" in the hero region (colPos 1), else "lazy"
+</f:comment>
+
+<section id="c{data.uid}" class="ce-hero ce-hero--split{f:if(condition: backgroundClass, then: ' {backgroundClass}')}">
+	<div class="container">
+		<div class="row align-items-center g-5">
+
+			<div class="col-lg-6 hero-text-col {f:if(condition: imageLeft, then: 'order-lg-2 order-1', else: 'order-lg-1 order-1')}">
+				<f:if condition="{data.header}">
+					<h2>{data.header}</h2>
+				</f:if>
+
+				<f:if condition="{data.bodytext}">
+					<div class="hero-lead"><f:format.html>{data.bodytext}</f:format.html></div>
+				</f:if>
+
+				<f:if condition="({data.tx_starter_ctalink} && {data.tx_starter_ctalink_text}) || ({data.tx_starter_ctalink2} && {data.tx_starter_ctalink2_text})">
+					<div class="cta-group">
+						<f:render partial="Cta/Button" arguments="{
+							ctaLink: data.tx_starter_ctalink,
+							ctaButtonText: data.tx_starter_ctalink_text,
+							ctaButtonClass: 'btn-nessa btn-nessa-primary'
+						}"/>
+						<f:render partial="Cta/Button" arguments="{
+							ctaLink: data.tx_starter_ctalink2,
+							ctaButtonText: data.tx_starter_ctalink2_text,
+							ctaButtonClass: ctaOutlineClass
+						}"/>
+					</div>
+				</f:if>
+
+				<f:if condition="{stats}">
+					<f:render partial="Hero/Stats" arguments="{stats: stats}"/>
+				</f:if>
+			</div>
+
+			<div class="col-lg-6 hero-img-col {f:if(condition: imageLeft, then: 'order-lg-1 order-2', else: 'order-lg-2 order-2')}">
+				<f:variable name="heroImg">{images.0}</f:variable>
+				<img
+					src="{f:uri.image(image: heroImg, width: '900', cropVariant: 'default')}"
+					srcset="{f:uri.image(image: heroImg, width: '480', cropVariant: 'default')} 480w, {f:uri.image(image: heroImg, width: '640', cropVariant: 'default')} 640w, {f:uri.image(image: heroImg, width: '900', cropVariant: 'default')} 900w, {f:uri.image(image: heroImg, width: '1200', cropVariant: 'default')} 1200w, {f:uri.image(image: heroImg, width: '1600', cropVariant: 'default')} 1600w"
+					sizes="(min-width: 992px) 45vw, 100vw"
+					width="900"
+                    height="600"
+					alt="{heroImg.alternative}"
+                    title="{heroImg.title}"
+					loading="{imageLoading}"
+                    decoding="async"/>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+</html>

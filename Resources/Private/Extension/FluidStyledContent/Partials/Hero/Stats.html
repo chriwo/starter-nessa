@@ -1,0 +1,20 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+			data-namespace-typo3-fluid="true">
+
+<f:comment>
+	Renders the statistics block. Each entry is a "VALUE|LABEL" line split by the
+	SplitProcessor; entries with an empty value or label are skipped.
+</f:comment>
+<div class="hero-stats">
+	<f:for each="{stats}" as="line">
+		<f:variable name="parts">{line -> f:split(separator: '|')}</f:variable>
+		<f:if condition="{parts.0 -> f:format.trim()} != '' && {parts.1 -> f:format.trim()} != ''">
+			<div class="stat-item">
+				<div class="stat-value">{parts.0 -> f:format.trim()}</div>
+				<div class="stat-label">{parts.1 -> f:format.trim()}</div>
+			</div>
+		</f:if>
+	</f:for>
+</div>
+
+</html>

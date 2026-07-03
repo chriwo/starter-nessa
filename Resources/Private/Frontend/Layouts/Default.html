@@ -5,6 +5,14 @@
 
 	<f:render partial="Header" arguments="{_all}"/>
 
+	<f:comment>
+		# Hero region (colPos 1) — rendered above the main content. Empty on pages
+		# without a hero. Under a fixed header the hero CEs reserve the header offset.
+	</f:comment>
+	<div class="c-site__hero">
+		<f:cObject typoscriptObjectPath="lib.starterDynamicContent" data="{pageUid: '{data.uid}', colPos: '1'}" />
+	</div>
+
 	<main class="c-site__main">
 		<f:comment>
 			# render a breadcrumb menu

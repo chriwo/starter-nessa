@@ -1,2 +1,1 @@
 @import './BackendLayouts/default.tsconfig'
-@import './BackendLayouts/hero.tsconfig'

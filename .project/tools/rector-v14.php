@@ -34,4 +34,5 @@ return RectorConfig::configure()
         // ignore rules to be compatible with TYPO3 v13
         \Rector\Renaming\Rector\Name\RenameClassRector::class,
         \Ssch\TYPO3Rector\TYPO314\v0\MigrateCoreTcaAndUserSettingsShowitemStringsToShortFormReferencesRector::class,
+        \Ssch\TYPO3Rector\TYPO314\v0\MigrateLabelReferenceToDomainSyntaxRector::class,
     ]);
