@@ -38,7 +38,7 @@ class Configuration
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-carousel.svg',
         ],
         'nessa_image_text' => [
-            'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-image.svg',
+            'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-beside-text-img-centered-right.svg',
         ],
         'nessa_banner' => [
             'typeIconPath' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/content/content-header.svg',
