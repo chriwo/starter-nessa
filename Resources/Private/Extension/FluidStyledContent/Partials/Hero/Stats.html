@@ -8,7 +8,7 @@
 <div class="hero-stats">
 	<f:for each="{stats}" as="line">
 		<f:variable name="parts">{line -> f:split(separator: '|')}</f:variable>
-		<f:if condition="{parts.0 -> f:format.trim()} && {parts.1 -> f:format.trim()}">
+		<f:if condition="{parts.0 -> f:format.trim()} != '' && {parts.1 -> f:format.trim()} != ''">
 			<div class="stat-item">
 				<div class="stat-value">{parts.0 -> f:format.trim()}</div>
 				<div class="stat-label">{parts.1 -> f:format.trim()}</div>
