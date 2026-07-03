@@ -43,6 +43,16 @@ abstract class AbstractHeroProcessor implements DataProcessorInterface
     protected const string DEFAULT_CTA_OUTLINE_CLASS_ON_LIGHT = 'btn-nessa-outline-dark';
 
     /**
+     * Background identifiers treated as light surfaces (dark text/CTA). The
+     * empty string covers "no background", so elements without a fallback treat
+     * an unset background as light; elements that resolve a fallback never see
+     * it. Every other value is considered dark.
+     *
+     * @var list<string>
+     */
+    protected const array LIGHT_BACKGROUNDS = ['', 'bg-light'];
+
+    /**
      * Namespace prefix used to turn a tt_content background value into its CSS
      * class (e.g. "bg-dark" → "hero-bg-dark").
      *
@@ -67,6 +77,42 @@ abstract class AbstractHeroProcessor implements DataProcessorInterface
         $baseClass = $this->stringConfig($processorConfiguration, 'ctaOutlineBaseClass', self::DEFAULT_CTA_OUTLINE_BASE_CLASS);
 
         return trim($baseClass . ' ' . $variant);
+    }
+
+    /**
+     * Derives the shared background presentation from a tt_content row and
+     * writes {backgroundClass}, {isDarkBackground} and {ctaOutlineClass} onto
+     * $processedData.
+     *
+     * A background image always forces a dark surface ($forceDark). When the
+     * element has no background set, $fallbackBackground fills in; if that too
+     * is empty, the surface counts as light and no background class is emitted.
+     *
+     * @param array<array-key, mixed> $data                the tt_content row
+     * @param array<string, mixed> $processorConfiguration
+     * @param array<string, mixed> $processedData
+     * @return array<string, mixed>
+     */
+    protected function processBackground(
+        array $data,
+        array $processorConfiguration,
+        array $processedData,
+        string $fallbackBackground = '',
+        bool $forceDark = false,
+    ): array {
+        $backgroundValue = $data['tx_starter_background'] ?? '';
+        $background = trim(is_string($backgroundValue) ? $backgroundValue : '');
+        $effectiveBackground = $background !== '' ? $background : $fallbackBackground;
+
+        $processedData['backgroundClass'] = $effectiveBackground !== ''
+            ? $this->backgroundClassPrefix($processorConfiguration) . $effectiveBackground
+            : '';
+
+        $isDarkBackground = $forceDark || !in_array($effectiveBackground, self::LIGHT_BACKGROUNDS, true);
+        $processedData['isDarkBackground'] = $isDarkBackground;
+        $processedData['ctaOutlineClass'] = $this->ctaOutlineClass($processorConfiguration, $isDarkBackground);
+
+        return $processedData;
     }
 
     /**

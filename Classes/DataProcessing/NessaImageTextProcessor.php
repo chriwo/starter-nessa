@@ -35,14 +35,6 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 final class NessaImageTextProcessor extends AbstractHeroProcessor
 {
     /**
-     * Background identifiers that are treated as light surfaces (dark text/CTA).
-     * Every other non-empty background is considered dark.
-     *
-     * @var list<string>
-     */
-    private const array LIGHT_BACKGROUNDS = ['', 'bg-light'];
-
-    /**
      * colPos of the hero region. Content there sits above the fold, so its image
      * loads eagerly to protect the LCP; everywhere else it may load lazily.
      */
@@ -67,15 +59,7 @@ final class NessaImageTextProcessor extends AbstractHeroProcessor
         $imageOrient = ImageOrientType::tryFrom(is_numeric($imageOrientValue) ? (int)$imageOrientValue : 0);
         $processedData['imageLeft'] = $imageOrient === ImageOrientType::BESIDE_TEXT_LEFT;
 
-        $backgroundValue = $data['tx_starter_background'] ?? '';
-        $background = trim(is_string($backgroundValue) ? $backgroundValue : '');
-        $processedData['backgroundClass'] = $background !== ''
-            ? $this->backgroundClassPrefix($processorConfiguration) . $background
-            : '';
-
-        $isDarkBackground = !in_array($background, self::LIGHT_BACKGROUNDS, true);
-        $processedData['isDarkBackground'] = $isDarkBackground;
-        $processedData['ctaOutlineClass'] = $this->ctaOutlineClass($processorConfiguration, $isDarkBackground);
+        $processedData = $this->processBackground($data, $processorConfiguration, $processedData);
 
         $colPosValue = $data['colPos'] ?? 0;
         $colPos = is_numeric($colPosValue) ? (int)$colPosValue : 0;

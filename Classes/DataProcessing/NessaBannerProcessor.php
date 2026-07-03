@@ -47,14 +47,6 @@ final class NessaBannerProcessor extends AbstractHeroProcessor
     private const string HAS_IMAGE_CLASS = 'has-bg-image';
 
     /**
-     * Background identifiers that are treated as light surfaces (dark text/CTA).
-     * A background image always wins and forces a dark surface regardless.
-     *
-     * @var list<string>
-     */
-    private const LIGHT_BACKGROUNDS = ['bg-light'];
-
-    /**
      * @param array<string, mixed> $contentObjectConfiguration
      * @param array<string, mixed> $processorConfiguration
      * @param array<string, mixed> $processedData
@@ -82,15 +74,6 @@ final class NessaBannerProcessor extends AbstractHeroProcessor
 
         $fallbackBackground = $this->stringConfig($processorConfiguration, 'fallbackBackground', self::DEFAULT_FALLBACK_BACKGROUND);
 
-        $backgroundValue = $data['tx_starter_background'] ?? '';
-        $background = trim(is_string($backgroundValue) ? $backgroundValue : '');
-        $effectiveBackground = $background !== '' ? $background : $fallbackBackground;
-        $processedData['backgroundClass'] = $this->backgroundClassPrefix($processorConfiguration) . $effectiveBackground;
-
-        $isDarkBackground = $hasImage || !in_array($effectiveBackground, self::LIGHT_BACKGROUNDS, true);
-        $processedData['isDarkBackground'] = $isDarkBackground;
-        $processedData['ctaOutlineClass'] = $this->ctaOutlineClass($processorConfiguration, $isDarkBackground);
-
-        return $processedData;
+        return $this->processBackground($data, $processorConfiguration, $processedData, $fallbackBackground, $hasImage);
     }
 }
