@@ -619,6 +619,10 @@
 				<source>No slides yet</source>
 				<target>Noch keine Slides</target>
 			</trans-unit>
+			<trans-unit id="hero.preview.untitled">
+				<source>Untitled slide</source>
+				<target>Slide ohne Titel</target>
+			</trans-unit>
 			</body>
     </file>
 </xliff>

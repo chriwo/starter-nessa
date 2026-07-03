@@ -20,7 +20,7 @@ final class HeroPreviewRendererTest extends FunctionalTestCase
     protected array $coreExtensionsToLoad = ['frontend', 'backend'];
 
     #[Test]
-    public function listsSlideHeadersInSortingOrderSkippingEmptyAndDeleted(): void
+    public function listsSlidesInSortingOrderWithPlaceholderAndDisabledFlag(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/HeroElements.csv');
 
@@ -34,9 +34,29 @@ final class HeroPreviewRendererTest extends FunctionalTestCase
             (int)strpos($content, 'Second slide'),
             (int)strpos($content, 'First slide'),
         );
-        // The empty-header and the deleted slide are filtered out — exactly two items.
-        self::assertSame(2, substr_count($content, '<li>'));
+        // Deleted slides are dropped; the empty-header and the hidden slide stay.
         self::assertStringNotContainsString('Deleted slide', $content);
+        self::assertSame(4, substr_count($content, '<li'));
+        // The empty-header slide is kept with a placeholder label instead of being skipped.
+        self::assertStringContainsString('Untitled slide', $content);
+        // The hidden slide is listed but flagged as disabled.
+        self::assertStringContainsString('Hidden slide', $content);
+        self::assertStringContainsString('text-muted', $content);
+        self::assertSame(1, substr_count($content, 'text-muted'));
+    }
+
+    #[Test]
+    public function fallsBackToDefaultLanguageSlidesForConnectedTranslation(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/HeroElements.csv');
+
+        // Element 5 is the language-1 translation of element 1; its slides were
+        // never translated and live in language 0 under the parent element.
+        $content = $this->renderPreviewFor(5);
+
+        self::assertIsString($content);
+        self::assertStringContainsString('First slide', $content);
+        self::assertStringContainsString('Second slide', $content);
     }
 
     #[Test]

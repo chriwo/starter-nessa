@@ -470,6 +470,9 @@
 			<trans-unit id="hero.preview.empty">
 				<source>No slides yet</source>
 			</trans-unit>
+			<trans-unit id="hero.preview.untitled">
+				<source>Untitled slide</source>
+			</trans-unit>
 		</body>
     </file>
 </xliff>

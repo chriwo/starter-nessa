@@ -1,10 +1,12 @@
 "tt_content"
-,"uid","pid","CType","sys_language_uid","header"
-,1,1,"nessa_hero",0,"Hero with slides"
-,2,1,"nessa_hero",0,"Empty hero"
+,"uid","pid","CType","sys_language_uid","l18n_parent","header"
+,1,1,"nessa_hero",0,0,"Hero with slides"
+,2,1,"nessa_hero",0,0,"Empty hero"
+,5,1,"nessa_hero",1,1,"Translated hero"
 "tx_starternessa_hero_element"
-,"uid","pid","tt_content_record","sys_language_uid","sorting","header","deleted"
-,1,1,1,0,10,"First slide",0
-,2,1,1,0,20,"Second slide",0
-,3,1,1,0,5,"",0
-,4,1,1,0,15,"Deleted slide",1
+,"uid","pid","tt_content_record","sys_language_uid","sorting","header","deleted","hidden"
+,1,1,1,0,10,"First slide",0,0
+,2,1,1,0,20,"Second slide",0,0
+,3,1,1,0,5,"",0,0
+,4,1,1,0,15,"Deleted slide",1,0
+,6,1,1,0,25,"Hidden slide",0,1
