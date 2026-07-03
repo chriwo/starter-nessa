@@ -14,22 +14,13 @@
 		<source
             media="(max-width: 767px)"
             sizes="100vw"
-            srcset="
-                {f:uri.image(image: files.0, cropVariant: 'mobile', width: '480')} 480w,
-                {f:uri.image(image: files.0, cropVariant: 'mobile', width: '768')} 768w,
-                {f:uri.image(image: files.0, cropVariant: 'mobile', width: '1080')} 1080w
-            "
+            srcset="{f:uri.image(image: files.0, cropVariant: 'mobile', width: '480')} 480w, {f:uri.image(image: files.0, cropVariant: 'mobile', width: '768')} 768w, {f:uri.image(image: files.0, cropVariant: 'mobile', width: '1080')} 1080w"
         />
 		<img
             class="hero-media"
             src="{f:uri.image(image: files.0, cropVariant: 'desktop', width: '1280')}"
             sizes="100vw"
-            srcset="
-                {f:uri.image(image: files.0, cropVariant: 'desktop', width: '768')} 768w,
-                {f:uri.image(image: files.0, cropVariant: 'desktop', width: '1280')} 1280w,
-                {f:uri.image(image: files.0, cropVariant: 'desktop', width: '1920')} 1920w,
-                {f:uri.image(image: files.0, cropVariant: 'desktop', width: '2560')} 2560w
-            "
+            srcset="{f:uri.image(image: files.0, cropVariant: 'desktop', width: '768')} 768w, {f:uri.image(image: files.0, cropVariant: 'desktop', width: '1280')} 1280w, {f:uri.image(image: files.0, cropVariant: 'desktop', width: '1920')} 1920w, {f:uri.image(image: files.0, cropVariant: 'desktop', width: '2560')} 2560w"
             width="1920"
             height="1080"
             alt="{files.0.alternative}"

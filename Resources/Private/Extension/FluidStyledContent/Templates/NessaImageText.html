@@ -47,13 +47,7 @@
 				<f:variable name="heroImg">{images.0}</f:variable>
 				<img
 					src="{f:uri.image(image: heroImg, width: '900', cropVariant: 'default')}"
-					srcset="
-                        {f:uri.image(image: heroImg, width: '480', cropVariant: 'default')} 480w,
-                        {f:uri.image(image: heroImg, width: '640', cropVariant: 'default')} 640w,
-                        {f:uri.image(image: heroImg, width: '900', cropVariant: 'default')} 900w,
-                        {f:uri.image(image: heroImg, width: '1200', cropVariant: 'default')} 1200w,
-                        {f:uri.image(image: heroImg, width: '1600', cropVariant: 'default')} 1600w
-                    "
+					srcset="{f:uri.image(image: heroImg, width: '480', cropVariant: 'default')} 480w, {f:uri.image(image: heroImg, width: '640', cropVariant: 'default')} 640w, {f:uri.image(image: heroImg, width: '900', cropVariant: 'default')} 900w, {f:uri.image(image: heroImg, width: '1200', cropVariant: 'default')} 1200w, {f:uri.image(image: heroImg, width: '1600', cropVariant: 'default')} 1600w"
 					sizes="(min-width: 992px) 45vw, 100vw"
 					width="900"
                     height="600"
