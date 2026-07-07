@@ -8,3 +8,11 @@
         }
     }
 }
+
+// Image above text (imageorient "above centered"): media on top,
+// text left-aligned below; centering/reading width come from col-lg-9 mx-auto
+.content--media-above {
+    .media {
+        margin-bottom: 2rem;
+    }
+}

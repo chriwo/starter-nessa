@@ -5,19 +5,29 @@
 <f:layout name="Default"/>
 
 <f:section name="Header">
-    <f:render partial="Headers" arguments="{data: data, settings: settings}"/>
+    <f:comment>When the image is placed above, the header moves below it into the text column (see Main).</f:comment>
+    <f:if condition="{gallery.position.vertical} != above">
+        <f:render partial="Headers" arguments="{data: data, settings: settings}"/>
+    </f:if>
 </f:section>
 
 <f:section name="Main">
 
-    <f:variable name="orderings" value="{text: 'order-1 order-lg-2 mt-3', media: 'order-2 order-lg-1'}"/>
+    <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-1 order-lg-2 mt-3 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-2 order-lg-1', modifier: ''}"/>
     <f:if condition="{gallery.position.horizontal} == right">
-        <f:variable name="orderings" value="{text: 'order-2 order-lg-1 mt-5', media: 'order-1 order-lg-2'}"/>
+        <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-2 order-lg-1 mt-5 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-1 order-lg-2', modifier: ''}"/>
+    </f:if>
+    <f:if condition="{gallery.position.vertical} == above">
+        <f:variable name="layout" value="{textCol: 'col-lg-9 mx-auto', textOrder: 'order-2', mediaCol: 'col-lg-9 mx-auto', mediaOrder: 'order-1', modifier: ' content--media-above'}"/>
     </f:if>
 
-    <div class="row content">
+    <div class="row content{layout.modifier}">
 
-        <div class="col-lg-6 {orderings.text} mt-lg-0">
+        <div class="{layout.textCol} {layout.textOrder} text">
+            <f:if condition="{gallery.position.vertical} == above">
+                <f:render partial="Headers" arguments="{data: data, settings: settings}"/>
+            </f:if>
+
             <f:if condition="{data.bodytext}">
                 <f:format.html>{data.bodytext}</f:format.html>
             </f:if>
@@ -26,7 +36,7 @@
                       arguments="{ctaLink: data.tx_starter_ctalink, ctaButtonText: data.tx_starter_ctalink_text}"/>
         </div>
 
-        <div class="col-lg-6 {orderings.media} text-center">
+        <div class="{layout.mediaCol} {layout.mediaOrder} media text-center">
             <f:for each="{gallery.rows}" as="row">
                 <f:for each="{row.columns}" as="column">
                     <f:if condition="{column.media}">
