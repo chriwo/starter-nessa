@@ -19,15 +19,16 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
  *   * {imagePosition} string — "above" | "left" | "right"
  *   * {layout} array<string,string> — the "layouts.<position>" config entry
  *
- * Only the three positions actually exposed to editors (TCEFORM keeps imageorient
- * 0 = above centered, 25 = beside right, 26 = beside left) are mapped; anything
- * else falls back to "left". The `layouts` are configured in
- * Textmedia.typoscript and can be overridden from a customer extension, e.g.
+ * Only the two "beside" positions exposed to editors (TCEFORM keeps imageorient
+ * 25 = beside right, 26 = beside left) map to "right"/"left"; everything else —
+ * including the "above" position (0) and any unset/unknown value — falls back to
+ * "above". The `layouts` are configured in Textmedia.typoscript and can be
+ * overridden from a customer extension, e.g.
  * `tt_content.textmedia.dataProcessing.20.layouts.above.imageWidth = 1200`.
  */
 final class TextMediaProcessor implements DataProcessorInterface
 {
-    private const string FALLBACK_POSITION = 'left';
+    private const string FALLBACK_POSITION = 'above';
 
     /**
      * @param array<string, mixed> $contentObjectConfiguration
@@ -47,10 +48,8 @@ final class TextMediaProcessor implements DataProcessorInterface
         $imageOrient = ImageOrientType::tryFrom(is_numeric($imageOrientValue) ? (int)$imageOrientValue : 0);
 
         $position = match ($imageOrient) {
+            ImageOrientType::BESIDE_TEXT_LEFT => 'left',
             ImageOrientType::BESIDE_TEXT_RIGHT => 'right',
-            ImageOrientType::ABOVE_CENTER,
-            ImageOrientType::ABOVE_RIGHT,
-            ImageOrientType::ABOVE_LEFT => 'above',
             default => self::FALLBACK_POSITION,
         };
 

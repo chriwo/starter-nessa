@@ -20,15 +20,13 @@ final class TextMediaProcessorTest extends UnitTestCase
         return [
             'beside text left (26) → left' => [['imageorient' => 26], 'left'],
             'beside text right (25) → right' => [['imageorient' => 25], 'right'],
-            'above center (0) → above' => [['imageorient' => 0], 'above'],
-            'above right (1) → above' => [['imageorient' => 1], 'above'],
-            'above left (2) → above' => [['imageorient' => 2], 'above'],
             'numeric string is cast (25) → right' => [['imageorient' => '25'], 'right'],
-            'below position falls back to left' => [['imageorient' => 8], 'left'],
-            'in-text position falls back to left' => [['imageorient' => 17], 'left'],
-            'unknown numeric value falls back to left' => [['imageorient' => 99], 'left'],
-            'missing imageorient defaults to above (0)' => [[], 'above'],
-            'non-numeric imageorient defaults to above (0)' => [['imageorient' => 'foo'], 'above'],
+            'above center (0) → above' => [['imageorient' => 0], 'above'],
+            'below position → above' => [['imageorient' => 8], 'above'],
+            'in-text position → above' => [['imageorient' => 17], 'above'],
+            'unknown numeric value → above' => [['imageorient' => 99], 'above'],
+            'missing imageorient → above' => [[], 'above'],
+            'non-numeric imageorient → above' => [['imageorient' => 'foo'], 'above'],
         ];
     }
 
@@ -66,11 +64,11 @@ final class TextMediaProcessorTest extends UnitTestCase
     }
 
     #[Test]
-    public function processFallsBackToLeftLayoutForUnconfiguredPosition(): void
+    public function processFallsBackToAboveLayoutForUnconfiguredPosition(): void
     {
         $configuration = [
             'layouts.' => [
-                'left.' => ['mediaCol' => 'col-lg-6'],
+                'above.' => ['mediaCol' => 'col-lg-9 mx-auto'],
                 // no 'right.' entry configured
             ],
         ];
@@ -82,7 +80,7 @@ final class TextMediaProcessorTest extends UnitTestCase
             ['data' => ['imageorient' => 25]],
         );
 
-        self::assertSame(['mediaCol' => 'col-lg-6'], $result['layout']);
+        self::assertSame(['mediaCol' => 'col-lg-9 mx-auto'], $result['layout']);
     }
 
     #[Test]
