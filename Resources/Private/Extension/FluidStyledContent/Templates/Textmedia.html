@@ -13,12 +13,12 @@
 
 <f:section name="Main">
 
-    <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-1 order-lg-2 mt-3 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-2 order-lg-1', modifier: ''}"/>
+    <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-1 order-lg-2 mt-3 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-2 order-lg-1', modifier: '', imageWidth: '570', imageSizes: '(min-width: 992px) 50vw, calc(100vw - 1.5rem)'}"/>
     <f:if condition="{gallery.position.horizontal} == right">
-        <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-2 order-lg-1 mt-5 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-1 order-lg-2', modifier: ''}"/>
+        <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-2 order-lg-1 mt-5 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-1 order-lg-2', modifier: '', imageWidth: '570', imageSizes: '(min-width: 992px) 50vw, calc(100vw - 1.5rem)'}"/>
     </f:if>
     <f:if condition="{gallery.position.vertical} == above">
-        <f:variable name="layout" value="{textCol: 'col-lg-9 mx-auto', textOrder: 'order-2', mediaCol: 'col-lg-9 mx-auto', mediaOrder: 'order-1', modifier: ' content--media-above'}"/>
+        <f:variable name="layout" value="{textCol: 'col-lg-9 mx-auto', textOrder: 'order-2', mediaCol: 'col-lg-9 mx-auto', mediaOrder: 'order-1', modifier: ' content--media-above', imageWidth: '900', imageSizes: '(min-width: 992px) 75vw, calc(100vw - 1.5rem)'}"/>
     </f:if>
 
     <div class="row content{layout.modifier}">
@@ -41,7 +41,7 @@
                 <f:for each="{row.columns}" as="column">
                     <f:if condition="{column.media}">
                         <f:render partial="Media/Type"
-                                  arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings}"/>
+                                  arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings, imageWidth: layout.imageWidth, imageSizes: layout.imageSizes}"/>
                     </f:if>
                 </f:for>
             </f:for>
