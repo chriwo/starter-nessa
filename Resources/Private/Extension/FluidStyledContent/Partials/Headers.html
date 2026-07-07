@@ -3,7 +3,7 @@
 
 <div class="section-title">
     <f:if condition="{data.header} && {data.header_layout} != 100">
-        <f:render partial="Header/Header" arguments="{header: data.header, layout: data.header_layout}"/>
+        <f:render partial="Header/Header" arguments="{header: data.header, layout: data.header_layout, default: settings.defaultHeaderType}"/>
     </f:if>
 
     <f:if condition="{data.header} && {data.subheader}">
