@@ -1,0 +1,24 @@
+tt_content.textmedia =< lib.contentElement
+tt_content.textmedia {
+  templateName = Textmedia
+
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    10 {
+      references.fieldName = assets
+      as = images
+    }
+
+    # Derives {imagePosition} (above|left|right) from imageorient — replaces the
+    # core GalleryProcessor, whose column/dimension maths we do not use.
+    20 = StarterTeam\StarterNessa\DataProcessing\TextmediaProcessor
+  }
+
+  settings {
+    media {
+      # Native lazy loading for the content image (previously inherited from the
+      # core textmedia setup, gone now that we no longer extend it).
+      lazyLoading = lazy
+    }
+  }
+}

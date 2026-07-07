@@ -1,30 +1,16 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
-<f:if condition="{imageWidth}">
-	<f:then>
-		<f:comment>Responsive image: base width per position + 2x variant for retina (see Textmedia.html layout).</f:comment>
-		<f:variable name="width2x" value="{imageWidth * 2}"/>
-		<f:variable name="imageSrcset">{f:uri.image(image: file, width: imageWidth, cropVariant: 'default')} {imageWidth}w, {f:uri.image(image: file, width: width2x, cropVariant: 'default')} {width2x}w</f:variable>
-		<f:image
-			class="img-fluid"
-			image="{file}"
-			width="{imageWidth}"
-			cropVariant="default"
-			alt="{file.alternative}"
-			title="{file.title}"
-			loading="{settings.media.lazyLoading}"
-			additionalAttributes="{srcset: '{imageSrcset}', sizes: '{imageSizes}'}" />
-	</f:then>
-	<f:else>
-		<f:media
-			class="img-fluid"
-			file="{file}"
-			width="{dimensions.width}"
-			height="{dimensions.height}"
-			alt="{file.alternative}"
-			title="{file.title}"
-			loading="{settings.media.lazyLoading}" />
-	</f:else>
-</f:if>
+<f:comment>Responsive content image: base width per position + a 2x variant for retina. Widths/sizes come from the Textmedia.html layout. srcset stays on one line (multi-line corrupts the commas).</f:comment>
+<f:variable name="width2x" value="{imageWidth * 2}"/>
+<f:variable name="imageSrcset">{f:uri.image(image: file, width: imageWidth, cropVariant: 'default')} {imageWidth}w, {f:uri.image(image: file, width: width2x, cropVariant: 'default')} {width2x}w</f:variable>
+<f:image
+	class="img-fluid"
+	image="{file}"
+	width="{imageWidth}"
+	cropVariant="default"
+	alt="{file.alternative}"
+	title="{file.title}"
+	loading="{settings.media.lazyLoading}"
+	additionalAttributes="{srcset: '{imageSrcset}', sizes: '{imageSizes}'}" />
 
 </html>
