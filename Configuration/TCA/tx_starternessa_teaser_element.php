@@ -179,7 +179,7 @@ return (function () {
                                             'selectedRatio' => '4:5',
                                             'allowedAspectRatios' => [
                                                 '4:5' => [
-                                                    'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.4_5',
+                                                    'title' => $translationFile . 'teaser.crop.ratio.4_5',
                                                     'value' => 4 / 5,
                                                 ],
                                             ],

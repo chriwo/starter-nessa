@@ -464,6 +464,9 @@
 			<trans-unit id="hero.crop.ratio.9_16" translate="no">
 				<source>9:16 (portrait)</source>
 			</trans-unit>
+			<trans-unit id="teaser.crop.ratio.4_5" translate="no">
+				<source>4:5 (portrait)</source>
+			</trans-unit>
 			<trans-unit id="hero.preview.slides">
 				<source>Hero slides:</source>
 			</trans-unit>
