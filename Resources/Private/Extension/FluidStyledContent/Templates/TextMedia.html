@@ -13,15 +13,12 @@
 
 <f:section name="Main">
 
-    <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-1 order-lg-2 mt-3 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-2 order-lg-1 mt-5 mt-lg-0', modifier: '', imageWidth: '570', imageSizes: '(min-width: 992px) 50vw, calc(100vw - 1.5rem)'}"/>
-    <f:if condition="{imagePosition} == right">
-        <f:variable name="layout" value="{textCol: 'col-lg-6', textOrder: 'order-2 order-lg-1 mt-5 mt-lg-0', mediaCol: 'col-lg-6', mediaOrder: 'order-1 order-lg-2', modifier: '', imageWidth: '570', imageSizes: '(min-width: 992px) 50vw, calc(100vw - 1.5rem)'}"/>
-    </f:if>
-    <f:if condition="{imagePosition} == above">
-        <f:variable name="layout" value="{textCol: 'col-lg-9 mx-auto', textOrder: 'order-2', mediaCol: 'col-lg-9 mx-auto', mediaOrder: 'order-1', modifier: ' content--media-above', imageWidth: '900', imageSizes: '(min-width: 992px) 75vw, calc(100vw - 1.5rem)'}"/>
-    </f:if>
-
-    <div class="row content{layout.modifier}">
+    <f:comment>
+        Provides:
+          * {imagePosition} string — "above" | "left" | "right"
+          * {layout} array<string,string> — the "layouts.<position>" config entry
+    </f:comment>
+    <div class="row content {layout.modifier}">
 
         <div class="{layout.textCol} {layout.textOrder} text">
             <f:if condition="{imagePosition} == above">
