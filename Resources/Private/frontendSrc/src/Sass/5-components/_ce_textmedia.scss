@@ -14,5 +14,11 @@
 .content--media-above {
     .media {
         margin-bottom: 2rem;
+
+        // Fill the full col-lg-9 width; img-fluid alone only caps at max-width
+        // (100%) and would leave the image at its intrinsic width on wide columns
+        img {
+            width: 100%;
+        }
     }
 }
