@@ -36,6 +36,7 @@
             }
 
             &__body {
+                width: 100%;
                 padding: 30px 20px;
                 background-color: var(--#{$prefix}white);
                 border-radius: 5px;
@@ -92,6 +93,7 @@
     &__image_text_hover {
         .teaser__wrapper {
             position: relative;
+            width: 100%;
         }
 
         figure {
