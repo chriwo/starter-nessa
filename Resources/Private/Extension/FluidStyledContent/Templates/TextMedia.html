@@ -1,0 +1,47 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Default"/>
+
+<f:section name="Header">
+    <f:comment>When the image is placed above, the header moves below it into the text column (see Main).</f:comment>
+    <f:if condition="{imagePosition} != above">
+        <f:render partial="Headers" arguments="{data: data, settings: settings}"/>
+    </f:if>
+</f:section>
+
+<f:section name="Main">
+
+    <f:comment>
+        Provides:
+          * {imagePosition} string — "above" | "left" | "right"
+          * {layout} array<string,string> — the "layouts.<position>" config entry
+    </f:comment>
+    <div class="row content {layout.modifier}">
+
+        <div class="{layout.textCol} {layout.textOrder} text">
+            <f:if condition="{imagePosition} == above">
+                <f:render partial="Headers" arguments="{data: data, settings: settings}"/>
+            </f:if>
+
+            <f:if condition="{data.bodytext}">
+                <f:format.html>{data.bodytext}</f:format.html>
+            </f:if>
+
+            <f:render partial="Cta/Button"
+                      arguments="{ctaLink: data.tx_starter_ctalink, ctaButtonText: data.tx_starter_ctalink_text}"/>
+        </div>
+
+        <div class="{layout.mediaCol} {layout.mediaOrder} media">
+            <f:if condition="{images.0}">
+                <f:render partial="Media/Type"
+                          arguments="{file: images.0, data: data, settings: settings, imageWidth: layout.imageWidth, imageSizes: layout.imageSizes}"/>
+            </f:if>
+        </div>
+
+    </div>
+
+</f:section>
+
+</html>

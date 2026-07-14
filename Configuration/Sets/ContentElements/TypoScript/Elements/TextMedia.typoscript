@@ -1,0 +1,58 @@
+tt_content.textmedia =< lib.contentElement
+tt_content.textmedia {
+  templateName = TextMedia
+
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    10 {
+      references.fieldName = assets
+      as = images
+    }
+
+    # Derives {imagePosition} (above|left|right) from imageorient and resolves the
+    # matching {layout} below — replaces the core GalleryProcessor, whose
+    # column/dimension maths we do not use.
+    20 = StarterTeam\StarterNessa\DataProcessing\TextMediaProcessor
+    20 {
+      # Per-position layout: Bootstrap grid classes + responsive image sizing.
+      # The processor exposes the entry matching {imagePosition} as {layout}.
+      # Override individual values from a customer extension, e.g.:
+      #   tt_content.textmedia.dataProcessing.20.layouts.above.imageWidth = 1200
+      layouts {
+        left {
+          textCol = col-lg-6
+          textOrder = order-1 order-lg-2 mt-3 mt-lg-0
+          mediaCol = col-lg-6
+          mediaOrder = order-2 order-lg-1 mt-5 mt-lg-0
+          imageWidth = 570
+          imageSizes = (min-width: 992px) 50vw, calc(100vw - 1.5rem)
+        }
+        right {
+          textCol = col-lg-6
+          textOrder = order-2 order-lg-1 mt-5 mt-lg-0
+          mediaCol = col-lg-6
+          mediaOrder = order-1 order-lg-2
+          imageWidth = 570
+          imageSizes = (min-width: 992px) 50vw, calc(100vw - 1.5rem)
+        }
+        above {
+          textCol = col-lg-9 mx-auto
+          textOrder = order-2
+          mediaCol = col-lg-9 mx-auto
+          mediaOrder = order-1
+          modifier = content--media-above
+          imageWidth = 900
+          imageSizes = (min-width: 992px) 75vw, calc(100vw - 1.5rem)
+        }
+      }
+    }
+  }
+
+  settings {
+    media {
+      # Native lazy loading for the content image (previously inherited from the
+      # core textmedia setup, gone now that we no longer extend it).
+      lazyLoading = lazy
+    }
+  }
+}
