@@ -21,7 +21,7 @@
 			<p>{teamMember.bodytext}</p>
 		</f:if>
 
-        <f:if condition="{teamMember.nessa_social_element} || {teamMember.email}">
+        <f:if condition="{teamMember.nessa_social_element} || {teamMember.email.url}">
             <div class="member__social">
                 <f:for each="{teamMember.nessa_social_element}" as="socialLink">
                     <f:if condition="{socialLink.icon}">
@@ -36,7 +36,7 @@
                     </f:if>
                 </f:for>
 
-                <f:if condition="{teamMember.email}">
+                <f:if condition="{teamMember.email.url}">
                     <f:link.typolink
                         parameter="{teamMember.email}"
                         title="{f:translate(key:'team-member-write-email', arguments:{0: teamMember.realname}, extensionName:'StarterNessa')}"
