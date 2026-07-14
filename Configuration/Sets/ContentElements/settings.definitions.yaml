@@ -4,6 +4,9 @@ categories:
   ThemeNessa.templates.content:
     label: 'Content elements templates'
     parent: ThemeNessa
+  ThemeNessa.settings.content:
+    label: 'Content elements configuration'
+    parent: ThemeNessa
 
 settings:
   starter.contentElementTemplate.layoutRootPath:
@@ -23,3 +26,9 @@ settings:
     category: ThemeNessa.templates.content
     type: string
     default: 'EXT:starter_nessa/Resources/Private/Extension/FluidStyledContent/Templates/'
+
+  starter.contentElement.NessaTeam.storagePid:
+    label: 'SysFolder Uid to store team member records'
+    category: ThemeNessa.settings.content
+    type: int
+    default: 0

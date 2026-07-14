@@ -3,43 +3,43 @@
 
 <div class="col-lg-4 col-md-6 align-items-stretch pb-3">
 	<div class="member h-100">
-		<f:if condition="{file}">
+		<f:if condition="{teamMember.assets.0}">
 			<div class="member-img">
-				<f:media file="{file}"
+				<f:media file="{teamMember.assets.0}"
                          class="img-fluid"
                          width="{settings.media.width}"
                          height="{settings.media.height}"
-                         alt="{file.originalResource.alternative}"
+                         alt="{teamMember.assets.0.alternative}"
                          cropVariant="{settings.media.cropVariant}"/>
 			</div>
 		</f:if>
 
-		<h4>{data.realname}</h4>
-		<span>{data.company_position}</span>
+		<h4>{teamMember.realname}</h4>
+		<span>{teamMember.company_position}</span>
 
-		<f:if condition="{data.bodytext}">
-			<p>{data.bodytext}</p>
+		<f:if condition="{teamMember.bodytext}">
+			<p>{teamMember.bodytext}</p>
 		</f:if>
 
-        <f:if condition="{linkItems} || {data.email}">
+        <f:if condition="{teamMember.nessa_social_element} || {teamMember.email}">
             <div class="member__social">
-                <f:for each="{linkItems}" as="linkItem">
-                    <f:if condition="{linkItem.data.icon}">
+                <f:for each="{teamMember.nessa_social_element}" as="socialLink">
+                    <f:if condition="{socialLink.icon}">
                         <f:link.typolink
-                            parameter="{linkItem.data.social_link}"
+                            parameter="{socialLink.social_link}"
                             target="_blank"
                         >
                             <svg class="icon icon-lg" aria-hidden="true" focusable="false">
-                                <use href="#{linkItem.data.icon}"></use>
+                                <use href="#{socialLink.icon}"></use>
                             </svg>
                         </f:link.typolink>
                     </f:if>
                 </f:for>
 
-                <f:if condition="{data.email}">
+                <f:if condition="{teamMember.email}">
                     <f:link.typolink
-                        parameter="{data.email}"
-                        title="{f:translate(key:'team-member-write-email', arguments:{0: data.realname}, extensionName:'StarterNessa')}"
+                        parameter="{teamMember.email}"
+                        title="{f:translate(key:'team-member-write-email', arguments:{0: teamMember.realname}, extensionName:'StarterNessa')}"
                     >
                         <svg class="icon icon-lg" aria-hidden="true" focusable="false">
                             <use href="#bi-envelope"></use>
@@ -47,14 +47,14 @@
                     </f:link.typolink>
                 </f:if>
 
-                <f:if condition="{data.telephone}">
+                <f:if condition="{teamMember.telephone}">
                     <ul class="list-unstyled">
                         <li>
-                            <f:link.typolink parameter="{data.telephone_link}">
+                            <f:link.typolink parameter="{teamMember.telephone_link}">
                                 <svg class="icon icon-lg" aria-hidden="true" focusable="false">
                                     <use href="#bi-telephone"></use>
                                 </svg>
-                                {data.telephone}
+                                {teamMember.telephone}
                             </f:link.typolink>
                         </li>
                     </ul>

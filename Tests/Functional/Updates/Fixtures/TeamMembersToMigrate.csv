@@ -1,0 +1,18 @@
+"pages"
+,"uid","pid","doktype","title"
+,1,0,1,"Content page"
+"tt_content"
+,"uid","pid","CType","sys_language_uid","nessa_team_member_element"
+,10,1,"nessa_team",0,"2"
+,20,1,"nessa_team",0,"3"
+"tx_starternessa_team_element"
+,"uid","pid","tt_content_record","sys_language_uid","sorting","realname","deleted","hidden"
+,1,1,10,0,10,"Max Muster",0,0
+,2,1,10,0,20,"Erika Muster",0,0
+,3,1,20,0,10,"Max Muster",0,0
+,4,1,20,0,20,"Erika Muster",0,0
+,5,1,20,0,30,"Anna Neu",0,0
+,6,1,10,0,40,"Deleted Person",1,0
+"tx_starternessa_social_element"
+,"uid","pid","uid_foreign","tablenames","sorting","icon","social_link","deleted"
+,1,1,1,"tx_starternessa_team_element",10,"bi-linkedin","https://example.com/max",0

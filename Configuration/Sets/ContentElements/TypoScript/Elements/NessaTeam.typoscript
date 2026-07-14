@@ -3,35 +3,10 @@ tt_content.nessa_team {
   templateName = NessaTeam
 
   dataProcessing {
-    10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+    10 = StarterTeam\StarterNessa\DataProcessing\TeamMembersProcessor
     10 {
-      table = tx_starternessa_team_element
-      where {
-        data = field:uid
-        wrap = tt_content_record=|
-      }
-
-      orderBy = sorting
+      fieldName = nessa_team_member_element
       as = teamMembers
-
-      dataProcessing {
-        10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-        10 {
-          references.fieldName = assets
-        }
-
-        20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-        20 {
-          table = tx_starternessa_social_element
-          where {
-            data = field:_ORIG_uid // field:uid
-            intval = 1
-            wrap = tablenames='tx_starternessa_team_element' AND uid_foreign=|
-          }
-          orderBy = sorting
-          as = socialMediaItems
-        }
-      }
     }
   }
 

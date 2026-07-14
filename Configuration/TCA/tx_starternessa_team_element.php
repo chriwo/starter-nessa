@@ -34,7 +34,7 @@ return (function () {
             'delete' => 'deleted',
             'versioningWS' => true,
             'origUid' => 't3_origuid',
-            'hideTable' => true,
+            'hideTable' => false,
             'hideAtCopy' => true,
             'prependAtCopy' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.prependAtCopy',
             'transOrigPointerField' => 'l10n_parent',

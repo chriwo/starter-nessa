@@ -15,25 +15,31 @@ defined('TYPO3') || die();
                 'exclude' => false,
                 'label' => $translationFile . 'team_element_formlabel',
                 'config' => [
-                    'type' => 'inline',
-                    'foreign_table' => 'tx_starternessa_team_element',
-                    'foreign_field' => 'tt_content_record',
-                    'foreign_sortby' => 'sorting',
+                    'type' => 'group',
+                    'allowed' => 'tx_starternessa_team_element',
                     'minitems' => 1,
                     'maxitems' => 99,
+                    'size' => 8,
                     'behaviour' => [
                         'allowLanguageSynchronization' => true,
                     ],
-                    'appearance' => [
-                        'collapseAll' => true,
-                        'expandSingle' => true,
-                        'levelLinksPosition' => 'bottom',
-                        'useSortable' => true,
-                        'showPossibleLocalizationRecords' => true,
-                        'showAllLocalizationLink' => true,
-                        'showSynchronizationLink' => true,
-                        'enabledControls' => [
-                            'info' => false,
+                    'elementBrowserEntryPoints' => [
+                        'tx_starternessa_team_element' => '###PAGE_TSCONFIG_ID###',
+                    ],
+                    'fieldControl' => [
+                        'editPopup' => [
+                            'disabled' => false,
+                        ],
+                        'addRecord' => [
+                            'disabled' => false,
+                            'options' => [
+                                'table' => 'tx_starternessa_team_element',
+                                'setValue' => 'prepend',
+                                'pid' => '###PAGE_TSCONFIG_ID###',
+                            ],
+                        ],
+                        'listModule' => [
+                            'disabled' => false,
                         ],
                     ],
                 ],
