@@ -1,0 +1,25 @@
+"pages"
+,"uid","pid","doktype","title"
+,1,0,254,"Team-Mitglieder"
+"tt_content"
+,"uid","pid","CType","sys_language_uid","nessa_team_member_element"
+,10,1,"nessa_team",0,"2,1,4,3"
+"tx_starternessa_team_element"
+,"uid","pid","tt_content_record","sys_language_uid","sorting","realname","assets","deleted","hidden"
+,1,1,0,0,10,"Max Muster",1,0,0
+,2,1,0,0,20,"Erika Muster",0,0,0
+,3,1,0,0,30,"Hidden Person",0,0,1
+,4,1,0,0,40,"Deleted Person",0,1,0
+"tx_starternessa_social_element"
+,"uid","pid","uid_foreign","tablenames","sorting","icon","social_link","deleted","hidden"
+,1,1,2,"tx_starternessa_team_element",10,"bi-linkedin","https://example.com/erika-in",0,0
+,2,1,2,"tx_starternessa_team_element",20,"bi-instagram","https://example.com/erika-ig",0,0
+"sys_file_storage"
+,"uid","pid","name","driver","configuration","is_default","is_browsable","is_public","is_writable","is_online"
+,1,0,"Test storage","Local","",1,1,1,1,1
+"sys_file"
+,"uid","pid","storage","type","identifier","name","extension","mime_type","sha1","size"
+,1,0,1,2,"/max.jpg","max.jpg","jpg","image/jpeg","abc123",100
+"sys_file_reference"
+,"uid","pid","uid_local","uid_foreign","tablenames","fieldname","sorting_foreign"
+,1,1,1,1,"tx_starternessa_team_element","assets",1

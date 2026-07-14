@@ -96,6 +96,10 @@ TCEFORM {
       #removeItems = 0,1,2,3
     }
 
+    nessa_team_member_element {
+      PAGE_TSCONFIG_ID = {$starter.contentElement.NessaTeam.storagePid}
+    }
+
     // allow image position left, right or above (centered)
     imageorient {
       removeItems = 1,2,8,9,10,17,18
