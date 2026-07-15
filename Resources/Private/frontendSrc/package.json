@@ -3,13 +3,23 @@
 	"version": "14.4.0-beta.2",
 	"description": "StarterNessa — Bootstrap 5 TYPO3 theme frontend base (SCSS, JS, Fonts)",
 	"main": "scss/app.scss",
+	"exports": {
+		".": "./scss/app.scss",
+		"./plugins/SvgSpritePlugin": "./plugins/SvgSpritePlugin/svg-sprite-plugin.js",
+		"./package.json": "./package.json",
+		"./scss/*": "./scss/*",
+		"./src/*": "./src/*",
+		"./plugins/*": "./plugins/*"
+	},
 	"author": "StarterTeam",
 	"license": "MIT",
 	"files": [
 		"scss/",
 		"src/Sass/",
 		"src/JavaScript/",
-		"src/Fonts/"
+		"src/Fonts/",
+		"plugins/",
+		"src/Icons/sprite-manifest.json"
 	],
 	"scripts": {
 		"start": "npm run dev",
