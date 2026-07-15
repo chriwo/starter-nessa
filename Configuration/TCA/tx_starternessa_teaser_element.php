@@ -1,6 +1,7 @@
 <?php
 
 use TYPO3\CMS\Core\Resource\FileType;
+use StarterTeam\StarterNessa\Tca\IconItemsProvider;
 
 defined('TYPO3') || die();
 
@@ -124,22 +125,8 @@ return (function () {
                             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value',
                             'value' => '',
                         ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_teaser_element.icon.I.agricultural-water',
-                            'value' => 'custom-flora-flower',
-                            'icon' => 'starter-nessa-custom-flora-flower',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_teaser_element.icon.I.consumption-water',
-                            'value' => 'custom-bathtub',
-                            'icon' => 'starter-nessa-custom-bathtub',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_teaser_element.icon.I.drink-water',
-                            'value' => 'bi-cup-hot',
-                            'icon' => 'starter-nessa-bi-cup-hot',
-                        ],
                     ],
+                    'itemsProcFunc' => IconItemsProvider::class . '->populate',
                     'default' => '',
                 ],
             ],
