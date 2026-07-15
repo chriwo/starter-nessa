@@ -14,7 +14,7 @@ upload_dirs:
 working_dir:
     web: /var/www/html/.build
 use_dns_when_possible: true
-composer_root: .build/
+composer_root: /
 composer_version: "2"
 web_environment:
     - TYPO3_CONTEXT=Development
