@@ -63,30 +63,41 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # npm publish is the gate: it runs before any git push, so an invalid
-      # NPM_TOKEN fails the run without leaving a dangling commit or tag on main.
+      # Build gate: the frontend assets are no longer versioned on main, so the
+      # release builds them here. Running it before any publish/push means a
+      # broken build fails the run without leaving a dangling commit or tag.
+      - name: Build frontend assets
+        run: npm run build
+
+      # npm publish is the second gate: it runs before any git push, so an
+      # invalid NPM_TOKEN fails the run without leaving a dangling commit or tag.
+      # (Only source is published — see the "files" field in package.json.)
       - name: Publish to npmjs.com
         run: npm publish --provenance --access public --tag ${{ steps.meta.outputs.npm_tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Commit, tag and push
+      - name: Commit version bump to main
         working-directory: .
         run: |
           VERSION='${{ inputs.version }}'
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
+          # -a only stages tracked files (package.json / package-lock.json).
+          # The built assets under Resources/Public/Frontend/ are gitignored and
+          # therefore stay out of this commit and off main.
           git commit -am "[TASK] Set version to $VERSION"
-          git tag -a "v$VERSION" -m "v$VERSION"
           git push origin "HEAD:${{ github.ref_name }}"
-          git push origin "v$VERSION"
 
       - name: Generate release notes
         id: notes
         working-directory: .
         run: |
           VERSION='${{ inputs.version }}'
-          PREV="$(git describe --tags --abbrev=0 'HEAD^' 2>/dev/null || true)"
+          # PREV is resolved by version sort, not ancestry: the tag points at the
+          # off-main build commit (see the next step), so a previous release tag
+          # is not an ancestor of HEAD and `git describe` would find the wrong one.
+          PREV="$(git tag --list 'v*' --sort=-version:refname | grep -vFx "v$VERSION" | head -n1 || true)"
           if [[ -n "$PREV" ]]; then
               RANGE="$PREV..HEAD"
               COMPARE="${{ github.server_url }}/${{ github.repository }}/compare/$PREV...v$VERSION"
@@ -108,6 +119,19 @@ jobs:
               [[ -n "$COMPARE" ]] && printf '**Full changelog:** %s\n' "$COMPARE"
               echo '__RELEASE_NOTES__'
           } >> "$GITHUB_OUTPUT"
+
+      # The built assets are not versioned on main. They are committed here on
+      # top of the version-bump commit and only that commit is tagged. Composer
+      # installs use the tag's git archive, so the extension ships with its
+      # frontend assets, while main stays free of generated files.
+      - name: Commit built assets and tag
+        working-directory: .
+        run: |
+          VERSION='${{ inputs.version }}'
+          git add -f Resources/Public/Frontend
+          git commit -m "[TASK] Build frontend assets for v$VERSION"
+          git tag -a "v$VERSION" -m "v$VERSION"
+          git push origin "v$VERSION" # tag only — this commit is not pushed to main
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b # v3.0.1
