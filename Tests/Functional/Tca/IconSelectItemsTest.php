@@ -7,6 +7,9 @@ namespace StarterTeam\StarterNessa\Tests\Functional\Tca;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use StarterTeam\StarterNessa\Tca\IconItemsProvider;
+use TYPO3\CMS\Core\Settings\Settings;
+use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Site\Entity\SiteSettings;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -49,7 +52,10 @@ final class IconSelectItemsTest extends FunctionalTestCase
     {
         $config = $this->getIconFieldConfig($table);
 
-        $params = ['items' => $this->getStaticItems($config)];
+        $params = [
+            'items' => $this->getStaticItems($config),
+            'site' => $this->siteWithBuiltInIcons(),
+        ];
         GeneralUtility::makeInstance(IconItemsProvider::class)->populate($params);
 
         $availableSymbolIds = $this->getBuiltIconSymbolIds();
@@ -72,7 +78,6 @@ final class IconSelectItemsTest extends FunctionalTestCase
                 $availableSymbolIds,
                 sprintf('Dropdown offers "%s" but no matching SVG file exists.', $value),
             );
-            self::assertSame('starter-nessa-' . $value, $item['icon'] ?? null);
             self::assertNotSame('', $item['label'] ?? null);
 
             $offeredSymbolIds[] = $value;
@@ -84,6 +89,15 @@ final class IconSelectItemsTest extends FunctionalTestCase
         sort($offeredSymbolIds);
         sort($availableSymbolIds);
         self::assertSame($availableSymbolIds, $offeredSymbolIds);
+    }
+
+    private function siteWithBuiltInIcons(): Site
+    {
+        $settings = SiteSettings::create(new Settings([
+            'starter.icons.directories' => [self::ICON_DIRECTORY],
+        ]));
+
+        return new Site('test', 1, [], $settings);
     }
 
     /**

@@ -72,22 +72,35 @@ Basis-Icon-Manifest werden über das npm-Paket exportiert:
    ```
    Erzeugt werden `icons.svg` (Sprite) und je Icon eine Datei unter
    `Icons/<symbol>.svg`.
-4. **Sprite registrieren** – über die vorhandene TypoScript-Liste des
-   `SvgSpriteProcessor`, ohne PHP-Änderung:
-   ```typoscript
-   page.10.dataProcessing.5.spriteFiles.5 = EXT:kunde_theme/Resources/Public/Frontend/icons.svg
-   ```
-5. **Icon-Verzeichnis registrieren** – damit die Icons im Backend-Dropdown
-   auswählbar sind (PROJ-6-Erweiterungspunkt, z. B. in der `ext_localconf.php` des
-   Kundenprojekts):
-   ```php
-   $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['starter_nessa']['iconDirectories'][]
-       = 'EXT:kunde_theme/Resources/Public/Frontend/Icons/';
+4. **Icons pro Site registrieren** – alles läuft über die **Site Settings**
+   (`config/sites/<identifier>/settings.yaml` oder den Settings-Editor im
+   Backend), also pro Domain/Site einzeln. Kein `$GLOBALS`, keine PHP-Änderung.
+   Es gibt genau zwei Listen; der **erste Eintrag ist per Default das mitgelieferte
+   Set**. Zum Ergänzen eigener Icons die Liste inkl. Built-in-Pfad angeben:
+   ```yaml
+   starter:
+     icons:
+       # Frontend: Sprite-Dateien (inline im Body), in Reihenfolge
+       spriteFiles:
+         - 'EXT:starter_nessa/Resources/Public/Frontend/icons.svg'   # Built-in
+         - 'EXT:kunde_theme/Resources/Public/Frontend/icons.svg'     # eigenes
+       # Backend: Verzeichnisse, deren Icons im Dropdown auswählbar sind
+       directories:
+         - 'EXT:starter_nessa/Resources/Public/Frontend/Icons/'      # Built-in
+         - 'EXT:kunde_theme/Resources/Public/Frontend/Icons/'        # eigenes
    ```
 
-> **Beide Registrierungsschritte gehören zusammen.** Wird nur das Sprite (Schritt 4)
-> registriert, rendert das Frontend das Icon, aber es ist im Backend nicht wählbar –
-> und umgekehrt.
+> **`spriteFiles` und `directories` gehören zusammen.** `spriteFiles` versorgt das
+> Frontend (Sprite inline im Body), `directories` das Backend-Dropdown. Wird ein
+> Icon nur in einer der beiden Listen abgedeckt, rendert es zwar im Frontend, ist
+> aber im Backend nicht wählbar – oder umgekehrt.
+
+> **Mitgelieferte Icons ganz ignorieren?** Einfach den Built-in-Pfad **aus beiden
+> Listen weglassen** und nur die eigenen Pfade angeben – ohne den Frontend-Build
+> anzupassen. Ein Überschreiben der Settings ersetzt die Default-Liste vollständig;
+> es gibt daher keinen separaten Schalter mehr. Da die Konfiguration in den Site
+> Settings liegt, kann eine Multi-Domain-Installation das pro Site unterschiedlich
+> entscheiden.
 
 ### Symbol-IDs & Override-Verhalten
 
@@ -97,20 +110,15 @@ Jedes Icon bekommt eine Symbol-Kennung aus seinem Namen (`bi-<name>` bzw.
 Vergibt ein Kunden-Icon dieselbe Kennung wie ein Starter-Icon, liegen im Frontend
 **beide** Sprites inline im DOM. Ein `<use href="#id">` greift auf das **erste**
 passende Symbol in Dokumentreihenfolge zu. Der `SvgSpriteProcessor` hängt die
-Sprites nach ihrem `spriteFiles`-Schlüssel (`ksort`) aneinander:
+Sprites **in der Reihenfolge der `spriteFiles`-Liste** aneinander.
 
-- Standard `10` (Starter) vor `20` (Kunde) → bei Kollision **gewinnt das
-  Starter-Icon**.
-- Soll das **Kunden-Icon** ein Basis-Icon überschreiben, das Kunden-Sprite mit einem
-  **kleineren Schlüssel** registrieren, z. B. `spriteFiles.5`, damit es im DOM zuerst
-  steht:
-  ```typoscript
-  page.10.dataProcessing.5.spriteFiles.5 = EXT:kunde_theme/Resources/Public/Frontend/icons.svg
-  ```
+- Bei Kollision **gewinnt der zuerst gelistete Eintrag**. Steht der Built-in-Pfad
+  (Default) vorne, gewinnt das Starter-Icon.
+- Soll das **Kunden-Icon** ein Basis-Icon überschreiben, das eigene Sprite in der
+  Liste **vor** den Built-in-Pfad setzen (oder den Built-in-Pfad weglassen).
 
 > **Achtung:** Eine **unbeabsichtigte** Kollision (versehentlich gleiche Kennung)
-> ersetzt bzw. verdeckt so still ein Icon. Kennungen bewusst und eindeutig wählen;
-> Overrides bewusst über die Reihenfolge steuern.
+> ersetzt bzw. verdeckt so still ein Icon. Kennungen bewusst und eindeutig wählen.
 
 ### Fehlerfälle
 

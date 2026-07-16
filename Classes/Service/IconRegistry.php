@@ -7,24 +7,15 @@ namespace StarterTeam\StarterNessa\Service;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Collects the SVG icons that were actually built into the frontend icon
- * directory (and any directory a customer project registered) and derives a
+ * Scans the given icon directories for built *.svg files and derives a
  * human-readable label per icon.
  *
- * This is the single source of truth for both the TYPO3 backend icon registry
- * (see Configuration/Icons.php) and the dynamic TCA select items (see
- * IconItemsProvider).
- *
- * It must not depend on any injected services because it is called from
- * Configuration/Icons.php, which runs before the dependency injection
- * container is available.
+ * This feeds the dynamic TCA select items (see IconItemsProvider); the caller
+ * decides — per site, via the site settings — which directories are scanned
+ * (built-in directory and/or customer directories).
  */
 final class IconRegistry
 {
-    private const string BUILT_IN_ICON_DIRECTORY = 'EXT:starter_nessa/Resources/Public/Frontend/Icons/';
-
-    private const string IDENTIFIER_PREFIX = 'starter-nessa-';
-
     /**
      * @var array<int, string>
      */
@@ -49,15 +40,17 @@ final class IconRegistry
     ];
 
     /**
-     * Collect all available icons, indexed by their sprite symbol-id.
+     * Collect all available icons from the given directories, indexed by their
+     * sprite symbol-id and mapped to a human-readable label.
      *
-     * @return array<string, array{identifier: string, source: string, label: string}>
+     * @param array<int, string> $directories icon directories (EXT: paths)
+     * @return array<string, string> symbol-id => label
      */
-    public function collect(): array
+    public function collect(array $directories): array
     {
         $icons = [];
 
-        foreach ($this->getIconDirectories() as $iconDirectory) {
+        foreach ($directories as $iconDirectory) {
             $absoluteDirectory = GeneralUtility::getFileAbsFileName($iconDirectory);
             if ($absoluteDirectory === '') {
                 continue;
@@ -65,11 +58,7 @@ final class IconRegistry
 
             foreach (glob($absoluteDirectory . '*.svg') ?: [] as $svgFile) {
                 $name = basename($svgFile, '.svg');
-                $icons[$name] = [
-                    'identifier' => self::IDENTIFIER_PREFIX . $name,
-                    'source' => rtrim($iconDirectory, '/') . '/' . $name . '.svg',
-                    'label' => $this->deriveLabel($name),
-                ];
+                $icons[$name] = $this->deriveLabel($name);
             }
         }
 
@@ -96,44 +85,5 @@ final class IconRegistry
         }
 
         return ucwords(str_replace('-', ' ', $withoutPrefix));
-    }
-
-    /**
-     * The built-in starter-nessa directory first, followed by any directory a
-     * customer project registered via the extension configuration.
-     *
-     * @return array<int, string>
-     */
-    private function getIconDirectories(): array
-    {
-        $directories = [self::BUILT_IN_ICON_DIRECTORY];
-
-        foreach ($this->getRegisteredIconDirectories() as $directory) {
-            if (is_string($directory) && $directory !== '') {
-                $directories[] = $directory;
-            }
-        }
-
-        return $directories;
-    }
-
-    /**
-     * @return array<int|string, mixed>
-     */
-    private function getRegisteredIconDirectories(): array
-    {
-        $extensions = $this->asArray($GLOBALS['TYPO3_CONF_VARS'] ?? null)['EXTENSIONS'] ?? null;
-        $configuration = $this->asArray($extensions)['starter_nessa'] ?? null;
-        $registered = $this->asArray($configuration)['iconDirectories'] ?? null;
-
-        return $this->asArray($registered);
-    }
-
-    /**
-     * @return array<int|string, mixed>
-     */
-    private function asArray(mixed $value): array
-    {
-        return is_array($value) ? $value : [];
     }
 }

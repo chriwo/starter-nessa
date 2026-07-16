@@ -7,6 +7,9 @@ namespace StarterTeam\StarterNessa\Tests\Unit\Tca;
 use PHPUnit\Framework\Attributes\Test;
 use StarterTeam\StarterNessa\Service\IconRegistry;
 use StarterTeam\StarterNessa\Tca\IconItemsProvider;
+use TYPO3\CMS\Core\Settings\Settings;
+use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Site\Entity\SiteSettings;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 final class IconItemsProviderTest extends UnitTestCase
@@ -17,27 +20,16 @@ final class IconItemsProviderTest extends UnitTestCase
     {
         parent::setUp();
         $this->fixtureDirectory = dirname(__DIR__) . '/Fixtures/Icons/';
-        $this->registerIconDirectories([$this->fixtureDirectory]);
-    }
-
-    protected function tearDown(): void
-    {
-        $this->registerIconDirectories([]);
-        parent::tearDown();
     }
 
     /**
-     * @param array<int, mixed> $directories
+     * @param array<string, mixed> $iconSettings
      */
-    private function registerIconDirectories(array $directories): void
+    private function siteWithIconSettings(array $iconSettings): Site
     {
-        $GLOBALS['TYPO3_CONF_VARS'] = [
-            'EXTENSIONS' => [
-                'starter_nessa' => [
-                    'iconDirectories' => $directories,
-                ],
-            ],
-        ];
+        $settings = SiteSettings::create(new Settings($iconSettings));
+
+        return new Site('test', 1, [], $settings);
     }
 
     #[Test]
@@ -49,7 +41,12 @@ final class IconItemsProviderTest extends UnitTestCase
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value',
             'value' => '',
         ];
-        $params = ['items' => [$emptyItem]];
+        $params = [
+            'items' => [$emptyItem],
+            'site' => $this->siteWithIconSettings([
+                'starter.icons.directories' => [$this->fixtureDirectory],
+            ]),
+        ];
 
         $subject->populate($params);
 
@@ -63,12 +60,7 @@ final class IconItemsProviderTest extends UnitTestCase
         $appended = array_slice($items, 1);
         foreach ($appended as $item) {
             self::assertIsArray($item);
-            self::assertArrayHasKey('label', $item);
-            self::assertArrayHasKey('value', $item);
-            self::assertArrayHasKey('icon', $item);
-            $value = $item['value'];
-            self::assertIsString($value);
-            self::assertSame('starter-nessa-' . $value, $item['icon']);
+            self::assertSame(['label', 'value'], array_keys($item));
         }
 
         $byValue = array_column($appended, 'label', 'value');
@@ -82,7 +74,12 @@ final class IconItemsProviderTest extends UnitTestCase
     {
         $subject = new IconItemsProvider(new IconRegistry());
 
-        $params = ['items' => []];
+        $params = [
+            'items' => [],
+            'site' => $this->siteWithIconSettings([
+                'starter.icons.directories' => [$this->fixtureDirectory],
+            ]),
+        ];
 
         $subject->populate($params);
 
@@ -92,5 +89,40 @@ final class IconItemsProviderTest extends UnitTestCase
         $labels = array_column($items, 'label');
         // Fixture icons sorted case-insensitively by their derived label.
         self::assertSame(['Cement Mix', 'Discord', 'Twitter / X', 'TYPO3'], $labels);
+    }
+
+    #[Test]
+    public function populateScansSeveralDirectoriesInOrder(): void
+    {
+        $subject = new IconItemsProvider(new IconRegistry());
+
+        $params = [
+            'items' => [],
+            'site' => $this->siteWithIconSettings([
+                'starter.icons.directories' => ['', $this->fixtureDirectory],
+            ]),
+        ];
+
+        $subject->populate($params);
+
+        $items = $params['items'];
+        self::assertIsArray($items);
+        // Empty entries are skipped; the fixture directory still contributes.
+        self::assertSame('bi-discord', array_column($items, 'value', 'label')['Discord'] ?? null);
+    }
+
+    #[Test]
+    public function populateWithoutSiteKeepsExistingItemsUnchanged(): void
+    {
+        $subject = new IconItemsProvider(new IconRegistry());
+
+        $emptyItem = ['label' => 'Empty', 'value' => ''];
+        $params = ['items' => [$emptyItem]];
+
+        $subject->populate($params);
+
+        // No site → no site settings → no directories are scanned, so no icons
+        // are appended and nothing crashes.
+        self::assertSame([$emptyItem], $params['items']);
     }
 }

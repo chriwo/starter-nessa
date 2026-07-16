@@ -19,26 +19,6 @@ final class IconRegistryTest extends UnitTestCase
         $this->fixtureDirectory = dirname(__DIR__) . '/Fixtures/Icons/';
     }
 
-    protected function tearDown(): void
-    {
-        $this->registerIconDirectories([]);
-        parent::tearDown();
-    }
-
-    /**
-     * @param array<int, mixed> $directories
-     */
-    private function registerIconDirectories(array $directories): void
-    {
-        $GLOBALS['TYPO3_CONF_VARS'] = [
-            'EXTENSIONS' => [
-                'starter_nessa' => [
-                    'iconDirectories' => $directories,
-                ],
-            ],
-        ];
-    }
-
     /**
      * @return array<string, array{string, string}>
      */
@@ -65,49 +45,26 @@ final class IconRegistryTest extends UnitTestCase
     }
 
     #[Test]
-    public function collectScansRegisteredDirectoryAndBuildsEntries(): void
+    public function collectScansDirectoryAndMapsLabels(): void
     {
-        $this->registerIconDirectories([$this->fixtureDirectory]);
+        $icons = (new IconRegistry())->collect([$this->fixtureDirectory]);
 
-        $icons = (new IconRegistry())->collect();
-
-        self::assertArrayHasKey('bi-discord', $icons);
-        self::assertSame(
-            [
-                'identifier' => 'starter-nessa-bi-discord',
-                'source' => rtrim($this->fixtureDirectory, '/') . '/bi-discord.svg',
-                'label' => 'Discord',
-            ],
-            $icons['bi-discord'],
-        );
-
-        self::assertArrayHasKey('custom-typo3', $icons);
-        self::assertSame('TYPO3', $icons['custom-typo3']['label']);
+        self::assertSame('Discord', $icons['bi-discord'] ?? null);
+        self::assertSame('TYPO3', $icons['custom-typo3'] ?? null);
         self::assertArrayHasKey('bi-twitter-x', $icons);
         self::assertArrayHasKey('custom-cement-mix', $icons);
     }
 
     #[Test]
-    public function collectMergesAdditionalDirectoriesAfterBuiltInOne(): void
+    public function collectReturnsEmptyWithoutDirectories(): void
     {
-        $this->registerIconDirectories([$this->fixtureDirectory]);
-        $withExtension = (new IconRegistry())->collect();
-
-        $this->registerIconDirectories([]);
-        $withoutExtension = (new IconRegistry())->collect();
-
-        // The extension point contributes the four fixture icons that the
-        // built-in (unresolved in a unit test) directory does not provide.
-        self::assertArrayHasKey('bi-discord', $withExtension);
-        self::assertArrayNotHasKey('bi-discord', $withoutExtension);
+        self::assertSame([], (new IconRegistry())->collect([]));
     }
 
     #[Test]
-    public function collectIgnoresNonStringDirectoryEntries(): void
+    public function collectSkipsEmptyDirectoryEntries(): void
     {
-        $this->registerIconDirectories(['', 123, $this->fixtureDirectory]);
-
-        $icons = (new IconRegistry())->collect();
+        $icons = (new IconRegistry())->collect(['', $this->fixtureDirectory]);
 
         self::assertArrayHasKey('bi-discord', $icons);
     }

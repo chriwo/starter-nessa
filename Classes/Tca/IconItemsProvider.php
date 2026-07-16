@@ -5,11 +5,16 @@ declare(strict_types=1);
 namespace StarterTeam\StarterNessa\Tca;
 
 use StarterTeam\StarterNessa\Service\IconRegistry;
+use TYPO3\CMS\Core\Site\Entity\Site;
 
 /**
  * TCA itemsProcFunc that fills an icon select field with exactly the icons that
- * were actually built into the frontend icon directory. This guarantees that
- * the dropdown can never offer an icon that is missing from the sprite.
+ * are available for the current site: every *.svg found in the directories the
+ * site lists via the "starter.icons.directories" setting (the built-in theme
+ * directory is the first default entry there).
+ *
+ * The site is resolved by FormEngine from the edited record's page and passed
+ * in via $params['site'], so the dropdown is site-aware in multi-site setups.
  *
  * itemsProcFunc instances are created via makeInstance, so the IconRegistry can
  * be injected via the constructor (keeps it testable).
@@ -25,19 +30,18 @@ final class IconItemsProvider
      */
     public function populate(array &$params): void
     {
-        $icons = $this->iconRegistry->collect();
-        uasort($icons, $this->compareByLabel(...));
+        $icons = $this->iconRegistry->collect($this->resolveDirectories($params['site'] ?? null));
+        asort($icons, SORT_FLAG_CASE | SORT_STRING);
 
         $items = $params['items'] ?? [];
         if (is_array($items) === false) {
             $items = [];
         }
 
-        foreach ($icons as $symbolId => $icon) {
+        foreach ($icons as $symbolId => $label) {
             $items[] = [
-                'label' => $icon['label'],
+                'label' => $label,
                 'value' => $symbolId,
-                'icon' => $icon['identifier'],
             ];
         }
 
@@ -45,11 +49,35 @@ final class IconItemsProvider
     }
 
     /**
-     * @param array{identifier: string, source: string, label: string} $left
-     * @param array{identifier: string, source: string, label: string} $right
+     * The icon directories this site lists (built-in directory first by default).
+     *
+     * @return array<int, string>
      */
-    private function compareByLabel(array $left, array $right): int
+    private function resolveDirectories(mixed $site): array
     {
-        return strcasecmp($left['label'], $right['label']);
+        if ($site instanceof Site === false) {
+            return [];
+        }
+
+        return $this->asStringList($site->getSettings()->get('starter.icons.directories', []));
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    private function asStringList(mixed $value): array
+    {
+        if (is_array($value) === false) {
+            return [];
+        }
+
+        $strings = [];
+        foreach ($value as $entry) {
+            if (is_string($entry) && $entry !== '') {
+                $strings[] = $entry;
+            }
+        }
+
+        return $strings;
     }
 }
