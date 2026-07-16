@@ -13,6 +13,7 @@ Thumbs.db
 
 /.build
 /Resources/Private/frontendSrc/node_modules/
+/Resources/Public/Frontend/
 *.js.map
 .sass-cache
 composer.lock
