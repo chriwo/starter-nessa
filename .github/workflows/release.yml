@@ -97,7 +97,16 @@ jobs:
           # PREV is resolved by version sort, not ancestry: the tag points at the
           # off-main build commit (see the next step), so a previous release tag
           # is not an ancestor of HEAD and `git describe` would find the wrong one.
-          PREV="$(git tag --list 'v*' --sort=-version:refname | grep -vFx "v$VERSION" | head -n1 || true)"
+          #
+          # For a stable release, diff against the previous *stable* tag so the notes
+          # collect everything since the last stable — including changes already shipped
+          # in intermediate betas. For a prerelease, diff against the nearest tag of any
+          # kind (beta or stable) so each beta only lists its own delta.
+          if [[ '${{ steps.meta.outputs.prerelease }}' == 'true' ]]; then
+              PREV="$(git tag --list 'v*' --sort=-version:refname | grep -vFx "v$VERSION" | head -n1 || true)"
+          else
+              PREV="$(git tag --list 'v*' --sort=-version:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | grep -vFx "v$VERSION" | head -n1 || true)"
+          fi
           if [[ -n "$PREV" ]]; then
               RANGE="$PREV..HEAD"
               COMPARE="${{ github.server_url }}/${{ github.repository }}/compare/$PREV...v$VERSION"
