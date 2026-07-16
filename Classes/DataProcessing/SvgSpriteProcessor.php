@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace StarterTeam\StarterNessa\DataProcessing;
 
+use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
@@ -12,15 +13,12 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
  * Reads one or more SVG sprite files and provides their content as {iconSprite}
  * template variable for inline injection into the page body.
  *
- * Customer extensions can add their own sprite files via TypoScript:
- *   page.10.dataProcessing.5.spriteFiles.20 = EXT:customer_theme/.../icons-custom.svg
+ * Which sprites are injected is driven by the "starter.icons.spriteFiles" site
+ * setting (a list of SVG sprite files, built-in theme sprite first by default),
+ * so a multi-site installation can configure this per site.
  */
 final class SvgSpriteProcessor implements DataProcessorInterface
 {
-    private const DEFAULT_SPRITE_FILES = [
-        '10' => 'EXT:starter_nessa/Resources/Public/Frontend/icons.svg',
-    ];
-
     /** @var array<string, string> */
     private static array $spriteCache = [];
 
@@ -37,18 +35,8 @@ final class SvgSpriteProcessor implements DataProcessorInterface
         array $processorConfiguration,
         array $processedData
     ): array {
-        $spriteFiles = $processorConfiguration['spriteFiles.'] ?? self::DEFAULT_SPRITE_FILES;
-        if (!is_array($spriteFiles)) {
-            $spriteFiles = self::DEFAULT_SPRITE_FILES;
-        }
-
-        ksort($spriteFiles);
-
         $content = '';
-        foreach ($spriteFiles as $key => $filePath) {
-            if (!is_string($filePath) || str_ends_with((string)$key, '.')) {
-                continue;
-            }
+        foreach ($this->resolveSpriteFiles($cObj) as $filePath) {
             $absolutePath = GeneralUtility::getFileAbsFileName($filePath);
             if ($absolutePath === '' || !is_file($absolutePath)) {
                 continue;
@@ -63,5 +51,37 @@ final class SvgSpriteProcessor implements DataProcessorInterface
         $processedData['iconSprite'] = $content;
 
         return $processedData;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    private function resolveSpriteFiles(ContentObjectRenderer $cObj): array
+    {
+        $site = $cObj->getRequest()->getAttribute('site');
+        if ($site instanceof Site === false) {
+            return [];
+        }
+
+        return $this->asStringList($site->getSettings()->get('starter.icons.spriteFiles', []));
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    private function asStringList(mixed $value): array
+    {
+        if (is_array($value) === false) {
+            return [];
+        }
+
+        $strings = [];
+        foreach ($value as $entry) {
+            if (is_string($entry) && $entry !== '') {
+                $strings[] = $entry;
+            }
+        }
+
+        return $strings;
     }
 }

@@ -6,7 +6,7 @@ import globals from 'globals';
 
 export default [
     {
-        ignores: ['dist/**', 'build/**'],
+        ignores: ['dist/**', 'plugins/SvgSpritePlugin/example/**'],
     },
     eslint.configs.recommended,
     eslintPluginPrettier,

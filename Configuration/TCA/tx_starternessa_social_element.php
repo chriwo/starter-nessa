@@ -1,5 +1,7 @@
 <?php
 
+use StarterTeam\StarterNessa\Tca\IconItemsProvider;
+
 defined('TYPO3') || die();
 
 return (function () {
@@ -107,82 +109,8 @@ return (function () {
                             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value',
                             'value' => '',
                         ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.discourd',
-                            'value' => 'bi-discord',
-                            'icon' => 'starter-nessa-bi-discord',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.email',
-                            'value' => 'bi-envelope',
-                            'icon' => 'starter-nessa-bi-envelope',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.facebook',
-                            'value' => 'bi-facebook',
-                            'icon' => 'starter-nessa-bi-facebook',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.github',
-                            'value' => 'bi-github',
-                            'icon' => 'starter-nessa-bi-github',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.instragram',
-                            'value' => 'bi-instagram',
-                            'icon' => 'starter-nessa-bi-instagram',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.link',
-                            'value' => 'bi-link-45deg',
-                            'icon' => 'starter-nessa-bi-link-45deg',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.linkedin',
-                            'value' => 'bi-linkedin',
-                            'icon' => 'starter-nessa-bi-linkedin',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.snapchat',
-                            'value' => 'bi-snapchat',
-                            'icon' => 'starter-nessa-bi-snapchat',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.tiktok',
-                            'value' => 'bi-tiktok',
-                            'icon' => 'starter-nessa-bi-tiktok',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.typo3',
-                            'value' => 'custom-typo3',
-                            'icon' => 'starter-nessa-custom-typo3',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.vimeo',
-                            'value' => 'bi-vimeo',
-                            'icon' => 'starter-nessa-bi-vimeo',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.x',
-                            'value' => 'bi-twitter-x',
-                            'icon' => 'starter-nessa-bi-twitter-x',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.xing',
-                            'value' => 'custom-xing',
-                            'icon' => 'starter-nessa-custom-xing',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.youku',
-                            'value' => 'custom-youku',
-                            'icon' => 'starter-nessa-custom-youku',
-                        ],
-                        [
-                            'label' => $translationFile . 'tx_starternessa_social_element.icon.I.youtube',
-                            'value' => 'bi-youtube',
-                            'icon' => 'starter-nessa-bi-youtube',
-                        ],
                     ],
+                    'itemsProcFunc' => IconItemsProvider::class . '->populate',
                     'default' => '',
                 ],
             ],

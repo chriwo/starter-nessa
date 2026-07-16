@@ -4,6 +4,9 @@ categories:
   ThemeNessa.templates.page:
     label: 'Pages templates'
     parent: ThemeNessa
+  ThemeNessa.icons:
+    label: 'Icons'
+    parent: ThemeNessa
 
 settings:
   starter.branch.title:
@@ -111,3 +114,19 @@ settings:
     description: ''
     type: int
     default: 0
+
+  starter.icons.directories:
+    label: 'Icon directories (backend selection)'
+    description: 'Directories whose built *.svg icons are selectable in the backend icon dropdown of this site, in order. The first entry is the built-in theme directory; remove it to ignore the shipped icons, or add customer directories (one EXT: path per entry).'
+    category: ThemeNessa.icons
+    type: stringlist
+    default:
+      - 'EXT:starter_nessa/Resources/Public/Frontend/Icons/'
+
+  starter.icons.spriteFiles:
+    label: 'Icon sprite files (frontend)'
+    description: 'SVG sprite files injected inline into the frontend body of this site, in order. The first entry is the built-in theme sprite; remove it to ignore the shipped icons, or add customer sprites (one EXT: path per entry). On symbol-id collisions the first entry in the list wins.'
+    category: ThemeNessa.icons
+    type: stringlist
+    default:
+      - 'EXT:starter_nessa/Resources/Public/Frontend/icons.svg'
