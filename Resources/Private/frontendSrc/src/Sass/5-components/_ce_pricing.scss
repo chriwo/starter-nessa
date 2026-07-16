@@ -97,19 +97,10 @@
             list-style: none;
 
             li {
-                display: flex;
-                gap: map-get($spacers, 2);
-                align-items: center;
-                justify-content: flex-start;
-                padding: .75rem 0;
+                padding-top: .75rem;
+                padding-bottom: .75rem;
 
                 @include font-size(var(--#{$prefix}nessa-pricing-features-font-size));
-
-                i {
-                    color: var(--#{$prefix}primary);
-
-                    @include font-size($font-size-base * 1.125);
-                }
             }
         }
     }
