@@ -6,13 +6,9 @@ defined('TYPO3') || die();
 
 (function () {
     ArrayUtility::mergeRecursiveWithOverrule(
-        $GLOBALS['TCA']['tt_content']['types']['textmedia'],
+        $GLOBALS['TCA']['tt_content']['types']['text'],
         [
             'columnsOverrides' => [
-                'assets' => [
-                    'minitems' => 1,
-                    'maxitems' => 1,
-                ],
                 'tx_starter_ctalink' => [
                     'config' => [
                         'allowedTypes' => ['page', 'file', 'url', 'email', 'telephone', 'record'],

@@ -26,6 +26,11 @@ defined('TYPO3') || die();
                         'enableRichtext' => true,
                     ],
                 ],
+                'tx_starter_ctalink' => [
+                    'config' => [
+                        'allowedTypes' => ['page', 'file', 'url', 'email', 'telephone', 'record'],
+                    ],
+                ],
             ],
         ]
     );

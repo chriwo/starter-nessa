@@ -116,7 +116,7 @@ return (function () {
                 'config' => [
                     'type' => 'link',
                     'size' => 50,
-                    'allowedTypes' => ['page', 'file', 'email', 'record'],
+                    'allowedTypes' => ['page', 'file', 'email', 'telephone', 'record'],
                     'appearance' => ['allowedOptions' => ['title', 'rel']],
                 ],
             ],
@@ -136,7 +136,7 @@ return (function () {
                 'config' => [
                     'type' => 'link',
                     'size' => 50,
-                    'allowedTypes' => ['page', 'file', 'email', 'record'],
+                    'allowedTypes' => ['page', 'file', 'email', 'telephone', 'record'],
                     'appearance' => ['allowedOptions' => ['title', 'rel']],
                 ],
             ],

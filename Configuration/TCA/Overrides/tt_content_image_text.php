@@ -104,6 +104,16 @@ defined('TYPO3') || die();
                         ],
                     ],
                 ],
+                'tx_starter_ctalink' => [
+                    'config' => [
+                        'allowedTypes' => ['page', 'file', 'url', 'email', 'telephone', 'record'],
+                    ],
+                ],
+                'tx_starter_ctalink2' => [
+                    'config' => [
+                        'allowedTypes' => ['page', 'file', 'url', 'email', 'telephone', 'record'],
+                    ],
+                ],
             ],
         ]
     );
