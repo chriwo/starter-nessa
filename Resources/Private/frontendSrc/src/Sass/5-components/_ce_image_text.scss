@@ -80,7 +80,9 @@ $nessa-hero-dark-bg: '.hero-bg-primary, .hero-bg-secondary, .hero-bg-dark, .hero
 
 @include media-breakpoint-down(md) {
     .ce-hero--split {
-        padding-top: 50px;
+        // Keep reserving the header height — a flat padding value would drop the
+        // offset and slide the headline under the fixed header.
+        padding-top: calc(var(--nessa-header-offset, 0px) + 50px);
         padding-bottom: 50px;
 
         .hero-img-col img {
