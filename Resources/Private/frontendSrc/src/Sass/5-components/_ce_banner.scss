@@ -1,15 +1,23 @@
 // ─── CE Hero V3: Solid Banner (nessa_banner) ──────────────────────────────────
-// Height-restricted banner (~50vh / 40vh on mobile). Background colour/gradient
-// class is required; an optional background image sits on top (forcing light
-// text). A dark overlay is added only when text is present (.has-content), to
-// guarantee contrast — without content the image shows unobscured. Text colour
-// otherwise adapts via --hero-fg (see 5-components/_ce_hero_shared.scss).
+// Banner with a height floor of ~50vh (40vh on mobile) that grows when the text
+// needs more room. Background colour/gradient class is required; an optional
+// background image sits on top (forcing light text). A dark overlay is added
+// only when text is present (.has-content), to guarantee contrast — without
+// content the image shows unobscured. Text colour otherwise adapts via
+// --hero-fg (see 5-components/_ce_hero_shared.scss).
 // Content position "none" renders no text area (handled in the template).
 
 .ce-hero--solid {
     position: relative;
-    height: 50vh;
-    min-height: 300px;
+
+    // A floor, not a fixed height: headline, lead and two CTAs do not fit into
+    // ~50vh on a short viewport (a phone in landscape, a small laptop window).
+    // The content used to be absolutely positioned, so it could never grow the
+    // section and overflow:hidden cut the surplus off — the alignment option
+    // only decided which part vanished (flex-end pushed the headline out at the
+    // top, center clipped the headline and the second CTA row).
+    display: flex;
+    min-height: max(50vh, 300px);
     overflow: hidden;
     background-repeat: no-repeat;
     background-position: center center;
@@ -36,29 +44,39 @@
         background-color: rgb(4 12 21 / 55%);
     }
 
+    // In flow, so the text drives the height once it outgrows the floor. The
+    // header offset is padding rather than `inset` — the background and the
+    // contrast overlay stay full-bleed behind a fixed header either way
+    // (--nessa-header-offset is set on the hero region; 0 elsewhere).
     .hero-inner {
-        position: absolute;
-
-        // Offset the content below a fixed header (--nessa-header-offset is set on
-        // the hero region; 0 elsewhere). The background/overlay stays full-bleed.
-        inset: var(--nessa-header-offset, 0) 0 0;
+        position: relative;
         z-index: 1;
+        display: flex;
+        flex: 1 1 auto;
+        width: 100%;
+        padding-top: var(--nessa-header-offset, 0);
 
-        > .container,
+        // `flex: 1 1 auto` fills the width; the default `align-items: stretch`
+        // fills the height, which is what keeps the alignment options below
+        // meaningful while the text is shorter than the banner.
+        > .container {
+            display: flex;
+            flex: 1 1 auto;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+
         > .container > .row {
-            height: 100%;
+            flex: 1 1 auto;
+            width: 100%;
         }
     }
 
     // ── Text content positions ──
-    .pos-bottom-left {
-        &.hero-inner > .container > .row {
-            align-items: flex-end;
-        }
-
-        .hero-text {
-            padding-bottom: 2.5rem;
-        }
+    // Only the cross-axis alignment differs; the breathing room around the text
+    // comes from the container padding above, so every option spaces the same.
+    .pos-bottom-left.hero-inner > .container > .row {
+        align-items: flex-end;
     }
 
     .pos-center-left.hero-inner > .container > .row {
@@ -105,11 +123,15 @@
 
 @include media-breakpoint-down(md) {
     .ce-hero--solid {
-        height: 40vh;
-        min-height: 260px;
+        min-height: max(40vh, 260px);
 
         &.has-bg-image {
             background-image: var(--hero-bg-mobile);
+        }
+
+        .hero-inner > .container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
     }
 }
