@@ -56,10 +56,15 @@ export default defineConfig(({ mode }) => ({
             customIconsDir: resolve(srcAssets, 'Icons/custom'),
         }),
         viteStaticCopy({
+            // Copy the directory as one target, not 'Images/*'. The glob turns
+            // every file into its own copy target, and the plugin runs those
+            // concurrently — each one creating the shared 'Images' directory.
+            // On the DDEV bind mount those parallel mkdir calls race and the
+            // build fails with a random ENOENT roughly every other run.
             targets: [
                 {
-                    src: resolve(srcAssets, 'Images/*'),
-                    dest: 'Images',
+                    src: resolve(srcAssets, 'Images'),
+                    dest: '.',
                 },
             ],
         }),
