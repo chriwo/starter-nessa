@@ -61,6 +61,9 @@ export default defineConfig(({ mode }) => ({
             // concurrently — each one creating the shared 'Images' directory.
             // On the DDEV bind mount those parallel mkdir calls race and the
             // build fails with a random ENOENT roughly every other run.
+            // This also pins the plugin to v3: v4 expands a directory target
+            // into one target per file itself, which brings the race back
+            // (4 of 10 builds failed) with no way to opt out.
             targets: [
                 {
                     src: resolve(srcAssets, 'Images'),

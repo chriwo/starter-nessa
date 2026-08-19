@@ -35,9 +35,9 @@
 	},
 	"dependencies": {
 		"@popperjs/core": "^2.11.8",
-		"bootstrap-icons": "^1.11.3",
 		"animate.css": "^4.1.1",
 		"bootstrap": "^5.3.3",
+		"bootstrap-icons": "^1.11.3",
 		"isotope-layout": "^3.0.6",
 		"jquery": "^3.4.1",
 		"jquery.easing": "^1.4.1",
@@ -48,11 +48,11 @@
 	},
 	"devDependencies": {
 		"@rollup/plugin-inject": "^5.0.5",
-		"eslint": "^9.39.2",
+		"eslint": "^9.39.5",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-import": "^2.32.0",
 		"eslint-plugin-prettier": "^5.5.5",
-		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"eslint-plugin-simple-import-sort": "^14.0.0",
 		"globals": "^17.3.0",
 		"postcss": "^8.4.7",
 		"prettier": "^3.8.1",
@@ -61,12 +61,12 @@
 		"stylelint-config-recess-order": "^7.7.0",
 		"stylelint-config-standard": "^40.0.0",
 		"stylelint-config-standard-scss": "^17.0.0",
-		"stylelint-order": "^7.0.1",
-		"vite": "^6.4.2",
-		"vite-plugin-static-copy": "^2.1.0"
+		"stylelint-order": "^8.1.1",
+		"vite": "^7.3.6",
+		"vite-plugin-static-copy": "^3.4.0"
 	},
 	"engines": {
-		"node": ">=20 <23",
+		"node": ">=20.19 <23",
 		"npm": ">=10"
 	},
 	"repository": {

@@ -4,7 +4,7 @@ Frontend-Build-Setup für das StarterNessa TYPO3-Theme auf Basis von **Vite**.
 
 ## Voraussetzungen
 
-- Node.js `>=20 <23`
+- Node.js `>=20.19 <23`
 - npm `>=10`
 
 ## Installation
@@ -163,7 +163,7 @@ frontendSrc/
 ## Technologie-Stack
 
 ### Build
-- **[Vite 6](https://vitejs.dev/)** – Build-Tool mit Watch-Modus
+- **[Vite 7](https://vitejs.dev/)** – Build-Tool mit Watch-Modus
 - **[Sass](https://sass-lang.com/)** – CSS-Präprozessor
 - **[ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)** – SCSS-Architektur
 
