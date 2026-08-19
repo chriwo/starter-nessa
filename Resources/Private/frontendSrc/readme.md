@@ -168,12 +168,12 @@ frontendSrc/
 - **[ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)** – SCSS-Architektur
 
 ### Frontend-Libraries
-- **[Bootstrap 4](https://getbootstrap.com/docs/4.6/)** – CSS-Framework
-- **[jQuery 3](https://jquery.com/)** – Pflicht-Abhängigkeit für Bootstrap 4 und Plugins
+- **[Bootstrap 5](https://getbootstrap.com/docs/5.3/)** – CSS-Framework
+- **[jQuery 3](https://jquery.com/)** – von Bootstrap 5 nicht mehr benötigt, aber weiterhin von venobox und BackToTop
 - **[isotope-layout](https://isotope.metafizzy.co/)** – Filter- und Layout-Library
 - **[venobox](https://veno.es/venobox/)** – Lightbox
-- **[lazysizes](https://afarkas.github.io/lazysizes/)** – Lazy Loading für Bilder
 - **[animate.css](https://animate.style/)** – CSS-Animationen
+- **[bootstrap-icons](https://icons.getbootstrap.com/)** – Icon-Quelle für das Sprite
 
 ### Code-Qualität
 - **[ESLint 9](https://eslint.org/)** – JavaScript-Linting (Flat Config)
