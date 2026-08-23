@@ -21,7 +21,7 @@ defined('TYPO3') || die();
         }
 
         GeneralUtility::makeInstance(Registry::class)->configureContainer(
-            new ContainerConfiguration(
+            (new ContainerConfiguration(
                 '3columns-container',
                 $translationFile . 'CType.I.3columns-container',
                 $translationFile . 'CType.I.3columns-container.description',
@@ -32,7 +32,7 @@ defined('TYPO3') || die();
                         ['name' => $translationFile . 'tt_content.label.container.right', 'colPos' => 203, $restrictionKey => $restrictions],
                     ],
                 ]
-            )
+            ))
             ->setIcon('EXT:container/Resources/Public/Icons/container-3col.svg')
         );
     }
