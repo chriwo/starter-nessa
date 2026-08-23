@@ -119,7 +119,7 @@ final class HeroPreviewRenderer
             ->fetchAllAssociative();
 
         return array_map(
-            fn (array $row): array => [
+            fn(array $row): array => [
                 'uid' => $this->toInt($row['uid']),
                 'header' => is_string($row['header']) ? trim($row['header']) : '',
                 'hidden' => $this->toInt($row['hidden']),
