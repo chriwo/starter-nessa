@@ -1,5 +1,5 @@
 includes:
-  - %currentWorkingDirectory%/.project/tools/phpstan-baseline-v13.neon
+  - %currentWorkingDirectory%/.project/tools/phpstan-baseline.neon
 parameters:
   level: max
   reportUnmatchedIgnoredErrors: true

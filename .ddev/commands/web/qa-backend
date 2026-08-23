@@ -7,10 +7,10 @@
 
 cd ..
 
-.build/bin/phpunit -c .project/tools/phpunit-unit.xml --do-not-cache-result
-.build/bin/phpunit -c .project/tools/phpunit-functional-v$@.xml --do-not-cache-result
+.build/bin/phpunit -c .project/tools/phpunit-unit.xml
+.build/bin/phpunit -c .project/tools/phpunit-functional.xml
 .build/bin/php-cs-fixer fix --dry-run --diff --config=.project/tools/.php-cs-fixer.php
-.build/bin/phpstan --configuration=.project/tools/phpstan-v$@.neon
+.build/bin/phpstan --configuration=.project/tools/phpstan.neon
 .build/bin/fractor process --config=.project/tools/fractor.php --output-format=console --dry-run
 
 .build/bin/rector process --config=.project/tools/rector-v$@.php --clear-cache --output-format=console --dry-run
