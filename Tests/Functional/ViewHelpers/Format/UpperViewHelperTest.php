@@ -118,8 +118,8 @@ final class UpperViewHelperTest extends FunctionalTestCase
         self::expectExceptionCode($expectedExceptionCode);
         self::expectExceptionMessage($expectedExceptionMessage);
 
-        $template = '{namespace starterteam=StarterTeam\StarterNessa\ViewHelpers}' .
-        '<starterteam:format.upper>{value}</starterteam:format.upper>';
+        $template = '{namespace starterteam=StarterTeam\StarterNessa\ViewHelpers}'
+        . '<starterteam:format.upper>{value}</starterteam:format.upper>';
 
         $view = new TemplateView();
         $view->getRenderingContext()->setCache(self::$cache);

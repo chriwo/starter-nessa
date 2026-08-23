@@ -15,9 +15,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 final class IconSelectItemsTest extends FunctionalTestCase
 {
-    protected array $testExtensionsToLoad = ['starterteam/starter-nessa'];
-
     private const string ICON_DIRECTORY = 'EXT:starter_nessa/Resources/Public/Frontend/Icons/';
+    protected array $testExtensionsToLoad = ['starterteam/starter-nessa'];
 
     /**
      * @return array<string, array{string}>
@@ -143,7 +142,7 @@ final class IconSelectItemsTest extends FunctionalTestCase
         $directory = GeneralUtility::getFileAbsFileName(self::ICON_DIRECTORY);
 
         return array_map(
-            static fn (string $file): string => basename($file, '.svg'),
+            static fn(string $file): string => basename($file, '.svg'),
             glob($directory . '*.svg') ?: [],
         );
     }

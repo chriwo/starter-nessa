@@ -1,7 +1,7 @@
 <?php
 
-use TYPO3\CMS\Core\Resource\FileType;
 use StarterTeam\StarterNessa\Tca\IconItemsProvider;
+use TYPO3\CMS\Core\Resource\FileType;
 
 defined('TYPO3') || die();
 

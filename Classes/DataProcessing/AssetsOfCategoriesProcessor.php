@@ -80,7 +80,7 @@ final readonly class AssetsOfCategoriesProcessor implements DataProcessorInterfa
      * @return array<int, array{'uid': int, 'title': string, 'categoryUid': int}>
      * @throws Exception
      */
-    protected function getRecords(array $category, string $sorting = 'name'): array
+    private function getRecords(array $category, string $sorting = 'name'): array
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable('sys_file');
 
@@ -126,7 +126,7 @@ final readonly class AssetsOfCategoriesProcessor implements DataProcessorInterfa
             ->fetchAllAssociative();
     }
 
-    protected function getCategoriesIdsFromProcessedData(array $processedData): array
+    private function getCategoriesIdsFromProcessedData(array $processedData): array
     {
         $identifiers = [];
         $processedPortfolioCategories = ArrayUtility::getValueByPath($processedData, 'portfolioCategories');
