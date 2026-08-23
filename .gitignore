@@ -23,3 +23,4 @@ var
 
 .claude
 CLAUDE.md
+.phpunit.cache/
