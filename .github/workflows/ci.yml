@@ -1,0 +1,142 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend:
+    name: Build frontend assets
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Resources/Private/frontendSrc
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: Resources/Private/frontendSrc/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Resources/Public/Frontend/ is gitignored and only built on release, but the
+      # functional icon tests assert against the built sprite. Hand the compiled
+      # assets to the PHP jobs instead of running the Node build six times.
+      - name: Upload built assets
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: frontend-assets
+          path: Resources/Public/Frontend
+          retention-days: 1
+          if-no-files-found: error
+
+  backend:
+    name: TYPO3 ${{ matrix.typo3 }} / PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    needs: frontend
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        typo3: ['^13.4', '^14.3']
+        php: ['8.3', '8.4', '8.5']
+
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          ini-values: memory_limit=-1
+          extensions: intl, mbstring, mysqli, pdo_mysql, zip
+          coverage: none
+
+      - name: Download built assets
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: frontend-assets
+          path: Resources/Public/Frontend
+
+      - name: Resolve Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Composer downloads
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: composer-${{ runner.os }}-${{ matrix.php }}-${{ matrix.typo3 }}-${{ hashFiles('composer.json') }}
+          restore-keys: |
+            composer-${{ runner.os }}-${{ matrix.php }}-${{ matrix.typo3 }}-
+            composer-${{ runner.os }}-${{ matrix.php }}-
+
+      - name: Install dependencies
+        id: install
+        run: |
+          composer require --no-progress --no-interaction --no-audit \
+              typo3/cms-core:'${{ matrix.typo3 }}'
+          # `composer require` pins the constraint it just installed; restore the
+          # committed multi-version one so the QA tools see the repository state.
+          git checkout composer.json
+
+      - name: Unit tests
+        id: unit
+        if: ${{ always() && steps.install.outcome == 'success' }}
+        run: .build/bin/phpunit -c .project/tools/phpunit-unit.xml
+
+      - name: Functional tests
+        id: functional
+        if: ${{ always() && steps.install.outcome == 'success' }}
+        env:
+          typo3DatabaseDriver: mysqli
+          typo3DatabaseHost: 127.0.0.1
+          typo3DatabasePort: 3306
+          typo3DatabaseName: t3func
+          typo3DatabaseUsername: root
+          typo3DatabasePassword: root
+        run: .build/bin/phpunit -c .project/tools/phpunit-functional.xml
+
+      - name: Coding standards
+        id: cgl
+        if: ${{ always() && steps.install.outcome == 'success' }}
+        run: .build/bin/php-cs-fixer fix --dry-run --diff --config=.project/tools/.php-cs-fixer.php
+
+      - name: PHPStan
+        id: phpstan
+        if: ${{ always() && steps.install.outcome == 'success' }}
+        run: .build/bin/phpstan --configuration=.project/tools/phpstan.neon --error-format=github --no-progress
