@@ -6,6 +6,7 @@ namespace StarterTeam\StarterNessa\Backend\Preview;
 
 use TYPO3\CMS\Backend\View\Event\PageContentPreviewRenderingEvent;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
+use TYPO3\CMS\Core\Authentication\AbstractUserAuthentication;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -48,17 +49,51 @@ final class HeroPreviewRenderer
         }
 
         $record = $event->getRecord();
-        $rawRecord = $record->getRawRecord();
-        $languageUid = $this->toInt($rawRecord?->get('sys_language_uid'));
+        $languageUid = $this->toInt($this->recordField($record, 'sys_language_uid'));
 
         // In connected mode the slides stay attached to the default-language
         // element, so a translation must resolve them via its l18n_parent.
-        $translationParent = $this->toInt($rawRecord?->get('l18n_parent'));
-        $parentUid = $translationParent > 0 ? $translationParent : $record->getUid();
+        $translationParent = $this->toInt($this->recordField($record, 'l18n_parent'));
+        $parentUid = $translationParent > 0
+            ? $translationParent
+            : $this->toInt($this->recordField($record, 'uid'));
 
         $slides = $this->fetchSlides($parentUid, $languageUid);
 
         $event->setPreviewContent($this->renderPreview($slides));
+    }
+
+    /**
+     * Reads a single field from the record the event carries.
+     *
+     * TYPO3 v13 hands over the plain database row, v14 a RecordInterface whose
+     * raw record still holds the untranslated system fields. The lookups stay
+     * duck-typed on purpose: a version switch would reference an API that does
+     * not exist in the other core version and break static analysis there.
+     */
+    private function recordField(mixed $record, string $field): mixed
+    {
+        if (is_array($record)) {
+            return $record[$field] ?? null;
+        }
+
+        if (!is_object($record)) {
+            return null;
+        }
+
+        if ($field === 'uid' && method_exists($record, 'getUid')) {
+            return $record->getUid();
+        }
+
+        if (!method_exists($record, 'getRawRecord')) {
+            return null;
+        }
+
+        $rawRecord = $record->getRawRecord();
+
+        return is_object($rawRecord) && method_exists($rawRecord, 'get')
+            ? $rawRecord->get($field)
+            : null;
     }
 
     private function toInt(mixed $value): int
@@ -135,7 +170,12 @@ final class HeroPreviewRenderer
      */
     private function renderPreview(array $slides): string
     {
-        $languageService = $this->languageServiceFactory->createForBackendUser();
+        // createForBackendUser() only exists since v14 and is marked @internal;
+        // it does exactly this, and createFromUserPreferences() works on both.
+        $backendUser = $GLOBALS['BE_USER'] ?? null;
+        $languageService = $this->languageServiceFactory->createFromUserPreferences(
+            $backendUser instanceof AbstractUserAuthentication ? $backendUser : null,
+        );
         $label = 'LLL:EXT:starter_nessa/Resources/Private/Language/locallang_be.xlf:';
 
         if ($slides === []) {

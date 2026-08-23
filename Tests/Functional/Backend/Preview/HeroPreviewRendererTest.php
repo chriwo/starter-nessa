@@ -10,6 +10,7 @@ use TYPO3\CMS\Backend\View\Event\PageContentPreviewRenderingEvent;
 use TYPO3\CMS\Backend\View\PageLayoutContext;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Domain\RecordFactory;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -90,18 +91,31 @@ final class HeroPreviewRendererTest extends FunctionalTestCase
             ->fetchAssociative();
         self::assertIsArray($row);
 
-        $record = GeneralUtility::makeInstance(RecordFactory::class)
-            ->createFromDatabaseRow('tt_content', $row);
-
         $event = new PageContentPreviewRenderingEvent(
             'tt_content',
             $recordType,
-            $record,
+            // The event carries the raw row in TYPO3 v13 and a RecordInterface
+            // in v14, so no single argument type satisfies both analyses.
+            /** @phpstan-ignore argument.type */
+            $this->createEventRecord($row),
             self::createStub(PageLayoutContext::class),
         );
 
         GeneralUtility::makeInstance(HeroPreviewRenderer::class)($event);
 
         return $event->getPreviewContent();
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private function createEventRecord(array $row): mixed
+    {
+        if ((new Typo3Version())->getMajorVersion() < 14) {
+            return $row;
+        }
+
+        return GeneralUtility::makeInstance(RecordFactory::class)
+            ->createFromDatabaseRow('tt_content', $row);
     }
 }
