@@ -44,7 +44,9 @@ function initDropdownAria() {
     );
 
     parents.forEach((parent) => {
-        const toggle = parent.querySelector(':scope > .c-mainnav__toggle, :scope > .c-mainnav__subtoggle');
+        const toggle = parent.querySelector(
+            ':scope > .c-mainnav__toggle, :scope > .c-mainnav__subtoggle',
+        );
         if (!toggle) {
             return;
         }
@@ -91,7 +93,9 @@ function initEscapeToClose() {
         let focusTarget = null;
 
         document
-            .querySelectorAll('.c-mainnav__item--has-children.is-open, .c-mainnav__subitem--has-children.is-open')
+            .querySelectorAll(
+                '.c-mainnav__item--has-children.is-open, .c-mainnav__subitem--has-children.is-open',
+            )
             .forEach((parent) => {
                 const toggle = parent.querySelector(
                     ':scope > .c-mainnav__toggle, :scope > .c-mainnav__subtoggle',
@@ -150,6 +154,10 @@ function initOffcanvasAria() {
         return;
     }
 
-    offcanvas.addEventListener('show.bs.offcanvas', () => toggler.setAttribute('aria-expanded', 'true'));
-    offcanvas.addEventListener('hide.bs.offcanvas', () => toggler.setAttribute('aria-expanded', 'false'));
+    offcanvas.addEventListener('show.bs.offcanvas', () =>
+        toggler.setAttribute('aria-expanded', 'true'),
+    );
+    offcanvas.addEventListener('hide.bs.offcanvas', () =>
+        toggler.setAttribute('aria-expanded', 'false'),
+    );
 }
