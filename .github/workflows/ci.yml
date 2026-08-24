@@ -49,6 +49,35 @@ jobs:
           retention-days: 1
           if-no-files-found: error
 
+  frontend-qa:
+    name: Lint frontend sources
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Resources/Private/frontendSrc
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: Resources/Private/frontendSrc/package-lock.json
+
+      - name: Install
+        id: install
+        run: npm ci
+
+      - name: ESLint
+        if: ${{ always() && steps.install.outcome == 'success' }}
+        run: npm run lint:js
+
+      - name: Stylelint
+        if: ${{ always() && steps.install.outcome == 'success' }}
+        run: npm run lint:scss
+
   backend:
     name: TYPO3 ${{ matrix.typo3 }} / PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
