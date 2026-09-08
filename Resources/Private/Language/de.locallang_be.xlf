@@ -26,6 +26,18 @@
 				<source>Page Footer</source>
 				<target>Seitenabschluss</target>
 			</trans-unit>
+			<trans-unit id="backend_layout.column.footer1">
+				<source>Footer: Left</source>
+				<target>Footer: Links</target>
+			</trans-unit>
+			<trans-unit id="backend_layout.column.footer2">
+				<source>Footer: Center</source>
+				<target>Footer: Mitte</target>
+			</trans-unit>
+			<trans-unit id="backend_layout.column.footer3">
+				<source>Footer: Right</source>
+				<target>Footer: Rechts</target>
+			</trans-unit>
 
 			<trans-unit id="CType.I.nessa_cta">
 				<source>Call-to-Action</source>

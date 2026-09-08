@@ -21,6 +21,15 @@
 			<trans-unit id="backend_layout.row.footer">
 				<source>Page footer</source>
 			</trans-unit>
+			<trans-unit id="backend_layout.column.footer1">
+				<source>Footer: Left</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.column.footer2">
+				<source>Footer: Center</source>
+			</trans-unit>
+			<trans-unit id="backend_layout.column.footer3">
+				<source>Footer: Right</source>
+			</trans-unit>
 
 			<trans-unit id="CType.I.nessa_cta">
 				<source>Call-to-Action</source>

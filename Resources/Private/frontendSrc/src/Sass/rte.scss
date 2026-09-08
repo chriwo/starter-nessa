@@ -15,3 +15,14 @@ p {
         text-align: right;
     }
 }
+
+// Mirrors Bootstrap's .list-unstyled: rte.min.css is built standalone and
+// does not import Bootstrap, so the RTE style option needs its own rule.
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+        margin-bottom: .5em;
+    }
+}

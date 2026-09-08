@@ -3,6 +3,14 @@ imports:
   - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml' }
   - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml' }
 
+processing:
+  exitHTMLparser_db:
+    keepNonMatchedTags: 1
+    tags:
+      li:
+        allowedAttribs:
+          - class
+
 editor:
   config:
     contentsCss:

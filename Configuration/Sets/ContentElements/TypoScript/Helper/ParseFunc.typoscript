@@ -7,8 +7,9 @@ lib.parseFunc_RTE {
           tags.ul.fixAttrib.class {
             default = e-bodytext-list__unordered
             always = 1
-            list = e-bodytext-list__unordered
+            list = e-bodytext-list__unordered, list-unstyled
           }
+          tags.li.allowedAttribs = class
           keepNonMatchedTags = 1
         }
       }
@@ -23,6 +24,7 @@ lib.parseFunc_RTE {
             always = 1
             list = e-bodytext-list__ordered
           }
+          tags.li.allowedAttribs = class
           keepNonMatchedTags = 1
         }
       }
