@@ -21,7 +21,7 @@
 			<p>{teamMember.bodytext}</p>
 		</f:if>
 
-        <f:if condition="{teamMember.nessa_social_element} || {teamMember.email.url}">
+        <f:if condition="{teamMember.nessa_social_element} || {teamMember.email.url} || {teamMember.telephone}">
             <div class="member__social">
                 <f:for each="{teamMember.nessa_social_element}" as="socialLink">
                     <f:if condition="{socialLink.icon}">
